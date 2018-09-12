@@ -1,8 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	
-	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+
+
+  <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+    id="dataSource">
+
+    <property value="oracle.jdbc.driver.OracleDriver" name="driverClassName" />
+
+    <property value="jdbc:oracle:thin:@localhost:1521:XE" name="url" />
+
+    <property value="kosta186" name="username" />
+
+    <property value="1234" name="password" />
+
+  </bean>
+
+  <!-- 문자열이므로 ref가 아니라 value -->
+
+
+
+
+  <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+
+    <property name="dataSource" ref="dataSource" />
+
+    <!-- 객체니까 ref -->
+
+
+    <property value="classpath:/mybatis-config.xml" name="configLocation" />
+
+    <!-- 경로니까 value -->
+
+
+    <property value="classpath:/mappers/**/*Mapper.xml" name="mapperLocations" />
+
+    <!-- mapper는 여러개니까 **처리, Mapper.xml로 끝나는 파일이라는걸 알려주려고 앞에 별붙임 -->
+
+
+  </bean>
+
+  <!-- SqlSessionTemplate 설정 -->
+
+
+
+  
+  <bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession"
+    destroy-method="clearCache">
+
+    <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+
+  </bean>
+
+  <!-- 트랜잭션매니져 설정 -->
+
+
+
+
+  <bean
+    class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+    id="transactionManager">
+
+    <property name="dataSource" ref="dataSource" />
+
+  </bean>
+
+  <tx:annotation-driven />
+
+  <!-- gng -->
+
+
+  <context:component-scan base-package="yanoll.enquire.persistence" />
+
+  <context:component-scan base-package="yanoll.enquire.service" />
+
+  <context:component-scan base-package="yanoll.persistence" />
+
+  <context:component-scan base-package="yanoll.service" />
+
 </beans>
+
+
