@@ -11,16 +11,16 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Destino project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/styles/common/bootstrap4/bootstrap.min.css">
-<link href="http://localhost:8081/kostaProject1/plugins/common/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/plugins/common/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/plugins/common/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/plugins/common/OwlCarousel2-2.2.1/animate.css">
-<link href="http://localhost:8081/kostaProject1/plugins/common/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/styles/common/main_styles.css">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/styles/common/responsive.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.css">
+<link href="../resources/bootstrap/plugins/common/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/plugins/common/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/plugins/common/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/plugins/common/OwlCarousel2-2.2.1/animate.css">
+<link href="../resources/bootstrap/plugins/common/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/main_styles.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/responsive.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/styles/common/custom.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/custom.css">
 <style type="text/css">
 .header_titlePage {
 	background: none !important;
@@ -48,7 +48,7 @@
 	<!-- Home -->
 
 	<div class="home">
-		<div class="home_background" style="background-image:url(http://localhost:8081/kostaProject1/images/common/mainImg.jpg)"></div>
+		<div class="home_background" style="background-image:url(../resources/images/common/mainImg.jpg)"></div>
 		<div class="home_content">
 					<div class="container">
 			<div class="row">
@@ -88,7 +88,7 @@
 					<!-- Top Destination Item -->
 					<div class="top_item">
 						<a href="#">
-							<div class="top_item_image"><img src="http://localhost:8081/kostaProject1/images/common/top_1.jpg" alt="https://unsplash.com/@sgabriel"></div>
+							<div class="top_item_image"><img src="../resources/images/common/top_1.jpg" alt="https://unsplash.com/@sgabriel"></div>
 							<div class="top_item_content">
 								<div class="top_item_price">From $890</div>
 								<div class="top_item_text">Paris, France</div>
@@ -102,7 +102,7 @@
 					<!-- Top Destination Item -->
 					<div class="top_item">
 						<a href="#">
-							<div class="top_item_image"><img src="http://localhost:8081/kostaProject1/images/common/top_2.jpg" alt="https://unsplash.com/@jenspeter"></div>
+							<div class="top_item_image"><img src="../resources/images/common/top_2.jpg" alt="https://unsplash.com/@jenspeter"></div>
 							<div class="top_item_content">
 								<div class="top_item_price">From $890</div>
 								<div class="top_item_text">Italian Riviera</div>
@@ -116,7 +116,7 @@
 					<!-- Top Destination Item -->
 					<div class="top_item">
 						<a href="#">
-							<div class="top_item_image"><img src="http://localhost:8081/kostaProject1/images/common/top_3.jpg" alt="https://unsplash.com/@anikindimitry"></div>
+							<div class="top_item_image"><img src="../resources/images/common/top_3.jpg" alt="https://unsplash.com/@anikindimitry"></div>
 							<div class="top_item_content">
 								<div class="top_item_price">From $890</div>
 								<div class="top_item_text">Cinque Terre</div>
@@ -130,7 +130,7 @@
 					<!-- Top Destination Item -->
 					<div class="top_item">
 						<a href="#">
-							<div class="top_item_image"><img src="http://localhost:8081/kostaProject1/images/common/top_4.jpg" alt="https://unsplash.com/@hellolightbulb"></div>
+							<div class="top_item_image"><img src="../resources/images/images/common/top_4.jpg" alt="https://unsplash.com/@hellolightbulb"></div>
 							<div class="top_item_content">
 								<div class="top_item_price">From $890</div>
 								<div class="top_item_text">Santorini, Greece</div>
@@ -147,11 +147,11 @@
 
 	<div class="last">
 		<!-- Image by https://unsplash.com/@thanni -->
-		<div class="last_background parallax-window" data-parallax="scroll" data-image-src="../images/common/last.jpg" data-speed="0.8"></div>
+		<div class="last_background parallax-window" data-parallax="scroll" data-image-src="../resources/images/common/last.jpg" data-speed="0.8"></div>
 
 		<div class="container">
 			<div class="row">
-				<div class="last_logo"><img src="http://localhost:8081/kostaProject1/images/common/last_logo.png" alt=""></div>
+				<div class="last_logo"><img src="../resources/images/common/last_logo.png" alt=""></div>
 				<div class="col-lg-6 last_col">
 					<div class="last_item">
 						<div class="last_item_content">
@@ -182,7 +182,7 @@
 
 	<div class="video_section d-flex flex-column align-items-center justify-content-center">
 		<!-- Image by https://unsplash.com/@peecho -->
-		<div class="video_background parallax-window" data-parallax="scroll" data-image-src="../images/common/video.jpg" data-speed="0.8"></div>
+		<div class="video_background parallax-window" data-parallax="scroll" data-image-src="../resources/images/common/video.jpg" data-speed="0.8"></div>
 		<div class="video_content">
 			<div class="video_title">A day on the island</div>
 			<div class="video_subtitle">A trip organized by Destino's team</div>
@@ -417,19 +417,19 @@
 </div>
 <%@include file="sub_page/footer.html" %>
 
-<script src="http://localhost:8081/kostaProject1/scripts/common/jquery-3.2.1.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/scripts/common/moment.min.js"></script>
+<script src="../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script> 
+<script src="../resources/bootstrap/scripts/common/moment.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="http://localhost:8081/kostaProject1/styles/common/bootstrap4/popper.js"></script>
-<script src="http://localhost:8081/kostaProject1/styles/common/bootstrap4/bootstrap.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common/easing/easing.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common/parallax-js-master/parallax.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common/magnific-popup/jquery.magnific-popup.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/scripts/common/pignose.calendar.js"></script>
-<script src="http://localhost:8081/kostaProject1/scripts/common/custom.js"></script>
+<script src="../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
+<script src="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>
+<script src="../resources/bootstrap/plugins/common/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="../resources/bootstrap/plugins/common/easing/easing.js"></script>
+<script src="../resources/bootstrap/plugins/common/parallax-js-master/parallax.min.js"></script>
+<script src="../resources/bootstrap/plugins/common/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="../resources/bootstrap/scripts/common/pignose.calendar.js"></script>
+<script src="../resources/bootstrap/scripts/common/custom.js"></script>
 <!--  메뉴이펙트 스크립트 -->
-<script src="http://localhost:8081/kostaProject1/scripts/common/menuEffect.js" type="text/javascript"></script>
+<script src="../resources/bootstrap/scripts/common/menuEffect.js" type="text/javascript"></script>
 <script type="text/javascript">
 	
 </script>

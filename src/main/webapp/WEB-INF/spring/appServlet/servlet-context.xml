@@ -25,6 +25,9 @@
   </beans:bean>
 
 
+<!-- mj -->
+<context:component-scan base-package="yanoll.registration.controller"/>
+
 <!--  hw -->
 <context:component-scan base-package="yanoll.search.controller"/>
 
