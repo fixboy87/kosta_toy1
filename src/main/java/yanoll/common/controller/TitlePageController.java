@@ -17,7 +17,7 @@ public class TitlePageController {
   @RequestMapping(value = "/", method = RequestMethod.GET) 
   public String Title( Model model, HttpServletRequest request) {
     HttpSession session = request.getSession();
-    //미완성
+    //미완성 bn
     return "title";
 }
 }
