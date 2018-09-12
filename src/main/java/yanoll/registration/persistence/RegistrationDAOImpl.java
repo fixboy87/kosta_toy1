@@ -22,5 +22,15 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 		sqlSession.insert(namespace+".insert", user);
 	}
 
+	@Override
+	public String idCheck(String id) {
+		String userid = sqlSession.selectOne(namespace+".idcheck", id);
+		
+		if(userid == null) {
+			userid = "none";
+		}
+		return userid;
+	}
+
 
 }

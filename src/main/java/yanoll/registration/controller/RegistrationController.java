@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import yanoll.registration.service.RegistrationService;
@@ -52,7 +53,7 @@ public class RegistrationController {
 		
 	}
 	
-	
+	@RequestMapping(value = "/details", method = RequestMethod.POST)
 	public String DetailsPOST (Users user, RedirectAttributes rttr) {
 		try {
 			service.register(user);
@@ -66,5 +67,13 @@ public class RegistrationController {
 		
 	}
 	
-	
+	@RequestMapping(value = "/idcheck", method = RequestMethod.GET)
+	public @ResponseBody String idcheck(@RequestParam("id") String id) {
+		String userId = "";
+		if((userId = service.idcheck(id)) == "none") {
+			return "none";
+		} else {
+			return userId;
+		}
+	}
 }

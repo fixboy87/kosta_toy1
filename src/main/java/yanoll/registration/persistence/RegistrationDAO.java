@@ -5,6 +5,8 @@ import yanoll.user.domain.Users;
 public interface RegistrationDAO {
 	
 	public void insert(Users user) throws Exception;
+
+	public String idCheck(String id);
 		
 	//public boolean idCheck(String id) throws Exception;
 	

@@ -20,5 +20,10 @@ public class RegistrationServiceImpl implements RegistrationService {
 		dao.insert(user);
 	}
 
+	@Override
+	public String idcheck(String id) {
+		return dao.idCheck(id);
+	}
+
 	
 }
