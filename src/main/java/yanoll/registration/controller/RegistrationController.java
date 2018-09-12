@@ -6,8 +6,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import yanoll.registration.service.RegistrationService;
+import yanoll.user.domain.Users;
 
 @Controller
 @RequestMapping("/register/*")
@@ -17,13 +20,51 @@ public class RegistrationController {
 	private RegistrationService service;
 	
 	@RequestMapping(value = "/type", method = RequestMethod.GET)
-	public String register_typeGET (Model model) {
+	public void register_typeGET (Model model) {
 		
-		return "register";
 	}
 	
-	/*@RequestMapping(value = "/register", method = RequestMethod.GET)
+	@RequestMapping(value = "/type", method = RequestMethod.POST)
 	public String register_typePOST (Model model) {
-		return 
-	}*/
+		
+		return "register/register";
+	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String registerGET (Model model, @RequestParam("type") String type) {
+		String uri = "register/register?type="+type;
+		return uri;
+	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String registerPOST (Model model, @RequestParam("type") String type) {
+		
+		return "register/details";
+	}
+	
+	@RequestMapping(value = "/details", method = RequestMethod.GET)
+	public void DetailsGET (Model model,
+			@RequestParam("type") String type, @RequestParam("newid") String newid, @RequestParam("newpass") String newpass) {
+		
+		model.addAttribute("type", type);
+		model.addAttribute("newid", newid);
+		model.addAttribute("newpass", newpass);
+		
+	}
+	
+	
+	public String DetailsPOST (Users user, RedirectAttributes rttr) {
+		try {
+			service.register(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+			rttr.addFlashAttribute("message", "failure");
+			return "redirect:/";
+		}
+		rttr.addAttribute("id", user.getId()).addFlashAttribute("message", "success");
+		return "redirect:/{id}";
+		
+	}
+	
+	
 }
