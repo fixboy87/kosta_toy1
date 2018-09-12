@@ -1,5 +1,6 @@
 package yanoll.search.controller;
 
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ public class HotelController {
 	@RequestMapping(value = "/listPage", method = RequestMethod.GET)
 	public void listPage(Model model)throws Exception{
 		System.out.println("컨트롤러 체크");
+		System.out.println(service.hotelListBasic());
 		
 		model.addAttribute("list", service.hotelListBasic());
 

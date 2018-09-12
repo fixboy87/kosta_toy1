@@ -15,35 +15,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/styles/common/bootstrap4/bootstrap.min.css"> <!-- ok -->
-<link href="http://localhost:8081/kostaProject1/plugins/common/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"><!-- ok -->
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/styles/common/offers_styles.css"><!-- ok -->
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/styles/common/offers_responsive.css"><!-- ok -->
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/plugins/common/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/plugins/common/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/plugins/common/OwlCarousel2-2.2.1/animate.css">
-<link href="http://localhost:8081/kostaProject1/plugins/common/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/styles/common/main_styles.css">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/styles/common/responsive.css">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/styles/common/custom.css">
+
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/plugins/common/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/plugins/common/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/plugins/common/OwlCarousel2-2.2.1/animate.css">
+<link href="../resources/bootstrap/plugins/common/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/main_styles.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/responsive.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/custom.css">
+<link href="../resources/bootstrap/plugins/common/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/offers_styles.css"><!-- ok -->
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/offers_responsive.css"><!-- ok -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 
 <!--레인지 슬라이더 -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
-<script src="http://localhost:8081/kostaProject1/scripts/common/jquery-3.2.1.min.js"></script>
+<script src="../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 <!-- custom JS -->
-<script type="text/javascript" src="http://localhost:8081/kostaProject1/scripts/HY_Script/priceRang.js"></script>
-<script type="text/javascript" src="http://localhost:8081/kostaProject1/scripts/HY_Script/SearchConditions.js"></script>
+<script type="text/javascript" src="../resources/bootstrap/scripts/HY_Script/priceRang.js"></script>
+<script type="text/javascript" src="../resources/bootstrap/scripts/HY_Script/SearchConditions.js"></script>
 
 <!-- 달력 -->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>                    
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>                  
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">     
 
 <!-- Custom Css -->
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/styles/HY_Style/ListPage.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/HY_Style/ListPage.css">
 
 
 </head>
@@ -107,7 +108,7 @@
 
 	<div class="home">
 		<!-- Image by https://unsplash.com/@peecho -->
-		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="http://localhost:8081/kostaProject1/images/common/last.jpg" data-speed="0.8"></div>
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="../resources/images/common/last.jpg" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -143,7 +144,7 @@
 														
 														<div class="find_item">
 															<div style="color: white !important; background-color: #fe435c; width: 48px">체크인</div>
-															<input class="dropdown_item_select find_input"   autocomplete="off" type="text" id="firstday" size="9" placeholder="YYYY-MM-DD" >
+															<input class="dropdown_item_select find_input" name="start_day"   autocomplete="off" type="text" id="firstday" size="9" placeholder="YYYY-MM-DD" >
 																<script>
 																	$("#firstday")
 																		.datepicker();
@@ -152,7 +153,7 @@
 														
 														<div class="find_item">
 															<div style="color: white !important; background-color: #fe435c; width: 60px;">체크 아웃</div>									
-															<input class="dropdown_item_select find_input" autocomplete="off" type="text" id="secondday" size="9" placeholder="YYYY-MM-DD">
+															<input class="dropdown_item_select find_input" name="end_day" autocomplete="off" type="text" id="secondday" size="9" placeholder="YYYY-MM-DD">
 																<script>
 																	$("#secondday")
 																		.datepicker();
@@ -245,7 +246,7 @@
 					<c:forEach var="listH" items="${list}"> 
 						<!-- Item -->
 						<div class="item clearfix rating_5">
-							<div class="item_image"><a href="HotelDetailAction.do?h_no=${listH.h_no}"><img src="http://localhost:8081/kostaProject1/images/pages/HYimg/${listH.pic_url}" alt=""></a></div>
+							<div class="item_image"><a href="HotelDetailAction.do?h_no=${listH.h_no}"><img src="../resources/bootstrap/images/pages/HYimg/${listH.pic_url}" alt=""></a></div>
 							<div class="item_content">
 								<div class="item_price">${listH.h_location}</div>
 								<div class="item_title">${listH.h_name }</div>
@@ -289,19 +290,19 @@
 <%@include file="../sub_page/footer.html" %>
 
 <!-- <script src="../../scripts/common/jquery-3.2.1.min.js"></script> -->
-<script src="http://localhost:8081/kostaProject1/styles/common/bootstrap4/popper.js"></script>
-<script src="http://localhost:8081/kostaProject1/styles/common/bootstrap4/bootstrap.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common/greensock/TweenMax.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common/greensock/TimelineMax.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common/scrollmagic/ScrollMagic.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common/greensock/animation.gsap.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common/greensock/ScrollToPlugin.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common/Isotope/isotope.pkgd.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common/easing/easing.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common/parallax-js-master/parallax.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/scripts/common/offers_custom.js"></script>
+<script src="../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
+<script src="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>
+<script src="../resources/bootstrap/plugins/common/greensock/TweenMax.min.js"></script>
+<script src="../resources/bootstrap/plugins/common/greensock/TimelineMax.min.js"></script>
+<script src="../resources/bootstrap/plugins/common/scrollmagic/ScrollMagic.min.js"></script>
+<script src="../resources/bootstrap/plugins/common/greensock/animation.gsap.min.js"></script>
+<script src="../resources/bootstrap/plugins/common/greensock/ScrollToPlugin.min.js"></script>
+<script src="../resources/bootstrap/plugins/common/Isotope/isotope.pkgd.min.js"></script>
+<script src="../resources/bootstrap/plugins/common/easing/easing.js"></script>
+<script src="../resources/bootstrap/plugins/common/parallax-js-master/parallax.min.js"></script>
+<script src="../resources/bootstrap/scripts/common/offers_custom.js"></script>
 <!--  메뉴이펙트 스크립트 -->
-<script src="http://localhost:8081/kostaProject1/scripts/common/menuEffect.js" type="text/javascript"></script>
-<script src="http://localhost:8081/kostaProject1/scripts/common/custom.js"></script>
+<script src="../resources/bootstrap/scripts/common/menuEffect.js" type="text/javascript"></script>
+<script src="../resources/bootstrap/scripts/common/custom.js"></script>
 </body>
 </html>
