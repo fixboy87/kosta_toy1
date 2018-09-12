@@ -25,6 +25,9 @@
   </beans:bean>
 
 
+<!--  hw -->
+<context:component-scan base-package="yanoll.search.controller"/>
+
 <!-- syj -->
 <context:component-scan base-package="yanoll.review.controller"/>
 

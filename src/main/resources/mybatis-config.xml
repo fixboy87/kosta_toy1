@@ -8,6 +8,7 @@
 	<package name="org.yanoll.domain"/>
 	<package name="yanoll.enquire.domain"/>
   <package name="yanoll.review.domain"/>
+  <package name="yanoll.search.domain"/>
 	</typeAliases>
 	
 </configuration>
