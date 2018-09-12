@@ -37,11 +37,7 @@
  	]]>
  	</select>
  	
- 	<select id="hotelListCondition" resultType="HotelaVO" parameterType="HotelDTO">
-		select h_no, h_name, h_info, pic_url, h_location,price from Hotel
-				where price between #{low_price} and #{max_price} and
-				h_location = #{destination} order by price desc  	
- 	</select>
+
  	
 
  </mapper>
