@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="yanoll.mapper.Review_BoardMapper">
+
+<!-- 후기 전체 목록 -->
+	<select id ="listReviewAll" resultType="Review_BoardVO">
+      SELECT*FROM review_board
+   </select>
+
+
+<!-- 호텔 후기 목록 -->
+   <select id ="listReview" resultType="Review_BoardVO" parameterType="String">
+      SELECT*FROM review_board where hotle_name =#{hotle_name}
+   </select>
+   
+	
+<!-- 후기 등록 -->
+	<!-- <insert id="insertReview" parameterType="Review_BoardVO">
+		insert into review_board
+			(r_no, r_title, r_grade, r_content, r_redate, r_hitcount , r_fname, booking_num, hotle_name, stay_day, userNo, id 
+		)values(review_seq.nextval, #{r_title}, #{r_grade}, #{r_content}, sysdate, 0, #{r_fname}, #{booking_num}, #{hotle_name}, #{stay_day}, #{userNo}, #{id})
+	</insert> -->
+	
+	
+<!-- 디테일 게시물	 -->
+    <!-- <select id="detailReview" parameterType="Review_Board" resultType="Review_Board">
+		select*from review_board where r_no = #{r_no}
+	</select>  -->
+
+<!-- 게시물 삭제 -->	
+<!-- 	<delete id="deleteReivew" parameterType="Review_Board">
+		delete from review_board where r_no = #{r_no}
+	</delete> -->
+
+<!-- 후기가능 booking 리스트 -->
+<!-- 	<select id="listCheck" parameterType="String" resultType="Booking">
+		select*from booking 
+    		where userno=(select userno from users where id = #{id}) and P_CONDITION =2
+	</select> -->
+
+<!-- 호텔 이름 찾기 -->
+<!-- 	<select id="searchHotle_name" parameterType="int" resultType="String">
+		select h_name from hotel where h_no=#{h_no}
+	</select> -->
+
+
+<!-- 회원 번호 -->
+<!-- 	<select id="search_userNo" parameterType="String" resultType="int">
+		select userNo from users where id=#{id}
+	</select> -->
+
+<!-- booking의 p_condition 후기 작성 전(2)-> 작성 후(4) -->
+<!-- 	<update id="change_condition" parameterType="int">
+		UPDATE booking SET p_condition = 4
+		        where booking_num =#{booking_num}
+	</update> -->
+
+<!-- 게시물 수정 -->
+<!-- 	<update id="updateReview" parameterType="Review_Board">
+		UPDATE review_board SET r_title = #{r_title}, r_content=#{r_content}  WHERE r_no=#{r_no}
+	</update>
+ -->
+
+
+
+</mapper>
