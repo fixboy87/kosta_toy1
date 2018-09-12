@@ -45,7 +45,9 @@
 <tx:annotation-driven />
 
 
-
+<!-- mj -->
+<context:component-scan base-package="yanoll.registration.persistence" />
+<context:component-scan base-package="yanoll.registration.service" />
 
 <!-- gng -->
 <context:component-scan base-package="yanoll.enquire.persistence" />
