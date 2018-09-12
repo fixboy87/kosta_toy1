@@ -7,10 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="registration/register" method="post">
-		<button name="user">user</button>
-		<button name="hotel">hotel</button>
-		<input type="submit" >
+	<form action="/register/register" method="post">
+		<button name="type" value="user">user</button>
+		<button name="type" value="hotel">hotel</button>
 	</form>
 </body>
 </html>

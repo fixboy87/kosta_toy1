@@ -28,22 +28,23 @@ public class RegistrationController {
 	@RequestMapping(value = "/type", method = RequestMethod.POST)
 	public String register_typePOST (Model model) {
 		
-		return "register/register";
+		return "register";
 	}
 	
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
+/*	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String registerGET (Model model, @RequestParam("type") String type) {
+		System.out.println("11111111111111111");
+		System.out.println("type = "+type);
 		String uri = "register/register?type="+type;
 		return uri;
-	}
+	}*/
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String registerPOST (Model model, @RequestParam("type") String type) {
-		
-		return "register/details";
+	public void registerPOST (Model model, @RequestParam("type") String type) {
+		model.addAttribute("type", type);
 	}
 	
-	@RequestMapping(value = "/details", method = RequestMethod.GET)
+/*	@RequestMapping(value = "/details", method = RequestMethod.GET)
 	public void DetailsGET (Model model,
 			@RequestParam("type") String type, @RequestParam("newid") String newid, @RequestParam("newpass") String newpass) {
 		
@@ -51,7 +52,7 @@ public class RegistrationController {
 		model.addAttribute("newid", newid);
 		model.addAttribute("newpass", newpass);
 		
-	}
+	}*/
 	
 	@RequestMapping(value = "/details", method = RequestMethod.POST)
 	public String DetailsPOST (Users user, RedirectAttributes rttr) {
@@ -71,9 +72,9 @@ public class RegistrationController {
 	public @ResponseBody String idcheck(@RequestParam("id") String id) {
 		String userId = "";
 		if((userId = service.idcheck(id)) == "none") {
-			return "none";
+			return "fail";
 		} else {
-			return userId;
+			return "success";
 		}
 	}
 }

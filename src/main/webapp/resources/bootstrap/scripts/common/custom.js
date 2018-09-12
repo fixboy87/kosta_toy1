@@ -239,17 +239,17 @@ $(document).ready(function()
 		var $buttonHtml = $(this).find('a').html();
 		
 		if($buttonHtml === "홈") {
-			location.href = "titlePage.do";
+			location.href = "/";
 		} else if($buttonHtml === "로그인") {
-			location.href = "loginForm.do";
+			location.href = "/register/login";
 		} else if($buttonHtml === "회원가입") {
-			location.href = "registerTypeForm.do";
+			location.href = "/register/type";
 		} else if($buttonHtml === "마이페이지") {
-			location.href = "myPageAction.do";
+			location.href = "/register/mypage";
 		} else if($buttonHtml === "구매페이지") {
-			location.href = "HotelListActionForm.do";
+			location.href = "/order/pay";
 		} else if($buttonHtml === "로그아웃") {
-			location.href = "logOutAction.do";
+			location.href = "/register/logout";
 		}
 		
 	});
@@ -283,11 +283,11 @@ $(document).ready(function()
 	});
 	
 	$('.logo_image').click(function() {
-		location.href = "titlePage.do"
+		location.href = "/"
 	});
 	
 	$('div.logo').click(function() {
-		location.href = "titlePage.do";
+		location.href = "/";
 	});
 	
 	$('.admin_page_button').click(function() {
