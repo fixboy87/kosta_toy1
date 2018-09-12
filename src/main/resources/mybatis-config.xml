@@ -6,6 +6,7 @@
 <configuration>
 	<typeAliases>
 	<package name="org.yanoll.domain"/>
+	<package name="yanoll.enquire.domain"/>
 	</typeAliases>
 	
 </configuration>

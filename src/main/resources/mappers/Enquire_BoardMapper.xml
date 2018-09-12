@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+    <mapper namespace="yanoll.mapper.Enquire_BoardMapper">
+	
+	
+	<insert id="create" parameterType="Enquire_Board">	
+	insert into enquire_board(e_seq,e_title,e_contents,e_date,hotel_name,user_no,e_write)
+	values(enquire_board_e_seq.nextval,#{e_title},#{e_contents},sysdate,#{hotel_name},#{user_no},#{e_write})	
+	</insert>
+	
+	<select id="list" resultType="Enquire_Board">
+ 		<![CDATA[
+			 select 
+			  *
+			 from 
+			   enquire_board			   
+			 where e_seq > 0
+		]]>
+
+		<include refid="search"></include>
+			 
+		<![CDATA[	  
+			 order by e_seq desc, e_date desc
+ 		]]>
+	</select>
+
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">
+				and e_title like '%'|| #{keyword}||'%'
+			</if>
+			<if test="searchType == 'c'.toString()">
+				and e_contents like '%'|| #{keyword}||'%'
+			</if>
+			<if test="searchType == 'w'.toString()">
+				and e_write like '%'|| #{keyword}||'%'
+			</if>
+			<if test="searchType == 'tc'.toString()">
+				and ( e_title like '%'|| #{keyword}||'%' OR e_contents like
+				'%'||
+				#{keyword}||'%')
+			</if>
+			<if test="searchType == 'cw'.toString()">
+				and ( e_contents like '%'|| #{keyword}||'%' OR e_write like
+				'%'||
+				#{keyword}||'%')
+			</if>
+			<if test="searchType == 'tcw'.toString()">
+				and ( e_title like '%'|| #{keyword}||'%'
+				OR
+				e_contents like
+				'%'|| #{keyword}||'%'
+				OR
+				e_write like '%'|| #{keyword}||'%')
+			</if>
+		</if>
+	</sql>
+	
+	
+	<select id="count" resultType="int">
+
+		select count(e_seq) from
+		enquire_board where e_seq > 0
+
+	</select>
+	
+	<select id="read" resultType="Enquire_Board">
+		select
+		e_seq,e_title,e_contents,e_write
+		from
+		enquire_board
+		where e_seq = #{e_seq}
+	</select>
+	
+	<delete id="delete">
+	delete from enquire_board where e_seq=#{e_seq}
+	</delete>
+
+	
+</mapper>
