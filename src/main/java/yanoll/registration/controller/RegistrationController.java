@@ -19,11 +19,11 @@ public class RegistrationController {
 	@RequestMapping(value = "/type", method = RequestMethod.GET)
 	public String register_typeGET (Model model) {
 		
-		return "register?type=
+		return "register";
 	}
 	
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String register_typePOST (Model model) {
 		return 
-	}
+	}*/
 }
