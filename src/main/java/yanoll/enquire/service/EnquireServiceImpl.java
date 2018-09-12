@@ -45,6 +45,14 @@ public class EnquireServiceImpl implements EnquireService {
 		dao.delete(e_seq);
 		
 	}
+
+	@Override
+	public void modify(Enquire_Board board) throws Exception {
+		dao.update(board);
+		
+	}
+	
+    	
 	
 	
 	

@@ -59,8 +59,26 @@ public class EnquireController {
 	public String delete(@RequestParam("e_seq") int e_seq,
 			RedirectAttributes rttr,SearchCriteria cri)throws Exception{
 		
+		System.out.println(e_seq);
 		service.delete(e_seq);
 		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
+		
+		return "redirect:/enquire/list";
+	}
+	
+	@RequestMapping(value="/modify",method=RequestMethod.GET)
+	public void modifyGET(@RequestParam("e_seq") int e_seq ,
+			@ModelAttribute("cri") SearchCriteria cri, Model model)throws Exception{
+		model.addAttribute(service.read(e_seq));
+	}
+	
+	@RequestMapping(value="/modify",method=RequestMethod.POST)
+	public String modifyPOST(Enquire_Board board,
+			RedirectAttributes rttr, SearchCriteria cri)throws Exception{
+		
+		service.modify(board);
+		rttr.addAttribute("page",cri.getPage() );
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());
 		
 		return "redirect:/enquire/list";

@@ -15,7 +15,7 @@
 <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/styles/gng_style/gng_contact.css">
 <link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/styles/gng_style/gng_main.css">
-<script src="http://localhost:8081/kostaProject1/scripts/common/jquery-3.2.1.min.js"></script>
+<script src="../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script>
 <script src="http://localhost:8081/kostaProject1/styles/common/bootstrap4/popper.js"></script>
 <script src="http://localhost:8081/kostaProject1/styles/common/bootstrap4/bootstrap.min.js"></script>
 <script src="http://localhost:8081/kostaProject1/plugins/common/greensock/TweenMax.min.js"></script>
@@ -169,13 +169,16 @@ margin-bottom: 1%;
 				</div>
 				
 				<script>
+				
+				
 	$(document).ready(
 			function() {
 
 				$('#searchBtn').on(
 						"click",
 						function(event) {
-
+							
+                            alert(1);
 							self.location = "list"
 									+ '${pageMaker.makeQuery(1)}'
 									+ "&searchType="
