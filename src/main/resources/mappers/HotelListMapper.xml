@@ -6,19 +6,74 @@
  <mapper namespace="yanoll.mapper.HotelList">
  
  	<!-- for돌려 기본 호텔 리스트--> 
- 	<select id="hotelList" resultType="HotelVO">
+ 	<select id="hotelList" resultType="HotelaVO">
  	<![CDATA[
  		 select DISTINCT h_name, h_address, price, h_info, pic_url, h_location
  			from HOTEL ho inner join hotel_room ro
   			on ho.h_no = ro.h_no
  			join hotel_order hor
   			on ro.h_no = hor.h_no
-  			where ho.h_no = 1 and ho.room_count - (Select count(h_no) from HOTEL_ORDER
-          				where h_no = 1 and(START_DAY <= sysdate and sysdate <= END_DAY))>0
+  			where (ho.h_no = 1 and ho.room_count - (Select count(h_no) from HOTEL_ORDER
+          				where h_no = 1 and(START_DAY <= sysdate and sysdate <= END_DAY))>0)or                
+                  (ho.h_no = 2 and ho.room_count - (Select count(h_no) from HOTEL_ORDER
+          				where h_no = 2 and(START_DAY <= sysdate and sysdate <= END_DAY))>0)or
+                  (ho.h_no = 3 and ho.room_count - (Select count(h_no) from HOTEL_ORDER
+          				where h_no = 3 and(START_DAY <= sysdate and sysdate <= END_DAY))>0)or
+                  (ho.h_no = 4 and ho.room_count - (Select count(h_no) from HOTEL_ORDER
+          				where h_no = 4 and(START_DAY <= sysdate and sysdate <= END_DAY))>0)or
+                  (ho.h_no = 5 and ho.room_count - (Select count(h_no) from HOTEL_ORDER
+          				where h_no = 5 and(START_DAY <= sysdate and sysdate <= END_DAY))>0)or
+                  (ho.h_no = 6 and ho.room_count - (Select count(h_no) from HOTEL_ORDER
+          				where h_no = 6 and(START_DAY <= sysdate and sysdate <= END_DAY))>0)or
+                  (ho.h_no = 7 and ho.room_count - (Select count(h_no) from HOTEL_ORDER
+          				where h_no = 7 and(START_DAY <= sysdate and sysdate <= END_DAY))>0)or
+                  (ho.h_no = 8 and ho.room_count - (Select count(h_no) from HOTEL_ORDER
+          				where h_no = 8 and(START_DAY <= sysdate and sysdate <= END_DAY))>0)or
+                  (ho.h_no = 9 and ho.room_count - (Select count(h_no) from HOTEL_ORDER
+          				where h_no = 9 and(START_DAY <= sysdate and sysdate <= END_DAY))>0)or
+                  (ho.h_no = 10 and ho.room_count - (Select count(h_no) from HOTEL_ORDER
+          				where h_no = 10 and(START_DAY <= sysdate and sysdate <= END_DAY))>0)
+          				
  	]]>
  	</select>
  	
- 
-				
-	
+ 	<select id="hotelListCondition" resultType="HotelaVO" parameterType="HotelDTO">
+		select h_no, h_name, h_info, pic_url, h_location,price from Hotel
+				where price between #{low_price} and #{max_price} and
+				h_location = #{destination} order by price desc  	
+ 	</select>
+ 	
+
  </mapper>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
