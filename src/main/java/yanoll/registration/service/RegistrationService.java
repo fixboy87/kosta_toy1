@@ -7,5 +7,7 @@ import yanoll.user.domain.Users;
 public interface RegistrationService {
 	
 	public void register(Users user) throws Exception;
+
+	public String idcheck(String id);
 	
 }
