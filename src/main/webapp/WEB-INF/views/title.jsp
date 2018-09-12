@@ -130,7 +130,7 @@
 					<!-- Top Destination Item -->
 					<div class="top_item">
 						<a href="#">
-							<div class="top_item_image"><img src="../resources/images/images/common/top_4.jpg" alt="https://unsplash.com/@hellolightbulb"></div>
+							<div class="top_item_image"><img src="../resources/images/common/top_4.jpg" alt="https://unsplash.com/@hellolightbulb"></div>
 							<div class="top_item_content">
 								<div class="top_item_price">From $890</div>
 								<div class="top_item_text">Santorini, Greece</div>
@@ -178,27 +178,7 @@
 		</div>
 	</div>
 
-	<!-- Video -->
-
-	<div class="video_section d-flex flex-column align-items-center justify-content-center">
-		<!-- Image by https://unsplash.com/@peecho -->
-		<div class="video_background parallax-window" data-parallax="scroll" data-image-src="../resources/images/common/video.jpg" data-speed="0.8"></div>
-		<div class="video_content">
-			<div class="video_title">A day on the island</div>
-			<div class="video_subtitle">A trip organized by Destino's team</div>
-			<div class="video_play">
-				<a  class="video" href="https://www.youtube.com/watch?v=ogAhXWZaAJQ">
-					<svg version="1.1" id="Layer_1" class="play_button" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-						 width="140px" height="140px" viewBox="0 0 140 140" enable-background="new 0 0 140 140" xml:space="preserve">
-						<g id="Layer_2">
-							<circle class="play_circle" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" cx="70.333" cy="69.58" r="68.542"/>
-							<polygon class="play_triangle" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" points="61.583,56 61.583,84.417 84.75,70 	"/>
-						</g>
-					</svg>
-				</a>
-			</div>
-		</div>
-	</div>
+	
 
 	<!-- Popular -->
 
@@ -219,7 +199,7 @@
 						<!-- Popular Item -->
 						<div class="popular_item">
 							<a href="offers.html">
-								<img src="http://localhost:8081/kostaProject1/images/common/popular_1.jpg" alt="image by Egzon Bytyqi">
+								<img src="../resources/images/common/popular_1.jpg" alt="image by Egzon Bytyqi">
 								<div class="popular_item_content">
 									<div class="popular_item_price">From $890</div>
 									<div class="popular_item_title">Turkey</div>
@@ -230,7 +210,7 @@
 						<!-- Popular Item -->
 						<div class="popular_item">
 							<a href="offers.html">
-								<img src="http://localhost:8081/kostaProject1/images/common/popular_2.jpg" alt="https://unsplash.com/@michael75">
+								<img src="../resources/images/common/popular_2.jpg" alt="https://unsplash.com/@michael75">
 								<div class="popular_item_content">
 									<div class="popular_item_price">From $890</div>
 									<div class="popular_item_title">Hawai</div>
@@ -241,7 +221,7 @@
 						<!-- Popular Item -->
 						<div class="popular_item">
 							<a href="offers.html">
-								<img src="http://localhost:8081/kostaProject1/images/common/popular_3.jpg" alt="https://unsplash.com/@sapegin">
+								<img src="../resources/images/common/popular_3.jpg" alt="https://unsplash.com/@sapegin">
 								<div class="popular_item_content">
 									<div class="popular_item_price">From $890</div>
 									<div class="popular_item_title">Ireland</div>
@@ -252,7 +232,7 @@
 						<!-- Popular Item -->
 						<div class="popular_item">
 							<a href="offers.html">
-								<img src="http://localhost:8081/kostaProject1/images/common/popular_4.jpg" alt="https://unsplash.com/@kensuarez">
+								<img src="../resources/images/common/popular_4.jpg" alt="https://unsplash.com/@kensuarez">
 								<div class="popular_item_content">
 									<div class="popular_item_price">From $890</div>
 									<div class="popular_item_title">Thailand</div>
@@ -263,7 +243,7 @@
 						<!-- Popular Item -->
 						<div class="popular_item">
 							<a href="offers.html">
-								<img src="http://localhost:8081/kostaProject1/images/common/popular_5.jpg" alt="https://unsplash.com/@noahbasle">
+								<img src="../resources/images/common/popular_5.jpg" alt="https://unsplash.com/@noahbasle">
 								<div class="popular_item_content">
 									<div class="popular_item_price">From $890</div>
 									<div class="popular_item_title">Croatia</div>
@@ -274,7 +254,7 @@
 						<!-- Popular Item -->
 						<div class="popular_item">
 							<a href="offers.html">
-								<img src="http://localhost:8081/kostaProject1/images/common/popular_6.jpg" alt="https://unsplash.com/@seb">
+								<img src="../resources/images/common/popular_6.jpg" alt="https://unsplash.com/@seb">
 								<div class="popular_item_content">
 									<div class="popular_item_price">From $890</div>
 									<div class="popular_item_title">Bali</div>
@@ -285,7 +265,7 @@
 						<!-- Popular Item -->
 						<div class="popular_item">
 							<a href="offers.html">
-								<img src="http://localhost:8081/kostaProject1/images/common/popular_7.jpg" alt="https://unsplash.com/@nevenkrcmarek">
+								<img src="../resources/images/common/popular_7.jpg" alt="https://unsplash.com/@nevenkrcmarek">
 								<div class="popular_item_content">
 									<div class="popular_item_price">From $890</div>
 									<div class="popular_item_title">France</div>
@@ -296,7 +276,7 @@
 						<!-- Popular Item -->
 						<div class="popular_item">
 							<a href="offers.html">
-								<img src="http://localhost:8081/kostaProject1/images/common/popular_8.jpg" alt="https://unsplash.com/@bergeryap87">
+								<img src="../resources/images/common/popular_8.jpg" alt="https://unsplash.com/@bergeryap87">
 								<div class="popular_item_content">
 									<div class="popular_item_price">From $890</div>
 									<div class="popular_item_title">Vietnam</div>
@@ -330,7 +310,7 @@
 					<!-- Special Offers Item -->
 					<div class="owl-item">
 						<div class="special_item">
-							<div class="special_item_background"><img src="../images/common/special_1.jpg" alt="https://unsplash.com/@garciasaldana_"></div>
+							<div class="special_item_background"><img src="../resources/images/common/special_1.jpg" alt="https://unsplash.com/@garciasaldana_"></div>
 							<div class="special_item_content text-center">
 								<div class="special_category">Visiting</div>
 								<div class="special_title"><a href="offers.html">Indonesia</a></div>
@@ -341,7 +321,7 @@
 					<!-- Special Offers Item -->
 					<div class="owl-item">
 						<div class="special_item d-flex flex-column align-items-center justify-content-center">
-							<div class="special_item_background"><img src="../images/common/special_2.jpg" alt="https://unsplash.com/@varshesh"></div>
+							<div class="special_item_background"><img src="../resources/images/common/special_2.jpg" alt="https://unsplash.com/@varshesh"></div>
 							<div class="special_item_content text-center">
 								<div class="special_category">Culture</div>
 								<div class="special_title"><a href="offers.html">India</a></div>
@@ -352,7 +332,7 @@
 					<!-- Special Offers Item -->
 					<div class="owl-item">
 						<div class="special_item d-flex flex-column align-items-center justify-content-center">
-							<div class="special_item_background"><img src="../images/common/special_3.jpg" alt="https://unsplash.com/@paulgilmore_"></div>
+							<div class="special_item_background"><img src="../resources/images/common/special_3.jpg" alt="https://unsplash.com/@paulgilmore_"></div>
 							<div class="special_item_content text-center">
 								<div class="special_category">Sunbathing</div>
 								<div class="special_title"><a href="offers.html">Thailand</a></div>
@@ -363,7 +343,7 @@
 					<!-- Special Offers Item -->
 					<div class="owl-item">
 						<div class="special_item d-flex flex-column align-items-center justify-content-center">
-							<div class="special_item_background"><img src="../images/common/special_4.jpg" alt="https://unsplash.com/@hellolightbulb"></div>
+							<div class="special_item_background"><img src="../resources/images/common/special_4.jpg" alt="https://unsplash.com/@hellolightbulb"></div>
 							<div class="special_item_content text-center">
 								<div class="special_category">Visiting</div>
 								<div class="special_title"><a href="offers.html">Bali</a></div>
@@ -374,7 +354,7 @@
 					<!-- Special Offers Item -->
 					<div class="owl-item">
 						<div class="special_item d-flex flex-column align-items-center justify-content-center">
-							<div class="special_item_background"><img src="../images/common/special_5.jpg" alt="https://unsplash.com/@dnevozhai"></div>
+							<div class="special_item_background"><img src="../resources/images/common/special_5.jpg" alt="https://unsplash.com/@dnevozhai"></div>
 							<div class="special_item_content text-center">
 								<div class="special_category">Visiting</div>
 								<div class="special_title"><a href="offers.html">France</a></div>
@@ -385,7 +365,7 @@
 				</div>
 
 				<div class="special_slider_nav d-flex flex-column align-items-center justify-content-center">
-					<img src="../images/common/special_slider.png" alt="">
+					<img src="../resources/images/common/special_slider.png" alt="">
 				</div>
 			</div>
 		</div>
@@ -395,7 +375,7 @@
 
 	<div class="newsletter">
 		<!-- Image by https://unsplash.com/@garciasaldana_ -->
-		<div class="newsletter_background" style="background-image:url(../images/common/newsletter.jpg)"></div>
+		<div class="newsletter_background" style="background-image:url(../resources/images/common/newsletter.jpg)"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 offset-lg-1">
