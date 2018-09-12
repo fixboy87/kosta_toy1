@@ -52,7 +52,9 @@ public class EnquireDaoImpl implements EnquireDao {
 
 	@Override
 	public void update(Enquire_Board board) throws Exception {
-		session.update(namespace+".update");
+		
+		session.update(namespace+".update", board);
+		
 		
 	}
 	
