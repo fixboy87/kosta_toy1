@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import yanoll.search.domain.HotelVO;
+import yanoll.search.domain.HotelaVO;
 
 @Repository
 public class HotelDAOImpl implements HotelDAO {
@@ -18,7 +18,7 @@ public class HotelDAOImpl implements HotelDAO {
 	private String namespace = "yanoll.mapper.HotelList";
 	
 	@Override
-	public List<HotelVO> hotelList() throws Exception {
+	public List<HotelaVO> hotelList() throws Exception {
 		
 		return session.selectList(namespace + ".hotelList");
 	}
