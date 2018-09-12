@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import yanoll.search.domain.HotelVO;
+import yanoll.search.domain.HotelaVO;
 
 
 public interface HotelDAO {
-	public List<HotelVO> hotelList()	throws Exception;
+	public List<HotelaVO> hotelList()	throws Exception;
 }

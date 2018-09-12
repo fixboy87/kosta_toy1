@@ -6,7 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import yanoll.search.domain.HotelVO;
+import yanoll.search.domain.HotelaVO;
 import yanoll.search.persistence.HotelDAO;
 
 @Service
@@ -16,7 +16,7 @@ public class HotelServiceImpl implements HotelService {
 	private HotelDAO dao;
 	
 	@Override
-	public List<HotelVO> hotelListBasic() throws Exception {
+	public List<HotelaVO> hotelListBasic() throws Exception {
 	
 		return dao.hotelList();
 	}

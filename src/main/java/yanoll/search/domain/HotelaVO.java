@@ -1,6 +1,6 @@
 package yanoll.search.domain;
 
-public class HotelVO {
+public class HotelaVO {
 
 	
 	private int h_no;
@@ -17,10 +17,10 @@ public class HotelVO {
 	private String h_location;
 	private int price;
 
-	public HotelVO() {
+	public HotelaVO() {
 	}
 
-	public HotelVO(int h_no, String h_id, String h_name, String h_phonenum, String h_mail, String h_password,
+	public HotelaVO(int h_no, String h_id, String h_name, String h_phonenum, String h_mail, String h_password,
 			String h_address, int room_count, int h_profit, String h_info, String pic_url, String h_location,
 			int price) {
 		super();

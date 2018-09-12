@@ -6,7 +6,7 @@
  <mapper namespace="yanoll.mapper.HotelList">
  
  	<!-- for돌려 기본 호텔 리스트--> 
- 	<select id="hotelList" resultType="HotelVO">
+ 	<select id="hotelList" resultType="HotelaVO">
  	<![CDATA[
  		 select DISTINCT h_name, h_address, price, h_info, pic_url, h_location
  			from HOTEL ho inner join hotel_room ro

@@ -12,8 +12,12 @@
 
 
 <!-- 호텔 후기 목록 -->
-   <select id ="listReview" resultType="Review_BoardVO" parameterType="String">
-      SELECT*FROM review_board where hotle_name =#{hotle_name}
+   <select id ="listReview" resultType="Review_BoardVO" parameterType="ReviewSearchVO">
+      SELECT*FROM review_board 
+      		where hotle_name =#{hotle_name}
+      		<if test="search=!null">
+      				r_fname is NOT null
+      		</if>
    </select>
    
 	
