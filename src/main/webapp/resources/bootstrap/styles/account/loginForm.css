@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+
+article.contents {
+	margin-top: 100px !important;
+}
+
+.widthExpand {
+	width: 365px !important;
+	border: none;
+}

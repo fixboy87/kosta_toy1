@@ -24,6 +24,10 @@
     <beans:property value=".jsp" name="suffix" />
   </beans:bean>
 
+
+<!-- syj -->
+<context:component-scan base-package="yanoll.review.controller"/>
+
   <!-- gng -->
   <context:component-scan base-package="yanoll.common.controller" />
   <context:component-scan base-package="yanoll.enquire.controller" />

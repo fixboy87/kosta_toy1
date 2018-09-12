@@ -1,0 +1,99 @@
+
+#price_range {
+	background-color: white;
+	width: 470px;
+	height: 80px;
+	padding-left: 30px;
+	
+}
+
+/* 
+.home
+{
+	width: 100%;
+	height: 70vh !important;
+}
+.home_background
+{
+	height: 90% !important;
+}
+.home_content
+{
+	width: 90% !important;
+} */
+	
+.find_button
+{
+	margin-left: 85%;
+}
+
+.findButtonCustom {
+	-moz-box-shadow:inset 0px 39px 0px -24px #e67a73;
+	-webkit-box-shadow:inset 0px 39px 0px -24px #e67a73;
+	box-shadow:inset 0px 39px 0px -24px #e67a73;
+	background-color:#fe435c;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	border:1px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:6px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #b23e35;
+}
+.findButtonCustom:hover {
+	background-color:#eb675e;
+}
+.findButtonCustom:active {
+	position:relative;
+	top:1px;
+}
+#select_box {
+  width: 170px;
+  height:40px;
+  padding: .8em .5em;
+  font-family: inherit;
+  background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #999;
+  border-radius: 0px;
+}
+
+/* 헤더메뉴 검정색일때 투명효과 주기 */ 
+.header_titlePage {
+   background: none !important;
+}
+
+.scrolled {
+   background: black !important;
+}
+#searchBar{
+	padding-top: 90px !important;
+	
+}
+
+
+#divcolor{
+	
+}
+
+#reviewLink{
+	margin-left: 95%;
+	font-size: 15px;
+	color: black;
+	
+}
+#reviewLink_button{
+	size: 20px;
+}
+
+
+
+
+
