@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import yanoll.registration.service.RegistrationService;
 
-/*@Controller
-@RequestMapping("/Registration/*")
+@Controller
+@RequestMapping("/register/*")
 public class RegistrationController {
 	
 	@Inject
 	private RegistrationService service;
 	
-	@RequestMapping(value = "/register_type", method = RequestMethod.GET)
+	@RequestMapping(value = "/type", method = RequestMethod.GET)
 	public String register_typeGET (Model model) {
 		
 		return "register?type=
@@ -27,4 +27,3 @@ public class RegistrationController {
 		return 
 	}
 }
-*/
