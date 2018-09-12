@@ -16,5 +16,7 @@ public interface EnquireDao {
 	public Enquire_Board read(int e_seq)throws Exception;
 	
 	public void delete(int e_seq)throws Exception;
+	
+	public void update(Enquire_Board board)throws Exception;
 
 }

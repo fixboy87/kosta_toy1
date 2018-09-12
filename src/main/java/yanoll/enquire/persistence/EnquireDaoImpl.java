@@ -49,6 +49,12 @@ public class EnquireDaoImpl implements EnquireDao {
 		session.delete(namespace+".delete", e_seq);
 		
 	}
+
+	@Override
+	public void update(Enquire_Board board) throws Exception {
+		session.update(namespace+".update");
+		
+	}
 	
 	
 	

@@ -16,5 +16,7 @@ public interface EnquireService {
 	public Enquire_Board read(int e_seq)throws Exception;
 	
 	public void delete(int e_seq)throws Exception;
+	
+	public void modify(Enquire_Board board)throws Exception;
 
 }
