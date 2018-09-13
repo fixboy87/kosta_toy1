@@ -20,7 +20,9 @@ public interface RegistrationDAO {
 
 	public Users getUserDetail(String id);
 
-	public Object getHotelDetail(String id);
+	public Hotel getHotelDetail(String id);
+
+	public void updateUser(Users user);
 		
 	//public boolean idCheck(String id) throws Exception;
 	

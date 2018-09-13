@@ -6,6 +6,7 @@
 
 <mapper namespace="yanoll.mapper.registrationMapper">
 
+	<!-- 일반고객 -->
 	<insert id="insert" parameterType="Users">
 		insert into users(
 			userNo, id, password, name, tel, email, gender, birth
@@ -14,9 +15,27 @@
 		)
 	</insert>
 
+	<select id="login" resultType="Users">
+		select * from users
+			where id = #{id} and password = #{password}
+	</select>
+
+	<select id="user_detail" resultType="Users">
+		select * from users
+			where id = #{id}
+	</select>
+
 	<select id="idCheck" parameterType="String" resultType="String">
 		select id from users where id = #{id}
 	</select>
+
+	<update id="update_user" parameterType="Users">
+		update users set
+    		password = (#{password}), tel = (#{tel}), email = (#{email})
+		where id = (#{id})
+	</update>
+
+	<!-- 관리자 고객 -->
 
 	<insert id="insert_hotel" parameterType="Hotel">
 		insert into hotel(
@@ -25,25 +44,17 @@
 			hotel_seq.nextval, #{h_name}, #{h_phonenum}, #{h_mail}, #{h_address}, 0, #{h_id}, #{h_password}, 0, 0, #{h_info}, '', #{h_location}
 		)
 	</insert>
-	
-	<select id="login" resultType="Users">
-		select * from users
-			where id = #{id} and password = #{password}
-	</select>
-	
+
 	<select id="login_hotel" resultType="Hotel">
 		select * from hotel
 			where h_id = #{h_id} and h_password = #{h_password}
 	</select> 
 	
-	<select id="user_detail" resultType="Users">
-		select * from users
-			where id = #{id}
-	</select>
-	
 	<select id="hotel_detail" resultType="Hotel">
 		select * from hotel
 			where h_id = #{id}
 	</select>
+	
+	
 	
 </mapper>

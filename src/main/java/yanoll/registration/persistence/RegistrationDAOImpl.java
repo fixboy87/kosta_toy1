@@ -62,5 +62,10 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 		return sqlSession.selectOne(namespace+".hotel_detail", id);
 	}
 
+	@Override
+	public void updateUser(Users user) {
+		sqlSession.update(namespace+".update_user", user);
+	}
+
 
 }

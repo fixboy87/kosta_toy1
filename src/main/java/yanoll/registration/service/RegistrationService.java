@@ -25,5 +25,7 @@ public interface RegistrationService {
 	public void register_hotel(Hotel hotel);
 
 	public Actors myPageList(HttpServletRequest request);
+
+	public void modifyUser(Users user);
 	
 }

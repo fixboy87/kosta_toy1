@@ -43,6 +43,13 @@ $(document).ready(function() {
 	});
 	
 	
+	$("form#updateUserDetail button").click(function(event) {
+		event.preventDefault();
+		$("form#updateUserDetail").attr("action", "modify_user").submit();
+	});
+	
+	
+	
 	/**********************validation check 시작********************/
 /*	
 	//패턴

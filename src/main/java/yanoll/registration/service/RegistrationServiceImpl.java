@@ -112,5 +112,10 @@ public class RegistrationServiceImpl implements RegistrationService {
 		return userActor;
 	}
 
+	@Override
+	public void modifyUser(Users user) {
+		dao.updateUser(user);
+	}
+
 	
 }

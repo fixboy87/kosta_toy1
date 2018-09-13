@@ -168,4 +168,12 @@ public class RegistrationController {
 			return "/register/adminPage";
 		}
 	}
+	
+	@RequestMapping(value = "/modify_user", method = RequestMethod.POST)
+	public String modifyUserDetail(HttpServletRequest request, Users user, RedirectAttributes rttr, Model model) {
+		service.modifyUser(user);
+		model.addAttribute("user", service.myPageList(request));
+		rttr.addFlashAttribute("message", "update_success");
+		return "/register/myPage";
+	}
 }

@@ -115,7 +115,7 @@ div.logo div {
 
 		<div id="content" class="content_wrap">
 			
-			<form action="updateUserAction.do" id="updateUserDetail" method="post">
+			<form action="" id="updateUserDetail" method="post">
 				<div class="myPageCylinder">
 					<div class="myPageMenuCylinder">
 						<div class="button iEnquire myPage_button"><a href="#">1:1문의</a></div>			
@@ -129,7 +129,7 @@ div.logo div {
 								<div><p>ID : </p></div>
 							</div>
 							<div class="myPage_id">
-								<input type="text" name="mypage_id" value="${user.id }" readonly="readonly"/>
+								<input type="text" name="id" value="${user.id }" readonly="readonly"/>
 							</div>
 						</div>
 						<div class="mypage_section">
@@ -137,7 +137,7 @@ div.logo div {
 								<div><p>비밀번호 : </p></div>
 							</div>
 							<div class="myPage_password">
-								<input type="password" name="mypage_password" value="${user.password }"/>
+								<input type="password" name="password" value="${user.password }"/>
 							</div>
 						</div>
 						<div class="mypage_section">
@@ -145,7 +145,7 @@ div.logo div {
 								<div><p>이메일 : </p></div>
 							</div>
 							<div class="myPage_email">
-								<input type="text" name="mypage_email" value="${user.email}"/>
+								<input type="text" name="email" value="${user.email}"/>
 							</div>
 						</div>
 						<div class="mypage_section">
@@ -153,7 +153,7 @@ div.logo div {
 								<div><p>이름 : </p></div>
 							</div>
 							<div class="myPage_text">
-								<input type="text" name="mypage_name" value="${user.name}" readonly="readonly"/>
+								<input type="text" name="name" value="${user.name}" readonly="readonly"/>
 							</div>
 						</div>
 						<div class="mypage_section">
@@ -161,7 +161,7 @@ div.logo div {
 								<div><p>전화번호 : </p></div>
 							</div>
 							<div class="myPage_text">
-								<input type="text" name="mypage_tel" value="${user.tel }"/>
+								<input type="text" name="tel" value="${user.tel }"/>
 							</div>
 						</div>
 						<div class="mypage_section">
@@ -169,7 +169,7 @@ div.logo div {
 								<div><p>생년월일 : </p></div>
 							</div>
 							<div class="myPage_text">
-								<input type="text" name="mypage_birth" value="${user.birth }" readonly="readonly"/>
+								<input type="text" name="birth" value="${user.birth }" readonly="readonly"/>
 							</div>
 						</div>
 						<div class="mypage_section">
@@ -177,7 +177,7 @@ div.logo div {
 								<div><p>성별 : </p></div>
 							</div>
 							<div class="myPage_text">
-								<input type="text" name="mypage_gender" value="${user.gender }" readonly="readonly"/>
+								<input type="text" name="gender" value="${user.gender }" readonly="readonly"/>
 							</div>
 						</div>
 						<div id="update_user">
