@@ -155,4 +155,9 @@ public class RegistrationController {
 		rttr.addFlashAttribute("message", "logout_success");
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
+	public void myPageMain(HttpServletRequest request, Model model) {
+		service.myPageList(request, model);
+	}
 }

@@ -5,6 +5,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.ui.Model;
+
 import yanoll.registration.dto.LoginDTO;
 import yanoll.user.domain.Hotel;
 import yanoll.user.domain.Users;
@@ -20,5 +22,7 @@ public interface RegistrationService {
 	public void logout(HttpServletRequest request, HttpServletResponse response);
 
 	public void register_hotel(Hotel hotel);
+
+	public void myPageList(HttpServletRequest request, Model model);
 	
 }

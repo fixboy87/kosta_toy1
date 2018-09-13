@@ -52,5 +52,15 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 		return sqlSession.selectOne(namespace+".login_hotel", dto);
 	}
 
+	@Override
+	public Users getUserDetail(String id) {
+		return sqlSession.selectOne(namespace+".user_detail", id);
+	}
+
+	@Override
+	public Object getHotelDetail(String id) {
+		return sqlSession.selectOne(namespace+".hotel_detail", id);
+	}
+
 
 }

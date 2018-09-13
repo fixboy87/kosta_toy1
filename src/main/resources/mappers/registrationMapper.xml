@@ -36,7 +36,14 @@
 			where h_id = #{h_id} and h_password = #{h_password}
 	</select> 
 	
+	<select id="user_detail" resultType="Users">
+		select * from users
+			where id = #{id}
+	</select>
 	
-	
+	<select id="hotel_detail" resultType="Hotel">
+		select * from hotel
+			where h_id = #{id}
+	</select>
 	
 </mapper>

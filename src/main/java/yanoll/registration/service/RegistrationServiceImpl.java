@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import yanoll.registration.dto.LoginDTO;
 import yanoll.registration.dto.LoginHotelDTO;
@@ -89,6 +90,22 @@ public class RegistrationServiceImpl implements RegistrationService {
 		Cookie idCookie = new Cookie("uid", null);
 		idCookie.setMaxAge(0);
 		response.addCookie(idCookie);
+	}
+
+	@Override
+	public void myPageList(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		
+		String type = (String)session.getAttribute("type");
+		String id = (String)session.getAttribute("uid");
+		System.out.println("type = "+type);
+		if(type == "user") {
+			model.addAttribute("user", dao.getUserDetail(id));
+		} else if (type == "hotel") {
+			model.addAttribute("user", dao.getHotelDetail(id));
+		} else {
+			
+		}
 	}
 
 	

@@ -246,7 +246,7 @@ $(document).ready(function()
 		} else if($buttonHtml === "회원가입") {
 			location.href = "/register/type";
 		} else if($buttonHtml === "마이페이지") {
-			location.href = "/register/mypage";
+			location.href = "/register/myPage";
 		} else if($buttonHtml === "구매페이지") {
 			location.href = "/order/pay";
 		} else if($buttonHtml === "로그아웃") {

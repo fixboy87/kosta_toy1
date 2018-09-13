@@ -17,6 +17,10 @@ public interface RegistrationDAO {
 	public Hotel login_hotel(LoginHotelDTO dto);
 
 	public void insert_hotel(Hotel hotel);
+
+	public Users getUserDetail(String id);
+
+	public Object getHotelDetail(String id);
 		
 	//public boolean idCheck(String id) throws Exception;
 	
