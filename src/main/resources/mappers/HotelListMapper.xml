@@ -46,7 +46,7 @@
       		on ro.h_no = hor.h_no
       		where  h_location = #{h_location} and (price between #{low_price} and #{max_price});    
     ]]>	
- 	</select>  -->
+ 	</select> 1 -->
  	
 
  </mapper>
