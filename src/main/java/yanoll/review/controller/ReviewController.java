@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import yanoll.review.domain.ReviewSearchVO;
 import yanoll.review.domain.Review_BoardVO;
 import yanoll.review.service.ReviewService;
 
@@ -27,8 +28,10 @@ public class ReviewController {
 	private static final Logger logger = LoggerFactory.getLogger(ReviewController.class);
 
 	@RequestMapping(value="/review_list", method=RequestMethod.GET)
-	public void listReview(Model model)throws Exception{
-		model.addAttribute("list", service.listReview());
+	public void listReview(ReviewSearchVO vo, Model model)throws Exception{
+		vo.setHotle_name("그랜드 하얏트 서울");
+		vo.setSearch("있당");
+		model.addAttribute("list", service.listReview(vo));
 	}
 	
 /*	@RequestMapping(value = "/review_list", method = RequestMethod.GET)

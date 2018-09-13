@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import yanoll.review.domain.ReviewSearchVO;
 import yanoll.review.domain.Review_BoardVO;
 import yanoll.review.persistence.ReviewDAO;
 
@@ -16,8 +17,8 @@ public class ReviewServiceImpl implements ReviewService {
 	private ReviewDAO dao;
 
 	@Override
-	public List<Review_BoardVO> listReview()throws Exception {
-		return dao.listReview();
+	public List<Review_BoardVO> listReview(ReviewSearchVO search)throws Exception {
+		return dao.listReview(search);
 	}
 	
 

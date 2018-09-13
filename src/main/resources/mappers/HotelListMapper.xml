@@ -37,7 +37,16 @@
  	]]>
  	</select>
  	
- 	
+  <!--  	<select id="hotelListConditions" resultType="HotelaVO" parameterType="HotelDTO">
+ 	<![CDATA[
+	 select DISTINCT ho.h_name, ho.h_address, ho.price, ho.h_info, ho.pic_url, ho.h_location, hor.START_DAY, hor.END_DAY
+ 			from HOTEL ho inner join hotel_room ro
+      		on ho.h_no = ro.h_no
+ 			join hotel_order hor
+      		on ro.h_no = hor.h_no
+      		where  h_location = #{h_location} and (price between #{low_price} and #{max_price});    
+    ]]>	
+ 	</select>  -->
  	
 
  </mapper>

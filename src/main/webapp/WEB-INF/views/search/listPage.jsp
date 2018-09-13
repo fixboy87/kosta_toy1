@@ -28,6 +28,7 @@
 <link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/offers_styles.css"><!-- ok -->
 <link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/offers_responsive.css"><!-- ok -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 
 <!--레인지 슬라이더 -->
@@ -36,8 +37,8 @@
 <script src="../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- custom JS -->
-<script type="text/javascript" src="../resources/bootstrap/scripts/HY_Script/priceRang.js"></script>
-<script type="text/javascript" src="../resources/bootstrap/scripts/HY_Script/SearchConditions.js"></script>
+<script type="text/javascript" src="../../resources/bootstrap/scripts/HY_Script/priceRang.js"></script>
+<script type="text/javascript" src="../../resources/bootstrap/scripts/HY_Script/SearchConditions.js"></script>
 
 <!-- 달력 -->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>                    
@@ -46,6 +47,14 @@
 <!-- Custom Css -->
 <link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/HY_Style/ListPage.css">
 
+
+<script>
+	
+	
+
+
+
+</script>
 
 </head>
 <body>
@@ -133,13 +142,13 @@
 												<div class="find_form_container">
 												
 													<!-- 가격 폼 -->
-													<form action="HotelPriceSelector.do" id="find_form"
+													<form  id="find_form" action="search/listPage"
 														class="find_form d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-md-between justify-content-start flex-wrap">
 
 														<div class="find_item">
 															<div style="color: white !important; background-color: #fe435c; width: 30px;">지역</div>
 															<input type="text" class="destination find_input"
-																required="required" placeholder="Keyword here" name="destination" id="destinationC" autocomplete="off"/>
+																required="required" placeholder="Keyword here" name="h_location" id="destinationC" autocomplete="off"/>
 														</div>
 														
 														<div class="find_item">
@@ -173,8 +182,40 @@
 																class="dropdown_item_select find_input" autocomplete="off">
 															
 														</div>
-														<button class="button find_button">Find</button>
-													
+														<button class="button find_button" id="ajaxbutton">Find</button>
+														<script>
+															$("#ajaxbutton").on("click",function(event){
+															
+																
+																var h_location = ("#destinationC").val();
+																var start = ("#firstday").val();
+																var end = ("#end_day").val();
+																var low_price = ("#low_price").val();
+																var max_price = ("#max_price").val();
+																
+									 							$.ajax({
+												
+																	type:'post',
+																	url:'/listPage/'+h_location + '/' + start + '/' + end + '/' + low_price + '/' + max_price,
+																	headers: { 
+																	      "Content-Type": "application/json",
+																	      "X-HTTP-Method-Override": "POST" },
+																	data:JSON.stringify({replytext:replytext}), 
+																	dataType:'text', 
+																	success:function(result){
+																		console.log("result: " + result);
+																		if(result == 'SUCCESS'){
+																			alert("수정 되었습니다.");
+																			getPage('/listPage/'+h_location + '/' + start + '/' + end + '/' + low_price + '/' + max_price );
+																		}
+																}});
+																	
+																	 
+															
+																
+															});
+															
+														</script>
 													</form>
 												</div>
 											</div>
@@ -245,7 +286,7 @@
 					<!-- forEach -->
 					<c:forEach var="listH" items="${list}"> 
 						<!-- Item -->
-						<div class="item clearfix rating_5">
+						<div class="item clearfix rating_5" id="">
 							<div class="item_image"><a href="HotelDetailAction.do?h_no=${listH.h_no}"><img src="../resources/bootstrap/images/pages/HYimg/${listH.pic_url}" alt=""></a></div>
 							<div class="item_content">
 								<div class="item_price">${listH.h_location}</div>

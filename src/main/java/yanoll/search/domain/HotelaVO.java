@@ -1,5 +1,7 @@
 package yanoll.search.domain;
 
+import java.util.Date;
+
 public class HotelaVO {
 
 	
@@ -16,29 +18,15 @@ public class HotelaVO {
 	private String pic_url;
 	private String h_location;
 	private int price;
+	private Date start_day;
+	private Date end_day;
+	
+
 
 	public HotelaVO() {
 	}
 
-	public HotelaVO(int h_no, String h_id, String h_name, String h_phonenum, String h_mail, String h_password,
-			String h_address, int room_count, int h_profit, String h_info, String pic_url, String h_location,
-			int price) {
-		super();
-		this.h_no = h_no;
-		this.h_id = h_id;
-		this.h_name = h_name;
-		this.h_phonenum = h_phonenum;
-		this.h_mail = h_mail;
-		this.h_password = h_password;
-		this.h_address = h_address;
-		this.room_count = room_count;
-		this.h_profit = h_profit;
-		this.h_info = h_info;
-		this.pic_url = pic_url;
-		this.h_location = h_location;
-		this.price = price;
-
-	}
+	
 
 	public int getH_no() {
 		return h_no;
@@ -143,14 +131,58 @@ public class HotelaVO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	public Date getStart_day() {
+		return start_day;
+	}
+
+	public void setStart_day(Date start_day) {
+		this.start_day = start_day;
+	}
+
+	public Date getEnd_day() {
+		return end_day;
+	}
+
+	public void setEnd_day(Date end_day) {
+		this.end_day = end_day;
+	}
+
+
+
+	public HotelaVO(int h_no, String h_id, String h_name, String h_phonenum, String h_mail, String h_password,
+			String h_address, int room_count, int h_profit, String h_info, String pic_url, String h_location, int price,
+			Date start_day, Date end_day) {
+		super();
+		this.h_no = h_no;
+		this.h_id = h_id;
+		this.h_name = h_name;
+		this.h_phonenum = h_phonenum;
+		this.h_mail = h_mail;
+		this.h_password = h_password;
+		this.h_address = h_address;
+		this.room_count = room_count;
+		this.h_profit = h_profit;
+		this.h_info = h_info;
+		this.pic_url = pic_url;
+		this.h_location = h_location;
+		this.price = price;
+		this.start_day = start_day;
+		this.end_day = end_day;
+	}
+
+
 
 	@Override
 	public String toString() {
-		return "HotelVO [h_no=" + h_no + ", h_id=" + h_id + ", h_name=" + h_name + ", h_phonenum=" + h_phonenum
+		return "HotelaVO [h_no=" + h_no + ", h_id=" + h_id + ", h_name=" + h_name + ", h_phonenum=" + h_phonenum
 				+ ", h_mail=" + h_mail + ", h_password=" + h_password + ", h_address=" + h_address + ", room_count="
 				+ room_count + ", h_profit=" + h_profit + ", h_info=" + h_info + ", pic_url=" + pic_url
-				+ ", h_location=" + h_location + ", price=" + price + "]";
+				+ ", h_location=" + h_location + ", price=" + price + ", start_day=" + start_day + ", end_day="
+				+ end_day + "]";
 	}
+
+
+	
 
 }
 

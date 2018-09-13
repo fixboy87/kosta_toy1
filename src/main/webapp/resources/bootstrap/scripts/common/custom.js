@@ -255,7 +255,7 @@ $(document).ready(function()
 	});
 		
 	$('.titleButton').click(function() {
-		location.href = "HotelListActionForm.do";
+		location.href = "search/listPage";
 	});
 	
 	
