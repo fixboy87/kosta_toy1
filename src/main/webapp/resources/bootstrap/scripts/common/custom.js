@@ -234,7 +234,8 @@ $(document).ready(function()
 	})
 	
 	
-	$('.main_nav_item').click(function() {
+	$('.main_nav_item').click(function(event) {
+		event.preventDefault();
 		var $buttonPressed = $(this);
 		var $buttonHtml = $(this).find('a').html();
 		
@@ -254,13 +255,15 @@ $(document).ready(function()
 		
 	});
 		
-	$('.titleButton').click(function() {
+	$('.titleButton').click(function(event) {
+		event.preventDefault();
 		location.href = "search/listPage";
 	});
 	
 	
 	//mypage 1:1 문의 버튼
-	$('.myPage_button').click(function() {
+	$('.myPage_button').click(function(event) {
+		event.preventDefault();
 		var $buttonPressed = $(this);
 		var $buttonHtml = $(this).find('a').html();
 		
@@ -290,7 +293,8 @@ $(document).ready(function()
 		location.href = "/";
 	});
 	
-	$('.admin_page_button').click(function() {
+	$('.admin_page_button').click(function(event) {
+		event.preventDefault();
 		var $buttonPressed = $(this);
 		var $buttonHtml = $(this).find('a').html();
 		if($buttonHtml === "1:1문의") {
@@ -313,5 +317,12 @@ $(document).ready(function()
 		alert("허가되지 않은 접근방식입니다!!!");
 	} else if($titleMessage == "register_success") {
 		alert("회원가입 성공!!!\n다시 재 로그인 해주세요.");
+	} else if($titleMessage == "login_success") {
+		alert("로그인 성공!!!");
+	} else if($titleMessage == "logout_success") {
+		alert("로그아웃 성공!!!");
 	}
+	
+	alert($("#session_id").attr("value"));
+	
 });

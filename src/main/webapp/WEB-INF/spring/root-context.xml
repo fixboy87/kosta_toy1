@@ -60,6 +60,8 @@
 <!-- hw -->
 <context:component-scan base-package="yanoll.search.persistence" />
 <context:component-scan base-package="yanoll.search.service" />
+<context:component-scan base-package="yanoll.room.service"/>
+<context:component-scan base-package="yanoll.room.persistence"/> 
 
 </beans>
 

@@ -2,7 +2,11 @@
     pageEncoding="UTF-8"%>
 <html>
 <!-- Header -->
-
+	
+	<input type="hidden" id="session_id" name="uid" value="<%=(String)session.getAttribute("uid")%>"/>
+	<input type="hidden" id="session_type" name="type" value="<%=(String)session.getAttribute("type")%>"/>
+	<input type="hidden" id="session_name" name="name" value="<%=(String)session.getAttribute("name")%>"/>
+	
 	<header class="header">
 		<div class="container">
 			<div class="row">
@@ -21,12 +25,12 @@
 						<!-- Main Navigation -->
 						<nav class="main_nav ml-auto">
 							<ul class="main_nav_list">
-								<li class="main_nav_item hidden"><a href="#">마이페이지</a></li>
-								<li class="main_nav_item hidden"><a href="#">구매페이지</a></li>
-								<li class="main_nav_item hidden"><a href="#">로그아웃</a></li>
-								<li class="main_nav_item hidden active"><a href="titlePage.do">홈</a></li>
-								<li class="main_nav_item hidden"><a href="#">로그인</a></li>
-								<li class="main_nav_item hidden"><a href="#">회원가입</a></li>
+								<li class="main_nav_item hidden"><a href="">마이페이지</a></li>
+								<li class="main_nav_item hidden"><a href="">구매페이지</a></li>
+								<li class="main_nav_item hidden"><a href="">로그아웃</a></li>
+								<li class="main_nav_item hidden active"><a href="">홈</a></li>
+								<li class="main_nav_item hidden"><a href="">로그인</a></li>
+								<li class="main_nav_item hidden"><a href="">회원가입</a></li>
 							</ul>
 						</nav>
 

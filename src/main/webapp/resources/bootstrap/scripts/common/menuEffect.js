@@ -6,16 +6,21 @@
 
 $(document).ready(function(){  
 
- var $menu0 = $('ul.main_nav_list li:eq(0)');
-   var $menu1 = $('ul.main_nav_list li:eq(1)');
-   var $menu2 = $('ul.main_nav_list li:eq(2)');
-   var $menu3 = $('ul.main_nav_list li:eq(3)');
-   var $menu4 = $('ul.main_nav_list li:eq(4)');
-   var $menu5 = $('ul.main_nav_list li:eq(5)');
+	
+	var $menu0 = $('ul.main_nav_list li:eq(0)');
+    var $menu1 = $('ul.main_nav_list li:eq(1)');
+    var $menu2 = $('ul.main_nav_list li:eq(2)');
+    var $menu3 = $('ul.main_nav_list li:eq(3)');
+    var $menu4 = $('ul.main_nav_list li:eq(4)');
+    var $menu5 = $('ul.main_nav_list li:eq(5)');
    
    
-   $id = $('#uid').attr("val");
-   if(($id) !== 'null') {
+   $id = $("#session_id").attr("value");
+   if($id == null) {
+	   $id = "null";
+   }
+   
+   if($id !== "null") {
       $($menu0).removeClass("hidden").addClass("active");
       $($menu1).removeClass("hidden");
       $($menu2).removeClass("hidden");

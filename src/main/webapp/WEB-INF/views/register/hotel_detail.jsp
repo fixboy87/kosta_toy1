@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-	String type = request.getParameter("type");
-	request.setCharacterEncoding("utf-8");
-%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -29,11 +26,9 @@
 
 <body>
 
-	<input type="hidden" id="uid" name="uid" val="<%=(String)session.getAttribute("id")%>"/>
-	<input type="hidden" id="type" name="type" val="<%=(String)session.getAttribute("type")%>"/>
-	<input type="hidden" id="name" name="name" val="<%=(String)session.getAttribute("name")%>"/>
 	
 	<div class="super_container margin_top_control">
+	
 	<%@ include file="../sub_page/header_menu.jsp"%>
 
 		<div id="content" class="content_wrap">
@@ -43,7 +38,13 @@
                         <section class="login-area">
                             <h3>회원가입</h3>
 
-                            <form id="joinMemberPc_e" action="registerInsert.do" method="post" data-member-form="true" class="form-group form-w410">
+                            <form id="joinMemberPc_e" action="" method="post" data-member-form="true" class="form-group form-w410">
+
+								<input type="hidden" name="h_id" value="${h_id }">
+								<input type="hidden" name="h_password" value="${h_password }">
+								<input type="hidden" name="h_name" value="${h_name }">
+								<input type="hidden" name="h_phonenum" value="${h_phonenum }">
+								<input type="hidden" name="h_mail" value="${h_mail }">
 
                                 <fieldset id="joinFieldset">
                                     <legend class="sc-out">회원가입 폼</legend>
@@ -62,7 +63,6 @@
                                         </div>
 
                                     </div>
-                                    <input type="hidden" id="registerType" name="type" value="<%=type%>"/>
                                     <button type="submit" name="button" class="button right_align" id="btnToJoinEnd">완료</button>
                                 </fieldset>
                             </form>
@@ -75,7 +75,6 @@
 
 
 </div>
-</form>
 <%@include file="../sub_page/footer.html"%>
 
 <script src="../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script>
