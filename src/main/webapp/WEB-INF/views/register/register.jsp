@@ -34,10 +34,6 @@
 </script>
 
 <body>
-	
-	<input type="hidden" id="uid" name="uid" val="<%=(String)session.getAttribute("id")%>"/>
-	<input type="hidden" id="type" name="type" val="<%=(String)session.getAttribute("type")%>"/>
-	<input type="hidden" id="name" name="name" val="<%=(String)session.getAttribute("name")%>"/>
 
 	<div class="super_container margin_top_control">
 	<%@ include file="../sub_page/header_menu.jsp"%>
@@ -50,13 +46,13 @@
                             <h3>회원가입</h3>
 
 
-                            <form name="fmt" id="joinMemberPc" action="registerFormAction2.do" method="post" data-member-form="true" class="form-group form-w410" onsubmit="return Button_Click();">  <!-- 태그안에 onsubmit="return Button_Click();> <!--내용이 있어야 다음페이지로 안넘어감 강사님 수정해주심 -->                                
-                            
+                            <form name="fmt" id="joinMemberPc" action="register/details" method="post" data-member-form="true" class="form-group form-w410"><!--  onsubmit="return Button_Click();"> -->  <!-- 태그안에 onsubmit="return Button_Click();> <!--내용이 있어야 다음페이지로 안넘어감 강사님 수정해주심 -->                                
 
                                 <fieldset id="joinFieldset">
                                     <legend class="sc-out">회원가입 폼</legend>
 
                                     <div class="login-cont">
+		                            	<input type="hidden" id="type" name="type" value="${type }"/>
                                         <div class="inp-txt-member">
                                             <input type="text" id="mInput0" name="email" value="" placeholder="이메일을 입력해주세요.(7~15자)" title="아이디(이메일)를 입력" autocomplete="off">
                                         </div>
@@ -80,7 +76,6 @@
                                             <input type="password" id="mInput5" name="passwdConfirm" value="" placeholder="비밀번호를 한번 더 입력하세요." class="inp-password">
                                         </div>
                                     </div>
-                                    <input type="hidden" id="registerType" name="type" value="<%=type%>"/>
                                     <input type="submit" name="button" class="button right_align" id="btnToJoinEnd" value="다음"></input>
                                 </fieldset>
                             </form>

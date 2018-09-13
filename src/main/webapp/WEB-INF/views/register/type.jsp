@@ -24,10 +24,9 @@
 
 </head>
 <body>
-
-	<input type="hidden" id="uid" name="uid" val="<%=(String)session.getAttribute("id")%>"/>
-	<input type="hidden" id="type" name="type" val="<%=(String)session.getAttribute("type")%>"/>
-	<input type="hidden" id="name" name="name" val="<%=(String)session.getAttribute("name")%>"/>
+	<form class="type_selector" action="register" method="post">
+		<input type="hidden" id="type" name="type" value="${type }"/>
+	</form>
 	
 <div class="super_container margin_top_control">
 <%@ include file="../sub_page/header_menu.jsp"%>
@@ -43,7 +42,7 @@
                         <dt>일반회원(개인)</dt>
                         <dd>호텔 간편조회 및 간편예약<br>서비스를 즐길 수 있습니다.<br>
                         	<div>
-	                        	<img src="http://localhost:8081/kostaProject1/images/pages/account/btn_join_1.gif" alt="일반회원">
+	                        	<img src="../resources/images/pages/account/btn_join_1.gif" alt="일반회원">
                         	</div>
                             <span class="register_button button find_button"><span><a id="#" href="#">일반회원 가입하기</a></span></span>
                         </dd>
@@ -53,7 +52,7 @@
                         <dt>기업회원(회사)</dt>
                         <dd>매칭 서비스 및 관리에 필요한<br>UI를 제공해 드립니다.<br>
                         	<div>
-	                        	<img src="http://localhost:8081/kostaProject1/images/pages/account/btn_join_3.gif" alt="기업회원">
+	                        	<img src="../resources/images/pages/account/btn_join_3.gif" alt="기업회원">
                         	</div>
                             <span class="register_button button find_button"><span><a id="#" href="#">기업회원 가입하기</a></span></span>
                         </dd>

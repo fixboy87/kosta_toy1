@@ -54,8 +54,13 @@ public class RegistrationController {
 		
 	}*/
 	
-	@RequestMapping(value = "/details", method = RequestMethod.POST)
-	public String DetailsPOST (Users user, RedirectAttributes rttr) {
+	@RequestMapping(value = "/user_detail", method = RequestMethod.POST)
+	public void detailsPOST (Users user, RedirectAttributes rttr) {
+
+	}
+	
+	public String registration(Users user, RedirectAttributes rttr) {
+		
 		try {
 			service.register(user);
 		} catch (Exception e) {

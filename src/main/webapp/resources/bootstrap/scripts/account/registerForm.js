@@ -3,17 +3,25 @@ $(document).ready(function() {
 		$(this).find('input').focus();
 	});
 	
-	$('.login-cont button').click(function() {
-		//id 입력여부 확인
+	
+	$("#btnToJoinEnd").click(function(event) {
+		event.preventDefault();
 		
-		$('#joinMemberPc').submit();
+		var $type = $(".login-cont>input:hidden").attr("value");
+		
+		alert($type);
+		if($type == "user") {
+			$("#joinMemberPc").attr("action", "user_detail").submit();
+		} else {
+			$("#joinMemberPc").attr("action", "hotel_detail").submit();
+		}
 	});
 	
 	
 	
 	
 	/**********************validation check 시작********************/
-	
+/*	
 	//패턴
 	var idCheck = /^[a-zA-Z][a-zA-Z0-9]{6,14}$/;
 	var passCheck = /^[a-zA-Z0-9]{6,14}$/;
@@ -97,7 +105,7 @@ $(document).ready(function() {
 		} else {
 			return true;
 		}
-	});
+	});*/
 	
 	
 	/*$('	#joinMemberPc_p .button').click(function() {

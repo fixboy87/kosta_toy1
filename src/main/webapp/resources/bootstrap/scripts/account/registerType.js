@@ -5,11 +5,11 @@ $(document).ready(function() {
 		$command = $buttonClicked.find('a').html();
 		
 		if($command === "일반회원 가입하기") {
-			location.href = "registerForm.do?type=personal";
+			$(".type_selector input#type").attr("value", "user");
 			
 		} else if($command === "기업회원 가입하기") {
-			location.href = "registerForm.do?type=enterprise";
-		
+			$(".type_selector input#type").attr("value", "hotel");
 		}
+		$(".type_selector").submit();
 	});
 });
