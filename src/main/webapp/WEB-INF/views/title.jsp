@@ -48,9 +48,12 @@
 
 <%@ include file="sub_page/header_menu.jsp"%>
 
-	<input type="hidden" id="uid" name="uid" val="<%=(String)session.getAttribute("id")%>"/>
-	<input type="hidden" id="type" name="type" val="<%=(String)session.getAttribute("type")%>"/>
-	<input type="hidden" id="name" name="name" val="<%=(String)session.getAttribute("name")%>"/>
+	<input type="hidden" id="session_id" name="id" value="<%=(String)session.getAttribute("id")%>"/>
+	<input type="hidden" id="session_type" name="type" value="<%=(String)session.getAttribute("type")%>"/>
+	<input type="hidden" id="session_name" name="name" value="<%=(String)session.getAttribute("name")%>"/>
+
+	<input type="hidden" id="title_message" name="message" value="${message }"/>
+	
 	<!-- Home -->
 
 	<div class="home">

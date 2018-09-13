@@ -8,8 +8,11 @@ $(document).ready(function() {
 		event.preventDefault();
 		
 		var $type = $(".login-cont>input:hidden").attr("value");
+		var $joinForm = $("#joinMemberPc");
+		if($type == null) {
+			$joinForm.attr("action", "wrong_access").submit();
+		}
 		
-		alert($type);
 		if($type == "user") {
 			$("#joinMemberPc").attr("action", "user_detail").submit();
 		} else {
@@ -18,6 +21,12 @@ $(document).ready(function() {
 	});
 	
 	
+	$("#joinMemberPc_p .button").click(function(event) {
+		event.preventDefault();
+
+		$("#joinMemberPc_p").attr("action", "registration").submit();
+		
+	});
 	
 	
 	/**********************validation check 시작********************/
@@ -108,10 +117,6 @@ $(document).ready(function() {
 	});*/
 	
 	
-	/*$('	#joinMemberPc_p .button').click(function() {
-		alert(aaa);
-		event.preventDefault();
-		return false;
-	})*/
+	
 });
 

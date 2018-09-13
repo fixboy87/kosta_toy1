@@ -46,7 +46,7 @@
                         <section class="login-area">
                             <h3>로그인</h3>
 
-                            <form id="loginUser" action="loginAction.do" method="post" data-member-form="true" class="form-group form-w410">
+                            <form id="loginUser" action="" method="post" data-member-form="true" class="form-group form-w410">
 
                                 <fieldset id="joinFieldset">
                                     <legend class="sc-out">로그인</legend>

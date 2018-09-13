@@ -2,7 +2,7 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -27,10 +27,6 @@
 
 <body>
 
-	<input type="hidden" id="uid" name="uid" val="<%=(String)session.getAttribute("id")%>"/>
-	<input type="hidden" id="type" name="type" val="<%=(String)session.getAttribute("type")%>"/>
-	<input type="hidden" id="name" name="name" val="<%=(String)session.getAttribute("name")%>"/>
-	
 	<div class="super_container margin_top_control">
 	<%@ include file="../sub_page/header_menu.jsp"%>
 
@@ -41,8 +37,14 @@
                         <section class="login-area">
                             <h3>회원가입</h3>
 
-                            <form id="joinMemberPc_p" action="registerInsert.do" method="post" data-member-form="true" class="form-group form-w410">
-
+                            <form id="joinMemberPc_p" action="" method="post" data-member-form="true" class="form-group form-w410">
+								
+								<input type="hidden" name="id" value="${id }">
+								<input type="hidden" name="password" value="${password }">
+								<input type="hidden" name="name" value="${name }">
+								<input type="hidden" name="tel" value="${tel }">
+								<input type="hidden" name="email" value="${email }">
+								
                                 <fieldset id="joinFieldset">
                                    v <legend class="sc-out">회원가입 폼</legend>
 
@@ -58,7 +60,6 @@
                                         	</select>
                                         </div>
                                     </div>
-                                    <input type="hidden" name="type" value="personal">
                                     <button type="submit" name="button" class="button right_align" id="btnToJoinEnd">완료</button>
                                 </fieldset>
                             </form>

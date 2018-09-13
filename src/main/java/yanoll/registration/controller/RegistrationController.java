@@ -1,7 +1,10 @@
 package yanoll.registration.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +28,7 @@ public class RegistrationController {
 		
 	}
 	
+	
 	@RequestMapping(value = "/type", method = RequestMethod.POST)
 	public String register_typePOST (Model model) {
 		
@@ -39,10 +43,12 @@ public class RegistrationController {
 		return uri;
 	}*/
 	
+	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public void registerPOST (Model model, @RequestParam("type") String type) {
 		model.addAttribute("type", type);
 	}
+	
 	
 /*	@RequestMapping(value = "/details", method = RequestMethod.GET)
 	public void DetailsGET (Model model,
@@ -55,23 +61,42 @@ public class RegistrationController {
 	}*/
 	
 	@RequestMapping(value = "/user_detail", method = RequestMethod.POST)
-	public void detailsPOST (Users user, RedirectAttributes rttr) {
+	public void detailsPOST (Model model,
+			@RequestParam("email") String email, @RequestParam("id") String id, @RequestParam("tel") String tel, 
+			@RequestParam("name") String name, @RequestParam("password") String password) {
 
+		model.addAttribute("email", email);
+		model.addAttribute("id", id);
+		model.addAttribute("tel", tel);
+		model.addAttribute("name", name);
+		model.addAttribute("password", password);
+		
 	}
 	
-	public String registration(Users user, RedirectAttributes rttr) {
+	
+	@RequestMapping(value = "/registration", method = RequestMethod.POST)
+	public String registration(Users user, RedirectAttributes rttr, HttpServletRequest request) {
+		HttpSession session = request.getSession();
 		
 		try {
 			service.register(user);
 		} catch (Exception e) {
 			e.printStackTrace();
-			rttr.addFlashAttribute("message", "failure");
-			return "redirect:/";
+			return "register/wrong_access";
 		}
-		rttr.addAttribute("id", user.getId()).addFlashAttribute("message", "success");
-		return "redirect:/{id}";
+		
+		rttr.addAttribute("newId", user.getId()).addFlashAttribute("message", "register_success");
+		return "redirect:/";
 		
 	}
+	
+	
+	@RequestMapping(value = "/wrong_access", method = RequestMethod.GET)
+	public String wrongAccess(RedirectAttributes rttr) {
+		rttr.addFlashAttribute("message", "register_wrong_access");
+		return "redirect:/";
+	}
+
 	
 	@RequestMapping(value = "/idcheck", method = RequestMethod.GET)
 	public @ResponseBody String idcheck(@RequestParam("id") String id) {

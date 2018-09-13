@@ -304,5 +304,14 @@ $(document).ready(function()
 		} else if($buttonHtml === "회원탈퇴") {
 			location.href = "adminDeregister.do";
 		}
-	})
+	});
+	
+	
+	var $titleMessage = $("#title_message").attr("value");
+	
+	if($titleMessage == "register_wrong_access") {
+		alert("허가되지 않은 접근방식입니다!!!");
+	} else if($titleMessage == "register_success") {
+		alert("회원가입 성공!!!\n다시 재 로그인 해주세요.");
+	}
 });

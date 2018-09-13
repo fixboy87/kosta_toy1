@@ -58,7 +58,7 @@
                                         </div>
 
                                         <div class="inp-txt-member">
-                                            <input type="text" id="mInput1" name="userId" value="" placeholder="닉네임을 입력하세요.(7~15자)" title="닉네임을 입력(2~8자)" autocomplete="off">
+                                            <input type="text" id="mInput1" name="id" value="" placeholder="닉네임을 입력하세요.(7~15자)" title="닉네임을 입력(2~8자)" autocomplete="off">
                                         </div>
 
                                         <div class="inp-txt-member">
