@@ -65,10 +65,26 @@ $(function() {
 		
 		$(function() {
 			var h_names = new Array($('#h_no').val());
-			
-			
 		})
-	
+		
+		$("#review_button").click(function() {/* 리뷰탭 버튼 */
+			$("#rooms").css("display", "none");
+			$("#reviews").css("display", "block");
+		});
+		$("#rooms_button").click(function() {/* 방목록 버튼 */
+			$("#rooms").css("display", "block");
+			$("#reviews").css("display", "none");
+		});
+		
+		$("#button-photo").click(function() {/* 포토만 버튼 */
+			self.location = "/review/review_list"
+				/* + '${pageMaker.makeQuery(1)}' */
+				+ "searchType="
+				+ $("select option:selected").val()
+				+ "&keyword=" + $('#keywordInput').val();
+
+		})
+		
 
 });
 		

@@ -12,19 +12,37 @@
 
 
 <!-- 호텔 후기 목록 -->
-   <select id ="listReview" resultType="Review_BoardVO" parameterType="ReviewSearchVO">
+   <select id ="listReview" resultType="Review_BoardVO">
       SELECT*FROM review_board 
-      		where hotle_name =#{hotle_name}
-      		<if test="search=!null">
-      				r_fname is NOT null
-      		</if>
+      		order by r_no desc, r_redate desc
    </select>
+<!--    <select id ="listReview" resultType="Review_BoardVO" parameterType="ReviewSearchVO">
+      SELECT*FROM review_board 
+     		where h_name =#{h_name}
+      		<if test="search != null">
+      				AND r_fname is NOT null
+      		</if> 
+   </select> -->
    
+	<select id="countPaging" resultType="int">
+		select count(r_no) from
+		review_board 
+	</select>
+	
+<!-- 후기가능 booking 리스트 -->
+ 	<select id="listCheck" parameterType="String" resultType="Hotel_OrderDTO">
+		select*from Hotel_Order 
+    		where userno=(select userno from users where id = #{id}) and P_CONDITION =2
+	</select> 
+<!-- 호텔 이름 찾기 -->
+ 	<select id="searchHotle_name" parameterType="int" resultType="String">
+		select h_name from hotel where h_no=#{h_no}
+	</select> 
 	
 <!-- 후기 등록 -->
 	<!-- <insert id="insertReview" parameterType="Review_BoardVO">
 		insert into review_board
-			(r_no, r_title, r_grade, r_content, r_redate, r_hitcount , r_fname, booking_num, hotle_name, stay_day, userNo, id 
+			(r_no, r_title, r_grade, r_content, r_redate, r_hitcount , r_fname, booking_num, hotle_name, number_of_stay_days, userNo, id 
 		)values(review_seq.nextval, #{r_title}, #{r_grade}, #{r_content}, sysdate, 0, #{r_fname}, #{booking_num}, #{hotle_name}, #{stay_day}, #{userNo}, #{id})
 	</insert> -->
 	
