@@ -1,7 +1,5 @@
 package yanoll.registration.persistence;
 
-import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -9,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import yanoll.registration.dto.LoginDTO;
+import yanoll.registration.dto.LoginHotelDTO;
 import yanoll.user.domain.Hotel;
 import yanoll.user.domain.Users;
 
@@ -49,9 +48,8 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 	}
 	
 	@Override
-	public Hotel login_hotel(Map login) {
-		
-		return sqlSession.selectOne(namespace+".login_hotel", login);
+	public Hotel login_hotel(LoginHotelDTO dto) {
+		return sqlSession.selectOne(namespace+".login_hotel", dto);
 	}
 
 

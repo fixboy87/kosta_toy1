@@ -1,8 +1,8 @@
 package yanoll.registration.persistence;
 
-import java.util.Map;
 
 import yanoll.registration.dto.LoginDTO;
+import yanoll.registration.dto.LoginHotelDTO;
 import yanoll.user.domain.Hotel;
 import yanoll.user.domain.Users;
 
@@ -14,7 +14,7 @@ public interface RegistrationDAO {
 
 	public Users login(LoginDTO dto);
 
-	public Hotel login_hotel(Map<String, String> login);
+	public Hotel login_hotel(LoginHotelDTO dto);
 
 	public void insert_hotel(Hotel hotel);
 		

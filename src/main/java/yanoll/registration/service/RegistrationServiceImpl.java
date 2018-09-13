@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 
 import yanoll.registration.dto.LoginDTO;
+import yanoll.registration.dto.LoginHotelDTO;
 import yanoll.registration.persistence.RegistrationDAO;
 import yanoll.user.domain.Hotel;
 import yanoll.user.domain.Users;
@@ -61,10 +62,10 @@ public class RegistrationServiceImpl implements RegistrationService {
 			//map.put("type_value", user);
 			
 		} else if(type.equals("hotel")) {
-			Map<String, String> login = new HashMap<String, String>();
-			login.put("h_id", id);
-			login.put("h_password", password);
-			hotel = dao.login_hotel(login);
+			LoginHotelDTO dto = new LoginHotelDTO();
+			dto.setH_id(id);
+			dto.setH_password(password);
+			hotel = dao.login_hotel(dto);
 
 			session.setAttribute("type", type);
 			session.setAttribute("uid", hotel.getH_id());

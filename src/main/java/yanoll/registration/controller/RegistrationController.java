@@ -107,9 +107,6 @@ public class RegistrationController {
 	
 	@RequestMapping(value = "/registration_hotel", method = RequestMethod.POST)
 	public String registration_hotel(Hotel hotel, RedirectAttributes rttr, HttpServletRequest request) {
-		System.out.println("#####################################");
-		System.out.println(hotel);
-		System.out.println("#####################################");
 		try{
 			service.register_hotel(hotel);
 		} catch (Exception e) {

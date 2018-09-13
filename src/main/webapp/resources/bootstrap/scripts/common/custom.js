@@ -323,6 +323,5 @@ $(document).ready(function()
 		alert("로그아웃 성공!!!");
 	}
 	
-	alert($("#session_id").attr("value"));
 	
 });

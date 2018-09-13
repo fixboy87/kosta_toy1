@@ -33,7 +33,7 @@
 	
 	<select id="login_hotel" resultType="Hotel">
 		select * from hotel
-			where h_id = #{id} and h_password = #{h_password}
+			where h_id = #{h_id} and h_password = #{h_password}
 	</select> 
 	
 	
