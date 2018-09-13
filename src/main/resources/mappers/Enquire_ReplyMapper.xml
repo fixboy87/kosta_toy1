@@ -11,6 +11,10 @@
   values(enquire_reply_r_seq.nextval,#{r_contents},#{r_write},#{e_seq})
   
   </insert>
+  
+  <select id="list" resultType="Enquire_Reply">
+  select*from enquire_reply where e_seq=#{e_seq} order by r_seq desc
+  </select>
 
 
 

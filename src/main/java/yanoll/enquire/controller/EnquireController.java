@@ -18,72 +18,73 @@ import yanoll.enquire.service.EnquireService;
 @Controller
 @RequestMapping("/enquire/*")
 public class EnquireController {
-	
+
 	@Inject
 	private EnquireService service;
-	
-	@RequestMapping(value="/register" , method= RequestMethod.GET)
-	public void registerGET(Enquire_Board board)throws Exception{
-		
+
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public void registerGET(Enquire_Board board) throws Exception {
+
 	}
-	
-	@RequestMapping(value="/register" , method= RequestMethod.POST)
-	public String registerPOST(Enquire_Board board)throws Exception{
+
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String registerPOST(Enquire_Board board) throws Exception {
 		service.regist(board);
 		System.out.println(board);
 		return "redirect:/enquire/list";
 	}
-	
-	@RequestMapping(value="/list",method=RequestMethod.GET)
-	public void list(@ModelAttribute("cri")SearchCriteria cri,Model model)throws Exception{
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public void list(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 		System.out.println("리스트 컨트롤러");
 		model.addAttribute("list", service.list(cri));
-		
+
 		PageMaker pageMaker = new PageMaker();
-		
+
 		pageMaker.setCri(cri);
-		
+
 		pageMaker.setTotalCount(service.count(cri));
-		
+
 		model.addAttribute("pageMaker", pageMaker);
 	}
-	
-	@RequestMapping(value="/read",method=RequestMethod.GET)
-	public void read(@RequestParam("e_seq") int e_seq,
-			@ModelAttribute("cri") SearchCriteria cri,Model model)throws Exception{
-		model.addAttribute("board",service.read(e_seq));
-		
+
+	@RequestMapping(value = "/read", method = RequestMethod.GET)
+	public void read(@RequestParam("e_seq") int e_seq, @ModelAttribute("cri") SearchCriteria cri, Model model)
+			throws Exception {
+		model.addAttribute("board", service.read(e_seq));
+
 	}
-	
-	@RequestMapping(value="/remove",method=RequestMethod.POST)
-	public String delete(@RequestParam("e_seq") int e_seq,
-			RedirectAttributes rttr,SearchCriteria cri)throws Exception{
-		
-		System.out.println(e_seq);
+
+	@RequestMapping(value = "/remove", method = RequestMethod.POST)
+	public String delete(@RequestParam("e_seq") int e_seq, RedirectAttributes rttr, SearchCriteria cri)
+			throws Exception {
+
 		service.delete(e_seq);
 		rttr.addAttribute("page", cri.getPage());
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());
-		
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
 		return "redirect:/enquire/list";
 	}
-	
-	@RequestMapping(value="/modify",method=RequestMethod.GET)
-	public void modifyGET(@RequestParam("e_seq") int e_seq ,
-			@ModelAttribute("cri") SearchCriteria cri, Model model)throws Exception{
-		service.read(e_seq);
-		model.addAttribute(service.read(e_seq));
+
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	public void modifyGET(@RequestParam("e_seq") int e_seq, @ModelAttribute("cri") SearchCriteria cri, Model model)
+			throws Exception {
 		
+		model.addAttribute("board",service.read(e_seq));
+
 	}
-	
-	@RequestMapping(value="/modify",method=RequestMethod.POST)
-	public String modifyPOST(Enquire_Board board,
-			RedirectAttributes rttr, SearchCriteria cri)throws Exception{
-		
+
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String modifyPOST(Enquire_Board board, RedirectAttributes rttr, SearchCriteria cri) throws Exception {
+
 		service.modify(board);
-		
-		rttr.addAttribute("page",cri.getPage() );
+
+		rttr.addAttribute("page", cri.getPage());
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());
-		
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
+
 		return "redirect:/enquire/list";
 	}
 

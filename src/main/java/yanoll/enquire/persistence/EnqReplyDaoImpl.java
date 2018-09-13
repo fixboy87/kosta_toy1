@@ -1,5 +1,7 @@
 package yanoll.enquire.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -20,5 +22,20 @@ public class EnqReplyDaoImpl implements EnqReplyDao {
 		session.insert(namespace+".create", reply);
 
 	}
+
+	@Override
+	public List<Enquire_Reply> list(int e_seq) throws Exception {
+		
+		return session.selectList(namespace+".list", e_seq);
+	}
+
+	@Override
+	public void delete(int r_seq) throws Exception {
+		session.delete(namespace);
+		
+	}
+	
+	
+	
 
 }

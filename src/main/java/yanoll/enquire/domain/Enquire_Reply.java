@@ -90,8 +90,22 @@ public class Enquire_Reply {
 				+ r_date + ", h_no=" + h_no + ", hotel_name=" + hotel_name + ", e_seq=" + e_seq + "]";
 	}
 	
-	
-	
+/*
+create table enquire_reply(
+r_seq number primary key,
+r_contents varchar2(1500),
+r_write varchar2(150),
+r_date date,
+h_no number,
+hotel_name  varchar2(150),
+e_seq number,
+CONSTRAINT enquire_reply_fk
+       FOREIGN KEY(e_seq)
+       REFERENCES enquire_board(e_seq)
+);
+
+create sequence enquire_reply_r_seq start with 1;
+	*/
 	
 
 }

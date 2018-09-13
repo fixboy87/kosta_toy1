@@ -101,7 +101,10 @@ public class Enquire_Board {
 			e_writer varchar2(50),
 			hotel_name  varchar2(150),
 			user_no number
-			);*/
+			);
+			
+			create sequence enquire_board_e_seq start with 1;
+			*/
 	
 	
 
