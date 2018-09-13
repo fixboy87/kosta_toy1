@@ -5,18 +5,18 @@ import java.io.Serializable;
 public class Hotel implements Serializable {
 	
 	private int h_no;
-	private String h_id;
 	private String h_name;
 	private String h_phonenum;
 	private String h_mail;
-	private String h_password;
 	private String h_address;
 	private int room_count;
+	private String h_id;
+	private String h_password;
 	private int h_profit;
+	private int price;
 	private String h_info;
 	private String pic_url;
 	private String h_location;
-	private int price;
 	
 
 	public int getH_no() {
@@ -26,16 +26,6 @@ public class Hotel implements Serializable {
 
 	public void setH_no(int h_no) {
 		this.h_no = h_no;
-	}
-
-
-	public String getH_id() {
-		return h_id;
-	}
-
-
-	public void setH_id(String h_id) {
-		this.h_id = h_id;
 	}
 
 
@@ -69,16 +59,6 @@ public class Hotel implements Serializable {
 	}
 
 
-	public String getH_password() {
-		return h_password;
-	}
-
-
-	public void setH_password(String h_password) {
-		this.h_password = h_password;
-	}
-
-
 	public String getH_address() {
 		return h_address;
 	}
@@ -99,6 +79,26 @@ public class Hotel implements Serializable {
 	}
 
 
+	public String getH_id() {
+		return h_id;
+	}
+
+
+	public void setH_id(String h_id) {
+		this.h_id = h_id;
+	}
+
+
+	public String getH_password() {
+		return h_password;
+	}
+
+
+	public void setH_password(String h_password) {
+		this.h_password = h_password;
+	}
+
+
 	public int getH_profit() {
 		return h_profit;
 	}
@@ -106,6 +106,16 @@ public class Hotel implements Serializable {
 
 	public void setH_profit(int h_profit) {
 		this.h_profit = h_profit;
+	}
+
+
+	public int getPrice() {
+		return price;
+	}
+
+
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 
@@ -139,15 +149,6 @@ public class Hotel implements Serializable {
 	}
 
 
-	public int getPrice() {
-		return price;
-	}
-
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
-
 	public Hotel(){}
 
 
@@ -160,7 +161,6 @@ public class Hotel implements Serializable {
 	}
 	
 
-	
 }
 
 

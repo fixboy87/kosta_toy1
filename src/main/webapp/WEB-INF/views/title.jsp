@@ -48,9 +48,6 @@
 
 <%@ include file="sub_page/header_menu.jsp"%>
 
-	<input type="hidden" id="session_id" name="id" value="<%=(String)session.getAttribute("id")%>"/>
-	<input type="hidden" id="session_type" name="type" value="<%=(String)session.getAttribute("type")%>"/>
-	<input type="hidden" id="session_name" name="name" value="<%=(String)session.getAttribute("name")%>"/>
 
 	
 	<!-- Home -->

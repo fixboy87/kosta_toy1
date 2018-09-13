@@ -27,6 +27,20 @@ $(document).ready(function() {
 		$("#joinMemberPc_p").attr("action", "registration").submit();
 		
 	});
+
+	$("#joinMemberPc_e .button").click(function(event) {
+		event.preventDefault();
+		
+		$("#joinMemberPc_e").attr("action", "registration_hotel").submit();
+		
+	});
+	
+	
+	
+	$("form#loginUser button").click(function(event) {
+		event.preventDefault();
+		$("#loginUser").attr("action", "loggingin").submit();
+	});
 	
 	
 	/**********************validation check 시작********************/
