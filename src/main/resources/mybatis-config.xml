@@ -10,6 +10,8 @@
   <package name="yanoll.review.domain"/>
   <package name="yanoll.search.domain"/>
   <package name="yanoll.user.domain"/>
+  <package name="yanoll.room.domain"/>
+ <package name="yanoll.search.dto"/>
 	</typeAliases>
 	
 </configuration>
