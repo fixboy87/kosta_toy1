@@ -67,7 +67,8 @@
 <!-- Custom Css -->
 <link rel="stylesheet" type="text/css"
 	href="http://localhost:8081/kostaProject1/styles/HY_Style/ListPage.css">
-
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/syj_style/syj_contact.css">
+<script src="../resources/bootstrap/scripts/syj_script/reviewList/list.js"></script>
 <style type="text/css">
 	.area{
 		width: 50%;
@@ -102,14 +103,13 @@
 		<div>
 			<header class="list">
 				<div class="contact_form_container" id="list_container">
-
-					<input type="button" value=" 전체보기 "> <input type="button"
-						value=" 포토 "> <select name="정렬">
-						<option value="최신순">최신순</option>
-						<option value="평점순">평점순</option>
-						<option value="최신순">최신순</option>
-					<!-- </select> <a href="review_checkAction.do">후기 작성</a> -->
-					</select> <a href="review_checkAction.do">후기 작성</a>
+					<button id="button-all">전체보기</button>
+					<button id="button-photo" value="포토">포토</button>
+					<select name="option">
+						<option  value="최신순">최신순</option>
+						<option  value="평점순">평점순</option>
+					</select> 
+					<a href="/review/bookingList_check">후기 작성</a>
 				</div>
 			</header>
 
@@ -147,64 +147,97 @@
 							<td>평점</td>
 							<td colspan="3">${board.r_grade}</td>
 							<td>등록일</td>
-							<td class="table_right"><fmt:parseDate var="dateString"
-									value="${board.r_redate}" pattern="yyyy-MM-dd" /> <fmt:formatDate
+							<td class="table_right">
+							<fmt:parseDate var="dateString"
+									value="${board.r_redate}" pattern="yyyy-MM-dd" />
+									 <fmt:formatDate
 									value="${dateString}" pattern="yy/MM/dd" /></td>
 						</tr>
 						<tr class="table_bottom">
 							<td>호텔명</td>
-							<td>${board.hotle_name }</td>
+							<td>${board.h_name }</td>
 							<td>숙박일수</td>
-							<td>${board.stay_day }</td>
+							<td>${board.number_of_stay_days }</td>
 							<td>조회수</td>
 							<td colspan="2" class="table_right">${board.r_hitcount }</td>
 						</tr>
 					</table>
 				</c:forEach>
 			</div>
+			
+			<div class="box-footer">
+
+					<div class="text-center">
+						<ul class="pagination">
+
+							<c:if test="${pageMaker.prev}">
+								<li><a
+									href="/review/review_list/${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
+							</c:if>
+
+							<c:forEach begin="${pageMaker.startPage }"
+								end="${pageMaker.endPage }" var="idx">
+								<li
+									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
+									<a href="/review/review_list/${pageMaker.makeSearch(idx)}">${idx}</a>
+								</li>
+							</c:forEach>
+
+							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+								<li><a
+									href="/review/review_list/${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
+							</c:if>
+
+						</ul>
+					</div>
+
+				</div>
+			
 		</div>
 	</div>
 
 
 
 	<script type="text/javascript">
-		$("#review_button").click(function() {
+	$(document).ready(function() {
+		
+		var result = '${msg}'
+		
+		switch (result) {
+		case 'REVIEW_INSERT SECCESS':
+			alert("후기 등록이 완료되었습니다.");
+			break;
+		case 'REVIEW_UPDATE SECCESS':
+			alert("후기 수정이 완료되었습니다.");
+			break;
+		case 'REVIEW_DELETE SECCESS':
+			alert("후기 삭제가 완료되었습니다.");
+			break;
+
+		default:
+			break;
+		}
+/* 
+	  $("#review_button").click(function() {/
 			$("#rooms").css("display", "none");
 			$("#reviews").css("display", "block");
-		})
+		});
 		$("#rooms_button").click(function() {
 			$("#rooms").css("display", "block");
 			$("#reviews").css("display", "none");
-		})
+		});
+		
+		$("#button-photo").click(function() {
+			self.location = "/review/review_list"
+				/* + '${pageMaker.makeQuery(1)}' 
+				+ "searchType="
+				+ $("select option:selected").val()
+				+ "&keyword=" + $('#keywordInput').val();
+
+		})  
+		 */
+	});
+		
 	</script>
-	<!-- <script src="../../scripts/common/jquery-3.2.1.min.js"></script> -->
-	<script
-		src="http://localhost:8081/kostaProject1/styles/common/bootstrap4/popper.js"></script>
-	<script
-		src="http://localhost:8081/kostaProject1/styles/common/bootstrap4/bootstrap.min.js"></script>
-	<script
-		src="http://localhost:8081/kostaProject1/plugins/common/greensock/TweenMax.min.js"></script>
-	<script
-		src="http://localhost:8081/kostaProject1/plugins/common/greensock/TimelineMax.min.js"></script>
-	<script
-		src="http://localhost:8081/kostaProject1/plugins/common/scrollmagic/ScrollMagic.min.js"></script>
-	<script
-		src="http://localhost:8081/kostaProject1/plugins/common/greensock/animation.gsap.min.js"></script>
-	<script
-		src="http://localhost:8081/kostaProject1/plugins/common/greensock/ScrollToPlugin.min.js"></script>
-	<script
-		src="http://localhost:8081/kostaProject1/plugins/common/Isotope/isotope.pkgd.min.js"></script>
-	<script
-		src="http://localhost:8081/kostaProject1/plugins/common/easing/easing.js"></script>
-	<script
-		src="http://localhost:8081/kostaProject1/plugins/common/parallax-js-master/parallax.min.js"></script>
-	<script
-		src="http://localhost:8081/kostaProject1/scripts/common/offers_custom.js"></script>
-	<!--  메뉴이펙트 스크립트 -->
-	<script
-		src="http://localhost:8081/kostaProject1/scripts/common/menuEffect.js"
-		type="text/javascript"></script>
-	<script
-		src="http://localhost:8081/kostaProject1/scripts/common/custom.js"></script>
-</body>
+	</body>
 </html>

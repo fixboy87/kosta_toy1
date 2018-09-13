@@ -10,9 +10,9 @@ public class Review_BoardVO implements Serializable {
 	private String r_redate;
 	private int r_hitcount;
 	private String r_fname ;
-	private int booking_num;
-	private String hotle_name;
-	private int stay_day;
+	private int order_num;
+	private String h_name;
+	private int number_of_stay_days;
 	private int userNo;
 	private String id;
 	
@@ -23,7 +23,7 @@ public class Review_BoardVO implements Serializable {
 
 
 	public Review_BoardVO(int r_no, String r_title, int r_grade, String r_content, String r_redate, int r_hitcount,
-			String r_fname, int booking_num, String hotle_name, int stay_day, int userNo, String id) {
+			String r_fname, int order_num, String h_name, int number_of_stay_days, int userNo, String id) {
 		super();
 		this.r_no = r_no;
 		this.r_title = r_title;
@@ -32,9 +32,9 @@ public class Review_BoardVO implements Serializable {
 		this.r_redate = r_redate;
 		this.r_hitcount = r_hitcount;
 		this.r_fname = r_fname;
-		this.booking_num = booking_num;
-		this.hotle_name = hotle_name;
-		this.stay_day = stay_day;
+		this.order_num = order_num;
+		this.h_name = h_name;
+		this.number_of_stay_days = number_of_stay_days;
 		this.userNo = userNo;
 		this.id = id;
 	}
@@ -110,33 +110,33 @@ public class Review_BoardVO implements Serializable {
 	}
 
 
-	public int getBooking_num() {
-		return booking_num;
+	public int getOrder_num() {
+		return order_num;
 	}
 
 
-	public void setBooking_num(int booking_num) {
-		this.booking_num = booking_num;
+	public void setOrder_num(int order_num) {
+		this.order_num = order_num;
 	}
 
 
-	public String getHotle_name() {
-		return hotle_name;
+	public String getH_name() {
+		return h_name;
 	}
 
 
-	public void setHotle_name(String hotle_name) {
-		this.hotle_name = hotle_name;
+	public void setH_name(String h_name) {
+		this.h_name = h_name;
 	}
 
 
-	public int getStay_day() {
-		return stay_day;
+	public int getNumber_of_stay_days() {
+		return number_of_stay_days;
 	}
 
 
-	public void setStay_day(int stay_day) {
-		this.stay_day = stay_day;
+	public void setNumber_of_stay_days(int number_of_stay_days) {
+		this.number_of_stay_days = number_of_stay_days;
 	}
 
 
@@ -162,13 +162,13 @@ public class Review_BoardVO implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Review_Board [r_no=" + r_no + ", r_title=" + r_title + ", r_grade=" + r_grade + ", r_content="
+		return "Review_BoardVO [r_no=" + r_no + ", r_title=" + r_title + ", r_grade=" + r_grade + ", r_content="
 				+ r_content + ", r_redate=" + r_redate + ", r_hitcount=" + r_hitcount + ", r_fname=" + r_fname
-				+ ", booking_num=" + booking_num + ", hotle_name=" + hotle_name + ", stay_day=" + stay_day + ", userNo="
-				+ userNo + ", id=" + id + "]";
+				+ ", order_num=" + order_num + ", h_name=" + h_name + ", number_of_stay_days=" + number_of_stay_days
+				+ ", userNo=" + userNo + ", id=" + id + "]";
 	}
 
-	
+
 }
 
 
@@ -182,8 +182,8 @@ public class Review_BoardVO implements Serializable {
 	    r_redate Date not null,   
 	    r_hitcount NUMBER default 0,
 	    r_fname VARCHAR2(50),
-	    booking_num NUMBER not null,
-	    hotle_name VARCHAR2(200) ,
+	    order_num NUMBER not null,
+	    h_name VARCHAR2(200) ,
 	    stay_day NUMBER,
 	    userNo NUMBER,
 	    id VARCHAR2(10),

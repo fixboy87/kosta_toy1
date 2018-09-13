@@ -11,21 +11,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Destino project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/styles/common/bootstrap4/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.css">
 <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/styles/gng_style/gng_contact.css">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/styles/gng_style/gng_main.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/gng_style/gng_contact.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/gng_style/gng_main.css">
 <script src="../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/styles/common/bootstrap4/popper.js"></script>
-<script src="http://localhost:8081/kostaProject1/styles/common/bootstrap4/bootstrap.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common/greensock/TweenMax.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common//greensock/TimelineMax.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common//scrollmagic/ScrollMagic.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common//greensock/animation.gsap.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common//greensock/ScrollToPlugin.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common//easing/easing.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common//parallax-js-master/parallax.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/scripts/common/contact_custom.js"></script>
+<script src="../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
+<script src="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>
+<script src="../resources/bootstrap/plugins/common/greensock/TweenMax.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//greensock/TimelineMax.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//scrollmagic/ScrollMagic.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//greensock/animation.gsap.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//greensock/ScrollToPlugin.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//easing/easing.js"></script>
+<script src="../resources/bootstrap/plugins/common//parallax-js-master/parallax.min.js"></script>
+<script src="../resources/bootstrap/scripts/common/contact_custom.js"></script>
 
 <style type="text/css">
 h1{
@@ -58,7 +58,7 @@ margin-bottom: 1%;
 </head>
 <body>
 
-
+<%@include file="../sub_page/header_menu.jsp" %>
 
 	<!-- Contact -->
      <h1>문의내역</h1>
@@ -82,33 +82,7 @@ margin-bottom: 1%;
 		</tr>
 		</c:forEach>
 		</table>
-		
-		<%--  <c:if test="${listModel.startPage>5} ">
-		<a href="GngListAction.do?pageNum=${listModel.startPage-1}" >[이전]</a>
-		</c:if>	
-		
-		<c:forEach var="pageNo" begin="${listModel.startPage}"
-		end="${listModel.endPage}" >
-		<c:if test="${listModel.requestPage ==PageNo }">
-		<b>
-		</c:if>
-	<a href="GngListAction.do?pageNum=${pageNo}">[${pageNo}]</a> 
-		<c:if test="${listModel.requestPage==PageNo }">
-		</b>
-		</c:if>
-		</c:forEach>
-					
-		<c:if test="${listModel.endPage <listModel.totalPageCount }">
-		<a href="GngListAction.do?pageNum=${listModel.startPage+5}"> [이후]</a>
-		</c:if>		 --%>
-		<!-- 
-		 <form class="enquire_search" action="GngListAction.do" method="post">					      
-					        <input type="checkbox" name="area" value="e_title"> 제목 
-					        <input type="checkbox" name="area" value="id"> ID 
-			                <input type="text" name="searchKey" size="10">
-					        <input type="submit" value="검색">
-					        </form>			 -->										
-			      			    
+											      			    
 					
 					<select name="searchType">
 						<option value="n"
@@ -178,7 +152,7 @@ margin-bottom: 1%;
 						"click",
 						function(event) {
 							
-                            alert(1);
+                       
 							self.location = "list"
 									+ '${pageMaker.makeQuery(1)}'
 									+ "&searchType="
@@ -197,6 +171,6 @@ margin-bottom: 1%;
 </script>
 			
 			
-
+<%@include file="../sub_page/footer.html" %>
 </body>
 </html>

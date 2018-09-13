@@ -5,17 +5,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/styles/gng_style/gng_contact.css">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/styles/gng_style/gng_main.css">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/styles/common/bootstrap4/bootstrap.min.css">
-<script src="http://localhost:8081/kostaProject1/scripts/common/jquery-3.2.1.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/styles/common/bootstrap4/popper.js"></script>
-<script src="http://localhost:8081/kostaProject1/styles/common/bootstrap4/bootstrap.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common//easing/easing.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common//parallax-js-master/parallax.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/scripts/common/contact_custom.js"></script>
-<script type="text/javascript" src="http://localhost:8081/kostaProject1/scripts/gng_script/enquire_sc.js"></script>
-<title>Insert title here</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Destino project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/gng_style/gng_contact.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/gng_style/gng_main.css">
+<script src="../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script>
+<script src="../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
+<script src="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>
+<script src="../resources/bootstrap/plugins/common/greensock/TweenMax.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//greensock/TimelineMax.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//scrollmagic/ScrollMagic.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//greensock/animation.gsap.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//greensock/ScrollToPlugin.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//easing/easing.js"></script>
+<script src="../resources/bootstrap/plugins/common//parallax-js-master/parallax.min.js"></script>
+<script src="../resources/bootstrap/scripts/common/contact_custom.js"></script>
 </head>
 <body>
 <style type="text/css">
@@ -52,7 +59,7 @@ margin-bottom: 2%;
 </head>
 <body>
 
-
+<%@include file="../sub_page/header_menu.jsp" %>
 
 	<!-- Contact -->
 	
@@ -80,7 +87,7 @@ margin-bottom: 2%;
 							
 							<input id="contact_input_subject" class="contact_input contact_input_subject" type="text" name="e_title" placeholder="제목" >
 							<textarea id="contact_input_message" class="contact_message_input contact_input_message" type="text" name="e_contents" placeholder="내용"></textarea>
-							<input id="e_writer" type="hidden" name="e_write">
+							<input id="e_write" type="hidden" name="e_write">
 							<input id="contact_send_btn" type="submit" class="contact_send_btn trans_200" value="등록">
 					       <!-- <input id="hotel_name" type="hidden" name="hotel_name"> -->
 					        
@@ -92,6 +99,6 @@ margin-bottom: 2%;
 	
 			
 			
-
+<%@include file="../sub_page/footer.html" %>
 </body>
 </html>

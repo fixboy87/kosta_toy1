@@ -11,22 +11,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Destino project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kosta_toy1/styles/common/bootstrap4/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.css">
 <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kosta_toy1/styles/gng_style/gng_contact.css">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kosta_toy1/styles/gng_style/gng_main.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/gng_style/gng_contact.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/gng_style/gng_main.css">
 <script src="../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script>
-<script src="http://localhost:8081/kosta_toy1/styles/common/bootstrap4/popper.js"></script>
-<script src="http://localhost:8081/kosta_toy1/styles/common/bootstrap4/bootstrap.min.js"></script>
-<script src="http://localhost:8081/kosta_toy1/plugins/common/greensock/TweenMax.min.js"></script>
-<script src="http://localhost:8081/kosta_toy1/plugins/common//greensock/TimelineMax.min.js"></script>
-<script src="http://localhost:8081/kosta_toy1/plugins/common//scrollmagic/ScrollMagic.min.js"></script>
-<script src="http://localhost:8081/kosta_toy1/plugins/common//greensock/animation.gsap.min.js"></script>
-<script src="http://localhost:8081/kosta_toy1/plugins/common//greensock/ScrollToPlugin.min.js"></script>
-<script src="http://localhost:8081/kosta_toy1/plugins/common//easing/easing.js"></script>
-<script src="http://localhost:8081/kosta_toy1/plugins/common//parallax-js-master/parallax.min.js"></script>
-<script src="http://localhost:8081/kosta_toy1/scripts/common/contact_custom.js"></script>
-
+<script src="../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
+<script src="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>
+<script src="../resources/bootstrap/plugins/common/greensock/TweenMax.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//greensock/TimelineMax.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//scrollmagic/ScrollMagic.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//greensock/animation.gsap.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//greensock/ScrollToPlugin.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//easing/easing.js"></script>
+<script src="../resources/bootstrap/plugins/common//parallax-js-master/parallax.min.js"></script>
+<script src="../resources/bootstrap/scripts/common/contact_custom.js"></script>
 <style type="text/css">
 
 
@@ -95,7 +94,7 @@ background: black;
 
 </head>
 <body>
-
+<%@include file="../sub_page/header_menu.jsp" %>
   
    <table class="enquire_detail" border="1">
 	<thead>
@@ -121,29 +120,24 @@ background: black;
 	  
 	 <form role="form" method="post">
      <input type="hidden" name="e_seq" value="${board.e_seq}">
+     <input type='hidden' name='page' value="${cri.page}"> 
+     <input type='hidden' name='perPageNum' value="${cri.perPageNum}">
+	 <input type='hidden' name='searchType' value="${cri.searchType}">
+	 <input type='hidden' name='keyword' value="${cri.keyword}">
+	 
 	 <div class="box-footer">
      <button type="submit" class="btn btn-warning" id="modifyBtn">Modify</button>
      <button type="submit" class="btn btn-danger" id="removeBtn">REMOVE</button>
      <button type="submit" class="btn btn-primary" id="goListBtn">GO LIST </button>
      </div> 
-     </form> 
-                    <form role="form" action="modifyPage" method="post">
-
-					<input type='hidden' name='e_seq' value="${board.e_seq}"> <input
-						type='hidden' name='page' value="${cri.page}"> <input
-						type='hidden' name='perPageNum' value="${cri.perPageNum}">
-					<input type='hidden' name='searchType' value="${cri.searchType}">
-					<input type='hidden' name='keyword' value="${cri.keyword}">
-
-				    </form> 
-	                    
-	                    
+     
+     </form>    
 	                    <script>	
 	                    
 	                    $(document).ready(function () {
 	                    	 var formObj = $("form[role='form']");
 	  	                	 var seq =${board.e_seq};
-	  	                	 alert(seq);
+	  	                
 	  	                	
 	  	                	$("#modifyBtn").on("click", function(){
 	  	                		formObj.attr("action", "/enquire/modify");
@@ -165,12 +159,14 @@ background: black;
 	                    
 	                  
 				    	</script>
+				    	
+				    	
 	
 	<br style="display:block; ">
 	<br style="display:block; ">
 	<br style="display:block; ">								
 															
 					
-
+<%@include file="../sub_page/footer.html" %>
 </body>
 </html>

@@ -48,6 +48,7 @@ public class EnquireServiceImpl implements EnquireService {
 
 	@Override
 	public void modify(Enquire_Board board) throws Exception {
+		
 		dao.update(board);
 		
 	}

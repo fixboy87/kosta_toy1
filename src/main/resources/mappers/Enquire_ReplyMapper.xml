@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="yanoll.mapper.Enquire_ReplyMapper">
+
+  <insert id="create">
+  insert into enquire_reply (r_seq,r_contents,r_write,e_seq)
+  values(enquire_reply_r_seq.nextval,#{r_contents},#{r_write},#{e_seq})
+  
+  </insert>
+
+
+
+</mapper>

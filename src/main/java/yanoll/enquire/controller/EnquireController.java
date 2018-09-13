@@ -36,7 +36,7 @@ public class EnquireController {
 	
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public void list(@ModelAttribute("cri")SearchCriteria cri,Model model)throws Exception{
-		
+		System.out.println("리스트 컨트롤러");
 		model.addAttribute("list", service.list(cri));
 		
 		PageMaker pageMaker = new PageMaker();
@@ -70,7 +70,9 @@ public class EnquireController {
 	@RequestMapping(value="/modify",method=RequestMethod.GET)
 	public void modifyGET(@RequestParam("e_seq") int e_seq ,
 			@ModelAttribute("cri") SearchCriteria cri, Model model)throws Exception{
+		service.read(e_seq);
 		model.addAttribute(service.read(e_seq));
+		
 	}
 	
 	@RequestMapping(value="/modify",method=RequestMethod.POST)
@@ -78,6 +80,7 @@ public class EnquireController {
 			RedirectAttributes rttr, SearchCriteria cri)throws Exception{
 		
 		service.modify(board);
+		
 		rttr.addAttribute("page",cri.getPage() );
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());
 		
