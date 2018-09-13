@@ -16,142 +16,229 @@ public class HotelaVO {
 	private int h_profit;
 	private String h_info;
 	private String pic_url;
-	private String h_location;
 	private int price;
-	private Date start_day;
-	private Date end_day;
 	
+	//검색조건
+	private String h_location;
+	private String start_day;
+	private String end_day;
+	private int low_price;
+	private int max_price;
+
 
 
 	public HotelaVO() {
 	}
 
-	
+
 
 	public int getH_no() {
 		return h_no;
 	}
 
+
+
 	public void setH_no(int h_no) {
 		this.h_no = h_no;
 	}
+
+
 
 	public String getH_id() {
 		return h_id;
 	}
 
+
+
 	public void setH_id(String h_id) {
 		this.h_id = h_id;
 	}
+
+
 
 	public String getH_name() {
 		return h_name;
 	}
 
+
+
 	public void setH_name(String h_name) {
 		this.h_name = h_name;
 	}
+
+
 
 	public String getH_phonenum() {
 		return h_phonenum;
 	}
 
+
+
 	public void setH_phonenum(String h_phonenum) {
 		this.h_phonenum = h_phonenum;
 	}
+
+
 
 	public String getH_mail() {
 		return h_mail;
 	}
 
+
+
 	public void setH_mail(String h_mail) {
 		this.h_mail = h_mail;
 	}
+
+
 
 	public String getH_password() {
 		return h_password;
 	}
 
+
+
 	public void setH_password(String h_password) {
 		this.h_password = h_password;
 	}
+
+
 
 	public String getH_address() {
 		return h_address;
 	}
 
+
+
 	public void setH_address(String h_address) {
 		this.h_address = h_address;
 	}
+
+
 
 	public int getRoom_count() {
 		return room_count;
 	}
 
+
+
 	public void setRoom_count(int room_count) {
 		this.room_count = room_count;
 	}
+
+
 
 	public int getH_profit() {
 		return h_profit;
 	}
 
+
+
 	public void setH_profit(int h_profit) {
 		this.h_profit = h_profit;
 	}
+
+
 
 	public String getH_info() {
 		return h_info;
 	}
 
+
+
 	public void setH_info(String h_info) {
 		this.h_info = h_info;
 	}
+
+
 
 	public String getPic_url() {
 		return pic_url;
 	}
 
+
+
 	public void setPic_url(String pic_url) {
 		this.pic_url = pic_url;
 	}
+
+
 
 	public String getH_location() {
 		return h_location;
 	}
 
+
+
 	public void setH_location(String h_location) {
 		this.h_location = h_location;
 	}
+
+
 
 	public int getPrice() {
 		return price;
 	}
 
+
+
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public Date getStart_day() {
+
+
+
+	public String getStart_day() {
 		return start_day;
 	}
 
-	public void setStart_day(Date start_day) {
+
+
+	public void setStart_day(String start_day) {
 		this.start_day = start_day;
 	}
 
-	public Date getEnd_day() {
+
+
+	public String getEnd_day() {
 		return end_day;
 	}
 
-	public void setEnd_day(Date end_day) {
+
+
+	public void setEnd_day(String end_day) {
 		this.end_day = end_day;
+	}
+
+
+
+	public int getLow_price() {
+		return low_price;
+	}
+
+
+
+	public void setLow_price(int low_price) {
+		this.low_price = low_price;
+	}
+
+
+
+	public int getMax_price() {
+		return max_price;
+	}
+
+
+
+	public void setMax_price(int max_price) {
+		this.max_price = max_price;
 	}
 
 
 
 	public HotelaVO(int h_no, String h_id, String h_name, String h_phonenum, String h_mail, String h_password,
 			String h_address, int room_count, int h_profit, String h_info, String pic_url, String h_location, int price,
-			Date start_day, Date end_day) {
+			String start_day, String end_day, int low_price, int max_price) {
 		super();
 		this.h_no = h_no;
 		this.h_id = h_id;
@@ -168,6 +255,8 @@ public class HotelaVO {
 		this.price = price;
 		this.start_day = start_day;
 		this.end_day = end_day;
+		this.low_price = low_price;
+		this.max_price = max_price;
 	}
 
 
@@ -178,8 +267,10 @@ public class HotelaVO {
 				+ ", h_mail=" + h_mail + ", h_password=" + h_password + ", h_address=" + h_address + ", room_count="
 				+ room_count + ", h_profit=" + h_profit + ", h_info=" + h_info + ", pic_url=" + pic_url
 				+ ", h_location=" + h_location + ", price=" + price + ", start_day=" + start_day + ", end_day="
-				+ end_day + "]";
+				+ end_day + ", low_price=" + low_price + ", max_price=" + max_price + "]";
 	}
+
+	
 
 
 	

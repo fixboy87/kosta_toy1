@@ -1,5 +1,6 @@
 package yanoll.search.service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -16,28 +17,31 @@ public class HotelServiceImpl implements HotelService {
 
 	@Inject 
 	private HotelDAO dao;
-//	@Inject
-//	private HotelDTO dto;
-//	
+
 	@Override
 	public List<HotelaVO> hotelListBasic() throws Exception {
 	
 		return dao.hotelList();
 	}
 
-//	@Override
-//	public List<HotelaVO> hotelListConditions(HotelDTO dto) throws Exception {
-//		
-//		//dao.hotelListConditions(dto);
-//		//날짜 비교 
-//		HotelaVO vo = new HotelaVO();
-//		
-//		Date start = vo.getStart_day();
-//		Date end = vo.getEnd_day();
-//		
-//		
-//		
-//		return dao.hotelListConditions(dto);
-//	}
+	@Override
+	public List<HotelaVO> hotelListConditions(HotelaVO vo) throws Exception {
+		
+		//날짜 비교 
+		/*String start = vo.getStart_day();
+		String end = vo.getEnd_day();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		
+		start = dateFormat.format(new Date(start));
+		end = dateFormat.format(new Date(end));
+		
+		String day = vo.getStart_day();*/
+		
+		
+		
+		
+		
+		return dao.hotelListConditions(vo);
+	}
 
 }

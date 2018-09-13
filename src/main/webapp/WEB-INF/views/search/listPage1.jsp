@@ -43,7 +43,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>                  
 
 <!-- Custom Css -->
-<link rel="stylesheet" type="text/css" href="../../resources/bootstrap/styles/HY_Style/ListPage.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/HY_Style/ListPage.css">
 
 
 </head>
@@ -106,7 +106,7 @@
 
 	<div class="home">
 		<!-- Image by https://unsplash.com/@peecho -->
-		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="../../resources/images/common/last.jpg" data-speed="0.8"></div>
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="http://localhost:8081/kostaProject1/images/common/last.jpg" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">

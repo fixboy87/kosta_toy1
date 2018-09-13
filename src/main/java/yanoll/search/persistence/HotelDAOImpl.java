@@ -24,9 +24,9 @@ public class HotelDAOImpl implements HotelDAO {
 		return session.selectList(namespace + ".hotelList");
 	}
 
-//	@Override
-//	public List<HotelaVO> hotelListConditions(HotelDTO dto) throws Exception {
-//		return session.selectList(namespace+".hotelListConditions",dto);
-//	}
+	@Override
+	public List<HotelaVO> hotelListConditions(HotelaVO vo) throws Exception {
+		return session.selectList(namespace+".hotelListConditions",vo);
+	}
 
 }

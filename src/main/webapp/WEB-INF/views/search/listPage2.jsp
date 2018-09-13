@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
@@ -12,6 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Destino project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 
 <link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.css">
@@ -43,7 +45,8 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>                  
 
 <!-- Custom Css -->
-<link rel="stylesheet" type="text/css" href="../../resources/bootstrap/styles/HY_Style/ListPage.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/HY_Style/ListPage.css">
+
 
 
 </head>
@@ -59,6 +62,7 @@
 		<!-- Menu -->
 
 	<div class="menu_container menu_mm">
+
 		<!-- Menu Close Button -->
 		<div class="menu_close_container">
 			<div class="menu_close"></div>
@@ -106,7 +110,7 @@
 
 	<div class="home">
 		<!-- Image by https://unsplash.com/@peecho -->
-		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="../../resources/images/common/last.jpg" data-speed="0.8"></div>
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="../resources/images/common/last.jpg" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -131,8 +135,9 @@
 												<div class="find_form_container">
 												
 													<!-- 가격 폼 -->
-													<form action="/search/listPage1" id="find_form" method="get"
-														class="find_form d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-md-between justify-content-start flex-wrap">
+													<form  id="find_form" action="search/listPage" 
+														class="find_form d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-md-between justify-content-start flex-wrap"
+														onsubmit="return false">
 
 														<div class="find_item">
 															<div style="color: white !important; background-color: #fe435c; width: 30px;">지역</div>
@@ -142,7 +147,7 @@
 														
 														<div class="find_item">
 															<div style="color: white !important; background-color: #fe435c; width: 48px">체크인</div>
-															<input class="dropdown_item_select find_input"   autocomplete="off" type="text" id="firstday" size="9" placeholder="YYYY-MM-DD" >
+															<input class="dropdown_item_select find_input" name="start_day"   autocomplete="off" type="text" id="firstday" size="9" placeholder="YYYY-MM-DD" >
 																<script>
 																	$("#firstday")
 																		.datepicker();
@@ -151,7 +156,7 @@
 														
 														<div class="find_item">
 															<div style="color: white !important; background-color: #fe435c; width: 60px;">체크 아웃</div>									
-															<input class="dropdown_item_select find_input" autocomplete="off" type="text" id="secondday" size="9" placeholder="YYYY-MM-DD">
+															<input class="dropdown_item_select find_input" name="end_day" autocomplete="off" type="text" id="secondday" size="9" placeholder="YYYY-MM-DD">
 																<script>
 																	$("#secondday")
 																		.datepicker();
@@ -171,8 +176,7 @@
 																class="dropdown_item_select find_input" autocomplete="off">
 															
 														</div>
-														<button class="button find_button">Find</button>
-													
+														<button class="button find_button" id="ajaxbutton">Find</button>
 													</form>
 												</div>
 											</div>
@@ -243,8 +247,8 @@
 					<!-- forEach -->
 					<c:forEach var="listH" items="${list}"> 
 						<!-- Item -->
-						<div class="item clearfix rating_5">
-							<div class="item_image"><a href="HotelDetailAction.do?h_no=${listH.h_no}"><img src="http://localhost:8081/kostaProject1/images/pages/HYimg/${listH.pic_url}" alt=""></a></div>
+						<div class="item clearfix rating_5" id="">
+							<div class="item_image"><a href="HotelDetailAction.do?h_no=${listH.h_no}"><img src="../resources/bootstrap/images/pages/HYimg/${listH.pic_url}" alt=""></a></div>
 							<div class="item_content">
 								<div class="item_price">${listH.h_location}</div>
 								<div class="item_title">${listH.h_name }</div>
@@ -286,6 +290,7 @@
 
 <!-- Footer -->
 <%@include file="../sub_page/footer.html" %>
+
 <!-- <script src="../../scripts/common/jquery-3.2.1.min.js"></script> -->
 <script src="../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
 <script src="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>
