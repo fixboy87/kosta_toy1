@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import yanoll.registration.dto.LoginDTO;
 import yanoll.registration.dto.LoginHotelDTO;
 import yanoll.registration.persistence.RegistrationDAO;
+import yanoll.user.domain.Actors;
 import yanoll.user.domain.Hotel;
 import yanoll.user.domain.Users;
 
@@ -93,19 +94,22 @@ public class RegistrationServiceImpl implements RegistrationService {
 	}
 
 	@Override
-	public void myPageList(HttpServletRequest request, Model model) {
+	public Actors myPageList(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		
 		String type = (String)session.getAttribute("type");
 		String id = (String)session.getAttribute("uid");
-		System.out.println("type = "+type);
-		if(type == "user") {
-			model.addAttribute("user", dao.getUserDetail(id));
-		} else if (type == "hotel") {
-			model.addAttribute("user", dao.getHotelDetail(id));
+		Actors userActor = null;
+		if(type.equals("user")) {
+			userActor = new Users();
+			userActor = dao.getUserDetail(id);
+		} else if (type.equals("hotel")) {
+			userActor = new Hotel();
+			userActor =  (Actors)dao.getHotelDetail(id);
+			
 		} else {
 			
 		}
+		return userActor;
 	}
 
 	

@@ -58,7 +58,7 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 	}
 
 	@Override
-	public Object getHotelDetail(String id) {
+	public Hotel getHotelDetail(String id) {
 		return sqlSession.selectOne(namespace+".hotel_detail", id);
 	}
 

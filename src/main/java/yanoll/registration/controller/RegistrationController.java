@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import yanoll.registration.service.RegistrationService;
+import yanoll.user.domain.Actors;
 import yanoll.user.domain.Hotel;
 import yanoll.user.domain.Users;
 
@@ -157,7 +158,14 @@ public class RegistrationController {
 	}
 	
 	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
-	public void myPageMain(HttpServletRequest request, Model model) {
-		service.myPageList(request, model);
+	public String myPageMain(HttpServletRequest request, Model model) {
+		if(service.myPageList(request) instanceof Users) {
+			Users user = (Users)service.myPageList(request);
+			model.addAttribute("user", user);
+			return "/register/myPage";
+		} else {
+			model.addAttribute("hotel", (Hotel)service.myPageList(request));
+			return "/register/adminPage";
+		}
 	}
 }

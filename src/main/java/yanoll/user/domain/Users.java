@@ -60,7 +60,10 @@ select * from users;
  */
  
 
-public class Users implements Serializable{
+public class Users extends Actors implements Serializable{
+
+	private static final long serialVersionUID = 2534003662220453181L;
+
 	private int userNo;
 	
 	private String id;

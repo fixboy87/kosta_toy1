@@ -2,7 +2,9 @@ package yanoll.user.domain;
 
 import java.io.Serializable;
 
-public class Hotel implements Serializable {
+public class Hotel extends Actors implements Serializable{
+	
+	private static final long serialVersionUID = 6192385748921937735L;
 	
 	private int h_no;
 	private String h_name;
