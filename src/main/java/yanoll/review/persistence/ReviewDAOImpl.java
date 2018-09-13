@@ -33,4 +33,12 @@ public class ReviewDAOImpl implements ReviewDAO {
 	public String searchHotle_name(int h_no) throws Exception {
 		return session.selectOne(namespace+".searchHotle_name", h_no);
 	}
+	@Override
+	public void insertReview(Review_BoardVO board) throws Exception {
+		session.insert(namespace+".insertReview",board);
+	}
+	@Override
+	public int search_userNo(String id) throws Exception {
+		return session.selectOne(namespace+".search_userNo", id);
+	}
 }

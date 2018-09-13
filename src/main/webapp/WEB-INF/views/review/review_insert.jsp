@@ -1,28 +1,31 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%request.setCharacterEncoding("utf-8");%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Destino project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/styles/common/bootstrap4/bootstrap.min.css">
-<link href="http://localhost:8081/kostaProject1/plugins/common/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/styles/syj_style/syj_contact.css">
-<link rel="stylesheet" type="text/css" href="http://localhost:8081/kostaProject1/styles/gng_style/gng_main.css">
-<script src="http://localhost:8081/kostaProject1/scripts/common/jquery-3.2.1.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/styles/common/bootstrap4/popper.js"></script>
-<script src="http://localhost:8081/kostaProject1/styles/common/bootstrap4/bootstrap.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common/greensock/TweenMax.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common//greensock/TimelineMax.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common//scrollmagic/ScrollMagic.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common//greensock/animation.gsap.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common//greensock/ScrollToPlugin.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common//easing/easing.js"></script>
-<script src="http://localhost:8081/kostaProject1/plugins/common//parallax-js-master/parallax.min.js"></script>
-<script src="http://localhost:8081/kostaProject1/scripts/common/contact_custom.js"></script>
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.css">
+<!-- <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+ -->
+ <link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/gng_style/gng_contact.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/gng_style/gng_main.css">
+<script src="../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script>
+<script src="../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
+<script src="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>
+<script src="../resources/bootstrap/plugins/common/greensock/TweenMax.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//greensock/TimelineMax.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//scrollmagic/ScrollMagic.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//greensock/animation.gsap.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//greensock/ScrollToPlugin.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//easing/easing.js"></script>
+<script src="../resources/bootstrap/plugins/common//parallax-js-master/parallax.min.js"></script>
+<script src="../resources/bootstrap/scripts/common/contact_custom.js"></script>
 <%-- summernote 라이브러리 추가 --%>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
@@ -89,7 +92,7 @@ margin-bottom: 2%;
 		
 		<!-- <div class="w3-margin-top w3-main"	> -->
 		<div class="contact_form_container">
-			<form action="/review/review_insert" method="post"  id="contact_form" class="clearfix" enctype="multipart/form-data">
+			<form action="/review/review_insert" method="post"  id="contact_form" class="clearfix" enctype="multipart/form-data"> 
 				<input type="hidden" name="order_num" value="${board.order_num}">
 				<input type="hidden" name="userNo" value="${board.userNo}">
 				<input type="hidden" name="number_of_stay_days" value="${board.number_of_stay_days}">
@@ -98,14 +101,14 @@ margin-bottom: 2%;
 				<input type="hidden" readonly="readonly" class="rating-value" name="r_grade"  id="rating-stars-value">
 				
 				<div class="contact_set_container">
-					작성자  <a id="contact_set" class="contact_input contact_input_subject" >${board.id}</a><br>
+					<label>작성자</label>  <a id="contact_set" class="contact_input contact_input_subject" >${board.id}</a><br>
 				</div>
 				<div class="contact_set_container">
-					호텔명 <a id="contact_set" class="contact_input contact_input_subject" >${board.h_name}</a>  
-					숙박일수 <a id="contact_set" class="contact_input contact_input_subject">${board.number_of_stay_days}일</a><br>
+					<label>호텔명</label> <a id="contact_set" class="contact_input contact_input_subject" >${board.h_name}</a>  
+					<label>숙박일수</label> <a id="contact_set" class="contact_input contact_input_subject">${board.number_of_stay_days}일</a><br>
 				</div>
-					제목  <input id="contact_input_title" class="contact_input contact_input_subject" type="text" name="r_title" placeholder="제목"><br>
-					평점  <div class="rating-stars block" id="more-rating">
+					<label>제목</label>  <input id="contact_input_title" class="contact_input contact_input_subject" type="text" name="r_title" placeholder="제목"><br>
+					<label>평점</label>  <div class="rating-stars block" id="more-rating">
 							<div class="rating-stars-container">
 									  <div class="rating-star">
 									      <i class="fa fa-star"></i>
@@ -124,7 +127,7 @@ margin-bottom: 2%;
 									   </div>
 								 </div>
 							</div>
-				이미지 첨부 <input  id="contact_input_img" class="contact_input contact_input_subject" type="file" name="r_fname" placeholder="이미지를 첨부해주세요."><br>
+				<label>이미지 첨부</label> <input  id="contact_input_img" class="contact_input contact_input_subject" type="file" name="r_fname" placeholder="이미지를 첨부해주세요."><br>
 								
 				<div>
 					<!-- <textarea name=" r_content" ></textarea> -->

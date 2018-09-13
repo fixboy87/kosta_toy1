@@ -2,7 +2,7 @@
 <%request.setCharacterEncoding("utf-8");%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -34,7 +34,7 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
 <!-- <--------------------------syj------------>
 <!-- <script src="/scripts/syj_script/reviewList/list.js"></script> -->
-<script src="http://localhost:8081/kostaProject1/scripts/syj_script/reviewList/list.js"></script>
+<script src="../resources/bootstrap/scripts/syj_script/reviewList/list.js"></script>
 <link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/syj_style/syj_contact.css">
 
 
@@ -108,8 +108,8 @@ h1 {
 				</table>
 					<!-- <a href="review_list.do">후기 목록</a> -->
 					<input type="button" value="취소" class="w3-button w3-white w3-round-small" onclick="history.go(-1)">
-					
 		</div>
+		
 	</section>
 				
 

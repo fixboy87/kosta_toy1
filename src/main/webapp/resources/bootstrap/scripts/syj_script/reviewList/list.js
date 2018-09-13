@@ -39,29 +39,20 @@ $(function() {
 			})
 	    $('.r_no').hide();
 		
-		$('.list_table').click(function() {
-				var r_no = parseInt($(this).find('.r_no').text());
-				/*alert(typeof r_no);
-				alert(r_no);*/
-				
-				location.href="review_detailAction.do?r_no="+r_no;
-				
-				
-				})
-		
+	
 /*본인 게시물 삭제 수정 버튼 이벤트*/
-		$('.only_writer').hide();
+/*		$('.only_writer').hide();
 		$(function(){
 		
 			var sessionId=$('.sessionId').val();
-			/*alert(sessionId+"로그인 아이디");*/
+			alert(sessionId+"로그인 아이디");
 			var board_id = $('#board_id').text();
-			/*alert(board_id+"게시물 작성자 아이디")*/
+			alert(board_id+"게시물 작성자 아이디")
 			if (sessionId==board_id) {
 				$('.only_writer').show();
 			}
 			
-		})
+		})*/
 		
 		$(function() {
 			var h_names = new Array($('#h_no').val());
@@ -70,8 +61,9 @@ $(function() {
 		$("#review_button").click(function() {/* 리뷰탭 버튼 */
 			$("#rooms").css("display", "none");
 			$("#reviews").css("display", "block");
+			
 		});
-		$("#rooms_button").click(function() {/* 방목록 버튼 */
+		$("#rooms_button").click(function() {/* 방 목록 버튼 */
 			$("#rooms").css("display", "block");
 			$("#reviews").css("display", "none");
 		});
@@ -84,6 +76,50 @@ $(function() {
 				+ "&keyword=" + $('#keywordInput').val();
 
 		})
+		
+		
+		
+		
+		$(".table_container").on("click", ".list_table", function(event) {
+			//alert(this.nodeName);
+			var review = $(this);
+			$('#r_title').html(review.find('#board_r_title').text());
+			$('#h_name').html(review.find("#board_h_name").text());
+			$('#number_of_stay_days').html(review.find('#board_number_of_stay_days').text()+"일");
+			$('#id').html(review.find('#board_id').text());
+			$('#r_redate').html(review.find('#board_r_redate').text());
+			$('#r_content').html(review.find('#board_r_content').val());
+			var r_grade =review.find("#board_r_grade").val();
+			switch (r_grade) {
+			case "1":
+				$('#r_grade').html("★");
+				break;
+			case "2":
+				$('#r_grade').html("★★");
+				break;
+			case "3":
+				$('#r_grade').html("★★★");
+				break;
+			case "4":
+				$('#r_grade').html("★★★★");
+				break;
+			case "5":
+				$('#r_grade').html("★★★★★");
+				break;
+
+			default:
+				break;
+			}
+			var r_no = review.find("#board_r_no").val();
+			
+			$(".btn-board_update").click(function(event) {
+				location.href="reveiw_update?r_no="+r_no;
+			});
+			$(".btn-board_delete").click(function(event) {
+				location.href="review_delete?r_no="+r_no;
+			});
+			
+		});	
 		
 
 });

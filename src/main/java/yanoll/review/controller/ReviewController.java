@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import yanoll.enquire.domain.PageMaker;
@@ -85,41 +86,17 @@ public class ReviewController {
 		board.setOrder_num(dto.getOrder_num());
 		board.setNumber_of_stay_days(dto.getNumber_of_stay_days());
 		board.setId(id);
+		
 		model.addAttribute("board", board);
 	}
 	@RequestMapping(value="/review_insert", method= RequestMethod.POST)
-	public String review_insertPOST(Review_BoardVO board,RedirectAttributes rttr)throws Exception{
+	public String review_insertPOST(MultipartFile file, Review_BoardVO board,RedirectAttributes rttr)throws Exception{
+		System.out.println("/review_insert");
 		System.out.println(board.toString());
+		
+	/*	service.insertReview(board);*/
 		rttr.addFlashAttribute("msg", "REVIEW_INSERT SECCESS");
 		return"redirect:/review/review_list";
 	}
 	
-/*	@RequestMapping(value = "/review_list", method = RequestMethod.GET)
-	public ResponseEntity<List<Review_BoardVO>> listReviewAll() {
-	logger.info("컨트로럴-------------------------------------------------------------");
-		ResponseEntity<List<Review_BoardVO>> entity = null;
-
-		try {
-			entity = new ResponseEntity<List<Review_BoardVO>>(service.listReviewAll(), HttpStatus.OK);
-		} catch (Exception e) {
-			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		}
-		return null;
-	}*/
-	
-	/*@RequestMapping(value="/reivew_insert", method= RequestMethod.GET)
-	public void reivew_insertGET(Review_BoardVO board, Model model){
-		logger.info("reivew_insertGET======================");
-	}*/
-	
-	/*@RequestMapping(value="/reivew_insert", method=RequestMethod.POST)
-	public ResponseEntity<String> reivew_insertPOST(@RequestBody Review_BoardVO board){
-		ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
-		try {
-			
-		} catch (Exception e) {
-		}
-		return null;
-	}*/
-
 }

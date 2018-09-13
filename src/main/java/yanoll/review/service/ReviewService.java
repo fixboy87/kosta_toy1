@@ -14,4 +14,6 @@ public interface ReviewService {
 	public List<Hotel_OrderDTO>bookingList_check (String id)throws Exception;
 	public String searchHotle_name(int h_no)throws Exception;
 	
+	public void insertReview(Review_BoardVO board)throws Exception;
+	
 }

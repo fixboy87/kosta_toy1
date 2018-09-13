@@ -7,14 +7,16 @@
 
 <!-- 후기 전체 목록 -->
 	<select id ="listReviewAll" resultType="Review_BoardVO">
-      SELECT*FROM review_board
+      SELECT*
+      	FROM review_board
    </select>
 
 
 <!-- 호텔 후기 목록 -->
    <select id ="listReview" resultType="Review_BoardVO">
-      SELECT*FROM review_board 
-      		order by r_no desc, r_redate desc
+      SELECT*
+      	FROM review_board 
+      	order by r_no desc, r_redate desc
    </select>
 <!--    <select id ="listReview" resultType="Review_BoardVO" parameterType="ReviewSearchVO">
       SELECT*FROM review_board 
@@ -25,27 +27,33 @@
    </select> -->
    
 	<select id="countPaging" resultType="int">
-		select count(r_no) from
-		review_board 
+		select count(r_no) 
+			from	review_board 
 	</select>
 	
-<!-- 후기가능 booking 리스트 -->
  	<select id="listCheck" parameterType="String" resultType="Hotel_OrderDTO">
-		select*from Hotel_Order 
-    		where userno=(select userno from users where id = #{id}) and P_CONDITION =2
+		select*
+			from Hotel_Order 
+    		where userno=
+    		(select userno from users where id = #{id}) 
+    		and P_CONDITION =2
 	</select> 
-<!-- 호텔 이름 찾기 -->
+	
  	<select id="searchHotle_name" parameterType="int" resultType="String">
-		select h_name from hotel where h_no=#{h_no}
+		select h_name 
+			from hotel 
+			where h_no=#{h_no}
 	</select> 
 	
-<!-- 후기 등록 -->
-	<!-- <insert id="insertReview" parameterType="Review_BoardVO">
+	 <insert id="insertReview" parameterType="Review_BoardVO">
 		insert into review_board
-			(r_no, r_title, r_grade, r_content, r_redate, r_hitcount , r_fname, booking_num, hotle_name, number_of_stay_days, userNo, id 
-		)values(review_seq.nextval, #{r_title}, #{r_grade}, #{r_content}, sysdate, 0, #{r_fname}, #{booking_num}, #{hotle_name}, #{stay_day}, #{userNo}, #{id})
-	</insert> -->
-	
+			(r_no, r_title, r_grade, r_content, r_redate, r_hitcount , r_fname, order_num, h_name, number_of_stay_days, userNo, id 
+		)values(review_seq.nextval, #{r_title}, #{r_grade}, #{r_content}, sysdate, 0, #{r_fname}, #{order_num}, #{h_name}, #{number_of_stay_days}, #{userNo}, #{id})
+	</insert> 
+
+ 	<select id="search_userNo" parameterType="String" resultType="int">
+		select userNo from users where id=#{id}
+	</select> 
 	
 <!-- 디테일 게시물	 -->
     <!-- <select id="detailReview" parameterType="Review_Board" resultType="Review_Board">
@@ -77,7 +85,7 @@
 <!-- booking의 p_condition 후기 작성 전(2)-> 작성 후(4) -->
 <!-- 	<update id="change_condition" parameterType="int">
 		UPDATE booking SET p_condition = 4
-		        where booking_num =#{booking_num}
+		        where order_num =#{order_num}
 	</update> -->
 
 <!-- 게시물 수정 -->

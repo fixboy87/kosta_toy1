@@ -38,6 +38,12 @@ public class ReviewServiceImpl implements ReviewService {
 	public String searchHotle_name(int h_no) throws Exception {
 		return dao.searchHotle_name(h_no);
 	}
+
+	@Override
+	public void insertReview(Review_BoardVO board) throws Exception {
+		board.setUserNo(dao.search_userNo(board.getId()));
+		dao.insertReview(board);
+	}
 	
 
 }
