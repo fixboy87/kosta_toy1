@@ -18,7 +18,7 @@ public class HotelaVO {
 	private String pic_url;
 	private int price;
 	
-	//검색조건
+	//검색조건zz
 	private String h_location;
 	private String start_day;
 	private String end_day;
