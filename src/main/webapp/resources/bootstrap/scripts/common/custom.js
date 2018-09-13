@@ -314,4 +314,7 @@ $(document).ready(function()
 	} else if($titleMessage == "register_success") {
 		alert("회원가입 성공!!!\n다시 재 로그인 해주세요.");
 	}
+	
+	var $session_id = $("#session_id");
+	alert($session_id.attr("value"));
 });
