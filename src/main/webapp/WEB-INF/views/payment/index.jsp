@@ -14,6 +14,7 @@
 <link href="../resources/bootstrap/styles/HY_Style/payment.css"
   rel="stylesheet" type="text/css"  />
   <script src="../resources/bootstrap/scripts/HY_Script/step.js"></script> 
+  <script src="../resources/bootstrap/scripts/HY_Script/payment.js"></script> 
 
 </head>
 <body>
@@ -42,11 +43,11 @@
    
      
       
-         1
+        
         </p>
-        <p>2</p>
+        <p></p>
            <%@ include file="step.jsp"%>
-        <a href="#" class="link-style1">약관동의</a>
+        <a href="#" class="link-style1"  id="agree">약관동의</a>
       </div>
       
       </div>

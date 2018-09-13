@@ -22,10 +22,10 @@
         <a href="#step-1" type="button" class="btn btn-primary btn-circle">▷</a>
         <h4>예약</h4>
       </div>
-   <!--    <div class="stepwizard-step">
-        <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-        <p>Step 2</p>
-      </div> -->
+      <div class="stepwizard-step" >
+        <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">▶</a>
+        <h4>약관동의</h4>
+      </div> 
       <div class="stepwizard-step">
         <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">♡</a>
         <h4>결제</h4>
@@ -58,20 +58,26 @@
         </div>
       </div>
     </div>
-    <div class="row setup-content" id="step-2">
+    <div id="step2_div">
+     <div class="row setup-content" id="step-2">
       <div class="col-xs-6 col-md-offset-3">
-        <div class="col-md-12">
-          <h3> Step 2</h3>
-          <div class="form-group">
-            <label class="control-label">Company Name</label>
-            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
-          </div>
-          <div class="form-group">
-            <label class="control-label">Company Address</label>
-            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address"  />
-          </div>
-          <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+        <div class="col-md-12" id="step_2_Bt">
+        <br>
+        <br>
+           <center><h3> 취소 규정 및 약관동의</h3></center>
+           <br>
+           <br>
+          <span><input type="checkbox"/>&nbsp;&nbsp;  <font style="font-size:20px; ">취소 규정 및 약관에 모두 동의 합니다.</font></span> 
+           <br>
+           <br>
+           <!-- <img src="../resources/images/pages/HY_images/cash_check2.jpg" width="600px" height="500px"/> -->
+           <br>
+           <br>
+           
+          </div> 
+          <button class="btn btn-primary nextBtn btn-lg pull-right" id="check_Bt" type="button" disabled="disabled">확인</button>
         </div>
+       
       </div>
     </div>
     <div class="row setup-content" id="step-3">

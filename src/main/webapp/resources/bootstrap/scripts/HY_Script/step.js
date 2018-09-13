@@ -1,10 +1,27 @@
+
+
+/*$(document).ready(function(){
+if( $("#check_Bt").html()=="확인"){
+  $("#check_Bt").removeAttr('disabled');
+  alert("AS");
+};*/
+ 
+$(document).ready(function(){
+  $("#agree").on("click",function(){
+    
+    $('#step_2_Bt').css("visibility", "visible");
+  });
+  });
+
 $(document).ready(function(){
   var navListItems = $('div.setup-panel div a'),
           allWells = $('.setup-content'),
           allNextBtn = $('.nextBtn');
-
+ 
+  
   allWells.hide();
-
+ 
+  
   navListItems.click(function (e) {
       e.preventDefault();
       var $target = $($(this).attr('href')),
@@ -19,7 +36,13 @@ $(document).ready(function(){
       }
   });
 
+  
+  
   allNextBtn.click(function(){
+   
+   
+  
+    $('.link-style1').show();
       var curStep = $(this).closest(".setup-content"),
           curStepBtn = curStep.attr("id"),
           nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
@@ -39,4 +62,15 @@ $(document).ready(function(){
   });
 
   $('div.setup-panel div a.btn-primary').trigger('click');
+  
+  
+  
+   
+  
 });
+
+
+
+
+
+

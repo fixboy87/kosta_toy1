@@ -44,3 +44,7 @@ body {
     border-radius: 15px;
 }
 
+ #step_2_Bt {
+  visibility:hidden;  
+  
+} 
