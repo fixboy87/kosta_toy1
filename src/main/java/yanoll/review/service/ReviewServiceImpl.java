@@ -46,4 +46,18 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 	
 
+	@Override
+    public Review_BoardVO detailReview(Integer r_no) throws Exception {
+             return dao.detailReview(r_no);
+    }
+
+	@Override
+	public void deleteReview(Integer r_no) throws Exception {
+		dao.deleteReview(r_no);
+	}
+
+	@Override
+	public void updateReview(Review_BoardVO board) throws Exception {
+		dao.updateReview(board);
+	}
 }

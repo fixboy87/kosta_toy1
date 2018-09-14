@@ -86,7 +86,7 @@
 
 			<div class="table_container">
 				<c:forEach var="board" items="${list}">
-					<a class="btn btn-default" data-target="#modal" data-toggle="modal">
+					<!-- <a class="btn btn-default" data-target="#modal" data-toggle="modal"> -->
 						<table class="list_table" width="800">
 							<tr>
 								<td rowspan="4" class="img_td" id="board_r_fname"><c:if
@@ -136,7 +136,8 @@
 								</td>
 							</tr>
 						</table>
-					</a>
+					<!-- </a> -->
+					<a href="/review/detailReview/${board.r_no}">후기자세히보기</a>
 				</c:forEach>
 			</div>
 			

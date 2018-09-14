@@ -41,4 +41,17 @@ public class ReviewDAOImpl implements ReviewDAO {
 	public int search_userNo(String id) throws Exception {
 		return session.selectOne(namespace+".search_userNo", id);
 	}
+	
+	@Override
+    public Review_BoardVO detailReview(Integer r_no) throws Exception {
+             return session.selectOne(namespace+".detailReview", r_no);
+    }
+	@Override
+	public void deleteReview(Integer r_no) throws Exception {
+		session.delete(namespace+".deleteReivew", r_no);
+	}
+	@Override
+	public void updateReview(Review_BoardVO board) throws Exception {
+		session.update(namespace+".updateReview", board);
+	}
 }

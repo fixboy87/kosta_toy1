@@ -20,10 +20,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import yanoll.enquire.domain.PageMaker;
@@ -142,4 +144,41 @@ public class ReviewController {
 		return"redirect:/review/review_list";
 	}
 	
+	
+	@RequestMapping(value="/detailReview/{r_no}", method=RequestMethod.GET)
+    public String detailReview(@PathVariable("r_no")int r_no , Model model)throws Exception{
+             Review_BoardVO vo = service.detailReview(r_no);
+             System.out.println("--------------------------------------------");
+             System.out.println(vo.toString());
+             model.addAttribute("board", vo);
+    
+             return "/review/review_detail";
+    }
+	
+	@RequestMapping(value="/deleteReview/{r_no}", method=RequestMethod.GET)
+	public String deleteReview(@PathVariable("r_no")int r_no)throws Exception{
+		System.out.println("컨트롤러에서 삭제할 게시물 번호:"+r_no);
+		service.deleteReview(r_no);
+		
+		return"redirect:/review/review_list";
+	}
+	
+	@RequestMapping(value="/updateReview/{r_no}", method=RequestMethod.GET)
+	public String updateReview(@PathVariable("r_no")int r_no, Model model)throws Exception{
+		System.out.println("컨트롤러-=================");
+		System.out.println("수정할 게시물 번호"+r_no);
+		Review_BoardVO board =service.detailReview(r_no);
+		System.out.println("수정할 객체 출력-------------");
+		System.out.println("수정할 게시물"+board.toString());
+		model.addAttribute("board", board);
+		
+		return"/review/updateReview";
+	}
+	
+	@RequestMapping(value="/updateReview", method=RequestMethod.POST)
+	public String  updateReviewPOST(Review_BoardVO board, Model model)throws Exception{
+		service.updateReview(board);
+		
+		return"redirect:/review/review_list";
+	}	
 }

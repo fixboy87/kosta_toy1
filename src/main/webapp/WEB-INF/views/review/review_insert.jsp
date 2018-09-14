@@ -63,6 +63,9 @@ text-align: center;
 width :5%;
 margin-bottom: 2%;
 }
+#set_input{
+size: 15px;
+}
 </style>
 
 <%-- <%
@@ -93,21 +96,21 @@ margin-bottom: 2%;
 		<!-- <div class="w3-margin-top w3-main"	> -->
 		<div class="contact_form_container">
 			<form action="/review/review_insert" method="post"  id="contact_form" class="clearfix" enctype="multipart/form-data"> 
-				<input type="text" name="order_num" value="${board.order_num}">
-				<input type="text" name="userNo" value="${board.userNo}">
+				<input type="hidden" name="order_num" value="${board.order_num}">
+				<input type="hidden" name="userNo" value="${board.userNo}">
 				
 				<div class="contact_set_container">
 					<label>작성자</label>  <input name="id" value="${board.id}" readonly="readonly" id="contact_input_title" class="contact_input contact_input_subject" type="text"  >
 				</div>
 				<div class="contact_set_container">
 					<label>호텔명</label> <input name="h_name" value="${board.h_name}" readonly="readonly" id="contact_input_title" class="contact_input contact_input_subject" type="text"  >
-					<label>숙박일수</label> 
+					<br><label>숙박일수</label> 
 					<input name="number_of_stay_days" value="${board.number_of_stay_days}" readonly="readonly" id="contact_input_title" class="contact_input contact_input_subject" type="text"  >
-				</div><br>
-					<label>제목</label>  <input id="contact_input_title" class="contact_input contact_input_subject" type="text" name="r_title" placeholder="제목"><br>
+				</div><br><br>
+					<label>제목</label>  <input id="set_input" class="contact_input contact_input_subject" type="text" name="r_title" placeholder="제목"><br>
 					<label>평점</label>  
 					<div class="rating-stars block" id="more-rating">
-					<input type="number" readonly="readonly" class="form-control rating-value" name="r_grade" id="rating-stars-value">
+					<input type="hidden" readonly="readonly" class="form-control rating-value" name="r_grade" id="rating-stars-value">
 							<div class="rating-stars-container">
 									  <div class="rating-star">
 									      <i class="fa fa-star"></i>

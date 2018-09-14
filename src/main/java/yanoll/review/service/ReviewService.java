@@ -16,4 +16,9 @@ public interface ReviewService {
 	
 	public void insertReview(Review_BoardVO board)throws Exception;
 	
+	public Review_BoardVO detailReview(Integer r_no)throws Exception;
+	
+	public void deleteReview(Integer r_no)throws Exception;
+	
+	public void updateReview(Review_BoardVO board)throws Exception;
 }

@@ -5,7 +5,7 @@
 
 <mapper namespace="yanoll.mapper.Review_BoardMapper">
 
-<!-- 후기 전체 목록 -->
+<!-- listAll -->
 	<select id ="listReviewAll" resultType="Review_BoardVO">
       SELECT*
       	FROM review_board
@@ -56,15 +56,20 @@
 	</select> 
 	
 <!-- 디테일 게시물	 -->
-    <!-- <select id="detailReview" parameterType="Review_Board" resultType="Review_Board">
+   <select id="detailReview" parameterType="Review_BoardVO" resultType="Review_BoardVO">
 		select*from review_board where r_no = #{r_no}
-	</select>  -->
+	</select>  
 
 <!-- 게시물 삭제 -->	
-<!-- 	<delete id="deleteReivew" parameterType="Review_Board">
+ 	<delete id="deleteReivew" parameterType="Review_BoardVO">
 		delete from review_board where r_no = #{r_no}
-	</delete> -->
+	</delete> 
 
+<!-- 게시물 수정 -->
+ 	<update id="updateReview" parameterType="Review_BoardVO">
+		UPDATE review_board SET r_title = #{r_title}, r_content=#{r_content}  WHERE r_no=#{r_no}
+	</update>
+	
 <!-- 후기가능 booking 리스트 -->
 <!-- 	<select id="listCheck" parameterType="String" resultType="Booking">
 		select*from booking 
