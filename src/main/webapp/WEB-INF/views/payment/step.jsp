@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 
 
-
 <script src="../resources/bootstrap/scripts/HY_Script/step.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/HY_Style/step.css"> 
+
 </head>
 <body>
 
@@ -37,7 +37,7 @@
     <div class="row setup-content" id="step-1">
       <div class="col-xs-6 col-md-offset-3">
         <div class="col-md-12">
-          <h3> Step 1</h3>
+          <h3> [Step 1]</h3>
           <div class="form-group">
             <label class="control-label">아이디</label>
             <input  maxlength="100" type="text" class="form-control"   />
@@ -62,15 +62,20 @@
      <div class="row setup-content" id="step-2">
       <div class="col-xs-6 col-md-offset-3">
         <div class="col-md-12" id="step_2_Bt">
+         
         <br>
         <br>
+        <h3> [Step 2]</h3>
            <center><h3> 취소 규정 및 약관동의</h3></center>
            <br>
            <br>
-          <span><input type="checkbox"/>&nbsp;&nbsp;  <font style="font-size:20px; ">취소 규정 및 약관에 모두 동의 합니다.</font></span> 
+          <span><input type="checkbox" id="checkbox" />&nbsp;&nbsp;  <font style="font-size:20px; ">취소 규정 및 약관에 모두 동의 합니다.</font></span> 
            <br>
            <br>
-           <!-- <img src="../resources/images/pages/HY_images/cash_check2.jpg" width="600px" height="500px"/> -->
+           호텔 이용규칙, 환불정책에 동의합니다. 서비스 수수료를 
+           포함하여 표시된 총액을 지불하는 것에도 동의합니다.
+           
+           
            <br>
            <br>
            
@@ -83,8 +88,8 @@
     <div class="row setup-content" id="step-3">
       <div class="col-xs-6 col-md-offset-3">
         <div class="col-md-12">
-          <h3> Step 3</h3>
-          <button class="btn btn-success btn-lg pull-right" type="submit">Submit</button>
+          <h3> [Step 3]</h3>
+          <button class="btn btn-success btn-lg pull-right" id="cash_Bt" type="submit">결제</button>
         </div>
       </div>
     </div>

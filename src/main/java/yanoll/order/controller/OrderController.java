@@ -15,5 +15,13 @@ public class OrderController {
 
     
   }
+  
+  
+  @RequestMapping(value = "/cashCheck", method = RequestMethod.GET)
+  public String cashCheck() {
+    return "/payment/cashCheck";
+
+    
+  }
 
 }
