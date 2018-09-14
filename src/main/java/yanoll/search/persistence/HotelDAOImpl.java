@@ -29,4 +29,9 @@ public class HotelDAOImpl implements HotelDAO {
 		return session.selectList(namespace+".hotelListConditions",vo);
 	}
 
+	@Override
+	public List<HotelaVO> infinityScroll(int h_no) throws Exception {
+		return session.selectList(namespace + ".infinityScroll", h_no);
+	}
+
 }

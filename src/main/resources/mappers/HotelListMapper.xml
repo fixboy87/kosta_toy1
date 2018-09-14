@@ -34,14 +34,24 @@
                   (ho.h_no = 10 and ho.room_count - (Select count(h_no) from HOTEL_ORDER
           				where h_no = 10 and(START_DAY <= sysdate and sysdate <= END_DAY))>0)
           				
+          				
  	]]> -->
  	
  	<!--테스트용 fddf-->
  		<![CDATA[
  	 	  select *from hotel
-          	where rownum <= 10
+          	where rownum <= 10 order by h_no         	
+          	
         ]]>	
  	</select>
+ 	
+ 	<select id="infinityScroll" resultType="HotelaVO">
+ 		<![CDATA[
+ 			
+  			Select * from hotel
+  					where h_no BETWEEN #{h_no} and #{h_no}+10 order by h_no
+  		]]>	
+ 	</select> 
  	
     <select id="hotelListConditions" resultType="HotelaVO" parameterType="HotelaVO">
  	<![CDATA[

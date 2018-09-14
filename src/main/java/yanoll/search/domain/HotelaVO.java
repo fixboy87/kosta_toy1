@@ -25,8 +25,7 @@ public class HotelaVO {
 	private int low_price;
 	private int max_price;
 
-
-
+	
 	public HotelaVO() {
 	}
 

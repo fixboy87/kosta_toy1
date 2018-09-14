@@ -239,6 +239,7 @@
 			</div>
 			<div class="row">
 				<div class="col">
+					
 					<div class="items item_grid clearfix" id="scrollLocation">
 					<!-- forEach -->
 					<c:forEach var="listH" items="${list}"> 
@@ -260,6 +261,63 @@
 						</div>
 					</c:forEach> 
 					</div>
+<script>
+
+var lastScrollTop = 0;
+var easeEffect = 'easeInQuint';
+ 
+$(window).scroll(function(){
+     	
+    var currentScrollTop = $(window).scrollTop();
+ 	
+    if( currentScrollTop - lastScrollTop > 0 ){
+        console.log("down-scroll");         
+        console.log("W: " + $(window).scrollTop())//이값 컴퓨터 마다 다르니 고쳐 줘야함
+        console.log("D: " + ($(document).height() - $(window).height()))
+        if ($(window).scrollTop()+350 >= ($(document).height() - $(window).height()) ){ 
+            var lasth_no = $(".scrolling:last").attr("data-bno");
+            $.ajax({
+                type : 'post', 
+                url : '/search/listPage',
+                headers : {
+                    "Content-Type" : "application/json",
+                    "X-HTTP-Method-Override" : "POST"
+                },
+                dataType : 'json', 
+                data : JSON.stringify({
+                    h_no : lasth_no
+                }),
+                success : function(data){
+                    var str = "";             
+                    if(data != ""){                        
+                        $(data).each(                     
+                            function(){
+                            	console.log(this);
+                            	console.log("asdasdfslyiabhfmwrg");
+                            	
+                            	str+="<div>asffger</div>" ;    
+                            	
+                        });
+                        $("#scrollLocation").after(str);               
+                    }
+                    else{ 
+                        alert("더 불러올 데이터가 없습니다.");
+                    }
+     
+                }
+            });
+            var position = $(".listToChange:first").offset();             
+           
+            $('html,body').stop().animate({scrollTop : position }, 600, easeEffect);
+ 
+        }
+        lastScrollTop = currentScrollTop;
+    }    
+});
+
+</script>
+
+					
 				</div>
 			</div>
 			<div class="row">
@@ -277,75 +335,10 @@
 		</div>
 	</div>
 </div>
-<script>
 
-var lastScrollTop = 0;
-var easeEffect = 'easeInQuint';
-
-$(window).scroll(function(){
-
-	var currentScrollTop = $(window).scrollTop();
-	
-	if(currentScrollTop - lastScrollTop > 0){
-		if($(window).scrollTop() >= ($(document).height() - $(window).height())){
-			var lastbno = $(".scrolling:list").attr("data-bno");
-			
-			$.ajax({
-				type : 'post',
-				url : 'search/listPage',
-				headers : {
-					"Content-Type" : "application/json",
-                    "X-HTTP-Method-Override" : "post"
-				},
-				dataType : 'json',
-				data : JSON.stringify({
-					bno : lastbno
-				}),
-				success : function(data){
-					var str ="";
-					
-					if(data != ""){
-						$(data).each(
-							function(){
-								console.log(this);
-								srt+="<div class=" + "'item clearfix rating_5'" "id=" + "'listToChange'" + ">" + "</div>"
-								   + "<div class=" + "'item_image'" + ">" + "</div>"
-								   + "<div class=" + "'item_content'" +">"
-								   + "<div class=" + "'item_price'" + ">" + this.h_location + "</div>"
-								   + "<div class=" + "'item_title'" + ">" + this.h_name + "</div>"
-								   + "<div class=" +  "'scrolling'" + "style=" + "'display:non;'" + " data-h_no='" + this.h_no +"'>" + this.h_no + "</div>"
-                                   + "<ul>"
-                                   + "<li>" + this.price + "만원" + "</li>"
-                                   + "<li>" + "1 nights" + "</li>"
-                                   + "<li>" + "3 star hotel" + "</li>"
-                                   + "<ul>"
-                                   + "<div class=" + "'item_text'" + ">" + this.h_info + "</div>"
-                                   + "<div class=" + "'item_more_link'" + ">" + "Read More" + "</div>"
-                                   + "</div>"
-                                   + "</div>";               
-									
-							)};
-							$("#listToChange").empty();
-							$("#scrollLocation").after(str));}							
-					}
-					else{
-						alert("데이터끝")	
-					}
-				}
-			});
-			var position = $(".listToChange:first").offset();
-			$('html,body').stop().animate({scrollTop : position.top }, 600, easeEffect);
-		}
-		lastScrollTop = currentScrollTop;
-	}
-	
-});
-
-	
-</script>
 
 <!-- Footer -->
-<%@include file="../sub_page/footer.html" %>
+
 <!-- <script src="../../scripts/common/jquery-3.2.1.min.js"></script> -->
 <script src="../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
 <script src="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>

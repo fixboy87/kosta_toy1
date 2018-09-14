@@ -36,11 +36,14 @@ public class HotelServiceImpl implements HotelService {
 //		end = dateFormat.format(new Date(end));
 //		
 //		String day = vo.getStart_day();
-	
-		
-		
 		
 		return dao.hotelListConditions(vo);
+	}
+
+	@Override
+	public List<HotelaVO> infinityScroll(int h_no) throws Exception {
+		
+		return dao.infinityScroll(h_no);
 	}
 
 }

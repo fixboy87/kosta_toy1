@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import yanoll.search.domain.HotelaVO;
@@ -26,19 +27,25 @@ import yanoll.search.service.HotelService;
 public class HotelController {
 
 	@Inject
-	private HotelService service;
-	
+	private HotelService service;	
+
 	@RequestMapping(value = "/listPage", method = RequestMethod.GET)
-	public void lisssss()throws Exception{
-		
-	}
-	
-	@RequestMapping(value = "/listPage", method = RequestMethod.POST)
-	public void listPage(Model model, @RequestBody HotelaVO vo)throws Exception{
+	public void listPage(Model model)throws Exception{
 		System.out.println("컨트롤러 체크");
 		
 		model.addAttribute("list", service.hotelListBasic());
 
+	}
+	@RequestMapping(value = "/listPage", method = RequestMethod.POST)
+	public @ResponseBody List<HotelaVO> infinityWar(@RequestBody HotelaVO vo) throws Exception{
+		System.out.println(vo.getH_no());
+		System.out.println("infinit 컨트롤러 접근 체크");
+		
+		int qqweqwe = vo.getH_no()-1;
+		
+		
+		return service.infinityScroll(qqweqwe);
+		
 	}
 	
 
@@ -59,6 +66,7 @@ public class HotelController {
 		
 		model.addAttribute("list",service.hotelListConditions(vo));
 	}
+	
 	
 	
 
