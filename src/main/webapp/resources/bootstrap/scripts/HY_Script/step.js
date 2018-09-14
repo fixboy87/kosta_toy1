@@ -1,11 +1,28 @@
 
 $(document).ready(function() {
+  $('#img_Input').hide();
   $("#checkbox").on("click", function() {
+    
     $("#check_Bt").removeAttr('disabled');
     $("#agree").hide();
     $("#agree").attr("id", "0");
+   
+    
+     $("#checkDiv").css("visibility", "hidden");
+     $('#img_Input').show();
+    
+
   });
 });
+
+
+
+
+
+
+
+
+
 
 $(document).ready(function() {
   $("#cash_Bt").on("mouseover", function() {

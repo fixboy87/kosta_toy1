@@ -51,6 +51,7 @@
         <p></p>
         <%@ include file="step.jsp"%>
         <a href="#" class="link-style1" id="agree">약관동의</a>
+        
       </div>
 
     </div>

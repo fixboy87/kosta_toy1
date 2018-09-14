@@ -46,5 +46,19 @@ body {
 
  #step_2_Bt {
   visibility:hidden;  
+ 
   
 } 
+
+
+#img_Input{
+  padding-left: 25%;
+  z-index:1;
+  color:#a94442;
+ 
+}
+
+#img_Input h3{
+  
+  padding-left: 5%;
+}

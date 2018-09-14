@@ -37,7 +37,7 @@
     <div class="row setup-content" id="step-1">
       <div class="col-xs-6 col-md-offset-3">
         <div class="col-md-12">
-          <h3> [Step 1]</h3>
+          <h3> [Step 1]</h3><br><br>
           <div class="form-group">
             <label class="control-label">아이디</label>
             <input  maxlength="100" type="text" class="form-control"   />
@@ -69,11 +69,27 @@
            <center><h3> 취소 규정 및 약관동의</h3></center>
            <br>
            <br>
+          
+ <div id="img_Input">
+    <img src="../resources/images/pages/HY_images/agree_Ok.gif"/> 
+    <br>
+     <br>
+     <h3>"환불은 호오온나!"</h3> 
+</div>
+<div id= "checkDiv">
           <span><input type="checkbox" id="checkbox" />&nbsp;&nbsp;  <font style="font-size:20px; ">취소 규정 및 약관에 모두 동의 합니다.</font></span> 
            <br>
            <br>
-           호텔 이용규칙, 환불정책에 동의합니다. 서비스 수수료를 
-           포함하여 표시된 총액을 지불하는 것에도 동의합니다.
+           호텔 이용규칙, 환불정책에 동의합니다. <br>
+           서비스 수수료를 포함하여 표시된 총액을 지불하는 것에도 동의합니다.<br><br>
+           
+         [ # 기간별 환불기준 ] <br> <br>
+         - 투숙일 기준 4일전 100% 환불가능<br>
+         - 투숙일 기준 3일전 30% 취소수수료 부과<br>
+         - 투숙일 기준 2일전~당일 100% 수수료 발생<br>
+
+
+</div>
            
            
            <br>
@@ -96,6 +112,7 @@
   </form>
   
 </div>
+
 </body>
 </html>
 
