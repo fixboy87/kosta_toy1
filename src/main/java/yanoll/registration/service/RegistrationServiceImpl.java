@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import yanoll.registration.dto.LoginDTO;
 import yanoll.registration.dto.LoginHotelDTO;
@@ -124,6 +125,33 @@ public class RegistrationServiceImpl implements RegistrationService {
 	@Override
 	public void modifyHotel(Hotel hotel) throws Exception {
 		dao.updateHotel(hotel);
+	}
+
+	@Override
+	public void findInfo(String email, String tel, String type, RedirectAttributes rttr) throws Exception {
+		
+		if(type.equals("user")) {
+			Users user = new Users();
+			user.setEmail(email);
+			user.setTel(tel);
+			Users userDetail = dao.findInfo(user);
+			
+			rttr.addFlashAttribute("id", userDetail.getId());
+			rttr.addFlashAttribute("password", userDetail.getPassword());
+			
+		} else if(type.equals("hotel")) {
+			Hotel hotel = new Hotel();
+			hotel.setH_mail(email);
+			hotel.setH_phonenum(tel);
+			Hotel hotelDetail = dao.findInfo(hotel);
+			
+			rttr.addFlashAttribute("id", hotelDetail.getH_id());
+			rttr.addFlashAttribute("password", hotelDetail.getH_password());
+			
+		} else {
+			throw new WrongAccessException();
+		}
+		rttr.addFlashAttribute("message", "id_password_found");
 	}
 
 	

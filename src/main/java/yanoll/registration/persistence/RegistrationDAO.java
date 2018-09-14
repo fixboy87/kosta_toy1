@@ -25,6 +25,10 @@ public interface RegistrationDAO {
 	public void updateUser(Users user) throws Exception;
 
 	public void updateHotel(Hotel hotel) throws Exception;
+
+	public Users findInfo(Users user) throws Exception;
+
+	public Hotel findInfo(Hotel hotel) throws Exception;
 		
 	//public boolean idCheck(String id) throws Exception;
 	

@@ -4,6 +4,7 @@ package yanoll.registration.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import yanoll.user.domain.Actors;
 import yanoll.user.domain.Hotel;
@@ -26,5 +27,7 @@ public interface RegistrationService {
 	public void modifyUser(Users user) throws Exception;
 
 	public void modifyHotel(Hotel hotel) throws Exception;
+
+	public void findInfo(String email, String tel, String type, RedirectAttributes rttr) throws Exception;
 	
 }

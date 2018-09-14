@@ -72,5 +72,13 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 		sqlSession.update(namespace+".update_hotel", hotel);
 	}
 
+	@Override
+	public Users findInfo(Users user) throws Exception {
+		return sqlSession.selectOne(namespace+".find_user", user);
+	}
 
+	@Override
+	public Hotel findInfo(Hotel hotel) throws Exception {
+		return sqlSession.selectOne(namespace+".find_hotel", hotel);
+	}
 }

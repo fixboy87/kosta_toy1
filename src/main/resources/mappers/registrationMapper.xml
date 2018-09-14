@@ -61,4 +61,14 @@
 		where h_id = #{h_id}
 	</select>
 	
+	<select id="find_user" resultType="Users">
+		select id, password from users
+			where email = #{email} and tel = #{tel}
+	</select>
+	
+	<select id="find_hotel" resultType="Hotel">
+		select h_id, h_password from hotel
+			where h_mail = #{h_mail} and h_phonenum = #{h_phonenum}
+	</select>
+	
 </mapper>

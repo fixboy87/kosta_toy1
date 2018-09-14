@@ -1,11 +1,11 @@
 <%@page import="yanoll.user.domain.Users"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
 <%
 	Users user = (Users)request.getAttribute("user");
-%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+%>	
+
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -109,8 +109,6 @@ div.logo div {
 </head>
 
 <body>
-
-	<input type="hidden" id="myPageMessage" name="message" value="${message }">
 
 	<div class="super_container margin_top_control">
 	<%@ include file="../sub_page/header_menu.jsp"%>

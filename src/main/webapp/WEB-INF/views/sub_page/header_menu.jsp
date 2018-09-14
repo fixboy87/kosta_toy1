@@ -6,6 +6,7 @@
 	<input type="hidden" id="session_id" name="uid" value="<%=(String)session.getAttribute("uid")%>"/>
 	<input type="hidden" id="session_type" name="type" value="<%=(String)session.getAttribute("type")%>"/>
 	<input type="hidden" id="session_name" name="name" value="<%=(String)session.getAttribute("name")%>"/>
+	<input type="hidden" id="title_message" name="message" value="${message }"/>
 	
 	<header class="header">
 		<div class="container">

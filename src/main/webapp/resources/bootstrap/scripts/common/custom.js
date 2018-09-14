@@ -313,6 +313,9 @@ $(document).ready(function()
 	
 	var $titleMessage = $("#title_message").attr("value");
 	
+	
+	
+	
 	if($titleMessage == "register_wrong_access") {
 		alert("허가되지 않은 접근방식입니다!!!");
 	} else if($titleMessage == "register_success") {
@@ -323,13 +326,10 @@ $(document).ready(function()
 		alert("로그아웃 성공!!!");
 	} else if($titleMessage == "not_working") {
 		alert("[시스템 에러!!!]");
-	}
-	
-	
-	var $myPageMessage = $("#myPageMessage").attr("value");
-	
-	if($myPageMessage == "update_success") {
+	} else if($titleMessage == "update_success") {
 		alert("정보 수정 성공!!!");
+	} else if($titleMessage == "id_password_found") {
+		alert("로그인 후에 비밀번호를 변경해 주세요");
 	}
 	
 });

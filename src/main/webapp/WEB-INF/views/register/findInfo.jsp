@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
-<%
-	String type = request.getParameter("type");
-	request.setCharacterEncoding("utf-8");
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,20 +46,19 @@
                 <article class="contents">
                     <div class="member-content">
                         <section class="login-area">
-                            <h3>로그인</h3>
+                            <h3>계정 찾기</h3>
 
-                            <form id="loginUser" action="" method="post" data-member-form="true" class="form-group form-w410">
+                            <form id="findLoginUser" action="" method="post" data-member-form="true" class="form-group form-w410">
 
                                 <fieldset id="joinFieldset">
-                                    <legend class="sc-out">로그인</legend>
-                                    <div><a href="">아이디나 비밀번호를 잊으셨나요?</a></div>
-                                    <div class="login-cont">
+                                    <legend class="sc-out">아이디/비밀번호 찾기</legend>
+                                    <div class="login-find">
                                         <div class="inp-txt-member">
-                                            <input type="text" name="id" value="${id }" placeholder="아이디를 입력해주세요.(영문,숫자 7자 이상만 가능)" title="아이디를 입력" autocomplete="off">
+                                            <input type="text" name="email" value="" placeholder="이메일을 입력해 주세요." title="이메일을 입력" autocomplete="off">
                                         </div>
 
                                         <div class="inp-txt-member">
-                                            <input type="password" id="mInput1" name="password" value="${password }" placeholder="비밀번호를 입력해주세요.(특수문자 불가, 7자 이상)" title="비밀번호 입력" autocomplete="off">
+                                            <input type="text" name="tel" placeholder="-를 제외한 전화번호를 입력해 주세요." title="전화번호 입력" autocomplete="off">
                                         </div>
 
                                         <div class="inp-txt-member">
@@ -73,7 +68,7 @@
                                         	</select>
                                         </div>
 
-                                    <button type="submit" name="button" class="button right_align" id="btnToJoinEnd">로그인</button>
+                                    <button type="submit" name="button" class="button right_align" id="btnToJoinEnd">찾기</button>
                                 </fieldset>
                             </form>
                         </section>

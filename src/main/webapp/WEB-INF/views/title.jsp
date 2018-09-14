@@ -401,7 +401,6 @@
 	</div>
 </div>
 
-<input type="hidden" id="title_message" name="message" value="${message }"/>
 <%@include file="sub_page/footer.html" %>
 
 <script src="../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script> 

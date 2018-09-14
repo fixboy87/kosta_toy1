@@ -28,8 +28,12 @@ public class RegistrationController {
 	private RegistrationService service;
 	
 	@RequestMapping(value = "/type", method = RequestMethod.GET)
-	public void register_typeGET (Model model) {
-		
+	public String register_typeGET (Model model, HttpServletRequest request, RedirectAttributes rttr) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("uid") != null) {
+			return wrongAccess(rttr);
+		}
+		return "/register/type";
 	}
 	
 	
@@ -99,7 +103,7 @@ public class RegistrationController {
 			service.register(user);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "register/wrong_access";
+			return wrongAccess(rttr);
 		}
 		
 		rttr.addFlashAttribute("message", "register_success");
@@ -113,22 +117,17 @@ public class RegistrationController {
 			service.register_hotel(hotel);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "register/wrong_access";
+			return wrongAccess(rttr);
 		}
 		
 		rttr.addFlashAttribute("message", "register_success");
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value = "/wrong_access", method = RequestMethod.GET)
-	public String wrongAccess(RedirectAttributes rttr) {
-		rttr.addFlashAttribute("message", "register_wrong_access");
-		return "redirect:/";
-	}
 
 	
 	@RequestMapping(value = "/idcheck", method = RequestMethod.GET)
-	public @ResponseBody String idcheck(@RequestParam("id") String id) {
+	public @ResponseBody String idcheck(@RequestParam("id") String id, RedirectAttributes rttr) {
 		String userId = "";
 		try {
 			if((userId = service.idcheck(id)) == "none") {
@@ -138,13 +137,17 @@ public class RegistrationController {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "register/not_functioning";
+			return generalExceptionHandler(rttr);
 		}
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public void login() {
-		
+	public String login(HttpServletRequest request, RedirectAttributes rttr) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("uid") != null) {
+			return wrongAccess(rttr);
+		}
+		return "/register/login";
 	}
 	
 	@RequestMapping(value = "/loggingin", method = RequestMethod.POST)
@@ -154,10 +157,10 @@ public class RegistrationController {
 		
 		} catch (WrongAccessException e) {
 			e.printStackTrace();
-			return "register/wrong_access";
+			return wrongAccess(rttr);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "register/not_functioning";
+			return generalExceptionHandler(rttr);
 		}
 		
 		rttr.addFlashAttribute("message", "login_success");
@@ -171,7 +174,7 @@ public class RegistrationController {
 		
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "register/not_functioning";
+			return generalExceptionHandler(rttr);
 		}
 		
 		rttr.addFlashAttribute("message", "logout_success");
@@ -179,7 +182,7 @@ public class RegistrationController {
 	}
 	
 	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
-	public String myPageMain(HttpServletRequest request, Model model) {
+	public String myPageMain(HttpServletRequest request, Model model, RedirectAttributes rttr) {
 		try {
 			if(service.myPageList(request) instanceof Users) {
 				Users user = (Users)service.myPageList(request);
@@ -191,9 +194,9 @@ public class RegistrationController {
 		
 		} catch (WrongAccessException e) {
 			e.printStackTrace();
-			return "register/wrong_access";
+			return wrongAccess(rttr);
 		} catch (Exception e) {
-			return "register/not_functioning";
+			return generalExceptionHandler(rttr);
 		}
 		return "/register/myPage";
 	}
@@ -206,31 +209,56 @@ public class RegistrationController {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "register/not_functioning";
+			return generalExceptionHandler(rttr);
 		}
 		
 		rttr.addFlashAttribute("message", "update_success");
 		return "/register/myPage";
 	}
 	
-	
+	@RequestMapping(value = "/modify_hotel", method = RequestMethod.POST)
 	public String modifyHotelDetail(HttpServletRequest request, Hotel hotel, RedirectAttributes rttr, Model model) {
+
 		try {
 			service.modifyHotel(hotel);
 			model.addAttribute("hotel", service.myPageList(request));
 		
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "register/not_functioning";
+			return generalExceptionHandler(rttr);
 		}
 		
 		rttr.addFlashAttribute("message", "update_success");
 		return "/register/adminPage";
 	}
 	
+	@RequestMapping(value ="/findInfo", method = RequestMethod.GET)
+	public void findInfo() {
+		
+	}
 	
-	@RequestMapping(value = "/register/not_functioning")
-	public String generalExceptionHandler(RedirectAttributes rttr) {
+	@RequestMapping(value = "/findInfo", method = RequestMethod.POST)
+	public String findInfo(@RequestParam("email") String email, @RequestParam("tel") String tel, @RequestParam("loginType") String type, RedirectAttributes rttr) {
+		try {
+			service.findInfo(email, tel, type, rttr);
+			
+		} catch (WrongAccessException e) {
+			e.printStackTrace();
+			return wrongAccess(rttr);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return generalExceptionHandler(rttr);
+		}
+		return "redirect:/register/login";
+	}
+	
+	
+	private String wrongAccess(RedirectAttributes rttr) {
+		rttr.addFlashAttribute("message", "register_wrong_access");
+		return "redirect:/";
+	}
+	
+	private String generalExceptionHandler(RedirectAttributes rttr) {
 		rttr.addFlashAttribute("message", "not_working");
 		return "redirect:/";
 	}

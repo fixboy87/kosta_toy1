@@ -47,9 +47,24 @@ $(document).ready(function() {
 		event.preventDefault();
 		$("form#updateUserDetail").attr("action", "modify_user").submit();
 	});
+
+	
+	$("#updateAdminDetail button").click(function(event) {
+		event.preventDefault();
+		$("#updateAdminDetail").attr("action", "modify_hotel").submit();
+	});
 	
 	
+	$("#joinFieldset>div a").click(function(event) {
+		event.preventDefault();
+		location.href = "/register/findInfo";
+	});
 	
+	
+	$("#findLoginUser button").click(function(event) {
+		event.preventDefault();
+		$("#findLoginUser").attr("action", "findInfo").submit();
+	});
 	/**********************validation check 시작********************/
 /*	
 	//패턴

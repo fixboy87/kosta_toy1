@@ -5,7 +5,7 @@
 <%
 	Hotel hotel = (Hotel)request.getAttribute("hotel");
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -110,14 +110,12 @@ div.logo div {
 
 <body>
 	
-	<input type="hidden" id="myPageMessage" name="message" value="${message }">
-
 	<div class="super_container margin_top_control">
 	<%@ include file="../sub_page/header_menu.jsp"%>
 
 		<div id="content" class="content_wrap">
 			
-			<form action="updateUserAction.do" id="updateUserDetail" method="post">
+			<form action="" id="updateAdminDetail" method="post">
 				<div class="myPageCylinder">
 					<div class="myPageMenuCylinder">
 						<div class="button iEnquire admin_page_button"><a href="#">1:1문의</a></div>			
@@ -132,7 +130,7 @@ div.logo div {
 								<div><p>ID : </p></div>
 							</div>
 							<div class="myPage_id">
-								<input type="text" name="mypage_id" value="${hotel.h_id }" readonly="readonly"/>
+								<input type="text" name="h_id" value="${hotel.h_id }" readonly="readonly"/>
 							</div>
 						</div>
 						<div class="mypage_section">
@@ -140,7 +138,7 @@ div.logo div {
 								<div><p>비밀번호 : </p></div>
 							</div>
 							<div class="myPage_password">
-								<input type="password" name="mypage_password" value="${hotel.h_password }"/>
+								<input type="password" name="h_password" value="${hotel.h_password }"/>
 							</div>
 						</div>
 						<div class="mypage_section">
@@ -148,7 +146,7 @@ div.logo div {
 								<div><p>이메일 : </p></div>
 							</div>
 							<div class="myPage_email">
-								<input type="text" name="mypage_email" value="${hotel.h_mail }"/>
+								<input type="text" name="h_mail" value="${hotel.h_mail }"/>
 							</div>
 						</div>
 						<div class="mypage_section">
@@ -156,7 +154,7 @@ div.logo div {
 								<div><p>호텔명 : </p></div>
 							</div>
 							<div class="myPage_text">
-								<input type="text" name="mypage_name" value="${hotel.h_name }" readonly="readonly"/>
+								<input type="text" name="h_name" value="${hotel.h_name }" readonly="readonly"/>
 							</div>
 						</div>
 						<div class="mypage_section">
@@ -164,7 +162,7 @@ div.logo div {
 								<div><p>전화번호 : </p></div>
 							</div>
 							<div class="myPage_text">
-								<input type="text" name="mypage_tel" value="${hotel.h_phonenum }"/>
+								<input type="text" name="h_phonenum" value="${hotel.h_phonenum }"/>
 							</div>
 						</div>
 						<div class="mypage_section">
@@ -172,7 +170,7 @@ div.logo div {
 								<div><p>지역구 : </p></div>
 							</div>
 							<div class="myPage_text">
-								<input type="text" name="mypage_location" value="${hotel.h_location }" readonly="readonly"/>
+								<input type="text" name="h_location" value="${hotel.h_location }" readonly="readonly"/>
 							</div>
 						</div>
 						<div class="mypage_section">
@@ -180,7 +178,7 @@ div.logo div {
 								<div><p>상세주소 : </p></div>
 							</div>
 							<div class="myPage_text">
-								<input type="text" name="mypage_address" value="${hotel.h_address }" readonly="readonly"/>
+								<input type="text" name="h_address" value="${hotel.h_address }" readonly="readonly"/>
 							</div>
 						</div>
 						<div id="update_user">
