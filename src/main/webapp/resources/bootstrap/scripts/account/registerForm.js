@@ -153,6 +153,26 @@ $(document).ready(function() {
 	});*/
 	
 	
+	var $idSection = $(".login-cont:first-child>input");
+	$idSection.keydown (function() {
+		var $idTyped = $idSection.attr("value");
+		
+		$.ajax({
+			type : 'post',
+			url : '/register/checkId',
+			dataType : 'text',
+			data: JSON.stringify({
+				id : $idTyped
+			}),
+			success : function(result) {
+				if(result == 'success') {
+					console.log("사용 가능한 아이디입니다.");
+				} 
+			}
+		
+		});
+	}); 
+	
 	
 });
 

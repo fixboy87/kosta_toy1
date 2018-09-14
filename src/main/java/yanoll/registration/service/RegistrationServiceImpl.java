@@ -1,8 +1,5 @@
 package yanoll.registration.service;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.inject.Inject;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import yanoll.registration.dto.LoginDTO;
@@ -37,10 +33,6 @@ public class RegistrationServiceImpl implements RegistrationService {
 		dao.insert_hotel(hotel);
 	}
 	
-	@Override
-	public String idcheck(String id) throws Exception {
-		return dao.idCheck(id);
-	}
 
 	@Override
 	public void login(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -178,4 +170,11 @@ public class RegistrationServiceImpl implements RegistrationService {
 	}
 
 	
+	@Override
+	public String idcheck(String id) throws Exception {
+		
+		dao.idCheck(id);
+		
+		return null;
+	}
 }

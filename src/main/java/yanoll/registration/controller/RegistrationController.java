@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -126,20 +127,6 @@ public class RegistrationController {
 	
 
 	
-	@RequestMapping(value = "/idcheck", method = RequestMethod.GET)
-	public @ResponseBody String idcheck(@RequestParam("id") String id, RedirectAttributes rttr) {
-		String userId = "";
-		try {
-			if((userId = service.idcheck(id)) == "none") {
-				return "fail";
-			} else {
-				return "success";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return generalExceptionHandler(rttr);
-		}
-	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(HttpServletRequest request, RedirectAttributes rttr) {
@@ -252,7 +239,7 @@ public class RegistrationController {
 		return "redirect:/register/login";
 	}
 	
-	@RequestMapping(value = "/register/delete_user", method = RequestMethod.POST)
+	@RequestMapping(value = "/delete_user", method = RequestMethod.POST)
 	public String deregister(HttpServletRequest request, RedirectAttributes rttr, HttpServletResponse response) {
 		try {
 			service.deregister(request, rttr, response);
@@ -265,6 +252,22 @@ public class RegistrationController {
 		}
 		return "redirect:/";
 	}
+	
+
+	
+	
+	@RequestMapping(value = "/checkId", method = RequestMethod.GET)
+	public @ResponseBody String idcheck(@RequestBody String id, RedirectAttributes rttr) {
+		try {
+			service.idcheck(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return generalExceptionHandler(rttr);
+		}
+		return "success";
+	}
+	
+	
 	
 	
 	private String wrongAccess(RedirectAttributes rttr) {

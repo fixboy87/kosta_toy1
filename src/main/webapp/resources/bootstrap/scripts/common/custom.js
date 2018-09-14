@@ -338,6 +338,7 @@ $(document).ready(function()
 	}
 	
 	
+	
 	// 타이틀 화면 환영인사
 	var $sessionType = $("#session_type").attr("value");
 	var $sessionName = $("#session_name").attr("value");
