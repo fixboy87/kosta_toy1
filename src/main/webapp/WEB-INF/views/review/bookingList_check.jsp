@@ -24,11 +24,11 @@
 <script src="../resources/bootstrap/plugins/common//greensock/ScrollToPlugin.min.js"></script>
 <script src="../resources/bootstrap/plugins/common//easing/easing.js"></script>
 <script src="../resources/bootstrap/plugins/common//parallax-js-master/parallax.min.js"></script>
-<script src="../resources/bootstrap/scripts/common/contact_custom.js"></script>
+<!-- <script src="../resources/bootstrap/scripts/common/contact_custom.js"></script> -->
 <%-- summernote 라이브러리 추가 --%>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<!-- <script src="http://code.jquery.com/jquery-latest.js"></script> -->
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
@@ -85,6 +85,7 @@ h1 {
 				  	<form action="/review/review_insert" method="get">
 					  	<input type="hidden"  value="${hotel_OrderDTO.order_num}" name="order_num">
 					  	<input type="hidden"  value="${hotel_OrderDTO.h_name}" name="h_name">
+					  	<input type="hidden"  value="${hotel_OrderDTO.userNo}" name="userNo">
 					  	<input type="hidden"  value="${hotel_OrderDTO.number_of_stay_days }" name="number_of_stay_days">
 					    <td class="check_tg-5hgy">${hotel_OrderDTO.order_num}</td>
 					   <td class="check_tg-5hgy">${hotel_OrderDTO.h_name}</td>

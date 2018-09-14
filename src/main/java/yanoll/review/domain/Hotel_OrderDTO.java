@@ -27,11 +27,12 @@ public class Hotel_OrderDTO extends Hotel_Order {
 		return "Hotel_OrderDTO [h_name=" + h_name + ", getOrder_num()=" + getOrder_num() + ", getRoom_num()="
 				+ getRoom_num() + ", getH_no()=" + getH_no() + ", getStart_day()=" + getStart_day() + ", getEnd_day()="
 				+ getEnd_day() + ", getOrder_price()=" + getOrder_price() + ", getOrder_name()=" + getOrder_name()
-				+ ", getUser_no()=" + getUser_no() + ", getNumber_of_stay_days()=" + getNumber_of_stay_days()
-				+ ", getP_conition()=" + getP_conition() + ", getOrder_date()=" + getOrder_date() + ", getClass()="
-				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+				+ ", getUserNo()=" + getUserNo() + ", getNumber_of_stay_days()=" + getNumber_of_stay_days()
+				+ ", getP_conition()=" + getP_conition() + ", getOrder_date()=" + getOrder_date() + ", toString()="
+				+ super.toString() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + "]";
 	}
-
+	
+	
 	
 	
 	
