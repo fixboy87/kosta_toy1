@@ -129,7 +129,7 @@ div.logo div {
 								<div><p>ID : </p></div>
 							</div>
 							<div class="myPage_id">
-								<input type="text" name="id" value="${user.id }" readonly="readonly"/>
+								<input type="text" name="id" class="id_checker" value="${user.id }" readonly="readonly"/>
 							</div>
 						</div>
 						<div class="mypage_section">

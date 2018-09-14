@@ -54,7 +54,7 @@
                                     <div class="login-cont">
 		                            	<input type="hidden" id="type" name="type" value="${type }"/>
                                         <div class="inp-txt-member">
-                                            <input type="text" id="mInput0" name="email" value="" placeholder="이메일을 입력해주세요.(7~15자)" title="아이디(이메일)를 입력" autocomplete="off">
+                                            <input type="text" class="id_checker" id="mInput0" name="email" value="" placeholder="이메일을 입력해주세요.(7~15자)" title="아이디(이메일)를 입력" autocomplete="off">
                                         </div>
 
                                         <div class="inp-txt-member">

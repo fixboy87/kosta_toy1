@@ -153,7 +153,7 @@ $(document).ready(function() {
 	});*/
 	
 	
-	var $idSection = $(".login-cont:first-child>input");
+	var $idSection = $(".id_checker");
 	$idSection.keydown (function() {
 		var $idTyped = $idSection.attr("value");
 		
