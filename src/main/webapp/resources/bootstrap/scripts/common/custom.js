@@ -268,7 +268,7 @@ $(document).ready(function()
 		var $buttonHtml = $(this).find('a').html();
 		
 		if($buttonHtml === "1:1문의") {
-			location.href = "Insertenquire.do";
+			location.href = "/enquire/register";
 		} else if ($buttonHtml === "구매내역") {
 			location.href= "#";
 		} else if ($buttonHtml === "회원정보") {
@@ -298,7 +298,7 @@ $(document).ready(function()
 		var $buttonPressed = $(this);
 		var $buttonHtml = $(this).find('a').html();
 		if($buttonHtml === "1:1문의") {
-			location.href= "GngListAction.do";
+			location.href= "/enquire/list";
 		} else if($buttonHtml === "세부관리") {
 			location.href = "Management.do";
 		} else if($buttonHtml === "기본정보") {
