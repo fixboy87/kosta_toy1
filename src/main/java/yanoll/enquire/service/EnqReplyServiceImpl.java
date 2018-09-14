@@ -26,6 +26,21 @@ public class EnqReplyServiceImpl implements EnqReplyService {
 		
 		return dao.list(e_seq);
 	}
+
+	@Override
+	public void deleteReply(int r_seq) throws Exception {
+		dao.delete(r_seq);
+		
+	}
+
+	@Override
+	public void updateReply(Enquire_Reply reply) throws Exception {
+		dao.update(reply);
+		
+	}
+	
+    
+	
 	
 	
 

@@ -11,5 +11,7 @@ public interface EnqReplyDao {
 	public List<Enquire_Reply> list(int e_seq)throws Exception;
 	
 	public void delete(int r_seq)throws Exception;
+	
+	public void update(Enquire_Reply reply)throws Exception;
 
 }

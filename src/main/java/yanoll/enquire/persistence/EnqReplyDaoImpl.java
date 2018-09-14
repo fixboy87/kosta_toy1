@@ -31,9 +31,17 @@ public class EnqReplyDaoImpl implements EnqReplyDao {
 
 	@Override
 	public void delete(int r_seq) throws Exception {
-		session.delete(namespace);
+		session.delete(namespace+".delete",r_seq);
 		
 	}
+
+	@Override
+	public void update(Enquire_Reply reply) throws Exception {
+		session.update(namespace+".update", reply);
+		
+	}
+	
+    
 	
 	
 	

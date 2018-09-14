@@ -15,6 +15,15 @@
   <select id="list" resultType="Enquire_Reply">
   select*from enquire_reply where e_seq=#{e_seq} order by r_seq desc
   </select>
+  
+  <update id="update">
+  update enquire_reply set r_contents= #{r_contents}
+  where r_seq=#{r_seq}
+  </update>
+  
+  <delete id="delete">
+  delete from enquire_reply where r_seq=#{r_seq}
+  </delete>
 
 
 

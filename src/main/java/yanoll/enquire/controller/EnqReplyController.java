@@ -50,6 +50,39 @@ public class EnqReplyController {
 		}
 		return entity;
 	}
+	
+	@RequestMapping(value="/{r_seq}",method=RequestMethod.DELETE)
+	public ResponseEntity<String> delete(@PathVariable("r_seq") int r_seq){
+		
+		ResponseEntity<String> entity =null;
+		
+		try {
+			service.deleteReply(r_seq);
+			entity = new ResponseEntity<String>("SUCCESS",HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return entity;
+	}
+	
+	@RequestMapping(value="/{r_seq}",method={RequestMethod.PUT,RequestMethod.PATCH})
+	public ResponseEntity<String> modify(@PathVariable("r_seq") int r_seq,
+			@RequestBody Enquire_Reply reply){
+		ResponseEntity<String> entity= null;
+		
+		try {
+			reply.setR_seq(r_seq);
+			service.updateReply(reply);
+			entity = new ResponseEntity<String>("SUCCESS",HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return entity;
+	}
+	
+	
+	
 
 	
 	

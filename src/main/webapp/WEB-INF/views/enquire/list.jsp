@@ -76,7 +76,8 @@ margin-bottom: 1%;
 		<tr>
 		<td>${Enquire_Board.e_seq}</td>
 		<td>${Enquire_Board.hotel_name}</td>
-		<td><a href="/enquire/read${pageMaker.makeSearch(pageMaker.cri.page) }&e_seq=${Enquire_Board.e_seq}">${Enquire_Board.e_title}</a></td>
+		<td><a href="/enquire/read${pageMaker.makeSearch(pageMaker.cri.page) }&e_seq=${Enquire_Board.e_seq}">${Enquire_Board.e_title}</a></td> 
+		<%-- <td><a href="/enquire/read/${Enquire_Board.e_seq}">${Enquire_Board.e_title}</a></td> --%>
 		<td>${Enquire_Board.e_write}</td>
 		<td>${Enquire_Board.e_date}</td>
 		</tr>

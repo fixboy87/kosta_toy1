@@ -153,7 +153,8 @@
 		</thead>
 	</table>
 
-
+                     <!-- 페이징 히든 값으로 넣기 -->
+                     
 	<form role="form" action="modify" method="post">
 		<input type="hidden" name="e_seq" value="${board.e_seq}"> <input
 			type='hidden' name='page' value="${cri.page}"> <input
@@ -172,6 +173,9 @@
 	
 
 	<script>
+	
+               
+	             /* 문의 수정 삭제 목록 */
 		$(document).ready(function() {
 			var formObj = $("form[role='form']");
 			var seq = ${board.e_seq}
@@ -195,7 +199,7 @@
 			});
 		})
 	</script>
-
+                 <!-- 댓글 등록 페이지 -->
 
 	<div class="card-body">
 		<div class="tab-content" id="myTabContent">
@@ -204,7 +208,7 @@
 				<div class="form-group">
 					<label class="sr-only" for="message">post</label> <input
 						type="text" class="form-control" id="newReplyer" placeholder="아이디"></input>
-					<textarea class="form-control" id="newReplyerText" rows="3"
+					<textarea class="form-control" id="newReplyerText" rows="5"
 						placeholder="내용"></textarea>
 				</div>
 
@@ -218,9 +222,9 @@
 			</div>
 		</div>
 	</div>
-
-
-<section class="content">
+   
+             <!-- 댓글목록 붙이는 곳  -->
+      <section class="content">
 		<!-- 댓글 목록 페이징 -->
 		<ul class="timeline">
 
@@ -229,13 +233,36 @@
 		</ul>
 
 	</section>
+	
+	<!-- Modal -->
+<div id="modifyModal" class="modal modal-primary fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body" data-r_seq>
+        <textarea  class="form-control" id="replytext" rows="5"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" id="replyModBtn">Modify</button>
+        <button type="button" class="btn btn-danger" id="replyDelBtn">DELETE</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>   
+	
+	
 
 	<!-- Post /////-->
 
-
+    <!-- 핸들바 -->
 	<script id="template" type="text/x-handlebars-template">
 {{#each .}}
-<li class="card gedf-card" data-r_seq={{r_seq}}>
+<li class="replies" data-r_seq={{r_seq}}>
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
@@ -254,17 +281,19 @@
                     </div>
                     <div class="card-body">
                         <div class="text-muted h7 mb-2"> 
-                        <i class="fa fa-clock-o"></i>10 min ago</div>
+                        <i class="fa fa-clock-o"></i>{{r_seq}}</div>
                        
 
-                        <p class="card-text">
+                        <div id="replyContent" class="card-text">
                   {{r_contents}}
-                        </p>
+                        </div>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="card-link"><i class="fa fa-gittip"></i> modify</a>
-                        <a href="#" class="card-link"><i class="fa fa-comment"></i> delete</a>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modifyModal">modify</button>
+                        <button type="button" id="delreply" class="btn btn-info"
+                         data-toggle="modal" > delete</button>
                         </div>
+<br>
                     </li>
 {{/each}}
 </script>
@@ -272,13 +301,54 @@
 	<script>
 		var e_seq = ${board.e_seq}
 
+        
+		
+        /* 핸들바 json 합한 데이터 붙이기 */
+		var printData = function(replyArr, target, templateObject) {
+			
+			var template = Handlebars.compile(templateObject.html());
+			var html = template(replyArr);
+			$(".replies").remove();
+			target.after(html);
+			
+		}
+        
+		/* r_seq,r_contents 제이슨변환된거 변환 */
+		$(".timeline").on("click", ".replies", function(event){
+				
+				var reply = $(this);
+				
+		$("#replytext").val(reply.find('#replyContent').text());
+	    $(".modal-title").html(reply.attr("data-r_seq"));
+			
+			});
+        
+       /* json 댓글목록 출력 */
+		  $.getJSON("/replyEnquire/all/"+e_seq, function(data) {
+			  
+			printData(data, $("#repliesDiv"), $('#template'));
+			
+			
+		});  
+		 
+		function getPage() {
+			$.getJSON("/replyEnquire/all/"+e_seq, function(data) {
+				
+				printData(data, $("#repliesDiv"), $('#template'));
+				$("#modifyModal").modal('hide');
+				
+			});
+		}
+		
+		
+		 /* 댓글 등록 */
+		
 		$("#replyAddBtn").on("click", function() {
 			var replyerObj = $("#newReplyer");
 			var replytextObj = $("#newReplyerText");
 			var r_write = replyerObj.val();
 			var r_contents = replytextObj.val();
-
-			alert('등록');
+			
 
 			$.ajax({
 				type : 'post',
@@ -295,10 +365,11 @@
 				}),
 				success : function(result) {
 					if (result == 'SUCCESS') {
-						alert("등록되었습니다.");
+						
 						getPage();
 						replyerObj.val("");
 						replytextObj.val("");
+						
 					}
 				}
 
@@ -306,30 +377,70 @@
 
 		});
 
-		var printData = function(replyArr, target, templateObject) {
-			
-			var template = Handlebars.compile(templateObject.html());
-			var html = template(replyArr);
-			$(".card gedf-card").remove();
-			target.append(html);
-
-		}
-        
-		$.getJSON("/replyEnquire/all/"+e_seq, function(data) {
-			printData(data, $("#repliesDiv"), $('#template'));
-			
-		});
-		
-		function getPage() {
-			$.getJSON("/replyEnquire/all/"+e_seq, function(data) {
-				printData(data, $("#repliesDiv"), $('#template'));
-				
-			});
-		}
-		
-		
+	   /* 댓글 삭제 버튼 이벤트 ajax */
+	    $(".timeline").on("click","#delreply",function(){
+	    	
+	    	
+	    	var r_seq = $(".modal-title").html();
+	    	var r_contents = $("#replytext").val();
+	    	alert(r_seq);	
+	    	
+	    	$.ajax({
+	    	       type:'delete',
+	    	       url:'/replyEnquire/'+r_seq,
+	    	       headers: {
+	    	    	   "Content-Type":"application/json",
+	    	    	   "X-HTTP-Method-Override":"DELETE"
+	    	       },
+	    	       dataType: "text",
+	    	       success: function(result) {
+					if(result=='SUCCESS'){
+						
+						getPage("/enquire/"+e_seq);
+						
+					}
+					
+				}
+	    	       
+	    	
+	    	
+	    	})
+	    	
+	    })
+	    
+	    /* 댓글수정 버튼 이벤트 ajax */
+	    
+	    $("#replyModBtn").on("click",function(){
+	    	var r_seq = $(".modal-title").html();
+	    	var r_contents = $("#replytext").val();
+	        
+	    	$.ajax({
+	    		type :'put',
+	    		url : '/replyEnquire/'+r_seq,
+	    		headers: {
+	    			"Content-Type":"application/json",
+	    			"X-HTTP-Method-Override":"PUT"
+	    		},
+	    		data:JSON.stringify({r_contents:r_contents}),
+	    		dataType: "text",
+	    		success: function (result) {
+					if(result =="SUCCESS"){
+						
+						getPage("/enquire/"+e_seq);
+					}
+				}
+	    		
+	    		
+	    	})
+	    	
+	    })
+		  
 	</script>
-
+    
+    
+    
+    
+    
 
 
 	<br style="display: block;">
