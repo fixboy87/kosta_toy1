@@ -110,6 +110,8 @@ div.logo div {
 
 <body>
 
+	<input type="hidden" id="myPageMessage" name="message" value="${message }">
+
 	<div class="super_container margin_top_control">
 	<%@ include file="../sub_page/header_menu.jsp"%>
 

@@ -10,19 +10,21 @@ public interface RegistrationDAO {
 	
 	public void insert(Users user) throws Exception;
 
-	public String idCheck(String id);
+	public String idCheck(String id) throws Exception;
 
-	public Users login(LoginDTO dto);
+	public Users login(LoginDTO dto) throws Exception;
 
-	public Hotel login_hotel(LoginHotelDTO dto);
+	public Hotel login_hotel(LoginHotelDTO dto) throws Exception;
 
-	public void insert_hotel(Hotel hotel);
+	public void insert_hotel(Hotel hotel) throws Exception;
 
-	public Users getUserDetail(String id);
+	public Users getUserDetail(String id) throws Exception;
 
-	public Hotel getHotelDetail(String id);
+	public Hotel getHotelDetail(String id) throws Exception;
 
-	public void updateUser(Users user);
+	public void updateUser(Users user) throws Exception;
+
+	public void updateHotel(Hotel hotel) throws Exception;
 		
 	//public boolean idCheck(String id) throws Exception;
 	

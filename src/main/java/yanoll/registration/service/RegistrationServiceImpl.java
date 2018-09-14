@@ -18,6 +18,7 @@ import yanoll.registration.persistence.RegistrationDAO;
 import yanoll.user.domain.Actors;
 import yanoll.user.domain.Hotel;
 import yanoll.user.domain.Users;
+import yanoll.util.WrongAccessException;
 
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
@@ -31,17 +32,17 @@ public class RegistrationServiceImpl implements RegistrationService {
 	}
 
 	@Override
-	public void register_hotel(Hotel hotel) {
+	public void register_hotel(Hotel hotel) throws Exception {
 		dao.insert_hotel(hotel);
 	}
 	
 	@Override
-	public String idcheck(String id) {
+	public String idcheck(String id) throws Exception {
 		return dao.idCheck(id);
 	}
 
 	@Override
-	public void login(HttpServletRequest request, HttpServletResponse response) {
+	public void login(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String type = request.getParameter("loginType");
 		Hotel hotel;
 		Users user;
@@ -74,6 +75,8 @@ public class RegistrationServiceImpl implements RegistrationService {
 			session.setAttribute("name", hotel.getH_name());
 
 			//map.put("type_value", hotel);
+		} else {
+			throw new WrongAccessException();
 		}
 		
 		Cookie idCookie = new Cookie("uid", id);
@@ -83,7 +86,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 	}
 
 	@Override
-	public void logout(HttpServletRequest request, HttpServletResponse response) {
+	public void logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		
 		session.invalidate();
@@ -94,11 +97,12 @@ public class RegistrationServiceImpl implements RegistrationService {
 	}
 
 	@Override
-	public Actors myPageList(HttpServletRequest request) {
+	public Actors myPageList(HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
 		String type = (String)session.getAttribute("type");
 		String id = (String)session.getAttribute("uid");
 		Actors userActor = null;
+		
 		if(type.equals("user")) {
 			userActor = new Users();
 			userActor = dao.getUserDetail(id);
@@ -107,14 +111,19 @@ public class RegistrationServiceImpl implements RegistrationService {
 			userActor =  (Actors)dao.getHotelDetail(id);
 			
 		} else {
-			
+			throw new WrongAccessException();
 		}
 		return userActor;
 	}
 
 	@Override
-	public void modifyUser(Users user) {
+	public void modifyUser(Users user) throws Exception {
 		dao.updateUser(user);
+	}
+
+	@Override
+	public void modifyHotel(Hotel hotel) throws Exception {
+		dao.updateHotel(hotel);
 	}
 
 	

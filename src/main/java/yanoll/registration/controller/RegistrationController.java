@@ -18,6 +18,7 @@ import yanoll.registration.service.RegistrationService;
 import yanoll.user.domain.Actors;
 import yanoll.user.domain.Hotel;
 import yanoll.user.domain.Users;
+import yanoll.util.WrongAccessException;
 
 @Controller
 @RequestMapping("/register/*")
@@ -129,10 +130,15 @@ public class RegistrationController {
 	@RequestMapping(value = "/idcheck", method = RequestMethod.GET)
 	public @ResponseBody String idcheck(@RequestParam("id") String id) {
 		String userId = "";
-		if((userId = service.idcheck(id)) == "none") {
-			return "fail";
-		} else {
-			return "success";
+		try {
+			if((userId = service.idcheck(id)) == "none") {
+				return "fail";
+			} else {
+				return "success";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "register/not_functioning";
 		}
 	}
 	
@@ -143,7 +149,16 @@ public class RegistrationController {
 	
 	@RequestMapping(value = "/loggingin", method = RequestMethod.POST)
 	public String loggingin(HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) {
-		service.login(request, response);
+		try {
+			service.login(request, response);
+		
+		} catch (WrongAccessException e) {
+			e.printStackTrace();
+			return "register/wrong_access";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "register/not_functioning";
+		}
 		
 		rttr.addFlashAttribute("message", "login_success");
 		return "redirect:/";
@@ -151,7 +166,13 @@ public class RegistrationController {
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) {
-		service.logout(request, response);
+		try {
+			service.logout(request, response);
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "register/not_functioning";
+		}
 		
 		rttr.addFlashAttribute("message", "logout_success");
 		return "redirect:/";
@@ -159,21 +180,58 @@ public class RegistrationController {
 	
 	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
 	public String myPageMain(HttpServletRequest request, Model model) {
-		if(service.myPageList(request) instanceof Users) {
-			Users user = (Users)service.myPageList(request);
-			model.addAttribute("user", user);
-			return "/register/myPage";
-		} else {
-			model.addAttribute("hotel", (Hotel)service.myPageList(request));
-			return "/register/adminPage";
+		try {
+			if(service.myPageList(request) instanceof Users) {
+				Users user = (Users)service.myPageList(request);
+				model.addAttribute("user", user);
+			} else {
+				model.addAttribute("hotel", (Hotel)service.myPageList(request));
+				return "/register/adminPage";
+			}
+		
+		} catch (WrongAccessException e) {
+			e.printStackTrace();
+			return "register/wrong_access";
+		} catch (Exception e) {
+			return "register/not_functioning";
 		}
+		return "/register/myPage";
 	}
 	
 	@RequestMapping(value = "/modify_user", method = RequestMethod.POST)
 	public String modifyUserDetail(HttpServletRequest request, Users user, RedirectAttributes rttr, Model model) {
-		service.modifyUser(user);
-		model.addAttribute("user", service.myPageList(request));
+		try {
+			service.modifyUser(user);
+			model.addAttribute("user", service.myPageList(request));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "register/not_functioning";
+		}
+		
 		rttr.addFlashAttribute("message", "update_success");
 		return "/register/myPage";
+	}
+	
+	
+	public String modifyHotelDetail(HttpServletRequest request, Hotel hotel, RedirectAttributes rttr, Model model) {
+		try {
+			service.modifyHotel(hotel);
+			model.addAttribute("hotel", service.myPageList(request));
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "register/not_functioning";
+		}
+		
+		rttr.addFlashAttribute("message", "update_success");
+		return "/register/adminPage";
+	}
+	
+	
+	@RequestMapping(value = "/register/not_functioning")
+	public String generalExceptionHandler(RedirectAttributes rttr) {
+		rttr.addFlashAttribute("message", "not_working");
+		return "redirect:/";
 	}
 }

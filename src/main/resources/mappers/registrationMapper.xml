@@ -55,6 +55,10 @@
 			where h_id = #{id}
 	</select>
 	
-	
+	<select id="update_hotel" resultType="Hotel">
+		update hotel set
+			h_password = #{h_password}, h_phonenum = #{h_phonenum}, h_mail = #{h_mail}
+		where h_id = #{h_id}
+	</select>
 	
 </mapper>

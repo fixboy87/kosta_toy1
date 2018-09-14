@@ -25,13 +25,13 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 	}
 
 	@Override
-	public void insert_hotel(Hotel hotel) {
+	public void insert_hotel(Hotel hotel) throws Exception {
 		sqlSession.insert(namespace+".insert_hotel", hotel);
 		
 	}
 	
 	@Override
-	public String idCheck(String id) {
+	public String idCheck(String id) throws Exception {
 		String userid = sqlSession.selectOne(namespace+".idcheck", id);
 		
 		if(userid == null) {
@@ -41,30 +41,35 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 	}
 
 	@Override
-	public Users login(LoginDTO dto) {
+	public Users login(LoginDTO dto) throws Exception {
 		
 		return sqlSession.selectOne(namespace+".login", dto);
 		
 	}
 	
 	@Override
-	public Hotel login_hotel(LoginHotelDTO dto) {
+	public Hotel login_hotel(LoginHotelDTO dto) throws Exception {
 		return sqlSession.selectOne(namespace+".login_hotel", dto);
 	}
 
 	@Override
-	public Users getUserDetail(String id) {
+	public Users getUserDetail(String id) throws Exception {
 		return sqlSession.selectOne(namespace+".user_detail", id);
 	}
 
 	@Override
-	public Hotel getHotelDetail(String id) {
+	public Hotel getHotelDetail(String id) throws Exception {
 		return sqlSession.selectOne(namespace+".hotel_detail", id);
 	}
 
 	@Override
-	public void updateUser(Users user) {
+	public void updateUser(Users user) throws Exception {
 		sqlSession.update(namespace+".update_user", user);
+	}
+
+	@Override
+	public void updateHotel(Hotel hotel) throws Exception {
+		sqlSession.update(namespace+".update_hotel", hotel);
 	}
 
 

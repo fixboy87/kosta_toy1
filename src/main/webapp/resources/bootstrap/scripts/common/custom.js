@@ -321,7 +321,15 @@ $(document).ready(function()
 		alert("로그인 성공!!!");
 	} else if($titleMessage == "logout_success") {
 		alert("로그아웃 성공!!!");
+	} else if($titleMessage == "not_working") {
+		alert("[시스템 에러!!!]");
 	}
 	
+	
+	var $myPageMessage = $("#myPageMessage").attr("value");
+	
+	if($myPageMessage == "update_success") {
+		alert("정보 수정 성공!!!");
+	}
 	
 });
