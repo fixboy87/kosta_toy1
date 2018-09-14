@@ -71,4 +71,13 @@
 			where h_mail = #{h_mail} and h_phonenum = #{h_phonenum}
 	</select>
 	
+	<delete id="delete_user">
+		delete from users
+			where id = #{id}
+	</delete>	
+	
+	<delete id="delete_hotel">
+		delete from hotel
+			where h_id = #{id}
+	</delete>
 </mapper>

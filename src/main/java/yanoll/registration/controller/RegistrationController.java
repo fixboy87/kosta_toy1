@@ -252,6 +252,20 @@ public class RegistrationController {
 		return "redirect:/register/login";
 	}
 	
+	@RequestMapping(value = "/register/delete_user", method = RequestMethod.POST)
+	public String deregister(HttpServletRequest request, RedirectAttributes rttr, HttpServletResponse response) {
+		try {
+			service.deregister(request, rttr, response);
+		} catch (WrongAccessException e) {
+			e.printStackTrace();
+			return wrongAccess(rttr);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return generalExceptionHandler(rttr);
+		}
+		return "redirect:/";
+	}
+	
 	
 	private String wrongAccess(RedirectAttributes rttr) {
 		rttr.addFlashAttribute("message", "register_wrong_access");

@@ -154,5 +154,28 @@ public class RegistrationServiceImpl implements RegistrationService {
 		rttr.addFlashAttribute("message", "id_password_found");
 	}
 
+	@Override
+	public void deregister(HttpServletRequest request, RedirectAttributes rttr, HttpServletResponse response) throws Exception {
+		HttpSession session = request.getSession();
+		
+		String type = (String)session.getAttribute("type");
+		String id = (String)session.getAttribute("uid");
+		
+		if(type.equals("user")) {
+			dao.deleteUser(id);
+		} else if(type.equals("hotel")) {
+			dao.deleteHotel(id);
+		} else {
+			throw new WrongAccessException();
+		}
+		rttr.addFlashAttribute("message", "deregister_successful");
+		
+		session.invalidate();
+		
+		Cookie idCookie = new Cookie("uid", null);
+		idCookie.setMaxAge(0);
+		response.addCookie(idCookie);
+	}
+
 	
 }

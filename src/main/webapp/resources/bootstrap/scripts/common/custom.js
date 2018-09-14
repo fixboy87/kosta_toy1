@@ -234,6 +234,7 @@ $(document).ready(function()
 	})
 	
 	
+	//헤더 네비게이션
 	$('.main_nav_item').click(function(event) {
 		event.preventDefault();
 		var $buttonPressed = $(this);
@@ -274,7 +275,7 @@ $(document).ready(function()
 		} else if ($buttonHtml === "회원정보") {
 			location.href = "myPageAction.do";
 		} else if ($buttonHtml === "회원탈퇴") {
-			location.href = "deregister.do";
+			deregister();
 		}
 	});
 	
@@ -285,6 +286,8 @@ $(document).ready(function()
 		
 	});
 	
+	
+	// 헤더 이미지 클릭시의 네비게이션
 	$('.logo_image').click(function() {
 		location.href = "/"
 	});
@@ -293,6 +296,8 @@ $(document).ready(function()
 		location.href = "/";
 	});
 	
+	
+	// 관리자 페이지 네비게이션
 	$('.admin_page_button').click(function(event) {
 		event.preventDefault();
 		var $buttonPressed = $(this);
@@ -306,15 +311,13 @@ $(document).ready(function()
 		} else if($buttonHtml === "세부정보") {
 			location.href = "HotelDetailAction.do";
 		} else if($buttonHtml === "회원탈퇴") {
-			location.href = "adminDeregister.do";
+			deregister();
 		}
 	});
 	
 	
+	// 메시지 호출 관련
 	var $titleMessage = $("#title_message").attr("value");
-	
-	
-	
 	
 	if($titleMessage == "register_wrong_access") {
 		alert("허가되지 않은 접근방식입니다!!!");
@@ -329,7 +332,38 @@ $(document).ready(function()
 	} else if($titleMessage == "update_success") {
 		alert("정보 수정 성공!!!");
 	} else if($titleMessage == "id_password_found") {
-		alert("로그인 후에 비밀번호를 변경해 주세요");
+		alert("로그인 후에 마이페이지에서 비밀번호를 변경해 주세요");
+	} else if($titleMessage == "deregister_successful") {
+		alert("회원정보가 삭제되었습니다. 감사합니다.");
+	}
+	
+	
+	// 타이틀 화면 환영인사
+	var $sessionType = $("#session_type").attr("value");
+	var $sessionName = $("#session_name").attr("value");
+	
+	if($sessionType == null) {
+		$sessionType == "null"
+	}
+	if($sessionType != "null") {
+		var greetings = "";
+		greetings = $sessionName+"님 환영합니다!!"
+		
+		$(".find_title").html(greetings);
+	}
+	
+	function deregister() {
+		var confirm = prompt("정말로 탈퇴하시겠습니까?\n고객님의 아이디를 적어주세요.", "아이디");
+		
+		if(confirm != null) {
+			if(confirm == $("#session_id").attr("value")) {
+				if($sessionType == "user") {
+					$("form#updateUserDetail").attr("action", "delete_user").submit();
+				} else {
+					$("#updateAdminDetail").attr("action", "delete_user").submit();
+				}
+			}
+		}
 	}
 	
 });
