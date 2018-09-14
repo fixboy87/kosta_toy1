@@ -38,7 +38,7 @@
 <!-- <--------------------------syj------------>
 <!-- <script src="/scripts/syj_script/reviewList/list.js"></script> -->
 <script src="../resources/bootstrap/scripts/syj_script/reviewList/list.js"></script>
-<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/syj_style/syj_contact.css">
+<link rel="stylesheet" type="text/css" href="../../resources/bootstrap/styles/syj_style/syj_contact.css">
 <script src="../resources/bootstrap/scripts/syj_script/reviewList/list.js"></script>
 <style type="text/css">
 	.area{
@@ -86,7 +86,6 @@
 
 			<div class="table_container">
 				<c:forEach var="board" items="${list}">
-					<!-- <a class="btn btn-default" data-target="#modal" data-toggle="modal"> -->
 						<table class="list_table" width="800">
 							<tr>
 								<td rowspan="4" class="img_td" id="board_r_fname"><c:if
@@ -109,9 +108,9 @@
 										<c:out value="NO IMAGE"></c:out>
 									</c:if></td>
 								<td class="table_top">제목</td>
-								<td colspan="3" id="board_r_title">${board.r_title}</td>
+								<td class="table_top"colspan="3" id="board_r_title">${board.r_title}</td>
 								<td class="table_top">작성자</td>
-								<td colspan="2" id="board_id">${board.id}</td>
+								<td class="table_edge1" colspan="2" id="board_id">${board.id}</td>
 							</tr>
 							<tr>
 								<td>평점</td>
@@ -130,14 +129,12 @@
 								<td id="board_number_of_stay_days">${board.number_of_stay_days }</td>
 								<td>조회수</td>
 								<td colspan="2" class="table_right" id="board_r_hitcount">${board.r_hitcount }
-								<input type="hidden" id="board_r_content" value="${board.r_content}">
 								<input type="hidden" id="board_r_no" value="${board.r_no }">
-								<input type="hidden" id="board_r_grade" value="${board.r_grade}">
 								</td>
 							</tr>
 						</table>
 					<!-- </a> -->
-					<a href="/review/detailReview/${board.r_no}">후기자세히보기</a>
+					
 				</c:forEach>
 			</div>
 			
@@ -172,64 +169,6 @@
 		</div>
 	</div>
 
-	<!-- <p><a class="btn btn-default" data-target="#modal" data-toggle="modal">후기 보기2</a></p> -->
-	
-	<div class="row" style="width: 75%;height: 80%;">
-		<div class="modal" id="modal" tabindex="-1">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<div id="r_title"></div>
-						<button class="close" data-dismiss="modal">&times;</button>
-					</div>
-					<div class="modal-body" style="text-align: center;">
-						<input class="sessionId" type="hidden" value="${sessionId}">
-						<table class="tg" align="center">
-							<tr>
-								<td class="tg-0pky">호텔명</td>
-								<td class="tg-0pky" id="h_name"></td>
-								<td class="tg-0pky">숙박일수</td>
-								<td class="tg-0pky" id="number_of_stay_days"></td>
-							</tr>
-							<tr>
-								<td class="tg-0pky" >평점 :</td>
-								<td id="r_grade"></td>
-								<td class="tg-0pky" id="id"></td>
-								<td class="tg-0pky" id="r_redate"></td>
-							</tr>
-							<tr>
-								<td colspan='4'>[ MAIN IMAGE ]</td>
-							</tr>
-							<tr>
-								<c:choose>
-									<c:when test="${board.r_fname!=null }">
-										<td colspan='4'><img
-											src="images/pages/review_main_img/${board.r_fname}" /></td>
-									</c:when>
-									<c:when test="${board.r_fname==null }">
-										<td><c:out value="NO IMAGE"></c:out></td>
-									</c:when>
-								</c:choose>
-							</tr>
-							<tr>
-								<td class="tg-0pky" colspan="4" id="r_content">
-								</td>
-							</tr>
-							<tr>
-								<td colspan="4" class="only_writer">
-									<a href="reveiw_update?r_no=${board.r_no}">수정</a> 
-									<a href="review_delete?r_no=${board.r_no}">삭제</a>
-									<button class="btn-board_update">수정</button>
-									<button class="btn-board_delete">삭제</button>
-								</td>
-							</tr>
-						</table>
-					</div>
-				</div>
-			</div>    
-		</div>
-	</div>
-
 	<script type="text/javascript">
 	$(document).ready(function() {
 		
@@ -249,25 +188,13 @@
 		default:
 			break;
 		}
-/* 
-	  $("#review_button").click(function() {/
-			$("#rooms").css("display", "none");
-			$("#reviews").css("display", "block");
-		});
-		$("#rooms_button").click(function() {
-			$("#rooms").css("display", "block");
-			$("#reviews").css("display", "none");
-		});
-		
-		$("#button-photo").click(function() {
-			self.location = "/review/review_list"
-				/* + '${pageMaker.makeQuery(1)}' 
-				+ "searchType="
-				+ $("select option:selected").val()
-				+ "&keyword=" + $('#keywordInput').val();
 
-		})  
-		 */
+		$(".table_container").on("click", ".list_table", function(event) {
+			var review = $(this);
+			var r_no = review.find('#board_r_no').val();
+			alert(r_no);
+		    location.href="/review/detailReview/"+r_no;
+		});
 		 
 		 
 	});

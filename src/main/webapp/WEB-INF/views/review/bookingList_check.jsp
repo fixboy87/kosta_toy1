@@ -14,16 +14,16 @@
 <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/gng_style/gng_contact.css">
 <link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/gng_style/gng_main.css">
-<script src="../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script>
-<script src="../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
-<script src="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>
-<script src="../resources/bootstrap/plugins/common/greensock/TweenMax.min.js"></script>
-<script src="../resources/bootstrap/plugins/common//greensock/TimelineMax.min.js"></script>
-<script src="../resources/bootstrap/plugins/common//scrollmagic/ScrollMagic.min.js"></script>
-<script src="../resources/bootstrap/plugins/common//greensock/animation.gsap.min.js"></script>
-<script src="../resources/bootstrap/plugins/common//greensock/ScrollToPlugin.min.js"></script>
-<script src="../resources/bootstrap/plugins/common//easing/easing.js"></script>
-<script src="../resources/bootstrap/plugins/common//parallax-js-master/parallax.min.js"></script>
+<script src="../../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script>
+<script src="../../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
+<script src="../../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>
+<script src="../../resources/bootstrap/plugins/common/greensock/TweenMax.min.js"></script>
+<script src="../../resources/bootstrap/plugins/common//greensock/TimelineMax.min.js"></script>
+<script src="../../resources/bootstrap/plugins/common//scrollmagic/ScrollMagic.min.js"></script>
+<script src="../../resources/bootstrap/plugins/common//greensock/animation.gsap.min.js"></script>
+<script src="../../resources/bootstrap/plugins/common//greensock/ScrollToPlugin.min.js"></script>
+<script src="../../resources/bootstrap/plugins/common//easing/easing.js"></script>
+<script src="../../resources/bootstrap/plugins/common//parallax-js-master/parallax.min.js"></script>
 <!-- <script src="../resources/bootstrap/scripts/common/contact_custom.js"></script> -->
 <%-- summernote 라이브러리 추가 --%>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -34,8 +34,8 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
 <!-- <--------------------------syj------------>
 <!-- <script src="/scripts/syj_script/reviewList/list.js"></script> -->
-<script src="../resources/bootstrap/scripts/syj_script/reviewList/list.js"></script>
-<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/syj_style/syj_contact.css">
+<script src="../../resources/bootstrap/scripts/syj_script/reviewList/list.js"></script>
+<link rel="stylesheet" type="text/css" href="../../resources/bootstrap/styles/syj_style/syj_contact.css">
 
 
 	
