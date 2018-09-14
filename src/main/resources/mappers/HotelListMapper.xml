@@ -7,8 +7,8 @@
  
  	<!-- for돌려 기본 호텔 리스트--> 
  	<select id="hotelList" resultType="HotelaVO">
- 	<![CDATA[
- 		 select DISTINCT h_name, h_address, price, h_info, pic_url, h_location
+ 	<!-- <![CDATA[
+ 		 select DISTINCT h_no, h_name, h_address, price, h_info, pic_url, h_location
  			from HOTEL ho inner join hotel_room ro
   			on ho.h_no = ro.h_no
  			join hotel_order hor
@@ -34,7 +34,13 @@
                   (ho.h_no = 10 and ho.room_count - (Select count(h_no) from HOTEL_ORDER
           				where h_no = 10 and(START_DAY <= sysdate and sysdate <= END_DAY))>0)
           				
- 	]]>
+ 	]]> -->
+ 	
+ 	<!--테스트용 fddf-->
+ 		<![CDATA[
+ 	 	  select *from hotel
+          	where rownum <= 10
+        ]]>	
  	</select>
  	
     <select id="hotelListConditions" resultType="HotelaVO" parameterType="HotelaVO">

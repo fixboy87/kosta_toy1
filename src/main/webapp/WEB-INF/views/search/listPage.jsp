@@ -131,7 +131,7 @@
 												<div class="find_form_container">
 												
 													<!-- 가격 폼 -->
-													<form action="/search/listPage1" id="find_form" method="get"
+													<form action="/search/listPage1#dirPic" id="find_form" method="get"
 														class="find_form d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-md-between justify-content-start flex-wrap">
 
 														<div class="find_item">
@@ -239,27 +239,21 @@
 			</div>
 			<div class="row">
 				<div class="col">
-					<div class="items item_grid clearfix">
+					<div class="items item_grid clearfix" id="scrollLocation">
 					<!-- forEach -->
 					<c:forEach var="listH" items="${list}"> 
 						<!-- Item -->
-						<div class="item clearfix rating_5">
+						<div class="item clearfix rating_5" id="listToChange">
 							<div class="item_image"><a href="HotelDetailAction.do?h_no=${listH.h_no}"><img src="http://localhost:8081/kostaProject1/images/pages/HYimg/${listH.pic_url}" alt=""></a></div>
 							<div class="item_content">
 								<div class="item_price">${listH.h_location}</div>
 								<div class="item_title">${listH.h_name }</div>
+								<div class="scrolling" data-bno="${listH.h_no }" style="display: none;">${listH.h_no }</div>
 								<ul>
 									<li>${listH.price}만원</li>
 									<li>1 nights</li>
 									<li>3 star hotel</li>
 								</ul>
-								<div class="rating rating_5" data-rating="5">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
 								<div class="item_text">${listH.h_info}</div>
 								<div class="item_more_link"><a href="#">Read More</a></div>
 							</div>
@@ -283,6 +277,72 @@
 		</div>
 	</div>
 </div>
+<script>
+
+var lastScrollTop = 0;
+var easeEffect = 'easeInQuint';
+
+$(window).scroll(function(){
+
+	var currentScrollTop = $(window).scrollTop();
+	
+	if(currentScrollTop - lastScrollTop > 0){
+		if($(window).scrollTop() >= ($(document).height() - $(window).height())){
+			var lastbno = $(".scrolling:list").attr("data-bno");
+			
+			$.ajax({
+				type : 'post',
+				url : 'search/listPage',
+				headers : {
+					"Content-Type" : "application/json",
+                    "X-HTTP-Method-Override" : "post"
+				},
+				dataType : 'json',
+				data : JSON.stringify({
+					bno : lastbno
+				}),
+				success : function(data){
+					var str ="";
+					
+					if(data != ""){
+						$(data).each(
+							function(){
+								console.log(this);
+								srt+="<div class=" + "'item clearfix rating_5'" "id=" + "'listToChange'" + ">" + "</div>"
+								   + "<div class=" + "'item_image'" + ">" + "</div>"
+								   + "<div class=" + "'item_content'" +">"
+								   + "<div class=" + "'item_price'" + ">" + this.h_location + "</div>"
+								   + "<div class=" + "'item_title'" + ">" + this.h_name + "</div>"
+								   + "<div class=" +  "'scrolling'" + "style=" + "'display:non;'" + " data-h_no='" + this.h_no +"'>" + this.h_no + "</div>"
+                                   + "<ul>"
+                                   + "<li>" + this.price + "만원" + "</li>"
+                                   + "<li>" + "1 nights" + "</li>"
+                                   + "<li>" + "3 star hotel" + "</li>"
+                                   + "<ul>"
+                                   + "<div class=" + "'item_text'" + ">" + this.h_info + "</div>"
+                                   + "<div class=" + "'item_more_link'" + ">" + "Read More" + "</div>"
+                                   + "</div>"
+                                   + "</div>";               
+									
+							)};
+							$("#listToChange").empty();
+							$("#scrollLocation").after(str));}							
+					}
+					else{
+						alert("데이터끝")	
+					}
+				}
+			});
+			var position = $(".listToChange:first").offset();
+			$('html,body').stop().animate({scrollTop : position.top }, 600, easeEffect);
+		}
+		lastScrollTop = currentScrollTop;
+	}
+	
+});
+
+	
+</script>
 
 <!-- Footer -->
 <%@include file="../sub_page/footer.html" %>

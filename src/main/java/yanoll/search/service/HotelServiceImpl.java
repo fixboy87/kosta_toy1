@@ -28,16 +28,15 @@ public class HotelServiceImpl implements HotelService {
 	public List<HotelaVO> hotelListConditions(HotelaVO vo) throws Exception {
 		
 		//날짜 비교 
-		/*String start = vo.getStart_day();
-		String end = vo.getEnd_day();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		
-		start = dateFormat.format(new Date(start));
-		end = dateFormat.format(new Date(end));
-		
-		String day = vo.getStart_day();*/
-		
-		
+//		String start = vo.getStart_day();
+//		String end = vo.getEnd_day();
+//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//		
+//		start = dateFormat.format(new Date(start));
+//		end = dateFormat.format(new Date(end));
+//		
+//		String day = vo.getStart_day();
+	
 		
 		
 		

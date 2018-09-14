@@ -29,9 +29,13 @@ public class HotelController {
 	private HotelService service;
 	
 	@RequestMapping(value = "/listPage", method = RequestMethod.GET)
-	public void listPage(Model model)throws Exception{
+	public void lisssss()throws Exception{
+		
+	}
+	
+	@RequestMapping(value = "/listPage", method = RequestMethod.POST)
+	public void listPage(Model model, @RequestBody HotelaVO vo)throws Exception{
 		System.out.println("컨트롤러 체크");
-		System.out.println(service.hotelListBasic());
 		
 		model.addAttribute("list", service.hotelListBasic());
 
@@ -53,10 +57,10 @@ public class HotelController {
 		vo.setLow_price(low_price);
 		vo.setMax_price(max_price);
 		
-		model.addAttribute(service.hotelListConditions(vo));
+		model.addAttribute("list",service.hotelListConditions(vo));
 	}
 	
-
+	
 
 	
 	
