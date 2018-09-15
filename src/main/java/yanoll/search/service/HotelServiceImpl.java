@@ -46,4 +46,12 @@ public class HotelServiceImpl implements HotelService {
 		return dao.infinityScroll(h_no);
 	}
 
+	@Override
+	public void dataInsert(HotelaVO vo) throws Exception {
+		dao.dataInsert(vo);
+		
+	}
+
+	
+
 }

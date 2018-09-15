@@ -295,14 +295,22 @@ $(window).scroll(function(){
                             	console.log(this);
                             	console.log("asdasdfslyiabhfmwrg");
                             	
-                            	str+="<div>asffger</div>" ;    
+                            	str +="<div class=" + "item clearfix rating_5" +"id=" + "listToChange"+">"    
+                            		
+                            			
                             	
                         });
+                        
+                        
+					
+					
+					
                         $("#scrollLocation").after(str);               
                     }
                     else{ 
                         alert("더 불러올 데이터가 없습니다.");
                     }
+                    
      
                 }
             });
