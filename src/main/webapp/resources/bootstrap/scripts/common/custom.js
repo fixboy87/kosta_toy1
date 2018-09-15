@@ -320,7 +320,7 @@ $(document).ready(function()
 	var $titleMessage = $("#title_message").attr("value");
 	
 	if($titleMessage == "register_wrong_access") {
-		alert("허가되지 않은 접근방식입니다!!!");
+		alert("허가되지 않은 접근방식입니다!!!\n정상적인 방식으로 접근해주세요.");
 	} else if($titleMessage == "register_success") {
 		alert("회원가입 성공!!!\n다시 재 로그인 해주세요.");
 	} else if($titleMessage == "login_success") {
@@ -344,7 +344,7 @@ $(document).ready(function()
 	var $sessionName = $("#session_name").attr("value");
 	
 	if($sessionType == null) {
-		$sessionType == "null"
+		$sessionType = "null"
 	}
 	if($sessionType != "null") {
 		var greetings = "";

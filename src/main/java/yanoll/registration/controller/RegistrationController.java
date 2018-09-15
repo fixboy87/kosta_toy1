@@ -193,14 +193,13 @@ public class RegistrationController {
 		try {
 			service.modifyUser(user);
 			model.addAttribute("user", service.myPageList(request));
+			rttr.addFlashAttribute("message", "update_success");
+			return "/register/myPage";
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			return generalExceptionHandler(rttr);
 		}
-		
-		rttr.addFlashAttribute("message", "update_success");
-		return "/register/myPage";
 	}
 	
 	@RequestMapping(value = "/modify_hotel", method = RequestMethod.POST)
@@ -209,14 +208,13 @@ public class RegistrationController {
 		try {
 			service.modifyHotel(hotel);
 			model.addAttribute("hotel", service.myPageList(request));
+			rttr.addFlashAttribute("message", "update_success");
+			return "/register/adminPage";
 		
 		} catch (Exception e) {
 			e.printStackTrace();
 			return generalExceptionHandler(rttr);
 		}
-		
-		rttr.addFlashAttribute("message", "update_success");
-		return "/register/adminPage";
 	}
 	
 	@RequestMapping(value ="/findInfo", method = RequestMethod.GET)
@@ -254,6 +252,7 @@ public class RegistrationController {
 	}
 	
 
+	
 	
 	
 	@RequestMapping(value = "/checkId", method = RequestMethod.GET)

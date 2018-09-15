@@ -169,10 +169,7 @@ $(document).ready(function() {
 					console.log("사용 가능한 아이디입니다.");
 				} 
 			}
-		
 		});
 	}); 
-	
-	
 });
 
