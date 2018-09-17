@@ -251,10 +251,8 @@ public class RegistrationController {
 		return "redirect:/";
 	}
 	
-
 	
-	
-	
+	//Ajax 요청들
 	@RequestMapping(value = "/checkId", method = RequestMethod.GET)
 	public @ResponseBody String idcheck(@RequestBody String id, RedirectAttributes rttr) {
 		try {
@@ -265,6 +263,12 @@ public class RegistrationController {
 		}
 		return "success";
 	}
+	
+	
+	
+	
+	
+	
 	
 	
 	

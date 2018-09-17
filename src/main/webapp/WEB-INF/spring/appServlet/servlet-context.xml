@@ -27,6 +27,7 @@
 
 <!-- mj -->
 <context:component-scan base-package="yanoll.registration.controller"/>
+<context:component-scan base-package="yanoll.managing.controller"/>
 
 <!--  hw -->
 <context:component-scan base-package="yanoll.search.controller"/>
