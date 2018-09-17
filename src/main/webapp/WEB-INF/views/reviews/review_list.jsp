@@ -83,7 +83,11 @@
 						<option  value="최신순">최신순</option>
 						<option  value="평점순">평점순</option>
 					</select> 
-					<a href="/reviews/bookingList_check">후기 작성</a>
+					
+					<c:if test="${not empty uid}">
+						<a href="/reviews/bookingList_check">후기 작성</a>
+					</c:if>
+					
 				</div>
 			</header>
 
@@ -278,7 +282,8 @@ var photo=false;
 	})
 /* review 페이징 클릭 */
  	$(".pagination").on("click", "li a", function(event) {
-		event.preventDefault();
+		alert("페이징클릭")
+ 		event.preventDefault();
 		reviewPage = $(this).attr("href");
 		alert(photo);
 		getPage("/hotelReviews/" + h_no + "/" + reviewPage+"/"+photo);

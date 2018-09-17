@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="yanoll.mapper.Review_ReviewMapper">
+
+ 	<select id="list" resultType="Review_ReplyVO">
+ 		SELECT *
+ 			FROM REVIEW_REPLY
+ 			WHERE r_no = #{r_no}
+ 			ORDER BY r_r_no DESC
+ 	</select>
+ 	
+ 	<insert id="create" parameterType="Review_ReplyVO">
+ 		INSERT INTO REVIEW_REPLY (r_r_no, r_no, r_r_content, id, userNo, r_r_redate)
+ 			values(repley_seq.nextval, #{r_no}, #{r_r_content}, #{id}, #{userNo}, sysdate)
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="Review_ReplyVO">
+ 		update REVIEW_REPLY 
+ 			SET r_r_content = #{r_r_content},
+ 			r_r_updatedate = sysdate
+ 			where r_r_no = #{r_r_no}
+ 	</update>
+ 	
+ 	<delete id="delete">
+ 		delete from REVIEW_REPLY where r_r_no = #{r_r_no}
+ 	</delete>
+ 	
+ 	<select id="listPage" resultType="Review_ReplyVO">
+	  <![CDATA[
+		 select 
+		   r_r_no, r_no, r_r_content, id, userNo, r_r_redate, r_r_updatedate
+		 from
+		   (
+		   select /*+INDEX_DESC(REVIEW_REPLY REVIEW_REPLEY_NO_PK))*/
+		     rownum rn, r_r_no, r_no, r_r_content, id, userNo, r_r_redate, r_r_updatedate
+		   from REVIEW_REPLY
+		   where r_no = #{r_no}
+		   and r_r_no > 0
+		   and rownum <= #{cri.page} * #{cri.perPageNum}
+		   )
+		where rn > ( #{cri.page} -1) * #{cri.perPageNum}
+	  ]]>
+	</select>
+	
+	<select id="count" resultType="int">
+		select count(r_no) from REVIEW_REPLY
+		where r_no =#{r_no}
+	</select>
+	
+  	<select id="getR_no" resultType="int">
+		SELECT r_no FROM REVIEW_REPLY WHERE r_r_no = #{r_r_no}
+	</select>
+  
+
+</mapper>

@@ -5,157 +5,170 @@
 
 <mapper namespace="yanoll.mapper.Review_BoardMapper">
 
-<!-- listReview_hotel -->
-<!-- 	<select id ="listReview_hotel" resultType="Review_BoardVO" parameterType="int">
-      SELECT * 
-   		 FROM review_board 
-  		 WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = #{h_no})
-      	 ORDER BY r_no desc, r_redate desc
-   </select> -->
-   
-<!-- listReview_hotel -->
-	<select id ="listReview_hotel" resultType="Review_BoardVO" >
-      SELECT * 
-   		 FROM review_board 
-  		 WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = #{h_no})
-      	<if test="photo">
-      		AND r_fname is NOT null
-      	</if> 
-      	ORDER BY r_no desc, r_redate desc
-   </select>
-   
-<!-- 호텔 후기 목록 -->
-   <select id ="listReview" resultType="Review_BoardVO">
-      SELECT*
-      	FROM review_board 
-      	order by r_no desc, r_redate desc
-   </select>
-<!--    <select id ="listReview" resultType="Review_BoardVO" parameterType="ReviewSearchVO">
-      SELECT*FROM review_board 
-     		where h_name =#{h_name}
-      		<if test="search != null">
-      				AND r_fname is NOT null
-      		</if> 
-   </select> -->
-   
+	<!-- listReview_hotel -->
+	<!-- <select id ="listReview_hotel" resultType="Review_BoardVO" parameterType="int"> 
+		SELECT * FROM review_board WHERE h_name = (SELECT h_name FROM hotel WHERE 
+		h_no = #{h_no}) ORDER BY r_no desc, r_redate desc </select> -->
+
+	<!-- listReview_hotel -->
+	<select id="listReview_hotel" resultType="Review_BoardVO">
+		SELECT *
+		FROM review_board
+		WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = #{h_no})
+		<if test="photo">
+			AND r_fname is NOT null
+		</if>
+		ORDER BY r_no desc, r_redate desc
+	</select>
+
+	<!-- 호텔 후기 목록 -->
+	<select id="listReview" resultType="Review_BoardVO">
+		SELECT*
+		FROM review_board
+		order by r_no desc, r_redate desc
+	</select>
+	<!-- <select id ="listReview" resultType="Review_BoardVO" parameterType="ReviewSearchVO"> 
+		SELECT*FROM review_board where h_name =#{h_name} <if test="search != null"> 
+		AND r_fname is NOT null </if> </select> -->
+
 	<select id="countPaging" resultType="int">
-		select count(r_no) 
-			from	review_board 
+		select count(r_no)
+		from review_board
 	</select>
-	
- 	<select id="listCheck" parameterType="String" resultType="Hotel_OrderDTO">
+
+	<select id="listCheck" parameterType="String" resultType="Hotel_OrderDTO">
 		select*
-			from Hotel_Order 
-    		where userno=
-    		(select userno from users where id = #{id}) 
-    		and P_CONDITION =2
-	</select> 
-	
- 	<select id="searchHotle_name" parameterType="int" resultType="String">
-		select h_name 
-			from hotel 
-			where h_no=#{h_no}
-	</select> 
-	
-	 <insert id="insertReview" parameterType="Review_BoardVO">
-		insert into review_board
-			(r_no, r_title, r_grade, r_content, r_redate, r_hitcount , r_fname, order_num, h_name, number_of_stay_days, userNo, id 
-		)values(review_seq.nextval, #{r_title}, #{r_grade}, #{r_content}, sysdate, 0, #{r_fname}, #{order_num}, #{h_name}, #{number_of_stay_days}, #{userNo}, #{id})
-	</insert> 
-
- 	<select id="search_userNo" parameterType="String" resultType="int">
-		select userNo from users where id=#{id}
-	</select> 
-	
-<!-- 디테일 게시물	 -->
-   <select id="detailReview" parameterType="Review_BoardVO" resultType="Review_BoardVO">
-		select*from review_board where r_no = #{r_no}
-	</select>  
-
-<!-- 게시물 삭제 -->	
- 	<delete id="deleteReivew" parameterType="Review_BoardVO">
-		delete from review_board where r_no = #{r_no}
-	</delete> 
-
-<!-- 게시물 수정 -->
- 	<update id="updateReview" parameterType="Review_BoardVO">
-		UPDATE review_board SET r_title = #{r_title}, r_content=#{r_content}  WHERE r_no=#{r_no}
-	</update>
-	
-<!-- 조회수 수정 -->
- 	<update id="updateReviewCnt" parameterType="int">
-		UPDATE review_board 
-			SET R_HITCOUNT = R_HITCOUNT + 1
-			WHERE r_no = #{r_no}
-	</update>
-	
-<!-- 후기가능 booking 리스트 -->
-<!-- 	<select id="listCheck" parameterType="String" resultType="Booking">
-		select*from booking 
-    		where userno=(select userno from users where id = #{id}) and P_CONDITION =2
-	</select> -->
-
-<!-- 호텔 이름 찾기 -->
-<!-- 	<select id="searchHotle_name" parameterType="int" resultType="String">
-		select h_name from hotel where h_no=#{h_no}
-	</select> -->
-
-
-<!-- 회원 번호 -->
-<!-- 	<select id="search_userNo" parameterType="String" resultType="int">
-		select userNo from users where id=#{id}
-	</select> -->
-
-<!-- booking의 p_condition 후기 작성 전(2)-> 작성 후(4) -->
- 	<update id="changeCondition" parameterType="int">
-		UPDATE Hotel_Order 
-				SET p_condition = 3
-		        where order_num =#{order_num}
-	</update> 
-
-<!-- 게시물 수정 -->
-<!-- 	<update id="updateReview" parameterType="Review_Board">
-		UPDATE review_board SET r_title = #{r_title}, r_content=#{r_content}  WHERE r_no=#{r_no}
-	</update>
- -->
- 
-<!-- ajax list -->
-	<select id ="listReview_hotelPage" resultType="Review_BoardVO">
-      SELECT * 
-   		 FROM review_board 
-  		 WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = #{h_no})
-      	 <if test="photo">
-      		AND r_fname is NOT null
-      	</if> 
-      	ORDER BY r_no desc, r_redate desc
-   </select>
-   
-<!-- 	<select id ="listReview_hotelPage" resultType="Review_BoardVO">
-      SELECT * 
-   		 FROM review_board 
-  		 WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = #{h_no})
-      	 ORDER BY r_no desc, r_redate desc
-   </select> -->
-   
-	<select id="count" resultType="int">
-		select count(r_no) 
-			from	review_board 
-			WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = #{h_no})
-			<if test="photo">
-      		AND r_fname is NOT null
-      		</if> 
+		from Hotel_Order
+		where userno=
+		(select userno from users where id = #{id})
+		and P_CONDITION =2
 	</select>
-	
-<!-- 	<select id="count" resultType="int">
-		select count(r_no) 
-			from	review_board 
-			WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = #{h_no})
-	</select> -->
 
-	<select id="photoCnt" resultType="int" >
+	<select id="searchHotle_name" parameterType="int" resultType="String">
+		select h_name
+		from hotel
+		where h_no=#{h_no}
+	</select>
+
+	<insert id="insertReview" parameterType="Review_BoardVO">
+		insert into review_board
+		(r_no, r_title, r_grade, r_content, r_redate, r_hitcount , r_fname,
+		order_num, h_name, number_of_stay_days, userNo, id
+		)values(review_seq.nextval, #{r_title}, #{r_grade}, #{r_content},
+		sysdate, 0, #{r_fname}, #{order_num}, #{h_name},
+		#{number_of_stay_days}, #{userNo}, #{id})
+	</insert>
+
+	<select id="search_userNo" parameterType="String" resultType="int">
+		select userNo from users where id=#{id}
+	</select>
+
+	<!-- 디테일 게시물 -->
+	<select id="detailReview" parameterType="Review_BoardVO"
+		resultType="Review_BoardVO">
+		select*from review_board where r_no = #{r_no}
+	</select>
+
+	<!-- 게시물 삭제 -->
+	<delete id="deleteReivew" parameterType="Review_BoardVO">
+		delete from review_board
+		where r_no = #{r_no}
+	</delete>
+
+	<!-- 게시물 수정 -->
+	<update id="updateReview" parameterType="Review_BoardVO">
+		UPDATE review_board SET
+		r_title = #{r_title}, r_content=#{r_content} WHERE r_no=#{r_no}
+	</update>
+
+	<!-- 조회수 수정 -->
+	<update id="updateReviewCnt" parameterType="int">
+		UPDATE review_board
+		SET R_HITCOUNT = R_HITCOUNT + 1
+		WHERE r_no = #{r_no}
+	</update>
+
+	<!-- 후기가능 booking 리스트 -->
+	<!-- <select id="listCheck" parameterType="String" resultType="Booking"> 
+		select*from booking where userno=(select userno from users where id = #{id}) 
+		and P_CONDITION =2 </select> -->
+
+	<!-- 호텔 이름 찾기 -->
+	<!-- <select id="searchHotle_name" parameterType="int" resultType="String"> 
+		select h_name from hotel where h_no=#{h_no} </select> -->
+
+
+	<!-- 회원 번호 -->
+	<!-- <select id="search_userNo" parameterType="String" resultType="int"> 
+		select userNo from users where id=#{id} </select> -->
+
+	<!-- booking의 p_condition 후기 작성 전(2)-> 작성 후(4) -->
+	<update id="changeCondition" parameterType="int">
+		UPDATE Hotel_Order
+		SET p_condition = 3
+		where order_num =#{order_num}
+	</update>
+
+	<!-- 게시물 수정 -->
+	<!-- <update id="updateReview" parameterType="Review_Board"> UPDATE review_board 
+		SET r_title = #{r_title}, r_content=#{r_content} WHERE r_no=#{r_no} </update> -->
+
+	<!-- ajax list -->
+	<!-- <select id="listReview_hotelPage" resultType="Review_BoardVO">
+		SELECT *
+		FROM review_board
+		WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = #{h_no})
+		<if test="photo">
+			AND r_fname is NOT null
+		</if>
+		ORDER BY r_no desc, r_redate desc
+	</select> -->
+	
+	<select id="listReview_hotelPage" resultType="Review_BoardVO">
+	 <![CDATA[
+		select
+		r_no, r_title, r_grade, r_content, r_redate, r_hitcount, r_fname,
+		order_num, h_name, number_of_stay_days,userNo,id
+		from
+		(
+		select /*+INDEX_DESC(REVIEW_REPLY REVIEW_REPLEY_NO_PK))*/
+		rownum rn,
+		r_no, r_title, r_grade, r_content, r_redate, r_hitcount, r_fname,
+		order_num, h_name, number_of_stay_days,userNo,id
+		from Review_Board
+		where h_name = (SELECT h_name FROM hotel WHERE h_no = #{h_no})
+		 ]]>
+		<if test="photo">
+			AND r_fname is NOT null
+		</if>
+		<![CDATA[
+		and r_no > 0
+		and rownum <= #{cri.page} * #{cri.perPageNum}
+		)
+		where rn > ( #{cri.page} -1) * #{cri.perPageNum}
+		 ]]>
+	</select>
+
+	<!-- <select id ="listReview_hotelPage" resultType="Review_BoardVO"> SELECT 
+		* FROM review_board WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = 
+		#{h_no}) ORDER BY r_no desc, r_redate desc </select> -->
+
+	<select id="count" resultType="int">
+		select count(r_no)
+		from review_board
+		WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = #{h_no})
+		<if test="photo">
+			AND r_fname is NOT null
+		</if>
+	</select>
+
+	<!-- <select id="count" resultType="int"> select count(r_no) from review_board 
+		WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = #{h_no}) </select> -->
+
+	<select id="photoCnt" resultType="int">
 		SELECT COUNT(*)
-	   		 FROM review_board 
-	  		 WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = #{h_no})
-	         AND r_fname is not null
+		FROM review_board
+		WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = #{h_no})
+		AND r_fname is not null
 	</select>
 </mapper>
