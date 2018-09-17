@@ -5,11 +5,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import yanoll.order.domain.Hotel_Order;
+import yanoll.enquire.domain.Criteria;
 import yanoll.review.domain.Hotel_OrderDTO;
-import yanoll.review.domain.ReviewCriteria;
-import yanoll.review.domain.ReviewSearchVO;
 import yanoll.review.domain.Review_BoardVO;
 import yanoll.review.persistence.ReviewDAO;
 
@@ -20,12 +19,12 @@ public class ReviewServiceImpl implements ReviewService {
 	private ReviewDAO dao;
 
 	@Override
-	public List<Review_BoardVO> listReview(ReviewCriteria cri)throws Exception {
+	public List<Review_BoardVO> listReview(Criteria cri)throws Exception {
 		return dao.listReview(cri);
 	}
 
 	@Override
-	public int CountPaging(ReviewCriteria cri) throws Exception {
+	public int CountPaging(Criteria cri) throws Exception {
 		return dao.CountPaging(cri);
 	}
 
@@ -39,15 +38,18 @@ public class ReviewServiceImpl implements ReviewService {
 		return dao.searchHotle_name(h_no);
 	}
 
+	@Transactional
 	@Override
 	public void insertReview(Review_BoardVO board) throws Exception {
 		board.setUserNo(dao.search_userNo(board.getId()));
+		dao.changeCondition(board.getOrder_num());
 		dao.insertReview(board);
 	}
 	
-
+	@Transactional
 	@Override
     public Review_BoardVO detailReview(Integer r_no) throws Exception {
+			dao.updateReviewCnt(r_no);
              return dao.detailReview(r_no);
     }
 
@@ -60,4 +62,25 @@ public class ReviewServiceImpl implements ReviewService {
 	public void updateReview(Review_BoardVO board) throws Exception {
 		dao.updateReview(board);
 	}
+
+	@Override
+	public List<Review_BoardVO> listReview_hotel(Integer h_no) throws Exception {
+		return dao.listReview_hotel(h_no);
+	}
+
+	@Override
+	public List<Review_BoardVO> listReview_hotelPage(Integer h_no, Criteria cri, boolean photo) throws Exception {
+		return dao.listReview_hotelPage(h_no, cri,photo);
+	}
+
+	@Override
+	public int count(Integer h_no, boolean photo) throws Exception {
+		return dao.count(h_no,photo);
+	}
+
+	@Override
+	public int photoCnt(Integer h_no) throws Exception {
+		return dao.photoCnt(h_no);
+	}
+
 }

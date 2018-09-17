@@ -95,7 +95,7 @@ size: 15px;
 		
 		<!-- <div class="w3-margin-top w3-main"	> -->
 		<div class="contact_form_container">
-			<form action="/review/review_insert" method="post"  id="contact_form" class="clearfix" enctype="multipart/form-data"> 
+			<form action="/reviews/review_insert" method="post"  id="contact_form" class="clearfix" enctype="multipart/form-data"> 
 				<input type="hidden" name="order_num" value="${board.order_num}">
 				<input type="hidden" name="userNo" value="${board.userNo}">
 				

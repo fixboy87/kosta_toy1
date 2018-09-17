@@ -28,18 +28,18 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import yanoll.enquire.domain.Criteria;
 import yanoll.enquire.domain.PageMaker;
 import yanoll.order.domain.Hotel_Order;
 import yanoll.review.domain.Hotel_OrderDTO;
-import yanoll.review.domain.ReviewCriteria;
-import yanoll.review.domain.ReviewPageMaker;
 import yanoll.review.domain.ReviewSearchVO;
 import yanoll.review.domain.Review_BoardVO;
 import yanoll.review.dto.Review_boardDTO;
 import yanoll.review.service.ReviewService;
+import yanoll.util.UploadFileUtils;
 
 @Controller
-@RequestMapping("/review/*")
+@RequestMapping("/reviews")
 public class ReviewController {
  
 	@Inject
@@ -53,18 +53,18 @@ public class ReviewController {
 	private static final Logger logger = LoggerFactory.getLogger(ReviewController.class);
 
 	
-	
 	@RequestMapping(value="/review_list", method=RequestMethod.GET)
-	public void listReview(@ModelAttribute("cri")ReviewCriteria cri, Model model)throws Exception{
+	public void listReview()throws Exception{
+		/*public void listReview(@ModelAttribute("cri")Criteria cri, Model model)throws Exception{*/
 		/*ReviewSearchVO vo = new ReviewSearchVO();
-		vo.setH_name("그랜드 하얏트 서울");*/
+		vo.setH_name("그랜드 하얏트 서울");
 		model.addAttribute("list", service.listReview(cri));
 		
 		ReviewPageMaker pageMaker= new ReviewPageMaker();
 		pageMaker.setCri(cri);
 		//pageMaker.setTotalCount(131);
 		pageMaker.setTotalCount(service.CountPaging(cri));
-		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("pageMaker", pageMaker);*/
 
 	}
 	
@@ -105,7 +105,7 @@ public class ReviewController {
 		model.addAttribute("board", board);
 	}
 	
-	public String uploadFile(String originalName, byte[] fileData)throws Exception{
+	/*public String uploadFile(String originalName, byte[] fileData)throws Exception{
 		UUID uid = UUID.randomUUID();
 		String savedName=null;
 		
@@ -120,13 +120,15 @@ public class ReviewController {
 		FileCopyUtils.copy(fileData, target);
 		return savedName;
 		
-	}
+	}*/
+	
 	
 	@RequestMapping(value="/review_insert", method= RequestMethod.POST)
 	public String review_insertPOST(Review_boardDTO dto)throws Exception{
 		System.out.println("------------------------------");
 		MultipartFile file = dto.getR_fname();
-		String savedName =	savedName = uploadFile(file.getOriginalFilename(), file.getBytes());
+		/*		String savedName =	savedName = uploadFile(file.getOriginalFilename(), file.getBytes());*/
+		String savedName = UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes());
 		
 		Review_BoardVO vo= new Review_BoardVO();
 		vo.setR_fname(savedName);
@@ -141,7 +143,7 @@ public class ReviewController {
 		System.out.println(vo.toString());
 		
 		service.insertReview(vo);
-		return"redirect:/review/review_list";
+		return"redirect:/reviews/review_list";
 	}
 	
 	
@@ -150,9 +152,10 @@ public class ReviewController {
              Review_BoardVO vo = service.detailReview(r_no);
              System.out.println("--------------------------------------------");
              System.out.println(vo.toString());
+             
              model.addAttribute("board", vo);
     
-             return "/review/review_detail";
+             return "/reviews/review_detail";
     }
 	
 	@RequestMapping(value="/deleteReview/{r_no}", method=RequestMethod.GET)
@@ -160,7 +163,7 @@ public class ReviewController {
 		System.out.println("컨트롤러에서 삭제할 게시물 번호:"+r_no);
 		service.deleteReview(r_no);
 		
-		return"redirect:/review/review_list";
+		return"redirect:/reviews/review_list";
 	}
 	
 	@RequestMapping(value="/updateReview/{r_no}", method=RequestMethod.GET)
@@ -172,13 +175,13 @@ public class ReviewController {
 		System.out.println("수정할 게시물"+board.toString());
 		model.addAttribute("board", board);
 		
-		return"/review/updateReview";
+		return"/reviews/updateReview";
 	}
 	
 	@RequestMapping(value="/updateReview", method=RequestMethod.POST)
 	public String  updateReviewPOST(Review_BoardVO board, Model model)throws Exception{
 		service.updateReview(board);
 		
-		return"redirect:/review/review_list";
+		return"redirect:/reviews/review_list";
 	}	
 }

@@ -84,7 +84,7 @@ h1 {
                                                           <c:choose>
                                                                    <c:when test="${board.r_fname!=null }">
                                                                              <td colspan='4'>
-                                                                                      <img src="images/pages/review_main_img/${board.r_fname}"/>
+                                                                                      <img src="C:/upload/${board.r_fname}"/>
                                                                              </td>
                                                                    </c:when>
                                                                    <c:when test="${board.r_fname==null }">
@@ -128,10 +128,10 @@ h1 {
 
 		var r_no = ${board.r_no}
 		$('#modifyBtn').click(function(event) {
-			 location.href="/review/updateReview/"+r_no; 
+			 location.href="/reviews/updateReview/"+r_no; 
 		})
 		$('#removeBtn').click(function(event) {
-			 location.href="/review/deleteReview/"+r_no; 
+			 location.href="/reviews/deleteReview/"+r_no; 
 		})
 		
 	})

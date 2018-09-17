@@ -80,7 +80,7 @@
 						<option  value="최신순">최신순</option>
 						<option  value="평점순">평점순</option>
 					</select> 
-					<a href="/review/bookingList_check">후기 작성</a>
+					<a href="/reviews/bookingList_check">후기 작성</a>
 				</div>
 			</header>
 
@@ -98,7 +98,7 @@
 											<c:when
 												test="${pattern == 'jpg' || pattern == 'gif' || pattern == 'JPG' || pattern == 'GIF' }">
 												<img
-													src="images/pages/review_main_img/${head }_small.${pattern}">
+													src="C:/upload/${head }_small.${pattern}">
 											</c:when>
 											<c:otherwise>
 												<c:out value="NO IMAGE"></c:out>
@@ -145,20 +145,20 @@
 
 							<c:if test="${pageMaker.prev}">
 								<li><a
-									href="/review/review_list/${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
+									href="/reviews/review_list/${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
 							</c:if>
 
 							<c:forEach begin="${pageMaker.startPage }"
 								end="${pageMaker.endPage }" var="idx">
 								<li
 									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-									<a href="/review/review_list/${pageMaker.makeSearch(idx)}">${idx}</a>
+									<a href="/reviews/review_list/${pageMaker.makeSearch(idx)}">${idx}</a>
 								</li>
 							</c:forEach>
 
 							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 								<li><a
-									href="/review/review_list/${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
+									href="/reviews/review_list/${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
 							</c:if>
 
 						</ul>
@@ -193,7 +193,7 @@
 			var review = $(this);
 			var r_no = review.find('#board_r_no').val();
 			alert(r_no);
-		    location.href="/review/detailReview/"+r_no;
+		    location.href="/reviews/detailReview/"+r_no;
 		});
 		 
 		 

@@ -3,32 +3,29 @@ package yanoll.review.domain;
 import yanoll.search.domain.HotelaVO;
 
 public class ReviewSearchVO {
-	private String	hotle_name;
-	private String search;
+	private boolean search;
+
 	
 	public ReviewSearchVO() {
+	
 	}
-	public ReviewSearchVO(String hotle_name, String search) {
+	public ReviewSearchVO(boolean search) {
 		super();
-		this.hotle_name = hotle_name;
 		this.search = search;
 	}
-	public String getHotle_name() {
-		return hotle_name;
-	}
-	public void setHotle_name(String hotle_name) {
-		this.hotle_name = hotle_name;
-	}
-	public String getSearch() {
+
+	public boolean isSearch() {
 		return search;
 	}
-	public void setSearch(String search) {
+
+	public void setSearch(boolean search) {
 		this.search = search;
 	}
 	@Override
 	public String toString() {
-		return "ReviewSearchVO [hotle_name=" + hotle_name + ", search=" + search + "]";
+		return "ReviewSearchVO [search=" + search + "]";
 	}
-
+	
+	
 	
 }

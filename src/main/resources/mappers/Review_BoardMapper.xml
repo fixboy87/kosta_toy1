@@ -5,13 +5,25 @@
 
 <mapper namespace="yanoll.mapper.Review_BoardMapper">
 
-<!-- listAll -->
-	<select id ="listReviewAll" resultType="Review_BoardVO">
-      SELECT*
-      	FROM review_board
+<!-- listReview_hotel -->
+<!-- 	<select id ="listReview_hotel" resultType="Review_BoardVO" parameterType="int">
+      SELECT * 
+   		 FROM review_board 
+  		 WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = #{h_no})
+      	 ORDER BY r_no desc, r_redate desc
+   </select> -->
+   
+<!-- listReview_hotel -->
+	<select id ="listReview_hotel" resultType="Review_BoardVO" >
+      SELECT * 
+   		 FROM review_board 
+  		 WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = #{h_no})
+      	<if test="photo">
+      		AND r_fname is NOT null
+      	</if> 
+      	ORDER BY r_no desc, r_redate desc
    </select>
-
-
+   
 <!-- 호텔 후기 목록 -->
    <select id ="listReview" resultType="Review_BoardVO">
       SELECT*
@@ -70,6 +82,13 @@
 		UPDATE review_board SET r_title = #{r_title}, r_content=#{r_content}  WHERE r_no=#{r_no}
 	</update>
 	
+<!-- 조회수 수정 -->
+ 	<update id="updateReviewCnt" parameterType="int">
+		UPDATE review_board 
+			SET R_HITCOUNT = R_HITCOUNT + 1
+			WHERE r_no = #{r_no}
+	</update>
+	
 <!-- 후기가능 booking 리스트 -->
 <!-- 	<select id="listCheck" parameterType="String" resultType="Booking">
 		select*from booking 
@@ -88,17 +107,55 @@
 	</select> -->
 
 <!-- booking의 p_condition 후기 작성 전(2)-> 작성 후(4) -->
-<!-- 	<update id="change_condition" parameterType="int">
-		UPDATE booking SET p_condition = 4
+ 	<update id="changeCondition" parameterType="int">
+		UPDATE Hotel_Order 
+				SET p_condition = 3
 		        where order_num =#{order_num}
-	</update> -->
+	</update> 
 
 <!-- 게시물 수정 -->
 <!-- 	<update id="updateReview" parameterType="Review_Board">
 		UPDATE review_board SET r_title = #{r_title}, r_content=#{r_content}  WHERE r_no=#{r_no}
 	</update>
  -->
+ 
+<!-- ajax list -->
+	<select id ="listReview_hotelPage" resultType="Review_BoardVO">
+      SELECT * 
+   		 FROM review_board 
+  		 WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = #{h_no})
+      	 <if test="photo">
+      		AND r_fname is NOT null
+      	</if> 
+      	ORDER BY r_no desc, r_redate desc
+   </select>
+   
+<!-- 	<select id ="listReview_hotelPage" resultType="Review_BoardVO">
+      SELECT * 
+   		 FROM review_board 
+  		 WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = #{h_no})
+      	 ORDER BY r_no desc, r_redate desc
+   </select> -->
+   
+	<select id="count" resultType="int">
+		select count(r_no) 
+			from	review_board 
+			WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = #{h_no})
+			<if test="photo">
+      		AND r_fname is NOT null
+      		</if> 
+	</select>
+	
+<!-- 	<select id="count" resultType="int">
+		select count(r_no) 
+			from	review_board 
+			WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = #{h_no})
+	</select> -->
 
-
-
+	<select id="photoCnt" resultType="int" >
+		SELECT COUNT(*)
+	   		 FROM review_board 
+	  		 WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = #{h_no})
+	         AND r_fname is not null
+	</select>
 </mapper>

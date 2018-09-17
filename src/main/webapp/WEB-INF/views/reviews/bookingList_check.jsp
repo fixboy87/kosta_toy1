@@ -82,7 +82,7 @@ h1 {
 				  </tr>
 				  <c:forEach var="hotel_OrderDTO" items="${list}">
 				  <tr>
-				  	<form action="/review/review_insert" method="get">
+				  	<form action="/reviews/review_insert" method="get">
 					  	<input type="hidden"  value="${hotel_OrderDTO.order_num}" name="order_num">
 					  	<input type="hidden"  value="${hotel_OrderDTO.h_name}" name="h_name">
 					  	<input type="hidden"  value="${hotel_OrderDTO.userNo}" name="userNo">

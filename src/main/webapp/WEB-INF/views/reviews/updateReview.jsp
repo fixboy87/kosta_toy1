@@ -107,7 +107,7 @@ $(function() {
 		
 		<!-- <div class="w3-margin-top w3-main"	> -->
 		<div class="contact_form_container">
-			<form action="/review/updateReview" method="post"  id="contact_form" class="clearfix" >
+			<form action="/reviews/updateReview" method="post"  id="contact_form" class="clearfix" >
 			
 		
 				<input type="hidden" name="r_no" value="${board.r_no}">
