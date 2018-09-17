@@ -31,13 +31,8 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 	}
 	
 	@Override
-	public String idCheck(String id) throws Exception {
-		String userid = sqlSession.selectOne(namespace+".idcheck", id);
-		
-		if(userid == null) {
-			userid = "none";
-		}
-		return userid;
+	public Users idCheck(String id) throws Exception {
+		return sqlSession.selectOne(namespace+".user_detail", id);
 	}
 
 	@Override

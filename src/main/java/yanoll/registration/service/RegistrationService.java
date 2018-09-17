@@ -31,5 +31,7 @@ public interface RegistrationService {
 	public void findInfo(String email, String tel, String type, RedirectAttributes rttr) throws Exception;
 
 	public void deregister(HttpServletRequest request, RedirectAttributes rttr, HttpServletResponse response) throws Exception;
+
+	public String telcheck(String tel) throws Exception;
 	
 }

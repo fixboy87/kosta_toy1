@@ -1,6 +1,8 @@
 package yanoll.registration.controller;
 
 
+import java.util.Map;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.fasterxml.jackson.databind.util.JSONPObject;
 
 import yanoll.registration.service.RegistrationService;
 import yanoll.user.domain.Actors;
@@ -253,15 +257,31 @@ public class RegistrationController {
 	
 	
 	//Ajax 요청들
-	@RequestMapping(value = "/checkId", method = RequestMethod.GET)
-	public @ResponseBody String idcheck(@RequestBody String id, RedirectAttributes rttr) {
+	/*@RequestMapping(value = "/checkId", method = RequestMethod.POST)
+	public @ResponseBody String idcheck(@RequestBody Map<String, Object> params, HttpServletRequest request, RedirectAttributes rttr) {
+		HttpSession session = request.getSession();
 		try {
-			service.idcheck(id);
+			if((String)params.get("type") != null) {
+				String type = (String)session.getAttribute("type");
+			}
+			return service.idcheck(params);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return generalExceptionHandler(rttr);
 		}
-		return "success";
+	}*/
+
+	@RequestMapping(value = "/checkTel", method = RequestMethod.POST)
+	public @ResponseBody String telcheck(@RequestBody String tel, HttpServletRequest request, RedirectAttributes rttr) {
+		HttpSession session = request.getSession();
+		
+		session.getAttribute("type");
+		try {
+			return service.telcheck(tel);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return generalExceptionHandler(rttr);
+		}
 	}
 	
 	

@@ -10,7 +10,7 @@ public interface RegistrationDAO {
 	
 	public void insert(Users user) throws Exception;
 
-	public String idCheck(String id) throws Exception;
+	public Users idCheck(String id) throws Exception;
 
 	public Users login(LoginDTO dto) throws Exception;
 

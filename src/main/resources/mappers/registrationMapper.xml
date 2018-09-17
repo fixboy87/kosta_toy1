@@ -25,9 +25,10 @@
 			where id = #{id}
 	</select>
 
-	<select id="idCheck" parameterType="String" resultType="String">
-		select id from users where id = #{id}
-	</select>
+	<!-- <select id="idcheck" parameterType="String" resultType="String">
+		select id from users 
+			where id = #{id}
+	</select> -->
 
 	<update id="update_user" parameterType="Users">
 		update users set

@@ -65,111 +65,130 @@ $(document).ready(function() {
 		event.preventDefault();
 		$("#findLoginUser").attr("action", "findInfo").submit();
 	});
-	/**********************validation check 시작********************/
-/*	
-	//패턴
-	var idCheck = /^[a-zA-Z][a-zA-Z0-9]{6,14}$/;
-	var passCheck = /^[a-zA-Z0-9]{6,14}$/;
-	var emailCheck = /^[a-zA-Z0-9]+@[a-z.]/;
-	var telCheck = /^01+[0-9]{7,9}$/;
-	var nameCheck = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
-
+	/** ********************validation check 시작******************* */
+/*
+ * //패턴 var idCheck = /^[a-zA-Z][a-zA-Z0-9]{6,14}$/; var passCheck =
+ * /^[a-zA-Z0-9]{6,14}$/; var emailCheck = /^[a-zA-Z0-9]+@[a-z.]/; var telCheck =
+ * /^01+[0-9]{7,9}$/; var nameCheck =
+ * /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
+ * 
+ * 
+ * //메시지 var idMessage = "소문자로 시작하는 7~15 영문자나 숫자만 입력 가능합니다"; var passMessage =
+ * "6~14 자의 영문자나 숫자만 입력 가능합니다."; var emailMessage = "형식에 맞는 이메일 주소를 입력해 주세요.";
+ * var telMessage = "01로 시작하고 9~11 숫자만 입력이 가능합니다."; var nameMessage = "영문자나 한글만
+ * 입력이 가능합니다."; var passEmptyMessage = "해당창을 입력해주시기 바랍니다." var
+ * passConfirmMessage = "입력하신 비밀번호들이 일치하지 않습니다.";
+ * 
+ * 
+ * $('form#loginUser button').click(function(event) { //로그인 정규식 검사 var $checkId =
+ * $("input[name='id']"); var $checkPass = $("input[name='password']");
+ * 
+ * 
+ * if(!idCheck.test($checkId.val())) { $checkId.val('').attr('placeholder',
+ * idMessage).addClass('wrong_input').focus(); event.preventDefault(); return
+ * false; } else if (!passCheck.test($checkPass.val())) {
+ * $checkPass.val('').attr('placeholder',
+ * passMessage).addClass('wrong_input').focus(); event.preventDefault(); return
+ * false; } else { return true; } });
+ * 
+ * $('form#joinMemberPc .button').click(function() { var $checkEmail =
+ * $("input[name='email']"); var $checkId = $("input[name = 'userId']"); var
+ * $checkTel = $("input[name = 'tel']"); var $checkName = $("input.u_name"); var
+ * $checkPass = $("input[name = 'password']"); var $checkPassConfirm =
+ * $("input[name = 'passwdConfirm']");
+ * 
+ * 
+ * if(!emailCheck.test($checkEmail.val())) {
+ * $checkEmail.val('').attr('placeholder',
+ * emailMessage).addClass('wrong_input').focus(); event.preventDefault(); return
+ * false;
+ *  } else if(!idCheck.test($checkId.val())) {
+ * $checkId.val('').attr('placeholder',
+ * idMessage).addClass('wrong_input').focus(); event.preventDefault(); return
+ * false;
+ *  } else if(!telCheck.test($checkTel.val())) {
+ * $checkTel.val('').attr('placeholder',
+ * telMessage).addClass('wrong_input').focus(); event.preventDefault(); return
+ * false;
+ *  } else if(!nameCheck.test($checkName.val())) {
+ * $checkName.val('').attr('placeholder',
+ * nameMessage).addClass('wrong_input').focus(); event.preventDefault(); return
+ * false;
+ *  } else if (!passCheck.test($checkPass.val())) {
+ * $checkPass.val('').attr('placeholder',
+ * passMessage).addClass('wrong_input').focus(); event.preventDefault(); return
+ * false;
+ *  } else if (($checkPassConfirm.val()) === "" ) {
+ * $checkPassConfirm.val('').attr('placeholder',
+ * passEmptyMessage).addClass('wrong_input').focus(); event.preventDefault();
+ * return false;
+ *  } else if ($checkPass.val() !== $checkPassConfirm.val()) {
+ * $checkPass.val('').attr('placeholder',
+ * passConfirmMessage).addClass('wrong_input').focus();
+ * $checkPassConfirm.val(''); event.preventDefault(); return false; } else {
+ * return true; } });
+ */
 	
-	//메시지
-	var idMessage = "소문자로 시작하는 7~15 영문자나 숫자만 입력 가능합니다";
-	var passMessage = "6~14 자의 영문자나 숫자만 입력 가능합니다.";
-	var emailMessage = "형식에 맞는 이메일 주소를 입력해 주세요.";
-	var telMessage = "01로 시작하고 9~11 숫자만 입력이 가능합니다.";
-	var nameMessage = "영문자나 한글만 입력이 가능합니다.";
-	var passEmptyMessage = "해당창을 입력해주시기 바랍니다."
-	var passConfirmMessage = "입력하신 비밀번호들이 일치하지 않습니다.";
 	
-	
-	$('form#loginUser button').click(function(event) { //로그인 정규식 검사
-		var $checkId = $("input[name='id']");
-		var $checkPass = $("input[name='password']");
-		
-		
-		if(!idCheck.test($checkId.val())) {
-			$checkId.val('').attr('placeholder', idMessage).addClass('wrong_input').focus();
-			event.preventDefault();
-			return false;
-		} else if (!passCheck.test($checkPass.val())) {
-			$checkPass.val('').attr('placeholder', passMessage).addClass('wrong_input').focus();
-			event.preventDefault();
-			return false;
-		} else {
-			return true;
+	// var $idSection = $(".login-cont input[name='id']");
+	var idcheck_stat = false;
+	var $idSection = $("#joinMemberPc input[name='id']");
+	$idSection.on('keyup',function() {
+		var $idTyped = "";
+			
+		$idTyped += $(this).val();
+		if($idTyped.length >= 7) {
+			var data ={};
+			data["id"] = $idTyped;
+			data["type"] = $("#type").attr(value);
+			
+			
+			$(".idcheck_append").remove();
+			$.ajax({
+				contentType: 'application/json',	
+				type : 'post',
+				url : '/register/checkId',
+				dataType : 'json',
+				data: JSON.stringify(data),
+				success : function(result) {
+					if(result == 'success' && idcheck_stat == false) {
+						// $(".idcheck_append").remove();
+						$idSection.parent().after("<div class='idcheck_append'>사용 가능한 아이디입니다.</div>");
+						idcheck_stat = true;
+					} else if(result == 'fail') {
+						// $(".idcheck_append").remove();
+						$idSection.parent().after("<div class='idcheck_append'>사용 불가능한 아이디입니다.</div>");
+						idcheck_stat = false;
+					}
+				}
+			});
 		}
-	});
-
-	$('form#joinMemberPc .button').click(function() {
-		var $checkEmail = $("input[name='email']");
-		var $checkId = $("input[name = 'userId']");
-		var $checkTel = $("input[name = 'tel']");
-		var $checkName = $("input.u_name");
-		var $checkPass = $("input[name = 'password']");
-		var $checkPassConfirm = $("input[name = 'passwdConfirm']");
-		
-		
-		if(!emailCheck.test($checkEmail.val())) {
-			$checkEmail.val('').attr('placeholder', emailMessage).addClass('wrong_input').focus();
-			event.preventDefault();
-			return false;
-			
-		} else if(!idCheck.test($checkId.val())) {
-			$checkId.val('').attr('placeholder', idMessage).addClass('wrong_input').focus();
-			event.preventDefault();
-			return false;
-			
-		} else if(!telCheck.test($checkTel.val())) {
-			$checkTel.val('').attr('placeholder', telMessage).addClass('wrong_input').focus();
-			event.preventDefault();
-			return false;
-			
-		} else if(!nameCheck.test($checkName.val())) {
-			$checkName.val('').attr('placeholder', nameMessage).addClass('wrong_input').focus();
-			event.preventDefault();
-			return false;
-			
-		} else if (!passCheck.test($checkPass.val())) {
-			$checkPass.val('').attr('placeholder', passMessage).addClass('wrong_input').focus();
-			event.preventDefault();
-			return false;
-			
-		} else if (($checkPassConfirm.val()) === "" ) {
-			$checkPassConfirm.val('').attr('placeholder', passEmptyMessage).addClass('wrong_input').focus();
-			event.preventDefault();
-			return false;
-			
-		}  else if ($checkPass.val() !== $checkPassConfirm.val()) {
-			$checkPass.val('').attr('placeholder', passConfirmMessage).addClass('wrong_input').focus();
-			$checkPassConfirm.val('');
-			event.preventDefault();
-			return false;
-		} else {
-			return true;
-		}
-	});*/
-	
-	
-	var $idSection = $(".id_checker");
-	$idSection.keydown (function() {
-		var $idTyped = $idSection.attr("value");
-		
-		$.ajax({
-			type : 'post',
-			url : '/register/checkId',
-			dataType : 'text',
-			data: JSON.stringify({
-				id : $idTyped
-			}),
-			success : function(result) {
-				if(result == 'success') {
-					console.log("사용 가능한 아이디입니다.");
-				} 
-			}
-		});
 	}); 
+	
+	var telcheck_stat = false;
+	var $telSection = $("#joinMemberPc input[name='tel']");
+	$(telSection).on('keyup', function() {
+		var $telTyped = "";
+		
+		$telTyped += $(this).val();
+		if($telTyped.length >= 9) {
+			$(".telcheck_append").remove();
+			$.ajax({
+				type : 'post',
+				url : '/register/checkTel',
+				dataType : 'text',
+				data : $telTyped,
+				success : function(result) {
+					if(result == 'success' && telcheck_stat == false) {
+						$telSection.parent().after("<div class='telcheck_append'>사용 가능한 전화번호 입니다.</div>");
+						telcheck_stat = true;
+					} else if(result == 'fail') {
+						$telSection.parent().after("<div class='telcheck_append'>사용 불 가능한 전화번호 입니다.</div>");
+						telcheck_stat = false;
+					}
+				}
+			});
+		}
+	}
 });
 
