@@ -10,19 +10,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/account/registerForm.css">
-<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.css">
-<link href="../resources/bootstrap/plugins/common/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="../resources/bootstrap/plugins/common/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="../resources/bootstrap/plugins/common/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="../resources/bootstrap/plugins/common/OwlCarousel2-2.2.1/animate.css">
-<link href="../resources/bootstrap/plugins/common/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/main_styles.css">
-<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/responsive.css">
+<link rel="stylesheet" type="text/css" href="../../resources/bootstrap/styles/account/registerForm.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/account/registerForm.css">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css">
+<link rel="stylesheet" type="text/css" href="../../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.css">
+<link href="../resources/bootstrap/plugins/common/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../../resources/bootstrap/plugins/common/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="../../resources/bootstrap/plugins/common/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="../../resources/bootstrap/plugins/common/OwlCarousel2-2.2.1/animate.css">
+<link href="../../resources/bootstrap/plugins/common/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../../resources/bootstrap/styles/common/main_styles.css">
+<link rel="stylesheet" type="text/css" href="../../resources/bootstrap/styles/common/responsive.css">
+<link rel="stylesheet" type="text/css" href="../../resources/bootstrap/styles/account/registerForm.css">
+<link rel="stylesheet" type="text/css" href="../../resources/bootstrap/styles/fullCalendar/fullcalendar.css">
+<!-- <link rel="stylesheet" type="text/css" href="../../resources/bootstrap/styles/fullCalendar/fullcalendar.print.css"> -->
 <style type="text/css">
 .myPageMenuCylinder {
 	/* height: 600px; */
@@ -126,6 +126,7 @@ div.logo div {
 						<div class="button iEnquire myPage_button"><a href="">회원탈퇴</a></div>			
 					</div>
 					<div class="myPageContentCylinder">
+						<h1>예약현황</h1>
 						<div id="fullCalendar"></div>
 					</div>
 				</div>
@@ -135,26 +136,21 @@ div.logo div {
 </div>
 <%@include file="../sub_page/footer.html"%>
 
-<script src="../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script>
-<script src="../resources/bootstrap/scripts/common/moment.min.js"></script>
+<script src="../../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script>
+<script src="../../resources/bootstrap/scripts/common/moment.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
-<script src="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>
-<script src="../resources/bootstrap/plugins/common/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-<script src="../resources/bootstrap/plugins/common/easing/easing.js"></script>
-<script src="../resources/bootstrap/plugins/common/parallax-js-master/parallax.min.js"></script>
-<script src="../resources/bootstrap/plugins/common/magnific-popup/jquery.magnific-popup.min.js"></script>
-<script src="../resources/bootstrap/scripts/common/pignose.calendar.js"></script>
-<script src="../resources/bootstrap/scripts/common/custom.js"></script>
-<script src="../resources/bootstrap/scripts/account/registerForm.js"></script>
-<script src="../resources/bootstrap/scripts/common/menuEffect.js" type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js" type="text/javascript"></script>
+<script src="../../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
+<script src="../../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>
+<script src="../../resources/bootstrap/plugins/common/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="../../resources/bootstrap/plugins/common/easing/easing.js"></script>
+<script src="../../resources/bootstrap/plugins/common/parallax-js-master/parallax.min.js"></script>
+<script src="../../resources/bootstrap/plugins/common/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="../../resources/bootstrap/scripts/common/pignose.calendar.js"></script>
+<script src="../../resources/bootstrap/scripts/common/custom.js"></script>
+<script src="../../resources/bootstrap/scripts/fullCalendar/fullcalendar.js"></script>
+<script src="../../resources/bootstrap/scripts/fullCalendar/gcal.js"></script>
+<script src="../../resources/bootstrap/scripts/account/managing.js"></script>
 <script type="text/javascript">
-function() {
-	$("#fullCalendar").fullCalendar({
-		String. the default value is 'month'
-	});
-}
 
 </script>
 </body>
