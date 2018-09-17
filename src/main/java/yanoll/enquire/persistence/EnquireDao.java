@@ -18,5 +18,7 @@ public interface EnquireDao {
 	public void delete(int e_seq)throws Exception;
 	
 	public void update(Enquire_Board board)throws Exception;
+	
+	public int userNo(String id)throws Exception;
 
 }

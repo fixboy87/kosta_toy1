@@ -1,6 +1,9 @@
+<%@page import="yanoll.user.domain.Users"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="utf-8"%>
-
+    <%
+	Users user = (Users)request.getAttribute("user");
+%>	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -66,7 +69,7 @@ margin-bottom: 2%;
 	
 	<h1>1:1문의</h1>
 					<div class="contact_form_container">
-						<form role="form" method="post" id="contact_form" class="clearfix">
+						<form  method="post" id="contact_form" class="clearfix">
 						<a class="enq_list" href="" id="contact_send_btn" class="contact_send_btn trans_200" >나의문의내역</a>
 						<select class="hotel_name" name="hotel_name" id="hotel_name" >
 						

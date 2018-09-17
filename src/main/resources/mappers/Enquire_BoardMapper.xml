@@ -62,6 +62,10 @@
 			</if>
 		</if>
 	</sql>
+	
+	<select id="userNo" parameterType="String" resultType="int" >
+	select user_no from enquire_board where id = #{id}
+	</select>
 
 
 	<select id="count" resultType="int">

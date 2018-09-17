@@ -118,7 +118,7 @@ div.logo div {
 			<form action="" id="updateUserDetail" method="post">
 				<div class="myPageCylinder">
 					<div class="myPageMenuCylinder">
-						<div class="button iEnquire myPage_button"><a href="#">1:1문의</a></div>			
+						<div class="button iEnquire myPage_button"><a href="/enquire/register">1:1문의</a></div>			
 						<div class="button iEnquire myPage_button"><a href="#">구매내역</a></div>			
 						<div class="button iEnquire myPage_button"><a href="#">회원정보</a></div>			
 						<div class="button iEnquire myPage_button"><a href="#">회원탈퇴</a></div>			

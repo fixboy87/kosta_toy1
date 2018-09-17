@@ -18,6 +18,7 @@ public class EnquireServiceImpl implements EnquireService {
 
 	@Override
 	public void regist(Enquire_Board board) throws Exception {
+		board.setUser_no(dao.userNo(board.getid()));
 		dao.create(board);
 
 	}
