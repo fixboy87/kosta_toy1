@@ -23,7 +23,7 @@ public interface ReviewService {
 
 	public List<Review_BoardVO>listReview_hotel(Integer h_no)throws Exception;
 	
-	public List<Review_BoardVO>listReview_hotelPage(Integer h_no, Criteria cri, boolean photo)throws Exception;
+	public List<Review_BoardVO>listReview_hotelPage(Integer h_no, Criteria cri, boolean photo,String sortTerms)throws Exception;
 /*	public List<Review_BoardVO>listReview_hotelPage(Integer h_no, Criteria cri)throws Exception;
 */	
 	public int count(Integer h_no, boolean photo)throws Exception;

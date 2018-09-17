@@ -79,9 +79,9 @@
 				<div id="button-div">
 					<button id="button-photo" value="포토">포토<small class="photoCnt"></small></button>
 				</div>
-					<select name="option">
-						<option  value="최신순">최신순</option>
-						<option  value="평점순">평점순</option>
+					<select class="option">
+						<option  value="latest">최신순</option>
+						<option  value="grade">평점순</option>
 					</select> 
 					
 					<c:if test="${not empty uid}">
@@ -144,7 +144,7 @@
 var h_no =1;
 var reviewPage=1;
 var photo=false;
-
+var sortTerms =  $("option:selected").val();
 
 /* 날짜 registerHelper 함수 */
 	Handlebars.registerHelper("prettifyDate", function(timeValue) {
@@ -264,7 +264,7 @@ var photo=false;
 			return;
 		}
 		alert(photo);
-		getPage("/hotelReviews/" + h_no + "/1/"+photo);
+		getPage("/hotelReviews/" + h_no + "/1/"+photo+"/"+sortTerms);
 		
 	});
 	
@@ -273,20 +273,21 @@ var photo=false;
 	/* $("#button-photo").click(function() { *//* 포토만 버튼 */
 		alert("포토만")
 		photo = true;
-		getPage("/hotelReviews/" + h_no + "/1/"+photo);
+		getPage("/hotelReviews/" + h_no + "/1/"+photo+"/"+sortTerms);
 	})
 	
 	 $("#button-all").click(function() {
 		 photo = false;
-		 getPage("/hotelReviews/" + h_no + "/1/"+photo);
+		 getPage("/hotelReviews/" + h_no + "/1/"+photo+"/"+sortTerms);
 	})
 /* review 페이징 클릭 */
  	$(".pagination").on("click", "li a", function(event) {
 		alert("페이징클릭")
  		event.preventDefault();
 		reviewPage = $(this).attr("href");
+		alert(sortTerms);
 		alert(photo);
-		getPage("/hotelReviews/" + h_no + "/" + reviewPage+"/"+photo);
+		getPage("/hotelReviews/" + h_no + "/" + reviewPage+"/"+photo+"/"+sortTerms);
 	}); 
 	
 
@@ -298,6 +299,17 @@ var photo=false;
 	});
 	
 	
+	
+	$(".option").change(function(event) {
+		alert("바뀜");
+		sortTerms =  $("option:selected").val();
+		alert(sortTerms);
+		alert(photo);
+		getPage("/hotelReviews/" + h_no + "/" + reviewPage+"/"+photo+"/"+sortTerms);
+	})
+	
+	
+	/* $("select option:selected").val() */
 </script>
 
 	<script type="text/javascript">

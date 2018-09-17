@@ -69,8 +69,8 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<Review_BoardVO> listReview_hotelPage(Integer h_no, Criteria cri, boolean photo) throws Exception {
-		return dao.listReview_hotelPage(h_no, cri,photo);
+	public List<Review_BoardVO> listReview_hotelPage(Integer h_no, Criteria cri, boolean photo, String sortTerms) throws Exception {
+		return dao.listReview_hotelPage(h_no, cri, photo, sortTerms);
 	}
 
 	@Override

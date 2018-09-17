@@ -39,11 +39,12 @@ public class HotleReviewController {
 	}
 	
 
-@RequestMapping(value="/{h_no}/{page}/{photo}", method= RequestMethod.GET)
+@RequestMapping(value="/{h_no}/{page}/{photo}/{sortTerms}", method= RequestMethod.GET)
 	public ResponseEntity<Map<String, Object>>listReview_hotelPage(
 			@PathVariable("h_no")Integer h_no
 			,@PathVariable("page")Integer page
-			,@PathVariable("photo")boolean photo){
+			,@PathVariable("photo")boolean photo
+			,@PathVariable("sortTerms")String sortTerms){
 		ResponseEntity<Map<String, Object>> entity = null;
 		
 		try {
@@ -55,10 +56,10 @@ public class HotleReviewController {
 			
 			Map<String, Object> map = new HashMap<String, Object>();
 			
-			List<Review_BoardVO> reviewList = service.listReview_hotelPage(h_no, cri,photo);
+			List<Review_BoardVO> reviewList = service.listReview_hotelPage(h_no, cri, photo, sortTerms);
 			map.put("reviewList", reviewList);
 			
-			int reviewCount = service.count(h_no,photo);
+			int reviewCount = service.count(h_no, photo);
 			pageMaker.setTotalCount(reviewCount);
 			map.put("pageMaker", pageMaker);
 			
@@ -71,7 +72,39 @@ public class HotleReviewController {
 		}
 		return entity;
 	}
-/*@RequestMapping(value="/{h_no}/{page}", method= RequestMethod.GET)
+/*@RequestMapping(value="/{h_no}/{page}/{photo}", method= RequestMethod.GET)
+public ResponseEntity<Map<String, Object>>listReview_hotelPage(
+		@PathVariable("h_no")Integer h_no
+		,@PathVariable("page")Integer page
+		,@PathVariable("photo")boolean photo){
+	ResponseEntity<Map<String, Object>> entity = null;
+	
+	try {
+		Criteria cri= new Criteria();
+		cri.setPage(page);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		List<Review_BoardVO> reviewList = service.listReview_hotelPage(h_no, cri,photo);
+		map.put("reviewList", reviewList);
+		
+		int reviewCount = service.count(h_no,photo);
+		pageMaker.setTotalCount(reviewCount);
+		map.put("pageMaker", pageMaker);
+		
+		int photoCnt = service.photoCnt(h_no);
+		map.put("photoCnt", photoCnt);
+		System.out.println("photoCnt:"+photoCnt);
+		entity = new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
+	} catch (Exception e) {
+		entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	}
+	return entity;
+}
+*//*@RequestMapping(value="/{h_no}/{page}", method= RequestMethod.GET)
 public ResponseEntity<Map<String, Object>>listReview_hotelPage(
 		@PathVariable("h_no")Integer h_no
 		,@PathVariable("page")Integer page){

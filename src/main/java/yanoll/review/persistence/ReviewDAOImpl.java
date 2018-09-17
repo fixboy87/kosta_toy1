@@ -57,11 +57,12 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return session.selectList(namespace + ".listReview_hotel", h_no);
 	}
 	@Override
-	public List<Review_BoardVO> listReview_hotelPage(Integer h_no, Criteria cri, boolean photo) throws Exception {
+	public List<Review_BoardVO> listReview_hotelPage(Integer h_no, Criteria cri, boolean photo, String sortTerms) throws Exception {
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("h_no", h_no);
 		paramMap.put("cri", cri);
 		paramMap.put("photo", photo);/* 이곳 */
+		paramMap.put("sortTerms", sortTerms);/* 이곳 */
 		return session.selectList(namespace + ".listReview_hotelPage", paramMap);
 	}
 	@Override
