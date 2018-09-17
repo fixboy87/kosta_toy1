@@ -1,8 +1,13 @@
 
+<%@page import="yanoll.user.domain.Users"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%request.setCharacterEncoding("utf-8");%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+	Users user = (Users)request.getAttribute("user");
+%>	
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -78,7 +83,7 @@ margin-bottom: 1%;
 		<td>${Enquire_Board.hotel_name}</td>
 		<td><a href="/enquire/read${pageMaker.makeSearch(pageMaker.cri.page) }&e_seq=${Enquire_Board.e_seq}">${Enquire_Board.e_title}</a></td> 
 		<%-- <td><a href="/enquire/read/${Enquire_Board.e_seq}">${Enquire_Board.e_title}</a></td> --%>
-		<td>${Enquire_Board.e_write}</td>
+		<td>${user.id}</td>
 		<td>${Enquire_Board.e_date}</td>
 		</tr>
 		</c:forEach>

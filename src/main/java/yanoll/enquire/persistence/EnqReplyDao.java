@@ -13,5 +13,7 @@ public interface EnqReplyDao {
 	public void delete(int r_seq)throws Exception;
 	
 	public void update(Enquire_Reply reply)throws Exception;
+	
+	
 
 }

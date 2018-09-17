@@ -57,6 +57,14 @@ public class EnquireDaoImpl implements EnquireDao {
 		
 		
 	}
+
+	@Override
+	public int userNo(String id) throws Exception {
+		
+		return session.selectOne(namespace+".userNo", id);
+		
+	}
+	
 	
 	
 	
