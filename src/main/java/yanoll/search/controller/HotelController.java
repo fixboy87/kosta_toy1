@@ -1,6 +1,7 @@
 package yanoll.search.controller;
 
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -65,6 +66,8 @@ public class HotelController {
 		vo.setMax_price(max_price);
 		
 		model.addAttribute("list",service.hotelListConditions(vo));
+		
+			
 	}
 	
 	@RequestMapping(value = "/data", method = RequestMethod.GET)

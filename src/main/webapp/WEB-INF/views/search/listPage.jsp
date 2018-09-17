@@ -245,7 +245,7 @@
 					<c:forEach var="listH" items="${list}"> 
 						<!-- Item -->
 						<div class="item clearfix rating_5" id="listToChange">
-							<div class="item_image"><a href="HotelDetailAction.do?h_no=${listH.h_no}"><img src="http://localhost:8081/kostaProject1/images/pages/HYimg/${listH.pic_url}" alt=""></a></div>
+							<div class="item_image"><a href="/room/detailPage?h_no=${listH.h_no}"><img src="../../resources/images/pages/HY_images/${listH.pic_url}" alt=""></a></div>
 							<div class="item_content">
 								<div class="item_price">${listH.h_location}</div>
 								<div class="item_title">${listH.h_name }</div>

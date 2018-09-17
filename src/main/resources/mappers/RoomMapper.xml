@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+ <mapper namespace="yanoll.mapper.rooms">
+
+ 	<select id="roomDetail" resultType="RoomVO" parameterType="int">
+ 	 <![CDATA[
+ 		select DISTINCT hr.room_type, hr.room_num, hr.h_no, hr.pic_room_url, ho.h_name,room_price
+		  from hotel ho inner join hotel_room hr
+		  on ho.h_no = hr.h_no 
+		  inner join type ty
+		  on hr.ROOM_TYPE = ty.ROOM_TYPE
+		  and ty.h_no = #{h_no} and hr.h_no = #{h_no}
+ 	 ]]>
+ 	
+ 	</select>
+ 	
+ 	<select id="slide" resultType="SlideVO" parameterType="int">
+ 	 
+	    select slide_pic_url from pic_view
+		  where h_no = #{h_no}
+  	 
+ 	</select>
+		
+ </mapper>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

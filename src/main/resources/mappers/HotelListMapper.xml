@@ -71,16 +71,9 @@
  				#{h_password}, #{h_profit}, #{price}, #{h_info}, #{pic_url}, #{h_location})
  	</select>
  	
- 	<select id="test" resultType="int">
+
  	
- 		select usernum from users where id = #{id}
  	
- 	</select>
- 	
- 	<insert id="">
- 	 
- 	 	insert into table () values (#{users})
- 	</insert>
  	
 
  </mapper>
