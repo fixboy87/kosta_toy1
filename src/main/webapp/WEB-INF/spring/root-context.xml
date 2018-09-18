@@ -48,6 +48,8 @@
 <!-- mj -->
 <context:component-scan base-package="yanoll.registration.persistence" />
 <context:component-scan base-package="yanoll.registration.service" />
+<context:component-scan base-package="yanoll.managing.persistence"/>
+<context:component-scan base-package="yanoll.managing.service"/>
 
 <!-- gng -->
 <context:component-scan base-package="yanoll.enquire.persistence" />

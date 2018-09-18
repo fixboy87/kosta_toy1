@@ -1,5 +1,6 @@
 package yanoll.managing.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -20,8 +21,4 @@ public class ManagingController {
 	}
 	
 	
-	/*@RequestMapping(value = "/getCalendar", method = RequestMethod.POST)
-	public @ResponseBody Map<String, Object> getCalendar(@RequestBody String day) {
-		
-	}*/
 }
