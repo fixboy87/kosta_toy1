@@ -305,9 +305,9 @@ $(document).ready(function()
 		if($buttonHtml === "1:1문의") {
 			location.href= "/enquire/list";
 		} else if($buttonHtml === "세부관리") {
-			location.href = "Management.do";
+			location.href = "/managing/summary";
 		} else if($buttonHtml === "기본정보") {
-			location.href = "adminPage.do"
+			location.href = "/register/myPage"
 		} else if($buttonHtml === "세부정보") {
 			location.href = "HotelDetailAction.do";
 		} else if($buttonHtml === "회원탈퇴") {
