@@ -1777,3 +1777,17 @@ a.link-txt:hover {
 .downExpand {
 	height: 300px !important;
 }
+
+.idcheck_append{
+	color: red;
+	text-align: center;
+    margin-top: 10px;
+    font-size: small;
+}
+
+.telcheck_append{
+	color: red;
+	text-align: center;
+    margin-top: 10px;
+    font-size: small;
+}
