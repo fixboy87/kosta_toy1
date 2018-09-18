@@ -149,7 +149,7 @@ $(document).ready(function() {
 			var data ={};
 			data["id"] = $idTyped;
 			data["type"] = $typeSelect;
-			alert($idTyped);
+
 			$.ajax({
 				contentType: 'application/json',	
 				type : 'post',
