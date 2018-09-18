@@ -1,6 +1,7 @@
 package yanoll.search.controller;
 
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -68,6 +69,14 @@ public class HotelController {
 		
 		System.out.println(end_day);
 		
+		String start_date = "";
+		String end_date = "";
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		start_date = format.format(start_day);
+		end_date = format.format(end_day);
+		
+		System.out.println(start_date);
+		
 		// 머무는 날 구하기
 		long calDate = end_day.getTime() - start_day.getTime();
 		long booking = calDate/(24*60*60*1000);
@@ -81,8 +90,8 @@ public class HotelController {
 		vo.setMax_price(max_price);
 		
 		
-		session.setAttribute("start_day", start_day);
-		session.setAttribute("end_day", end_day);
+		session.setAttribute("start_date", start_date);
+		session.setAttribute("end_date", end_date);
 		session.setAttribute("bookingDays", bookingDays);
 		
 		System.out.println((int)session.getAttribute("bookingDays") + " +   세션체크");
