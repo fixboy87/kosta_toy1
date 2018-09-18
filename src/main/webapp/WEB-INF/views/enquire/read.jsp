@@ -63,65 +63,34 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 <style type="text/css">
-.EnquireDelete {
-	-moz-box-shadow: inset 1px 1px 0px 0px #ffffff;
-	-webkit-box-shadow: inset 1px 1px 0px 0px #ffffff;
-	box-shadow: inset 1px 1px 0px 0px #ffffff;
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f9f9f9
-		), color-stop(1, #e9e9e9));
-	background: -moz-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
-	background: -webkit-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
-	background: -o-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
-	background: -ms-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
-	background: linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9',
-		endColorstr='#e9e9e9', GradientType=0);
-	background-color: #f9f9f9;
-	border: 1px solid #dcdcdc;
-	display: inline-block;
-	cursor: pointer;
-	color: #666666;
-	font-family: Arial;
-	font-size: 28px;
-	font-weight: bold;
-	padding: 9px 23px;
-	text-decoration: none;
-	text-shadow: 1px -1px 0px #ffffff;
+.replyBody{
+width: 70%;
+margin-left: 15%;
+margin-top: 3%;
 }
 
-.EnquireDelete:hover {
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #e9e9e9
-		), color-stop(1, #f9f9f9));
-	background: -moz-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
-	background: -webkit-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
-	background: -o-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
-	background: -ms-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
-	background: linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9',
-		endColorstr='#f9f9f9', GradientType=0);
-	background-color: #e9e9e9;
+.replyAddBody{
+
+width: 70%;
+margin-left: 15%;
+margin-top: 1%;
 }
 
-.EnquireDelete:active {
-	position: relative;
-	top: 1px;
+.timeline{
+height 10%;
+width: 70%;
+margin-left: 15%;
+margin-top: 1%;
 }
 
-.enquire_detail {
-	width: 80%;
-	height: 41px;
-	border: solid 2px #dbdbdb;
-	padding-left: 20px;
-	margin-left: 10%;
-	margin-bottom: 5%;
-	margin-top: 5% outline: none;
-	text-align: center;
+#replyAddBtn{
+margin-left: 1410%;
+
 }
 
-.EnquireDelete {
-	background: black;
+.card-footer{
+text-align: right;
 }
-
 
 </style>
 
@@ -131,27 +100,30 @@
 
 	<%@include file="../sub_page/header_menu.jsp"%>
 
-	<table class="enquire_detail" border="1">
-		<thead>
-			<tr>
-				<td style="background-color: #fafafa; color: #000000; width: 80px;"><h5>글번호</h5></td>
-				<td colspan="3"><h5>${board.e_seq}</h5></td>
-			</tr>
-			<tr>
-				<td style="background-color: #fafafa; color: #000000; width: 80px;"><h5>제목</h5></td>
-				<td colspan="3"><h5>${board.e_title}</h5></td>
-			</tr>
-			<tr>
-				<td style="background-color: #fafafa; color: #000000; width: 80px;"><h5>작성자</h5></td>
-				<td colspan="3"><h5>${board.e_write}</h5></td>
-			</tr>
-			<tr>
-				<td
-					style="vertical-align: middle; min-height: 30%; background-color: #fafafa; color: #000000; width: 80px;"><h5>내용</h5></td>
-				<td colspan="13" style="text-align: left"><h5>${board.e_contents}</h5></td>
-			</tr>
-		</thead>
-	</table>
+ <div class="replyBody">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="mr-2">
+                                   
+                                </div>
+                                <div class="ml-2">
+                                    <div class="h5 m-0"><%=(String)session.getAttribute("uid")%></div>
+                                    
+                                </div>
+                            </div>
+                           </div>
+                           </div>
+                    <div class="card-body">
+                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
+                        <a class="card-link" href="#">
+                            <h5 class="card-title">${board.e_title}</h5>
+                        </a>
+
+                        <p class="card-text">
+                            ${board.e_contents}
+                        </p>
+                    </div>
 
                      <!-- 페이징 히든 값으로 넣기 -->
                      
@@ -163,13 +135,13 @@
 			type='hidden' name='keyword' value="${cri.keyword}">
     </form>
     
-		<div class="box-footer">
+		<div class="card-footer">
 			<button type="submit" class="btn btn-warning" id="modifyBtn">Modify</button>
 			<button type="submit" class="btn btn-danger" id="removeBtn">REMOVE</button>
 				<button type="submit" class="btn btn-primary" id="goListBtn">GOLIST</button>
 			
 		</div>
-
+</div>
 	
 
 	<script>
@@ -201,13 +173,13 @@
 	</script>
                  <!-- 댓글 등록 페이지 -->
 
-	<div class="card-body">
+	<div class="replyAddBody">
 		<div class="tab-content" id="myTabContent">
 			<div class="tab-pane fade show active" id="posts" role="tabpanel"
 				aria-labelledby="posts-tab">
 				<div class="form-group">
 					<label class="sr-only" for="message">post</label> <input
-						type="text" class="form-control" id="newReplyer" placeholder="아이디"></input>
+						type="hidden" class="form-control" id="newReplyer" value="<%=(String)session.getAttribute("uid")%>" placeholder="아이디"></input>
 					<textarea class="form-control" id="newReplyerText" rows="5"
 						placeholder="내용"></textarea>
 				</div>

@@ -9,7 +9,7 @@ public interface EnquireDao {
 	
 	public void create(Enquire_Board board)throws Exception;
 	
-	public List<Enquire_Board> list(SearchCriteria cri)throws Exception;
+	public List<Enquire_Board> list(String id,String h_name,SearchCriteria cri)throws Exception;
 	
 	public int Count(SearchCriteria cri)throws Exception;
 	

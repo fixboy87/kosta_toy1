@@ -5,9 +5,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <%
+ <%
 	Users user = (Users)request.getAttribute("user");
-%>	
+%>	 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -32,30 +32,17 @@
 <script src="../resources/bootstrap/plugins/common//parallax-js-master/parallax.min.js"></script>
 <script src="../resources/bootstrap/scripts/common/contact_custom.js"></script>
 
+
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/lumen/bootstrap.min.css">
+<link rel="stylesheet" href="https://daneden.github.io/animate.css/animate.min.css">
+
+
 <style type="text/css">
-h1{
-font-size: 300%;
-margin-top: 3%;
-margin-bottom: 1%;
-text-align: center;
-}
-
-.Enquire_list
-{
-	width: 80%;
-	height: 41px;
-	border: solid 2px #dbdbdb;
-	padding-left: 20px;
-	margin-left :10%;
-	margin-bottom: 19px;
-	outline: none;
-	text-align: center;
-}
-.enquire_search{
-margin-top : 2%;
-margin-left: 80%;
-margin-bottom: 1%;
-
+#searchBar{
+ margin-left: 70%;
 }
 </style>
 
@@ -66,30 +53,60 @@ margin-bottom: 1%;
 <%@include file="../sub_page/header_menu.jsp" %>
 
 	<!-- Contact -->
-     <h1>문의내역</h1>
-                    
-	<table width="300" border="1" class="Enquire_list">	
-		<tr>
-			<td width="50px">번호</td>
-			<td width="70px">호텔</td>
-			<td width="400px">제목</td>
-			<td width="140px">ID</td>
-			<td width="140px">작성일</td>
-		</tr>
-		
-		<c:forEach var="Enquire_Board" items="${list}">
-		<tr>
-		<td>${Enquire_Board.e_seq}</td>
-		<td>${Enquire_Board.hotel_name}</td>
-		<td><a href="/enquire/read${pageMaker.makeSearch(pageMaker.cri.page) }&e_seq=${Enquire_Board.e_seq}">${Enquire_Board.e_title}</a></td> 
-		<%-- <td><a href="/enquire/read/${Enquire_Board.e_seq}">${Enquire_Board.e_title}</a></td> --%>
-		<td>${user.id}</td>
-		<td>${Enquire_Board.e_date}</td>
-		</tr>
-		</c:forEach>
-		</table>
+
+
+<div class="container" style="margin-top:20px;">
+<div class="row">
+<div id="user" class="col-md-12" >
+  <div class="panel panel-primary panel-table animated slideInDown">
+   <div class="panel-heading " style="padding:5px;">
+        <div class="row">
+        
+        <div class="col col-xs-5 text-center">
+            <h1 class="panel-title">문의내역</h1>
+        </div>
+ 
+        </div>
+    </div>
+   <div class="panel-body">
+     <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="list">
+       <table class="table table-striped table-bordered table-list">
+        <thead>
+         <tr>
+            <th>번호</th>
+            <th>호텔</th>
+            <th>제목</th>
+            <th>ID</th>
+            <th>작성일</th>
+          </tr> 
+         </thead>
+         <tbody>
+         <c:forEach var="Enquire_Board" items="${list}">
+          <tr class="ok">
+             <td width="50px">${Enquire_Board.e_seq}</td>
+             <td width="120px">${Enquire_Board.h_name}</td>
+             <td><a href="/enquire/read${pageMaker.makeSearch(pageMaker.cri.page)}&e_seq=${Enquire_Board.e_seq}">${Enquire_Board.e_title}</a></td>
+             <td width="80px">${Enquire_Board.id}</td>
+             <td width="80px" align="center">${Enquire_Board.e_date}</td>
+          </tr>
+         </c:forEach>
+          </tbody>
+        </table>
+      </div><!-- END id="list" -->
+        
+     
+         </div>
+    </div>
+   
+  
+  </div><!--END panel-table-->
+</div>
+</div>
+</div>
 											      			    
-					
+
+					<div id="searchBar">
 					<select name="searchType">
 						<option value="n"
 							<c:out value="${cri.searchType == null?'selected':''}"/>>
@@ -117,7 +134,6 @@ margin-bottom: 1%;
 					<button id='searchBtn'>Search</button>
 					<button id='newBtn'>New Board</button>
 
-				</div>
 			</div>
 			
 			<div class="box-footer">

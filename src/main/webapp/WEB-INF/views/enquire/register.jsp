@@ -26,52 +26,29 @@
 <script src="../resources/bootstrap/plugins/common//easing/easing.js"></script>
 <script src="../resources/bootstrap/plugins/common//parallax-js-master/parallax.min.js"></script>
 <script src="../resources/bootstrap/scripts/common/contact_custom.js"></script>
-</head>
-<body>
+
 <style type="text/css">
-h1{
-font-size: 300%;
-margin-top: 3%;
-margin-bottom: 1%;
-text-align: center;
-}
+.col-md-5{
 
-.hotel_name{
-width 8%;
-margin-bottom: 2%;
-}
-
-.enq_list
-{
-	width: 161px;
-	height: 56px;
-	background: rgba(254,60,82,1);
-	border: none;
-	outline: none;
-	float: right;
-	color: #FFFFFF;
-	font-size: 16px;
-	font-weight: 500;
-	cursor: pointer;
-	margin: 0 auto;
-	text-align: center;
+margin-left: 30%;
 }
 </style>
-
 
 </head>
 <body>
 
 <%@include file="../sub_page/header_menu.jsp" %>
 
-	<!-- Contact -->
-	
-	
-	<h1>1:1문의</h1>
-					<div class="contact_form_container">
-						<form  method="post" id="contact_form" class="clearfix">
-						<a class="enq_list" href="" id="contact_send_btn" class="contact_send_btn trans_200" >나의문의내역</a>
-						<select class="hotel_name" name="hotel_name" id="hotel_name" >
+
+					
+					<div class="container">
+<div class="col-md-5">
+    <div class="form-area">  
+        <form role="form" method="post">
+        <br style="clear:both">
+                    <h3 style="margin-bottom: 25px; text-align: center;">문의</h3>
+					
+				<select class="h_name" name="h_name" id="h_name" >
 						
 							<option>문의호텔</option>
 							<option value="파라다이스">파라다이스</option>
@@ -87,18 +64,22 @@ margin-bottom: 2%;
 							
 							</select>
 							<br>
-							
-							<input id="contact_input_subject" class="contact_input contact_input_subject" type="text" name="e_title" placeholder="제목" >
-							<textarea id="contact_input_message" class="contact_message_input contact_input_message" type="text" name="e_contents" placeholder="내용"></textarea>
-							<input id="e_write" type="hidden" name="e_write">
-							<input id="contact_send_btn" type="submit" class="contact_send_btn trans_200" value="등록">
-					       <!-- <input id="hotel_name" type="hidden" name="hotel_name"> -->
-					        
-					        
-					     </form>
-						
-					</div>
 					
+					<div class="form-group">
+						<input type="text" class="form-control" id="subject" name="e_title" placeholder="제목">
+					</div>
+                    <div class="form-group">
+                   <textarea class="form-control" type="textarea" id="message" name="e_contents" placeholder="내용" maxlength="140" rows="7"></textarea>
+                        <span class="help-block"><p id="characterLeft" class="help-block "></p></span>             
+                    </div>
+            <input id="id" type="hidden" name="id" value="<%=(String)session.getAttribute("uid")%>">
+         
+            
+        <input type="submit" id="submit" name="submit" class="btn btn-primary pull-right"></input>
+        </form>
+    </div>
+</div>
+</div>
 	
 			
 			

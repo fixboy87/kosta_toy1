@@ -1,6 +1,13 @@
 package yanoll.enquire.controller;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,10 +17,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 import yanoll.enquire.domain.Enquire_Board;
 import yanoll.enquire.domain.PageMaker;
 import yanoll.enquire.domain.SearchCriteria;
 import yanoll.enquire.service.EnquireService;
+import yanoll.user.domain.Users;
 
 @Controller
 @RequestMapping("/enquire/*")
@@ -23,29 +32,49 @@ public class EnquireController {
 	private EnquireService service;
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public void registerGET(Enquire_Board board) throws Exception {
-
+	public void registerGET(Enquire_Board board, HttpServletRequest request) throws Exception {
+		/*HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("uid");*/
+		
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String registerPOST(Enquire_Board board) throws Exception {
+        
+        
 		service.regist(board);
 		System.out.println(board);
 		return "redirect:/enquire/list";
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public void list(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
-		System.out.println("리스트 컨트롤러");
-		model.addAttribute("list", service.list(cri));
+	public void list(@ModelAttribute("cri") SearchCriteria cri,HttpServletRequest request,
+			Model model) throws Exception {
+				
+		HttpSession session = request.getSession();
+		String id= (String)session.getAttribute("uid");
+		String h_name= (String)session.getAttribute("name");
 
+		
+		System.out.println(h_name);
+		System.out.println(id);
+	
+		
+		Map<String, Object> map = new HashMap<String,Object>();
+		List<Enquire_Board> list = service.list(id, h_name, cri);
+		
+			
 		PageMaker pageMaker = new PageMaker();
-
+        
 		pageMaker.setCri(cri);
-
+        
 		pageMaker.setTotalCount(service.count(cri));
-
+		map.put("list", list);
+		map.put("pageMaker", pageMaker);
+		model.addAttribute("list", list);
 		model.addAttribute("pageMaker", pageMaker);
+		
+		
 	}
 
 	@RequestMapping(value = "/read", method = RequestMethod.GET)

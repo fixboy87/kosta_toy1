@@ -18,15 +18,17 @@ public class EnquireServiceImpl implements EnquireService {
 
 	@Override
 	public void regist(Enquire_Board board) throws Exception {
-		board.setUser_no(dao.userNo(board.getid()));
+	  
+	    board.setuserNo(dao.userNo(board.getid()));
+	  	
 		dao.create(board);
 
 	}
 
 	@Override
-	public List<Enquire_Board> list(SearchCriteria cri) throws Exception {
+	public List<Enquire_Board> list(String id,String hotel_name,SearchCriteria cri) throws Exception {
 		
-		return dao.list(cri);
+		return dao.list(id, hotel_name, cri);
 	}
 
 	@Override
