@@ -62,6 +62,8 @@
 <context:component-scan base-package="yanoll.search.service" />
 <context:component-scan base-package="yanoll.room.service"/>
 <context:component-scan base-package="yanoll.room.persistence"/> 
+<context:component-scan base-package="yanoll.order.service"/>  
+<context:component-scan base-package="yanoll.order.persistence"/> 
 
 </beans>
 

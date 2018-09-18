@@ -11,7 +11,8 @@
   <package name="yanoll.search.domain"/>
   <package name="yanoll.user.domain"/>
   <package name="yanoll.room.domain"/>
- <package name="yanoll.search.dto"/>
+  <package name="yanoll.search.dto"/>
+  <package name="yanoll.order.domain"/>
 	</typeAliases>
 	
 </configuration>
