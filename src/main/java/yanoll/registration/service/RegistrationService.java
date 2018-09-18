@@ -32,6 +32,6 @@ public interface RegistrationService {
 
 	public void deregister(HttpServletRequest request, RedirectAttributes rttr, HttpServletResponse response) throws Exception;
 
-	public String telcheck(String tel) throws Exception;
+	public String telcheck(String type, String tel) throws Exception;
 	
 }

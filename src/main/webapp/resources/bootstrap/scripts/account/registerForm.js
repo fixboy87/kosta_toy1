@@ -129,10 +129,14 @@ $(document).ready(function() {
  * return true; } });
  */
 	
+	var $typeSelect = $("#type").attr("value");
 	
-	// var $idSection = $(".login-cont input[name='id']");
 	var idcheck_stat = false;
+	var telcheck_stat = false;
+
 	var $idSection = $("#joinMemberPc input[name='id']");
+	var $telSection = $("#joinMemberPc input[name='tel']");
+	
 	$idSection.on('keyup',function() {
 		var $idTyped = "";
 			
@@ -140,22 +144,21 @@ $(document).ready(function() {
 		if($idTyped.length >= 7) {
 			var data ={};
 			data["id"] = $idTyped;
-			data["type"] = $("#type").attr("value");
+			data["type"] = $typeSelect;
 			
-			$(".idcheck_append").remove();
 			$.ajax({
 				contentType: 'application/json',	
 				type : 'post',
 				url : '/register/checkId',
-				dataType : 'json',
+				dataType : 'text',
 				data: JSON.stringify(data),
 				success : function(result) {
 					if(result == 'success' && idcheck_stat == false) {
-						// $(".idcheck_append").remove();
+						$(".idcheck_append").remove();
 						$idSection.parent().after("<div class='idcheck_append'>사용 가능한 아이디입니다.</div>");
 						idcheck_stat = true;
 					} else if(result == 'fail') {
-						// $(".idcheck_append").remove();
+						$(".idcheck_append").remove();
 						$idSection.parent().after("<div class='idcheck_append'>사용 불가능한 아이디입니다.</div>");
 						idcheck_stat = false;
 					}
@@ -164,30 +167,37 @@ $(document).ready(function() {
 		}
 	}); 
 	
-	/*var telcheck_stat = false;
-	var $telSection = $("#joinMemberPc input[name='tel']");
-	$(telSection).on('keyup', function() {
+	
+	$telSection.on('keyup', function() {
 		var $telTyped = "";
 		
 		$telTyped += $(this).val();
 		if($telTyped.length >= 9) {
-			$(".telcheck_append").remove();
+			var str = $telTyped.replace(0, "");
+			
+			var data ={};
+			data["tel"] = str;
+			data["type"] = $typeSelect;
+			
 			$.ajax({
+				contentType: 'application/json',
 				type : 'post',
 				url : '/register/checkTel',
 				dataType : 'text',
-				data : $telTyped,
+				data : JSON.stringify(data),
 				success : function(result) {
 					if(result == 'success' && telcheck_stat == false) {
+						$(".telcheck_append").remove();
 						$telSection.parent().after("<div class='telcheck_append'>사용 가능한 전화번호 입니다.</div>");
 						telcheck_stat = true;
 					} else if(result == 'fail') {
-						$telSection.parent().after("<div class='telcheck_append'>사용 불 가능한 전화번호 입니다.</div>");
+						$(".telcheck_append").remove();
+						$telSection.parent().after("<div class='telcheck_append'>사용 할 수 없는 전화번호 입니다.</div>");
 						telcheck_stat = false;
 					}
 				}
 			});
 		}
-	});*/
+	});
 });
 

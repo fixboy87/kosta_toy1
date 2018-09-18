@@ -260,10 +260,11 @@ public class RegistrationController {
 	@RequestMapping(value = "/checkId", method = RequestMethod.POST)
 	public @ResponseBody String idcheck(@RequestBody Map<String, Object> params, HttpServletRequest request, RedirectAttributes rttr) {
 		HttpSession session = request.getSession();
-		String type = "";
+		//String type = "";
 		String id = (String)params.get("id");
+		String type = (String)params.get("type");
 		try {
-			if((type = (String)params.get("type")) != null) {
+			if(type == null) {
 				type = (String)session.getAttribute("type");
 			}
 			return service.idcheck(type, id);
@@ -273,18 +274,17 @@ public class RegistrationController {
 		}
 	}
 
-	
-	
-	
-	
-	//예외처리
 	@RequestMapping(value = "/checkTel", method = RequestMethod.POST)
-	public @ResponseBody String telcheck(@RequestBody String tel, HttpServletRequest request, RedirectAttributes rttr) {
+	public @ResponseBody String telCheck(@RequestBody Map<String, Object> params, HttpServletRequest request, RedirectAttributes rttr) {
 		HttpSession session = request.getSession();
-		
-		session.getAttribute("type");
-		try {
-			return service.telcheck(tel);
+		String tel = (String)params.get("tel");
+		String type = (String)params.get("type");
+		System.out.println("tel is "+tel+", and type is "+type);
+		try{
+			if(type == null) {
+				type = (String)session.getAttribute("type");
+			}
+			return service.telcheck(type, tel);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return generalExceptionHandler(rttr);
@@ -300,6 +300,12 @@ public class RegistrationController {
 	
 	
 	
+	
+	
+	
+	
+	
+	//예외처리
 	private String wrongAccess(RedirectAttributes rttr) {
 		rttr.addFlashAttribute("message", "register_wrong_access");
 		return "redirect:/";
