@@ -15,7 +15,7 @@ public class Hotel_Order {
 	private int number_of_stay_days;
 	private int p_conition;
 	private String order_date;
-	
+	//zzzz
 	public Hotel_Order(){}
 
 	public int getOrder_num() {
