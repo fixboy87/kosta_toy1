@@ -37,6 +37,11 @@ $(document).ready(function() {
 		}
 		
 	});
-
+	
+	
+	var $idInput = $("#id_rep");
+	var $telInput = $("#tel_rep");
+	var $sessionType = $("#session_type").attr("value");
+	
 });
 

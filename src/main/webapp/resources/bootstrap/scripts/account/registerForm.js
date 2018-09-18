@@ -135,7 +135,11 @@ $(document).ready(function() {
 	var telcheck_stat = false;
 
 	var $idSection = $("#joinMemberPc input[name='id']");
-	var $telSection = $("#joinMemberPc input[name='tel']");
+	var $telSection = $("#tel_rep");
+	
+	if($typeSelect == null) {
+		$typeSelect = $("#session_type").attr("value");
+	}
 	
 	$idSection.on('keyup',function() {
 		var $idTyped = "";
@@ -145,7 +149,7 @@ $(document).ready(function() {
 			var data ={};
 			data["id"] = $idTyped;
 			data["type"] = $typeSelect;
-			
+			alert($idTyped);
 			$.ajax({
 				contentType: 'application/json',	
 				type : 'post',
@@ -174,7 +178,6 @@ $(document).ready(function() {
 		$telTyped += $(this).val();
 		if($telTyped.length >= 9) {
 			var str = $telTyped.replace(0, "");
-			
 			var data ={};
 			data["tel"] = str;
 			data["type"] = $typeSelect;

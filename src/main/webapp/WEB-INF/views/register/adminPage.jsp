@@ -130,7 +130,7 @@ div.logo div {
 								<div><p>ID : </p></div>
 							</div>
 							<div class="myPage_id">
-								<input type="text" class="id_checker" name="h_id" value="${hotel.h_id }" readonly="readonly"/>
+								<input type="text" name="h_id" value="${hotel.h_id }" readonly="readonly"/>
 							</div>
 						</div>
 						<div class="mypage_section">
@@ -162,7 +162,7 @@ div.logo div {
 								<div><p>전화번호 : </p></div>
 							</div>
 							<div class="myPage_text">
-								<input type="text" name="h_phonenum" value="${hotel.h_phonenum }"/>
+								<input type="text" id="tel_rep" name="h_phonenum" value="${hotel.h_phonenum }"/>
 							</div>
 						</div>
 						<div class="mypage_section">

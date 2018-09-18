@@ -129,7 +129,7 @@ div.logo div {
 								<div><p>ID : </p></div>
 							</div>
 							<div class="myPage_id">
-								<input type="text" name="id" class="id_checker" value="${user.id }" readonly="readonly"/>
+								<input type="text" name="id" value="${user.id }" readonly="readonly"/>
 							</div>
 						</div>
 						<div class="mypage_section">
@@ -161,7 +161,7 @@ div.logo div {
 								<div><p>전화번호 : </p></div>
 							</div>
 							<div class="myPage_text">
-								<input type="text" name="tel" value="${user.tel }"/>
+								<input type="text" id="tel_rep" name="tel" value="${user.tel }"/>
 							</div>
 						</div>
 						<div class="mypage_section">
