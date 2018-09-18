@@ -73,7 +73,7 @@ h1 {
 	<%@include file="../sub_page/header_menu.jsp"%>
 
 
-
+<section>
 	<div>
 
 		<h1>후기 디테일</h1>
@@ -209,7 +209,7 @@ h1 {
 			</div>
 		</div>
 	</div>
-
+</section>
 	<%@include file="../sub_page/footer.html"%>
 
 

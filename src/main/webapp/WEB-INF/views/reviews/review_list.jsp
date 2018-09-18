@@ -121,7 +121,10 @@
 							</tr>
 							<tr>
 								<td>평점</td>
-								<td colspan="3"  >{{r_grade}}점</td>
+								<td colspan="3" class="list_star" >
+								{{#if_grade r_grade}}
+								{{/if_grade}}
+								</td>
 								<td>등록일</td>
 								<td class="table_right" id="board_r_redate">
 								 {{prettifyDate r_redate}}
@@ -155,6 +158,23 @@ var sortTerms =  $("option:selected").val();
 		var month = dateObj.getMonth() + 1;
 		var date = dateObj.getDate();
 		return year + "/" + month + "/" + date;
+	});
+	
+/* Date registerHelper */
+	Handlebars.registerHelper("if_grade", function(r_grade) {
+		
+		if (r_grade==1) {
+			return "<label>★</label>";
+		} else if (r_grade==2) {
+			return "<label>★★</label>";
+		}else if (r_grade==3) {
+			return "<label>★★★</label>";
+		}else if (r_grade==4) {
+			return "<label>★★★★</label>";
+		}else if (r_grade==5) {
+			return "<label>★★★★★</label>";
+		}
+		
 	});
 	
 	
