@@ -257,20 +257,27 @@ public class RegistrationController {
 	
 	
 	//Ajax 요청들
-	/*@RequestMapping(value = "/checkId", method = RequestMethod.POST)
+	@RequestMapping(value = "/checkId", method = RequestMethod.POST)
 	public @ResponseBody String idcheck(@RequestBody Map<String, Object> params, HttpServletRequest request, RedirectAttributes rttr) {
 		HttpSession session = request.getSession();
+		String type = "";
+		String id = (String)params.get("id");
 		try {
-			if((String)params.get("type") != null) {
-				String type = (String)session.getAttribute("type");
+			if((type = (String)params.get("type")) != null) {
+				type = (String)session.getAttribute("type");
 			}
-			return service.idcheck(params);
+			return service.idcheck(type, id);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return generalExceptionHandler(rttr);
 		}
-	}*/
+	}
 
+	
+	
+	
+	
+	//예외처리
 	@RequestMapping(value = "/checkTel", method = RequestMethod.POST)
 	public @ResponseBody String telcheck(@RequestBody String tel, HttpServletRequest request, RedirectAttributes rttr) {
 		HttpSession session = request.getSession();

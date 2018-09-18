@@ -171,8 +171,10 @@ public class RegistrationServiceImpl implements RegistrationService {
 
 	
 	@Override
-	public String idcheck(String id) throws Exception {
+	public String idcheck(String id, String type) throws Exception {
 		System.out.println("id는 "+id);
+		System.out.println("type은 "+type);
+		
 		id = id.replace("=", "");
 		
 		Users user = dao.idCheck(id);

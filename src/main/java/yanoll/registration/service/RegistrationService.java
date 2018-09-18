@@ -14,7 +14,7 @@ public interface RegistrationService {
 	
 	public void register(Users user) throws Exception;
 
-	public String idcheck(String id) throws Exception;
+	public String idcheck(String id, String type) throws Exception;
 
 	public void login(HttpServletRequest request, HttpServletResponse response) throws Exception;
 

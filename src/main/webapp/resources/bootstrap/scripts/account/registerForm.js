@@ -140,8 +140,7 @@ $(document).ready(function() {
 		if($idTyped.length >= 7) {
 			var data ={};
 			data["id"] = $idTyped;
-			data["type"] = $("#type").attr(value);
-			
+			data["type"] = $("#type").attr("value");
 			
 			$(".idcheck_append").remove();
 			$.ajax({
@@ -165,7 +164,7 @@ $(document).ready(function() {
 		}
 	}); 
 	
-	var telcheck_stat = false;
+	/*var telcheck_stat = false;
 	var $telSection = $("#joinMemberPc input[name='tel']");
 	$(telSection).on('keyup', function() {
 		var $telTyped = "";
@@ -189,6 +188,6 @@ $(document).ready(function() {
 				}
 			});
 		}
-	}
+	});*/
 });
 
