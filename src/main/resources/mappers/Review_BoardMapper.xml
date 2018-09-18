@@ -129,7 +129,17 @@
 		order_num, h_name, number_of_stay_days,userNo,id
 		from
 		(
-		select /*+INDEX_DESC(REVIEW_REPLY REVIEW_REPLEY_NO_PK))*/
+		select
+		 ]]>
+		
+		 <if test="sortTerms == 'latest'.toString()">
+			/*+INDEX_DESC(Review_Board REVIEW_R_NO_PK)*/
+		</if>
+		<if test="sortTerms == 'grade'.toString()">
+			/*+INDEX_DESC(Review_Board REVIEW_R_GRADE)*/
+		</if>
+		 
+		 <![CDATA[
 		rownum rn,
 		r_no, r_title, r_grade, r_content, r_redate, r_hitcount, r_fname,
 		order_num, h_name, number_of_stay_days,userNo,id
@@ -146,12 +156,7 @@
 		)
 		where rn > ( #{cri.page} -1) * #{cri.perPageNum}
 		 ]]>
-		<if test="sortTerms == 'latest'.toString()">
-			ORDER BY R_REDATE DESC
-		</if>
-		<if test="sortTerms == 'grade'.toString()">
-			ORDER BY R_GRADE DESC
-		</if>
+
 	</select>
 
 	<!-- <select id ="listReview_hotelPage" resultType="Review_BoardVO"> SELECT 
