@@ -32,93 +32,24 @@
 <script src="http:../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<!-- custom JS -->
-<script type="text/javascript" src="http:../resources/bootstrap/scripts/HY_Script/priceRang.js"></script>
-<script type="text/javascript" src="http:../resources/bootstrap/scripts/HY_Script/SearchConditions.js"></script>
-
 <!-- 달력 -->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>                    
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>                  
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">     
 
+<!-- custom JS -->
+<script type="text/javascript" src="http:../resources/bootstrap/scripts/HY_Script/priceRang.js"></script>
+<script type="text/javascript" src="http:../resources/bootstrap/scripts/HY_Script/SearchConditions.js"></script>
+<script type="text/javascript" src="http:../resources/bootstrap/scripts/HW/detailPage.js"></script>
+
 <!-- Custom Css -->
 <link rel="stylesheet" type="text/css" href="http:../resources/bootstrap/styles/HY_Style/ListPage.css">
 <link rel="stylesheet" type="text/css" href="../../resources/bootstrap/styles/HY_Style/detailPage.css">
-<!-- 슬라이드 -->
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
 
-<script type="text/javascript">
-//이미지 팝업
-function doImgPop(img){ 
-	 img1= new Image(); 
-	 img1.src=(img); 
-	 imgControll(img); 
-	} 
-	  
-	function imgControll(img){ 
-	 if((img1.width!=0)&&(img1.height!=0)){ 
-	    viewImage(img); 
-	  } 
-	  else{ 
-	     controller="imgControll('"+img+"')"; 
-	     intervalID=setTimeout(controller,20); 
-	  } 
-	}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-	function viewImage(img){ 
-	 W=img1.width; 
-	 H=img1.height; 
-	 O="width="+W+",height="+H+",scrollbars=yes"; 
-	 imgWin=window.open("","",O); 
-	 imgWin.document.write("<html><head><title>이미지 상세 보기</title></head>");
-	 imgWin.document.write("<body topmargin=0 leftmargin=0>");
-	 imgWin.document.write("<img src="+img+" onclick='self.close()' style='cursor:pointer;' title ='클릭하시면 창이 닫힙니다.'>");
-	 imgWin.document.close();
-	}
-
-</script> 
-
-<script type="text/javascript">
-
-$(document).ready(function(){
-	  $('.slider').slider();
-});
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
 	
-</script>
-
-
-
-<style type="text/css">
-
-.slider .indicators .indicator-item {
-  background-color: #666666;
-  border: 3px solid #ffffff;
-  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-}
-.slider .indicators .indicator-item.active {
-  background-color: #ffffff;
-}
-.slider {
-  width: 100%;
-  height:400px; 
-  margin: 0 auto;
-  margin-top: 200px;
-}
-.slider .indicators {
-  bottom: 60px;
-  z-index: 100;
-  /* text-align: left; */
-}
-
-
-
-
-</style>
-
-
 
 </head>
 <body>
@@ -175,37 +106,47 @@ $(document).ready(function(){
 		</div>
 
 	</div>
-	
+	<%-- <c:forEach var="slide" items="${slide}" begin="0" end="0">
+        			<img src="../resources/images/pages/slideH/${slide.slide_pic_url}">
+        		</c:forEach> --%>
 	<!-- Home -->
-	<div class="home1" style="margin-bottom: -50px;">
-		<div class="slider">
-    		<ul class="slides">
-     			 <li>
-     			 	<c:forEach var="slide" items="${slide}" begin="1" end="1">
-        				<img id="pic1" src="../resources/images/pages/slideH/${slide.slide_pic_url}">
-        			</c:forEach>
-        			
-      			</li>
-      			<li>
-        			<c:forEach var="slide" items="${slide}" begin="2" end="2">
-        				<img id="pic2" src="../resources/images/pages/slideH/${slide.slide_pic_url}">
-        			</c:forEach>
-        			
-        			
-		      	</li>
-		      	<li>
-		        	<c:forEach var="slide" items="${slide}" begin="3" end="3">
-        				<img id="pic3" src="../resources/images/pages/slideH/${slide.slide_pic_url}">
-        			</c:forEach>
-        			
-		      	</li>
-		      	<li>
-		        	<c:forEach var="slide" items="${slide}" begin="0" end="0">
-        				<img id="pic4" src="../resources/images/pages/slideH/${slide.slide_pic_url}">
-        			</c:forEach>
-		      	</li>
-		    </ul>
-  		</div>
+	<div class="home1">
+			<div class="wrap">
+				<div class="slide">
+					<button type="button" class="prev">
+						<img src="../resources/images/pages/slideH/left.png" />
+					</button>
+					<ul>
+						<li>
+							<c:forEach var="slide" items="${slide}" begin="0" end="0">
+								<img id="imgSlide" src="../resources/images/pages/slideH/${slide.slide_pic_url}">
+							</c:forEach>
+						</li>
+						
+						<li>
+							<c:forEach var="slide" items="${slide}" begin="1" end="1">
+								<img id="imgSlide" src="../resources/images/pages/slideH/${slide.slide_pic_url}">
+							</c:forEach>
+						</li>
+						
+						<li>
+							<c:forEach var="slide" items="${slide}" begin="2" end="2">
+								<img id="imgSlide" src="../resources/images/pages/slideH/${slide.slide_pic_url}">
+							</c:forEach>
+						</li>
+						
+						<li>
+							<c:forEach var="slide" items="${slide}" begin="3" end="3">
+								<img id="imgSlide" src="../resources/images/pages/slideH/${slide.slide_pic_url}">
+							</c:forEach>
+						</li>
+					</ul>
+					<button type="button" class="next">
+						<img src="../resources/images/pages/slideH/right.png" />
+					</button>
+				</div>
+			</div>			
+		</div>
 	</div>
 					
 	<!-- Find Form -->
