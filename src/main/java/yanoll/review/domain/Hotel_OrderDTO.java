@@ -1,8 +1,8 @@
 package yanoll.review.domain;
 
-import yanoll.order.domain.Hotel_Order;
+import yanoll.order.domain.OrderVO;
 
-public class Hotel_OrderDTO extends Hotel_Order {
+public class Hotel_OrderDTO extends OrderVO {
 	private String h_name;
 	
 	

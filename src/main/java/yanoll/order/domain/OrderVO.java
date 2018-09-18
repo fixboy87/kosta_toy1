@@ -2,7 +2,7 @@ package yanoll.order.domain;
 
 import java.util.Date;
 
-public class Hotel_Order {
+public class OrderVO {
 	
 	private int order_num;
 	private int room_num;
@@ -15,8 +15,22 @@ public class Hotel_Order {
 	private int number_of_stay_days;
 	private int p_conition;
 	private String order_date;
-	//zzzz
-	public Hotel_Order(){}
+	private String pic_room_url;
+	private String h_name;
+	private String room_type;
+	private String h_address;
+	private String h_phonenum;
+	private int room_price;
+	
+	public int getRoom_price() {
+		return room_price;
+	}
+
+	public void setRoom_price(int room_price) {
+		this.room_price = room_price;
+	}
+
+	public OrderVO(){}
 
 	public int getOrder_num() {
 		return order_num;
@@ -106,13 +120,78 @@ public class Hotel_Order {
 		this.order_date = order_date;
 	}
 
+	public String getPic_room_url() {
+		return pic_room_url;
+	}
+
+	public void setPic_room_url(String pic_room_url) {
+		this.pic_room_url = pic_room_url;
+	}
+
+	public String getH_name() {
+		return h_name;
+	}
+
+	public void setH_name(String h_name) {
+		this.h_name = h_name;
+	}
+
+	public String getRoom_type() {
+		return room_type;
+	}
+
+	public void setRoom_type(String room_type) {
+		this.room_type = room_type;
+	}
+
+	public String getH_address() {
+		return h_address;
+	}
+
+	public void setH_address(String h_address) {
+		this.h_address = h_address;
+	}
+
+	public String getH_phonenum() {
+		return h_phonenum;
+	}
+
+	public void setH_phonenum(String h_phonenum) {
+		this.h_phonenum = h_phonenum;
+	}
+
+	public OrderVO(int order_num, int room_num, int h_no, Date start_day, Date end_day, int order_price,
+			String order_name, int userNo, int number_of_stay_days, int p_conition, String order_date,
+			String pic_room_url, String h_name, String room_type, String h_address, String h_phonenum) {
+		super();
+		this.order_num = order_num;
+		this.room_num = room_num;
+		this.h_no = h_no;
+		this.start_day = start_day;
+		this.end_day = end_day;
+		this.order_price = order_price;
+		this.order_name = order_name;
+		this.userNo = userNo;
+		this.number_of_stay_days = number_of_stay_days;
+		this.p_conition = p_conition;
+		this.order_date = order_date;
+		this.pic_room_url = pic_room_url;
+		this.h_name = h_name;
+		this.room_type = room_type;
+		this.h_address = h_address;
+		this.h_phonenum = h_phonenum;
+	}
+
 	@Override
 	public String toString() {
 		return "Hotel_Order [order_num=" + order_num + ", room_num=" + room_num + ", h_no=" + h_no + ", start_day="
 				+ start_day + ", end_day=" + end_day + ", order_price=" + order_price + ", order_name=" + order_name
 				+ ", userNo=" + userNo + ", number_of_stay_days=" + number_of_stay_days + ", p_conition=" + p_conition
-				+ ", order_date=" + order_date + "]";
+				+ ", order_date=" + order_date + ", pic_room_url=" + pic_room_url + ", h_name=" + h_name
+				+ ", room_type=" + room_type + ", h_address=" + h_address + ", h_phonenum=" + h_phonenum + "]";
 	}
+	
+	
 	
 	
 	

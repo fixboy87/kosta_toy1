@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+ <mapper namespace="yanoll.mapper.order">
+
+ 	<select id="orderCheck" resultType="OrderVO" parameterType="OrderVO">
+ 	 <![CDATA[
+ 	 
+ 		select DISTINCT  hr.pic_room_url, ho.h_name, ty.room_price, ho.h_address, ho.h_phonenum
+		  from hotel ho inner join hotel_room hr
+		  on ho.h_no = hr.h_no
+		  join type ty
+		  on ty.room_type = hr.room_type
+		  where ho.h_no = #{h_no} and ty.h_no = #{h_no} and hr.room_type = #{room_type}
+ 	 
+ 	 ]]>
+ 	
+ 	</select>
+ 	
+		
+ </mapper>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

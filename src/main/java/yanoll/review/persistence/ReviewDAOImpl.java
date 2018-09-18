@@ -7,7 +7,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 import yanoll.enquire.domain.Criteria;
-import yanoll.order.domain.Hotel_Order;
+import yanoll.order.domain.OrderVO;
 import yanoll.review.domain.Hotel_OrderDTO;
 import yanoll.review.domain.Review_BoardVO;
 @Repository

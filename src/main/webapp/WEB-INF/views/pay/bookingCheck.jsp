@@ -1,6 +1,7 @@
-
-<!------ Include the above in your HEAD tag ---------->
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
@@ -181,7 +182,7 @@
   </head>
 
   <body>
-	
+	<c:forEach var="order" items="${booking}">
 	<div class="container">
 		<div class="card">
 			<div class="container-fliud">
@@ -189,36 +190,87 @@
 					<div class="preview col-md-6">
 						
 						<div class="preview-pic tab-content">
-						  <div class="tab-pane active" id="pic-1"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
+						  <div class="tab-pane active" id="pic-1">
+						  	<img src="../resources/images/pages/HotelRoomImg/${order.pic_room_url}" />
+						  </div>
+					
 						</div>
 						
 					</div>
 					<div class="details col-md-6">
-						<h3 class="product-title">H Avenu 역삼점</h3>
+						<h3 class="product-title">${order.h_name}</h3>
 						<div class="rating">
 							
 						</div>
-						<p class="product-description">서울특별시 강남구 역삼동 678-14</p>
-						<h4 class="price">결제금액: <span>90000</span></h4>
-						<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
-						<h5 class="sizes">sizes:
-							<span class="size" data-toggle="tooltip" title="small">s</span>
-							<span class="size" data-toggle="tooltip" title="medium">m</span>
-							<span class="size" data-toggle="tooltip" title="large">l</span>
-							<span class="size" data-toggle="tooltip" title="xtra large">xl</span>
-						</h5>
+						<div id="session" style="display: none;"><%=(int)session.getAttribute("bookingDays") %></div>
+						<p class="product-description">${order.room_type}</p>
+						<h4 class="price"> 결제금액 : <span id="totall"> 만원</span></h4>
+						<p class="vote">${order.h_address}</p>
+						<p class="vote">${order.h_phonenum}</p>
+						<div id="price1" style="display: none;">${order.room_price}</div>
+						<form role="form" action="" method="post" id="formdata">
+							<input type="hidden" value="${order.pic_room_url}">
+							<input type="hidden" value="${order.h_name}">
+							<input type="hidden" value="${order.room_type}">
+							<input type="hidden" value="${order.room_price}">
+							<input type="hidden" value="${order.h_address}">							
+							<input type="hidden" value="${order.h_phonenum}">
+						</form>
 						
 						<div class="action">
-							<button class="add-to-cart btn btn-default" type="button">add to cart</button>			
+							<button class="add-to-cart btn btn-default" id="button" type="button">결  제</button>			
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	</c:forEach>
+	
   </body>
+  <script type="text/javascript">
+	$(document).ready(function(){
+		var bookingday = $("#session").html();
+		var price = $("#price1").html();
+		var total = price*bookingday;
+		
+		$("#totall").html(total);
+	});
+	
+
+	
+	$(document).ready(function() {
+		var formObj = $("form[role='form']");
+		$("#button").on("click", function() {
+			formObj.attr("action", "/pay/index");
+			formObj.attr("method", "get");
+			formObj.submit();
+		});
+	});
+  </script>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

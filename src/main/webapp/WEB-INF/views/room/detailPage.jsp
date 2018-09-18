@@ -193,7 +193,7 @@
 									<li>11시 입실</li>
 									
 								</ul>
-								<div style="margin-left: 50px;"><a href="/pay/bookingCheck?h_no=${listH.h_no}" class="payMent" id="payMent">예약하기</a></div>
+								<div style="margin-left: 50px;"><a href="/pay/bookingCheck?h_no=${listH.h_no}&room_type=${listH.room_type}" class="payMent" id="payMent">예약하기</a></div>
 								<div class="rating rating_5" style="display: none !important;" >
 									<i class="fa fa-star"></i>
 									<i class="fa fa-star"></i>

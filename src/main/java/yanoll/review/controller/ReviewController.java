@@ -30,7 +30,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import yanoll.enquire.domain.Criteria;
 import yanoll.enquire.domain.PageMaker;
-import yanoll.order.domain.Hotel_Order;
+import yanoll.order.domain.OrderVO;
 import yanoll.review.domain.Hotel_OrderDTO;
 import yanoll.review.domain.Review_BoardVO;
 import yanoll.review.dto.ReviewSearchDTO;

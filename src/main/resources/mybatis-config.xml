@@ -13,6 +13,8 @@
   <package name="yanoll.room.domain"/>
   <package name="yanoll.search.dto"/>
   <package name="yanoll.order.domain"/>
+  <package name="yanoll.order.dto"/>
+  
 	</typeAliases>
 	
 </configuration>
