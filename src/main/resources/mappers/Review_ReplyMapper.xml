@@ -28,6 +28,10 @@
  		delete from REVIEW_REPLY where r_r_no = #{r_r_no}
  	</delete>
  	
+ 	<delete id="deleteAll">
+ 		delete from REVIEW_REPLY where r_no = #{r_no}
+ 	</delete>
+ 	
  	<select id="listPage" resultType="Review_ReplyVO">
 	  <![CDATA[
 		 select 

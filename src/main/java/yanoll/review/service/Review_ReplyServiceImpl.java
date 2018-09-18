@@ -47,9 +47,6 @@ public class Review_ReplyServiceImpl implements Review_ReplyService {
 
 	@Override
 	public List<Review_ReplyVO> listReplyPage(Integer r_no, Criteria cri) throws Exception {
-		System.out.println("SERVIECE==========================");
-		System.out.println("cri.page:"+cri.getPage());
-		System.out.println("cri.perPageNum:"+cri.getPerPageNum());
 		return replyDAO.listPage(r_no, cri);
 	}
 

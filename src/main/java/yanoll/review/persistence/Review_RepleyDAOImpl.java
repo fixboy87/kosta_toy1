@@ -65,4 +65,9 @@ public class Review_RepleyDAOImpl implements Review_ReplyDAO {
 		return session.selectOne(namespace+".getBno", r_r_no);
 	}
 
+	@Override
+	public void deleteAll(Integer r_no) throws Exception {
+		session.delete(namespace+".deleteAll", r_no);
+	}
+
 }

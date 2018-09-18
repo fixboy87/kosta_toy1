@@ -146,7 +146,9 @@ var reviewPage=1;
 var photo=false;
 var sortTerms =  $("option:selected").val();
 
-/* 날짜 registerHelper 함수 */
+
+
+/* Date registerHelper */
 	Handlebars.registerHelper("prettifyDate", function(timeValue) {
 		var dateObj = new Date(timeValue);
 		var year = dateObj.getFullYear();
@@ -157,8 +159,8 @@ var sortTerms =  $("option:selected").val();
 	
 	
 	
-    
-/* img체크 if문 함수*/
+	
+/* img registerHelper */
  	Handlebars.registerHelper("if_img", function(r_fname) {
 		
  		if (r_fname != null) {
@@ -176,7 +178,8 @@ var sortTerms =  $("option:selected").val();
  
  
  
-/* ReviewList 출력 */
+ 
+/* List_Review  Print */
 	var printData = function(reviewArr, target, templateObject) {
 		var template = Handlebars.compile(templateObject.html());
 		var html = template(reviewArr);
@@ -186,7 +189,8 @@ var sortTerms =  $("option:selected").val();
 
 
 
-/* ReivewList 페이징 */
+
+/* List_Review Paging  */
 	var printPaging = function(pageMaker, target) {
 		var str ="";
 		if (pageMaker.prev) {
@@ -207,45 +211,20 @@ var sortTerms =  $("option:selected").val();
 	
 	
 	
+/* List_Review JSON  */	
 	function getPage(pageInfo) {
 		$.getJSON(pageInfo, function(data) {
 			printData(data.reviewList, $("#review_container"), $("#reviewTemplate"));
 			printPaging(data.pageMaker, $(".pagination"));
 			$(".photoCnt").html(" [ "+data.photoCnt+" ] ");
 			
-		})
-	}
+		});
+	};
 
 	
 	
 	
-	$(".pagination").on("click", "li a", function(event) {
-		event.preventDefault(); /* 기본이벤트 삭제 */
-
-		replyPage = $(this).attr("href");
-		alert("h_no:"+h_no);
-		alert("replyPage:"+replyPage);
-
-		getPage("/hotelReviews/" + h_no + "/" + replyPage+"/"+photo);
-
-	});
-	
-	/* 기본이벤트 삭제 */
-/* 	$(".pagination").on("click", "li a", function(event) {
-		event.preventDefault(); 
-
-		replyPage = $(this).attr("href");
-		alert("h_no:"+h_no);
-		alert("replyPage:"+replyPage);
-
-		getPage("/hotelReviews/" + h_no + "/" + replyPage);
-
-	}); */
-	
-	
-	
-	
-	/* detail Review 이동 */
+/* Detail_Review */
 	$(".table_container").on("click", ".list_table", function(event) {
 		var review = $(this);
 		var r_no = review.find('#board_r_no').val();
@@ -256,43 +235,15 @@ var sortTerms =  $("option:selected").val();
 	
 	
 	
-/* 리뷰탭 버튼 -> 처음 ajax요청  */		
-	$("#review_button").click(function() { /* 리뷰탭 버튼 */
+/* List Event */		
+	$("#review_button").click(function() {
 		$("#rooms").css("display", "none");
 		$("#reviews").css("display", "block");
 		if ($(".timeline li").size() > 1) {
 			return;
 		}
-		alert(photo);
 		getPage("/hotelReviews/" + h_no + "/1/"+photo+"/"+sortTerms);
-		
 	});
-	
-	
-	$("#button-div").on("click", "#button-photo", function(event) {
-	/* $("#button-photo").click(function() { *//* 포토만 버튼 */
-		alert("포토만")
-		photo = true;
-		getPage("/hotelReviews/" + h_no + "/1/"+photo+"/"+sortTerms);
-	})
-	
-	 $("#button-all").click(function() {
-		 photo = false;
-		 getPage("/hotelReviews/" + h_no + "/1/"+photo+"/"+sortTerms);
-	})
-/* review 페이징 클릭 */
- 	$(".pagination").on("click", "li a", function(event) {
-		alert("페이징클릭")
- 		event.preventDefault();
-		reviewPage = $(this).attr("href");
-		alert(sortTerms);
-		alert(photo);
-		getPage("/hotelReviews/" + h_no + "/" + reviewPage+"/"+photo+"/"+sortTerms);
-	}); 
-	
-
-	
-	
 	$("#rooms_button").click(function() {/* 방 목록 버튼 */
 	 	$("#rooms").css("display", "block");
 		$("#reviews").css("display", "none");
@@ -300,6 +251,18 @@ var sortTerms =  $("option:selected").val();
 	
 	
 	
+	
+/* Option1 - Only Photo */	
+	$("#button-div").on("click", "#button-photo", function(event) {
+		photo = true;
+		getPage("/hotelReviews/" + h_no + "/1/"+photo+"/"+sortTerms);
+	})
+	 $("#button-all").click(function() {
+		 photo = false;
+		 getPage("/hotelReviews/" + h_no + "/1/"+photo+"/"+sortTerms);
+	})
+	
+/* Option2- Sort */	
 	$(".option").change(function(event) {
 		alert("바뀜");
 		sortTerms =  $("option:selected").val();
@@ -309,31 +272,18 @@ var sortTerms =  $("option:selected").val();
 	})
 	
 	
-	/* $("select option:selected").val() */
+	
+	
+/* Review_List Paging */
+ 	$(".pagination").on("click", "li a", function(event) {
+ 		event.preventDefault();
+		reviewPage = $(this).attr("href");
+		getPage("/hotelReviews/" + h_no + "/" + reviewPage+"/"+photo+"/"+sortTerms);
+	}); 
+	
+	
 </script>
 
-	<script type="text/javascript">
-	$(document).ready(function() {
-		
-		var result = '${msg}'
-		
-		switch (result) {
-		case 'REVIEW_INSERT SECCESS':
-			alert("후기 등록이 완료되었습니다.");
-			break;
-		case 'REVIEW_UPDATE SECCESS':
-			alert("후기 수정이 완료되었습니다.");
-			break;
-		case 'REVIEW_DELETE SECCESS':
-			alert("후기 삭제가 완료되었습니다.");
-			break;
 
-		default:
-			break;
-		}
-
-	});
-		
-	</script>
 	</body>
 </html>

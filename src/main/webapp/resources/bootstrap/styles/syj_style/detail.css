@@ -1,0 +1,14 @@
+.detail_table_container{
+	width: 80%;
+	margin:0 auto;
+	overflow: hidden;
+}
+
+.tg{
+	width:70%;
+	height: 100%;
+}
+
+.tg img{
+	max-width: 80%;
+}

@@ -15,4 +15,6 @@ public interface Review_ReplyDAO {
 	public int count(Integer r_no) throws Exception;
 	
 	public int getR_no(Integer r_r_no)throws Exception;
+	
+	public void  deleteAll(Integer r_no)throws Exception;
 }

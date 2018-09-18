@@ -80,19 +80,30 @@ h1 {
 		<div>
 			<div class="detail_table_container" align="center">
 				<input class="sessionId" type="hidden" value="${sessionId}">
-				<table class="tg" align="center">
+				<table id="tg" align="center">
 					<tr>
-						<td class="tg-0pky">제목</td>
-						<td class="tg-0pky" colspan="3">${board.r_title}</td>
+						<td class="tg-0pky"><label>제목  </label>${board.r_title}</td>
+						<td class="tg-0pky" colspan="3"></td>
 					</tr>
 					<tr>
-						<td class="tg-0pky">호텔명</td>
-						<td class="tg-0pky">${board.h_name}</td>
-						<td class="tg-0pky">숙박일수</td>
-						<td class="tg-0pky">${board.number_of_stay_days}일</td>
+						<td class="tg-0pky"><label>호텔명  </label>${board.h_name}</td>
+						<td class="tg-0pky"></td>
+						<td class="tg-0pky"><label>숙박일수</label>${board.number_of_stay_days}일</td>
+						<td class="tg-0pky"></td>
 					</tr>
 					<tr>
-						<td class="tg-0pky">평점 : ${board.r_grade}점</td>
+						<c:set var="grade" value="${board.r_grade}"/>
+						<td class="tg-0pky">
+							<label class="star">  
+							<c:choose>
+								<c:when test="${grade == '1' }">★</c:when>
+								<c:when test="${grade == '2' }">★★</c:when>
+								<c:when test="${grade == '3' }">★★★</c:when>
+								<c:when test="${grade == '4' }">★★★★</c:when>
+								<c:when test="${grade == '5' }">★★★★★</c:when>
+							</c:choose>
+							</label>
+						</td>
 						<td class="tg-0pky" id="board_id">${board.id}</td>
 						<td class="tg-0pky" colspan="2"><fmt:parseDate
 								var="dateString" value="${board.r_redate }" pattern="yyyy-MM-dd"></fmt:parseDate>
@@ -107,20 +118,18 @@ h1 {
 								<td colspan='4'><img src="C:/upload/${board.r_fname}" /></td>
 							</c:when>
 							<c:when test="${board.r_fname==null }">
-								<td><c:out value="NO IMAGE"></c:out></td>
+								<td colspan="4"><c:out value="NO IMAGE"></c:out></td>
 							</c:when>
 						</c:choose>
 					</tr>
 					<tr>
-						<td class="tg-0pky" colspan="4">${board.r_content}</td>
-					</tr>
-					<tr>
-						<td colspan="4" class="only_writer">
-							<button id="modifyBtn" value="수정">수정</button>
-							<button id="removeBtn" value="삭제">삭제</button>
-						</td>
+						<td class="tg-0pky" id="content" colspan="4">${board.r_content}</td>
 					</tr>
 				</table>
+				<div  class="only_writer">
+							<button id="modifyBtn" value="수정">수정</button>
+							<button id="removeBtn" value="삭제">삭제</button>
+				</div>
 				<!-- <a href="review_list.do">목록</a> -->
 				<input type="button" value="목록"
 					class="w3-button w3-white w3-round-small" onclick="history.go(-1)">
@@ -136,28 +145,36 @@ h1 {
 				<div class="box-header">
 					<h3 class="box-title">ADD NEW REPLY</h3>
 				</div>
-				<c:if test="${not empty uid}"> 
-				<div class="box-body">
-					 <label for="exampleInputEmail1">ReplyText</label>
-					<input class="form-control" type="text" placeholder="REPLY TEXT" style="width: 70%"
-						id="newReplyText">
-				</div>
-				<!-- /.box-body -->
-				<div class="box-footer">
-					<button type="button" class="btn btn-primary" id="replyAddBtn">ADD
-						REPLY</button>
-				</div>
-				</c:if>
-				<c:if test="${empty uid }">
-					<div class="box-body">
-						<div>
-							<a href="/register/login">Login Please</a>
+				<c:set var="board_id" value="${board.id}" />
+				<c:set var="board_h_name" value="${board.h_name}" />
+				<c:set var="uid" value="${uid}" />
+				<c:set var="name" value="${name}" />
+				<c:choose>
+					<c:when test="${board_id eq uid || board_h_name eq name}">
+						<div class="box-body">
+							<label for="exampleInputEmail1">ReplyText</label> <input
+								class="form-control" type="text" placeholder="REPLY TEXT"
+								style="width: 70%" id="newReplyText">
 						</div>
-					</div>
-				</c:if>				
-				
+						<!-- /.box-body -->
+						<div class="box-footer">
+							<button type="button" class="btn btn-primary" id="replyAddBtn">ADD
+								REPLY</button>
+						</div>
+					</c:when>
+
+					<c:otherwise>
+						<div class="box-body">
+							<div>
+								  <p>리뷰와 댓글 작성은 호텔 이용 시에만 가능합니다.</p>
+                                  <p>허위 리뷰 및 댓글 작성을 방지하기 위함이니 이용자들의 이해 부탁드립니다.</p>
+							</div>
+						</div>
+					</c:otherwise>
+
+				</c:choose>
 				<ul class="timeline">
-					<li class="time-label" id="repliesDiv"><span>댓글보기</span></li>
+					<li class="time-label" id="repliesDiv"><span>Reply List</span></li>
 				</ul>
 				<div class='text-center'>
 					<ul id="pagination" class="pagination pagination-sm no-margin ">
@@ -167,14 +184,14 @@ h1 {
 			</div>
 		</div>
 	</div>
-	
-	
-<!-- Modal -->
+
+
+	<!-- Modal -->
 	<!-- modify하기 위한 폼 -->
 	<div id="modifyModal" class="modal modal-primary fade" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
-			<div class="modal-content" >
+			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title"></h4>
@@ -220,7 +237,7 @@ h1 {
 
 
 	<script type="text/javascript">
-		var r_no = ${board.r_no}
+		var r_no = ${board.r_no};
 		var replyPage = 1;
 		var loginId = $('#session_id').val();
 
@@ -243,24 +260,29 @@ h1 {
 			}
 			return accum;
 		});
-		
+
 		
 		
 		var printData = function(replyArr, target, templateObject) {
+
 			var template = Handlebars.compile(templateObject.html());
 			var html = template(replyArr);
 			$(".replyLi").remove();
-			target.after(html); 
+			target.after(html);
 		}
+
+		
 		
 		function getPage(pageInfo) {
 			$.getJSON(pageInfo, function(data) {
 				printData(data.list, $("#repliesDiv"), $('#template'));
-				printPaging(data.pageMaker, $(".pagination")); 
+				printPaging(data.pageMaker, $(".pagination"));
 
 			});
 		}
 
+		
+		
 		var printPaging = function(pageMaker, target) {
 			var str = "";
 			if (pageMaker.prev) {
@@ -277,17 +299,20 @@ h1 {
 			}
 			target.html(str);
 		};
-		
-		$(document).ready(function() {
-			getPage("/reivew_replies/" + r_no + "/1");
-		})
-		/* $("#repliesDiv").on("click", function(event) {
-			alert("리스트 클릭");
-			getPage("/reivew_replies/" + r_no + "/1");
-		})   */
 
+		
+		
+ 	 	$(document).ready(function() {
+			getPage("/reivew_replies/" + r_no + "/1");
+		} 	 
+/* 	  $("#repliesDiv").on("click", function(event) {
+			getPage("/reivew_replies/" + r_no + "/1");
+		} */) 
+
+		
+		
 		$(".pagination").on("click", "li a", function(event) {
-			event.preventDefault(); 
+			event.preventDefault();
 			replyPage = $(this).attr("href");
 			getPage("/reivew_replies/" + r_no + "/" + replyPage);
 		});
@@ -296,11 +321,11 @@ h1 {
 		
 		/* replyAdd */
 		$("#replyAddBtn").on("click", function() {
-			
+
 			var replytextObj = $("#newReplyText");
 			var replytext = replytextObj.val();
-			var replyer = $('#session_id').val(); 
-			
+			var replyer = $('#session_id').val();
+
 			$.ajax({
 				type : 'post',
 				url : '/reivew_replies/',
@@ -325,90 +350,91 @@ h1 {
 				}
 			});
 		});
-		
-		 $(".timeline").on("click", ".replyLi", function(event) { 
-			 var reply = $(this); 
-			 $("#replytext").val(reply.find('.timeline-body').text()); 
-			 $(".modal-title").html(reply.attr("data-rno"));  
-		});	 
-		 
-		 
-		 
-         /* 수정 버튼 눌렀을때 컨트롤러에 url요청 */
-         $("#replyModBtn").on("click", function() {
-                  var r_r_no = $(".modal-title").html();
-                  var replytext = $("#replytext").val();
-                  $.ajax({
-                            type : 'put',
-                            url : '/reivew_replies/' + r_r_no,
-                            headers : {
-                                      "Content-Type" : "application/json",
-                                      "X-HTTP-Method-Override" : "PUT" /* 구 브라우저에는 post,get밖에 없으므로 그것을 처리해주는 역할 */
-                            },
-                            data : JSON.stringify({
-                                      r_r_content : replytext
-                            }),
-                            dataType : 'text',
-                            success : function(result) {
-                                      console.log("result: " + result);
-                                      if (result == 'SUCCESS') {
-                                      			$("#modifyModal").modal('hide');
-                                               alert("수정 되었습니다.");
-                                               getPage("/reivew_replies/" + r_no + "/" + replyPage);
-                                      }
-                            }
-                  });
-         });
-         /* 삭제 버튼 눌렀을때 컨트롤러에 url요청 */
-         $("#replyDelBtn").on("click", function() {
-                  var r_r_no = $(".modal-title").html();
-                  $.ajax({
-                            type : 'delete',
-                            url : '/reivew_replies/' + r_r_no,
-                            headers : {
-                                      "Content-Type" : "application/json",
-                                      "X-HTTP-Method-Override" : "DELETE"
-                            },
-                            dataType : 'text',
-                            success : function(result) {
-                                      console.log("result: " + result);
-                                      if (result == 'SUCCESS') {
-                                    	  $("#modifyModal").modal('hide');
-                                               alert("삭제 되었습니다.");
-                                               getPage("/reivew_replies/" + r_no + "/" + replyPage);
-                                      }
-                            }
-                  });
-         });
 
 		
 		
+		$(".timeline").on("click", ".replyLi", function(event) {
+			var reply = $(this);
+			$("#replytext").val(reply.find('.timeline-body').text());
+			$(".modal-title").html(reply.attr("data-rno"));
+		});
+
+		
+		
+		/* 수정 버튼 눌렀을때 컨트롤러에 url요청 */
+		$("#replyModBtn").on("click", function() {
+			var r_r_no = $(".modal-title").html();
+			var replytext = $("#replytext").val();
+			$.ajax({
+				type : 'put',
+				url : '/reivew_replies/' + r_r_no,
+				headers : {
+					"Content-Type" : "application/json",
+					"X-HTTP-Method-Override" : "PUT" /* 구 브라우저에는 post,get밖에 없으므로 그것을 처리해주는 역할 */
+				},
+				data : JSON.stringify({
+					r_r_content : replytext
+				}),
+				dataType : 'text',
+				success : function(result) {
+					console.log("result: " + result);
+					if (result == 'SUCCESS') {
+						$("#modifyModal").modal('hide');
+						alert("수정 되었습니다.");
+						getPage("/reivew_replies/" + r_no + "/" + replyPage);
+					}
+				}
+			});
+		});
+		
+		
+		
+		
+		/* 삭제 버튼 눌렀을때 컨트롤러에 url요청 */
+		$("#replyDelBtn").on("click", function() {
+			var r_r_no = $(".modal-title").html();
+			$.ajax({
+				type : 'delete',
+				url : '/reivew_replies/' + r_r_no,
+				headers : {
+					"Content-Type" : "application/json",
+					"X-HTTP-Method-Override" : "DELETE"
+				},
+				dataType : 'text',
+				success : function(result) {
+					console.log("result: " + result);
+					if (result == 'SUCCESS') {
+						$("#modifyModal").modal('hide');
+						alert("삭제 되었습니다.");
+						getPage("/reivew_replies/" + r_no + "/" + replyPage);
+					}
+				}
+			});
+		});
+		
+		
+		
+		$('#modifyBtn').click(function(event) {
+			alert(r_no);
+			location.href = "/reviews/updateReview/" + r_no;
+		});
+		$('#removeBtn').click(function(event) {
+			location.href = "/reviews/deleteReview/" + r_no;
+		});
+		
+		
+		
+		$('.only_writer').hide();
+		
+		var sessionId = $('#session_id').val();
+		var board_id = $('#board_id').text();
+		
+		if (sessionId == board_id) {
+			$('.only_writer').show();
+		};
 		
 	</script>
 
-	<script type="text/javascript">
-		$(document).ready(function() {
-			var r_no = ${board.r_no}
-			/*작성자 확인 후 수정 삭제 버튼*/
-			$('.only_writer').hide();
-
-			var sessionId = $('#session_id').val();
-			var board_id = $('#board_id').text();
-			if (sessionId == board_id) {
-				$('.only_writer').show();
-			}
-
-			var r_no = ${board.r_no}
-			$('#modifyBtn').click(function(event) {
-				location.href = "/reviews/updateReview/" + r_no;
-			})
-			$('#removeBtn').click(function(event) {
-				location.href = "/reviews/deleteReview/" + r_no;
-			})
-			
-			
-			
-		})
-	</script>
+	
 </body>
 </html>

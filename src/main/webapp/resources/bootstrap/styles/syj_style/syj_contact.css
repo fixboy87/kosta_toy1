@@ -1622,16 +1622,37 @@ footer{
 	margin:0 auto;
 	overflow: hidden;
 }
-
-.tg{
+.detail_table_container >tr> td{
+	border-color: black;
+}
+#tg{
 	width:70%;
 	height: 100%;
 }
 
-.tg img{
+#tg img{
 	max-width: 80%;
 }
 
+#tg td{
+	padding-left: 10px;
+	padding-top: 5px;
+}
 
+#content{
+	padding	: 10px;
+	height: 300px;
+}
 
+.star{
+	color: yellow;
+}
+
+h3.timeline-header{
+	font-size: 13px;
+}
+
+div.timeline-body{
+	font-size: 17px;
+}
 
