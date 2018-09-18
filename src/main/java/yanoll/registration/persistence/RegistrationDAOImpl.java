@@ -86,4 +86,19 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 	public void deleteHotel(String id) throws Exception {
 		sqlSession.delete(namespace+".delete_hotel", id);
 	}
+
+	@Override
+	public Hotel idCheck_h(String id) throws Exception {
+		return sqlSession.selectOne(namespace+".idcheck_h", id);
+	}
+
+	@Override
+	public Users telCheck(String tel) throws Exception {
+		return sqlSession.selectOne(namespace+".telcheck", tel);
+	}
+
+	@Override
+	public Hotel telCheck_h(String tel) throws Exception {
+		return sqlSession.selectOne(namespace+".telcheck_h", tel);
+	}
 }

@@ -95,15 +95,84 @@
 
 
 
+/* 이미지슬라이드 */
+
+.wrap{
+	
+	margin-top: 300px;
+}
+
+img{
+
+  display: block;
+
+  border: 0;
+
+}
 
 
 
+.slide{
+
+  width: 1000px;
+
+  height: 500px;
+
+  margin: 0 auto;
+
+  overflow: hidden;
+
+  position: relative;
+
+}
 
 
 
+.slide ul{
+
+  width: 3000px;
+
+  list-style: none;
+
+  font-size: 0;
+
+}
 
 
 
+.slide ul li{
+
+  display: inline-block;
+
+}
 
 
 
+.slide button.prev{
+
+  position: absolute;
+
+  left: 0;
+
+  top: 200px;
+
+}
+
+
+
+.slide button.next{
+
+  position: absolute;
+
+  right: 0;
+
+  top: 200px;
+
+}	
+
+
+#imgSlide{
+	
+	width: 1000px;
+	height: 500px;
+}

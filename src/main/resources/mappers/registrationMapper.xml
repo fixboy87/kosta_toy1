@@ -35,6 +35,11 @@
     		password = (#{password}), tel = (#{tel}), email = (#{email})
 		where id = (#{id})
 	</update>
+	
+	<select id="telcheck" resultType="Users">
+		select * from users
+			where tel = #{tel}
+	</select>
 
 	<!-- 관리자 고객 -->
 
@@ -81,4 +86,15 @@
 		delete from hotel
 			where h_id = #{id}
 	</delete>
+	
+	<select id="idcheck_h" resultType="Hotel">
+		select * from hotel
+			where h_id = #{id}
+	</select>
+	
+	<select id="telcheck_h" resultType="Hotel">
+		select * from hotel
+			where h_phonenum = #{tel}
+	</select>
+	
 </mapper>

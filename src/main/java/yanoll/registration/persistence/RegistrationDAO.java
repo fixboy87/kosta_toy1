@@ -3,6 +3,7 @@ package yanoll.registration.persistence;
 
 import yanoll.registration.dto.LoginDTO;
 import yanoll.registration.dto.LoginHotelDTO;
+import yanoll.user.domain.Actors;
 import yanoll.user.domain.Hotel;
 import yanoll.user.domain.Users;
 
@@ -33,9 +34,11 @@ public interface RegistrationDAO {
 	public void deleteUser(String id) throws Exception;
 
 	public void deleteHotel(String id) throws Exception;
+
+	public Hotel idCheck_h(String id) throws Exception;
+
+	public Users telCheck(String tel) throws Exception;
+
+	public Hotel telCheck_h(String tel) throws Exception;
 		
-	//public boolean idCheck(String id) throws Exception;
-	
-	//public boolean checkOthers(CheckDTO dto) throws Exception;
-	
 }

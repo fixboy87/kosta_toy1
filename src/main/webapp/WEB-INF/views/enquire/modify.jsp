@@ -23,11 +23,16 @@
 <script src="../resources/bootstrap/plugins/common//easing/easing.js"></script>
 <script src="../resources/bootstrap/plugins/common//parallax-js-master/parallax.min.js"></script>
 <script src="../resources/bootstrap/scripts/common/contact_custom.js"></script>
+
+<style type="text/css">
+.col-md-5{
+
+margin-left: 30%;
+}
+</style>
 </head>
 <body>
-<style type="text/css">
 
-</style>
 
 
 </head>
@@ -37,16 +42,23 @@
 
 	<!-- Contact -->
 
-    <form role="form" action="modify" method="post">
+    <form action="modify" method="post">
     <input type="hidden" name="page" value="${cri.page}">
     <input type="hidden" name="perPageNum" value="${cri.perPageNum}">
+    <input type='hidden' name='searchType' value="${cri.searchType}">
+	<input type='hidden' name='keyword' value="${cri.keyword}">
     </form>
 
-                     <h1>1:1문의</h1>
-					<div class="contact_form_container">
-						<form role="form" method="post" id="contact_form" class="clearfix">
-						<a class="enq_list" href="GngListAction.do" id="contact_send_btn" class="contact_send_btn trans_200" >나의문의내역</a>
-						<select class="hotel_name" id="hotel_name" name="hotel_name" >
+                    
+					
+										<div class="container">
+<div class="col-md-5">
+    <div class="form-area">  
+        <form role="form" method="post">
+        <br style="clear:both">
+                    <h3 style="margin-bottom: 25px; text-align: center;">문의</h3>
+					<a class="btn btn-primary pull-right" href="/enquire/list" >나의문의내역</a>
+				<select class="h_name" name="h_name" id="h_name" >
 						
 							<option>문의호텔</option>
 							<option value="파라다이스">파라다이스</option>
@@ -62,17 +74,23 @@
 							
 							</select>
 							<br>
-							
-							<input id="contact_input_subject" class="contact_input contact_input_subject" type="text" name="e_title" value="${board.e_title}">
-							<textarea id="contact_input_message" class="contact_message_input contact_input_message" type="text" name="e_contents" >${board.e_contents}</textarea>
-							 <input id="contact_input_subject" class="contact_input contact_input_subject" type="hidden" name="e_seq" value="${board.e_seq}">
-							<input id="contact_send_btn" type="submit" class="contact_send_btn trans_200" value="등록">
-	 
-						    				        
-					        
-					     </form>
-						
+					
+					<div class="form-group">
+						<input type="text" class="form-control" id="subject" name="e_title" value="${board.e_title}" placeholder="제목">
 					</div>
+                    <div class="form-group">
+                    <textarea class="form-control" type="textarea" id="message" name="e_contents" placeholder="내용" maxlength="140" rows="7">${board.e_contents}</textarea>
+                        <span class="help-block"><p id="characterLeft" class="help-block "></p></span>
+                         <input id="contact_input_subject" class="contact_input contact_input_subject" type="hidden" name="e_seq" value="${board.e_seq}">                    
+                    </div>
+            <input id="id" type="hidden" name="id" value="<%=(String)session.getAttribute("uid")%>">
+         
+            
+        <input type="submit" id="submit" name="submit" class="btn btn-primary pull-right"></input>
+        </form>
+    </div>
+</div>
+</div>
 			
 			
 <%@include file="../sub_page/footer.html" %>

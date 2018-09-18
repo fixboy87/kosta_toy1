@@ -1,6 +1,8 @@
 package yanoll.enquire.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -25,9 +27,15 @@ public class EnquireDaoImpl implements EnquireDao {
 	}
 
 	@Override
-	public List<Enquire_Board> list(SearchCriteria cri) throws Exception {
-	
-		return session.selectList(namespace+".list", cri,
+	public List<Enquire_Board> list(String id,String h_name,SearchCriteria cri) throws Exception {
+	    
+		Map<String, Object> paramMap = new HashMap<>();
+		
+		paramMap.put("id", id);
+		paramMap.put("h_name", h_name);
+		paramMap.put("cri", cri);
+		
+		return session.selectList(namespace+".list", paramMap,
 				new RowBounds(cri.getPageStart(),cri.getPerPageNum()));
 	}
 

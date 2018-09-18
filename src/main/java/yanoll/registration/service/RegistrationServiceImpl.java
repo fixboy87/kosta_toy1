@@ -171,20 +171,52 @@ public class RegistrationServiceImpl implements RegistrationService {
 
 	
 	@Override
-	public String idcheck(String id) throws Exception {
-		System.out.println("id는 "+id);
-		id = id.replace("=", "");
+	public String idcheck(String type, String id) throws Exception {
+		Actors user;
+		//id = id.replace("=", "");
 		
-		Users user = dao.idCheck(id);
+		if(type.equals("user")) {
+			user = (Actors)dao.idCheck(id);
+		} else if(type.equals("hotel")) {
+			user = (Actors)dao.idCheck_h(id);
+		} else {
+			throw new WrongAccessException();
+		}
+
+		return isActorNull(user);
+	}
+
+	@Override
+	public String telcheck(String type, String tel) throws Exception {
+		Actors user;
+		
+		String telNo = "0"+tel;
+		
+		if(type.equals("user")) {
+			user = (Actors)dao.telCheck(telNo);
+		} else if(type.equals("hotel")) {
+			user = (Actors)dao.telCheck_h(telNo);
+		} else {
+			throw new WrongAccessException();
+		}
+		
+		return isActorNull(user);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private String isActorNull(Actors user) {
 		if(user == null) {
 			return "success";
 		} else {
 			return "fail";
 		}
-	}
-
-	@Override
-	public String telcheck(String tel) throws Exception {
-		return null;
 	}
 }
