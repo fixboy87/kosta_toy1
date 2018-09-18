@@ -55,7 +55,8 @@
  	
     <select id="hotelListConditions" resultType="HotelaVO" parameterType="HotelaVO">
  	<![CDATA[
-	 select DISTINCT ho.h_name, ho.h_address, ho.price, ho.h_info, ho.pic_url, ho.h_location, hor.START_DAY, hor.END_DAY
+	 select DISTINCT ho.h_name, ho.h_address, ho.price, ho.h_info, ho.pic_url, 
+	 		ho.h_location,ho.h_no
  			from HOTEL ho inner join hotel_room ro
       		on ho.h_no = ro.h_no
  			join hotel_order hor

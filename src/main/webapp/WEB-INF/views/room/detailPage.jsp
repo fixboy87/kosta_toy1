@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -23,7 +24,6 @@
 <link href="../resources/bootstrap/plugins/common/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/offers_styles.css"><!-- ok -->
 <link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/offers_responsive.css"><!-- ok -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 <!--레인지 슬라이더 -->
@@ -193,7 +193,7 @@
 									<li>11시 입실</li>
 									
 								</ul>
-								<div style="margin-left: 50px;"><a href="#" class="payMent" id="payMent">예약하기</a></div>
+								<div style="margin-left: 50px;"><a href="/pay/bookingCheck?h_no=${listH.h_no}" class="payMent" id="payMent">예약하기</a></div>
 								<div class="rating rating_5" style="display: none !important;" >
 									<i class="fa fa-star"></i>
 									<i class="fa fa-star"></i>

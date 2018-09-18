@@ -142,7 +142,7 @@
 														
 														<div class="find_item">
 															<div style="color: white !important; background-color: #fe435c; width: 48px">체크인</div>
-															<input class="dropdown_item_select find_input"   autocomplete="off" type="text" id="firstday" size="9" placeholder="YYYY-MM-DD" >
+															<input class="dropdown_item_select find_input" name="start_day"  autocomplete="off" type="text" id="firstday" size="9" placeholder="YYYY-MM-DD" >
 																<script>
 																	$("#firstday")
 																		.datepicker();
@@ -151,7 +151,7 @@
 														
 														<div class="find_item">
 															<div style="color: white !important; background-color: #fe435c; width: 60px;">체크 아웃</div>									
-															<input class="dropdown_item_select find_input" autocomplete="off" type="text" id="secondday" size="9" placeholder="YYYY-MM-DD">
+															<input class="dropdown_item_select find_input" name="end_day" autocomplete="off" type="text" id="secondday" size="9" placeholder="YYYY-MM-DD">
 																<script>
 																	$("#secondday")
 																		.datepicker();
@@ -260,6 +260,7 @@
 							</div>
 						</div>
 					</c:forEach> 
+					
 					</div>
 <script>
 

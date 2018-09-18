@@ -106,7 +106,7 @@
 
 	<div class="home">
 		<!-- Image by https://unsplash.com/@peecho -->
-		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="http://localhost:8081/kostaProject1/images/common/last.jpg" data-speed="0.8"></div>
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="../../resources/images/common/last.jpg" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -142,7 +142,7 @@
 														
 														<div class="find_item">
 															<div style="color: white !important; background-color: #fe435c; width: 48px">체크인</div>
-															<input class="dropdown_item_select find_input"   autocomplete="off" type="text" id="firstday" size="9" placeholder="YYYY-MM-DD" >
+															<input class="dropdown_item_select find_input"  name="start_day"  autocomplete="off" type="text" id="firstday" size="9" placeholder="YYYY-MM-DD" >
 																<script>
 																	$("#firstday")
 																		.datepicker();
@@ -151,7 +151,7 @@
 														
 														<div class="find_item">
 															<div style="color: white !important; background-color: #fe435c; width: 60px;">체크 아웃</div>									
-															<input class="dropdown_item_select find_input" autocomplete="off" type="text" id="secondday" size="9" placeholder="YYYY-MM-DD">
+															<input class="dropdown_item_select find_input" name="end_day" autocomplete="off" type="text" id="secondday" size="9" placeholder="YYYY-MM-DD">
 																<script>
 																	$("#secondday")
 																		.datepicker();
@@ -243,28 +243,23 @@
 					<!-- forEach -->
 					<c:forEach var="listH" items="${list}"> 
 						<!-- Item -->
-						<div class="item clearfix rating_5">
-							<div class="item_image"><a href="HotelDetailAction.do?h_no=${listH.h_no}"><img src="http://localhost:8081/kostaProject1/images/pages/HYimg/${listH.pic_url}" alt=""></a></div>
+						<div class="item clearfix rating_5" id="listToChange">
+							<div class="item_image"><a href="/room/detailPage?h_no=${listH.h_no}"><img src="../../resources/images/pages/HY_images/${listH.pic_url}" alt=""></a></div>
 							<div class="item_content">
 								<div class="item_price">${listH.h_location}</div>
 								<div class="item_title">${listH.h_name }</div>
+								<div class="scrolling" data-bno="${listH.h_no }" style="display: none;">${listH.h_no }</div>
 								<ul>
 									<li>${listH.price}만원</li>
 									<li>1 nights</li>
 									<li>3 star hotel</li>
 								</ul>
-								<div class="rating rating_5" data-rating="5">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
 								<div class="item_text">${listH.h_info}</div>
 								<div class="item_more_link"><a href="#">Read More</a></div>
 							</div>
 						</div>
-					</c:forEach> 
+					</c:forEach>
+					
 					</div>
 				</div>
 			</div>
@@ -278,6 +273,7 @@
 							<li class="page"><a href="#">04.</a></li>
 						</ul>
 					</div>
+					
 				</div>
 			</div>
 		</div>

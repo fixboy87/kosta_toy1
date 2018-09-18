@@ -2,10 +2,12 @@ package yanoll.search.controller;
 
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -37,6 +39,7 @@ public class HotelController {
 		model.addAttribute("list", service.hotelListBasic());
 
 	}
+	//Ajax
 	@RequestMapping(value = "/listPage", method = RequestMethod.POST)
 	public @ResponseBody List<HotelaVO> infinityWar(@RequestBody HotelaVO vo) throws Exception{
 		System.out.println(vo.getH_no());
@@ -49,7 +52,7 @@ public class HotelController {
 		
 	}
 	
-
+//search/listPage1?h_location=부산        &checkOut=09%2F13%2F2018&checkIn=09%2F28%2F2018            &low_price=0&max_price=28#dirPic
 	//search/search?h_location=부산&low_price=0&max_price=28
 	
 	@RequestMapping(value = "/listPage1", method = RequestMethod.GET )
@@ -57,13 +60,32 @@ public class HotelController {
 			@RequestParam("h_location") String h_location,
 			@RequestParam("low_price") int low_price,
 			@RequestParam("max_price") int max_price,
-			Model model) throws Exception{
+			@RequestParam("start_day") Date start_day,
+			@RequestParam("end_day") Date end_day,	
+			Model model, HttpSession session) throws Exception{
 			
 		HotelaVO vo = new HotelaVO();
+		
+		System.out.println(end_day);
+		
+		// 머무는 날 구하기
+		long calDate = end_day.getTime() - start_day.getTime();
+		long booking = calDate/(24*60*60*1000);
+		booking = Math.abs(booking) + 1;
+		int bookingDays = (int)booking;
+		
+		System.out.println(bookingDays); 
 		
 		vo.setH_location(h_location);
 		vo.setLow_price(low_price);
 		vo.setMax_price(max_price);
+		
+		
+		session.setAttribute("start_day", start_day);
+		session.setAttribute("end_day", end_day);
+		session.setAttribute("bookingDays", bookingDays);
+		
+		System.out.println((int)session.getAttribute("bookingDays") + " +   세션체크");
 		
 		model.addAttribute("list",service.hotelListConditions(vo));
 		
