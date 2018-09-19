@@ -71,7 +71,7 @@ public class HotelController {
 		
 		String start_date = "";
 		String end_date = "";
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		start_date = format.format(start_day);
 		end_date = format.format(end_day);
 		

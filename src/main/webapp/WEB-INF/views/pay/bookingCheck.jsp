@@ -16,6 +16,21 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/plugins/common/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/plugins/common/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/plugins/common/OwlCarousel2-2.2.1/animate.css">
+<link href="../resources/bootstrap/plugins/common/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/main_styles.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/responsive.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/custom.css">
+<link href="../resources/bootstrap/plugins/common/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/offers_styles.css"><!-- ok -->
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/offers_responsive.css"><!-- ok -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+<link rel="stylesheet" type="text/css" href="http:../resources/bootstrap/styles/HY_Style/ListPage.css">
+<link rel="stylesheet" type="text/css" href="../../resources/bootstrap/styles/HY_Style/detailPage.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 <style type="text/css">
 
 /*****************globals*************/
@@ -179,56 +194,7 @@
 /*# sourceMappingURL=style.css.map */
 
 </style>
-  </head>
-
-  <body>
-	<c:forEach var="order" items="${booking}">
-	<div class="container">
-		<div class="card">
-			<div class="container-fliud">
-				<div class="wrapper row">
-					<div class="preview col-md-6">
-						
-						<div class="preview-pic tab-content">
-						  <div class="tab-pane active" id="pic-1">
-						  	<img src="../resources/images/pages/HotelRoomImg/${order.pic_room_url}" />
-						  </div>
-					
-						</div>
-						
-					</div>
-					<div class="details col-md-6">
-						<h3 class="product-title">${order.h_name}</h3>
-						<div class="rating">
-							
-						</div>
-						<div id="session" style="display: none;"><%=(int)session.getAttribute("bookingDays") %></div>
-						<p class="product-description">${order.room_type}</p>
-						<h4 class="price"> 결제금액 : <span id="totall"> 만원</span></h4>
-						<p class="vote">${order.h_address}</p>
-						<p class="vote">${order.h_phonenum}</p>
-						<div id="price1" style="display: none;">${order.room_price}</div>
-						<form role="form" action="" method="post" id="formdata">
-							<input type="hidden" value="${order.pic_room_url}">
-							<input type="hidden" value="${order.h_name}">
-							<input type="hidden" value="${order.room_type}">
-							<input type="hidden" value="${order.room_price}">
-							<input type="hidden" value="${order.h_address}">							
-							<input type="hidden" value="${order.h_phonenum}">
-						</form>
-						
-						<div class="action">
-							<button class="add-to-cart btn btn-default" id="button" type="button">결  제</button>			
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	</c:forEach>
-	
-  </body>
-  <script type="text/javascript">
+<script type="text/javascript">
 	$(document).ready(function(){
 		var bookingday = $("#session").html();
 		var price = $("#price1").html();
@@ -248,6 +214,75 @@
 		});
 	});
   </script>
+
+  </head>
+
+  <body>
+
+<input type="hidden" id="uid" name="uid" val="<%=(String)session.getAttribute("id")%>"/>
+<input type="hidden" id="type" name="type" val="<%=(String)session.getAttribute("type")%>"/>
+<input type="hidden" id="name" name="name" val="<%=(String)session.getAttribute("name")%>"/>
+	<c:forEach var="order" items="${booking}">
+	<div class="container" style="margin-bottom: 100px; margin-top: 70px; ">
+		<div class="card">
+			<div class="container-fliud">
+				<div class="wrapper row">
+					<div class="preview col-md-6">
+						
+						<div class="preview-pic tab-content">
+						  <div class="tab-pane active" id="pic-1">
+						  	<img src="../resources/images/pages/HotelRoomImg/${order.pic_room_url}" />
+						  </div>
+					
+						</div>
+						
+					</div>
+					<div class="details col-md-6" style="font-family: 'Nanum Gothic', sans-serif;">
+						<h2 class="product-title" >${order.h_name}</h2>
+						<div class="rating">
+							<div><h3>체크인ㅤㅤㅤㅤ-->ㅤㅤㅤㅤ체크아웃</h3></div>
+							<div><h3><%=(String)session.getAttribute("start_date")%>ㅤㅤ-->ㅤㅤ<%=(String)session.getAttribute("end_date")%> </h3> </div>
+						</div>
+						<div id="session" style="display: none;"><%=(int)session.getAttribute("bookingDays") %></div>
+						<p class="product-description">${order.room_type}</p>						
+						<p class="vote">${order.h_address}</p>
+						<p class="vote">${order.h_phonenum}</p>
+						<div id="price1" style="display: none;">${order.room_price}</div>
+						<h4 class="price"> 결제금액 : <span id="totall"> </span> <span>만원</span></h4>
+						<form role="form" action="" method="post" id="formdata">
+							<input type="hidden" value="${order.pic_room_url}">
+							<input type="hidden" value="${order.h_name}">
+							<input type="hidden" value="${order.room_type}">
+							<input type="hidden" value="${order.room_price}">
+							<input type="hidden" value="${order.h_address}">							
+							<input type="hidden" value="${order.h_phonenum}">
+						</form>
+						
+						<div class="action">
+							<button class="add-to-cart btn btn-default" id="button" type="button" style="font-size: 15px;">결  제</button>			
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</c:forEach>
+<script src="http:../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
+<script src="http:../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>
+<script src="http:../resources/bootstrap/plugins/common/greensock/TweenMax.min.js"></script>
+<script src="http:../resources/bootstrap/plugins/common/greensock/TimelineMax.min.js"></script>
+<script src="http:../resources/bootstrap/plugins/common/scrollmagic/ScrollMagic.min.js"></script>
+<script src="http:../resources/bootstrap/plugins/common/greensock/animation.gsap.min.js"></script>
+<script src="http:../resources/bootstrap/plugins/common/greensock/ScrollToPlugin.min.js"></script>
+<script src="http:../resources/bootstrap/plugins/common/Isotope/isotope.pkgd.min.js"></script>
+<script src="http:../resources/bootstrap/plugins/common/easing/easing.js"></script>
+<script src="http:../resources/bootstrap/plugins/common/parallax-js-master/parallax.min.js"></script>
+<script src="http:../resources/bootstrap/scripts/common/offers_custom.js"></script>
+
+<script src="http:../resources/bootstrap/scripts/common/menuEffect.js" type="text/javascript"></script>
+<script src="http:../resources/bootstrap/scripts/common/custom.js"></script>
+  </body>
+  
 </html>
 
 

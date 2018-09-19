@@ -5,17 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
-<script src="../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/HY_Style/loading.css"> 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="../resources/bootstrap/scripts/HY_Script/loading.js"></script>
-
-
-
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <style type="text/css">
-
 .text-danger strong {
     		color: #9f181c;
 		}
@@ -105,26 +98,14 @@
 		}
 
 </style>
-
-
-
 </head>
+
 <body>
 
 
- 
- 
-<br>
-<br>
-<center><h1> 결제창</h1></center>
 
 
-<div class="loadingloader" id="loadingloader">
-    <img src="../resources/images/pages/HY_images/cat.gif" class="img-responsive center-block">
-  <p class="text-center loadText">기달기달...</p>
-</div>
-
-
+<!------ Include the above in your HEAD tag ---------->
 
 <div class="container">
 	<div class="row">
@@ -147,10 +128,14 @@
 					</div>
 				</div>
             </div>
-				<div class="receipt-left">
-					<h1>Receipt</h1>
-				</div>
-				<div>
+			
+			
+						<div class="receipt-left">
+							<h1>Receipt</h1>
+						</div>
+				
+			
+            <div>
                 <table class="table table-bordered">
                    
                     <tbody>
@@ -200,8 +185,3 @@
 
 </body>
 </html>
-
-
-
-
-

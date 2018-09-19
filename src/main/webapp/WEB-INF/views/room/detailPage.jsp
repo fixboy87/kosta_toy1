@@ -45,9 +45,8 @@
 <!-- Custom Css -->
 <link rel="stylesheet" type="text/css" href="http:../resources/bootstrap/styles/HY_Style/ListPage.css">
 <link rel="stylesheet" type="text/css" href="../../resources/bootstrap/styles/HY_Style/detailPage.css">
-
+<!-- 슬라이드 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
 	
 
@@ -193,7 +192,7 @@
 									<li>11시 입실</li>
 									
 								</ul>
-								<div style="margin-left: 50px;"><a href="/pay/bookingCheck?h_no=${listH.h_no}&room_type=${listH.room_type}" class="payMent" id="payMent">예약하기</a></div>
+								<div style="margin-left: 50px; margin-top: 20px;	"><a href="/pay/bookingCheck?h_no=${listH.h_no}&room_type=${listH.room_type}" class="payMent" id="payMent">예약하기</a></div>
 								<div class="rating rating_5" style="display: none !important;" >
 									<i class="fa fa-star"></i>
 									<i class="fa fa-star"></i>
