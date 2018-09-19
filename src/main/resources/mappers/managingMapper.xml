@@ -13,6 +13,11 @@
 	</select>
 	
 
+	<parameterMap type="" id="">
+		<parameter property=""/>
+		<parameter property=""/>
+	</parameterMap>
+	
 	<resultMap type="Integer" id="monthlyResultMap"></resultMap>	
 	
 	<select id="get_monthly_booked" parameterType="GetCalendarDTO" resultType="Integer" statementType="CALLABLE">
