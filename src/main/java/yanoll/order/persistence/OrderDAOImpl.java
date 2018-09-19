@@ -29,5 +29,11 @@ public class OrderDAOImpl implements OrderDAO {
 		session.insert(namespace + ".Orderdata",vo);
 			
 	}
+	@Override
+	   public int userNo(String id) throws Exception {
+	      
+	      return session.selectOne(namespace+".userNo", id);
+	      
+	  }
 
 }

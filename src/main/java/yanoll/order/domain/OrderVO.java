@@ -20,7 +20,16 @@ public class OrderVO {
 	private String room_type;
 	private String h_address;
 	private String h_phonenum;
+	private String id;
 	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public String getUser_phonenumber() {
 		return user_phonenumber;
 	}

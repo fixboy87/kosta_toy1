@@ -27,4 +27,9 @@ public class OrderServiceImpl implements OrderService {
 		
 	}
 
+	@Override
+	public int userNo(String id) throws Exception {
+		return dao.userNo(id);
+	}
+
 }

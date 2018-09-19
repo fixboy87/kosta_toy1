@@ -32,6 +32,7 @@ public class RoomController {
 					
 		model.addAttribute("detail", service.roomDetail(h_no));
 		model.addAttribute("slide",service.slide(h_no));
+		model.addAttribute("h_no",h_no);
 		
 		return "room/detailPage";
 	}

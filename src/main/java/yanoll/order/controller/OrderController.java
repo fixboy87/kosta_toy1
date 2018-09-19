@@ -32,7 +32,7 @@ public class OrderController {
    }
    
    @RequestMapping(value = "/index", method = RequestMethod.POST)
-   public void data(OrderDTO dto,Model model, HttpSession session) throws Exception{
+   public void data(OrderDTO dto, Model model, HttpSession session) throws Exception{
       System.out.println("post!!!!");
 	  System.out.println(dto);
 	  model.addAttribute("dto",dto);
@@ -40,8 +40,10 @@ public class OrderController {
 	  String checkIn = (String)session.getAttribute("start_date");
 	  String checkOut = (String)session.getAttribute("end_date");
 	  int totalday = (int)session.getAttribute("bookingDays");
-	  String uid = (String)session.getAttribute("uid");
+	  String id = (String)session.getAttribute("uid");
 	  String name = (String)session.getAttribute("name");
+	  
+	  int userNo = service.userNo(id);
 	  
 	  SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 	  
@@ -50,14 +52,19 @@ public class OrderController {
 	  
 	  
 	  OrderVO vo = new OrderVO();
-	  vo.setH_name(dto.getH_name());
+	  
+	  vo.setH_no(dto.getH_no());
+//	  vo.setH_name(dto.getH_name());
 	  vo.setRoom_type(dto.getRoom_type());
-	  vo.setRoom_price(dto.getRoom_price() * totalday);
+	  vo.setOrder_price(dto.getRoom_price() * totalday);
 	  vo.setP_conition(0);
 	  vo.setH_phonenum(dto.getH_phonenum());
 	  vo.setStart_day(start_day);
 	  vo.setEnd_day(end_day);
 	  vo.setOrder_name(name);
+	  vo.setId(id);
+	  vo.setUserNo(userNo);
+	  
 	  
 	  
 	  
