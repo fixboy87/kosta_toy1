@@ -51,7 +51,7 @@
           </div>
           <div class="form-group">
             <label class="control-label">연락처</label>
-            <input maxlength="100" type="text" required="required" class="form-control" />
+            <input maxlength="100" type="text" required="required" class="form-control" name=""/>
           </div>
           <!-- <div class="form-group">
             <label class="control-label">Address</label>
@@ -90,7 +90,8 @@
          - 투숙일 기준 4일전 100% 환불가능<br>
          - 투숙일 기준 3일전 30% 취소수수료 부과<br>
          - 투숙일 기준 2일전~당일 100% 수수료 발생<br>
-
+		
+	
 
 </div>
            
@@ -110,13 +111,14 @@
           <h3> [Step 3]</h3>
           
           
-		    <input type="hidden" name="pic_room_url" value="${order.pic_room_url}">
-		    <input type="hidden" name="h_name" value="${order.h_name}">
-		    <input type="hidden" name="room_type" value="${order.room_type}">
-		    <input type="hidden" name="room_price" value="${order.room_price}">
-		    <input type="hidden" name="h_address" value="${order.h_address}">                     
-		    <input type="hidden" name="h_phonenum" value="${order.h_phonenum}">
-
+		    <input type="hidden" name="pic_room_url" value="${dto.pic_room_url}">
+		    <input type="hidden" name="h_name" value="${dto.h_name}">
+		    <input type="hidden" name="room_type" value="${dto.room_type}">
+		    <input type="hidden" name="room_price" value="${dto.room_price}">
+		    <input type="hidden" name="h_address" value="${dto.h_address}">                     
+		    <input type="hidden" name="h_phonenum" value="${dto.h_phonenum}">
+		    <input type="hidden" name="h_no" value="${dto.h_no}">
+			
 	
           <button class="btn btn-success btn-lg pull-right" id="cash_Bt" type="submit">결제</button>
         </div>
@@ -125,6 +127,7 @@
   </form>
   
 </div>
+
 
 
 <script type="text/javascript">

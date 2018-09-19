@@ -21,4 +21,10 @@ public class OrderServiceImpl implements OrderService {
 		return dao.orderCheck(vo);
 	}
 
+	@Override
+	public void Orderdata(OrderVO vo) throws Exception {
+		dao.Orderdata(vo);
+		
+	}
+
 }

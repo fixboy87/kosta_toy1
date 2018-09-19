@@ -6,4 +6,5 @@ import yanoll.order.domain.OrderVO;
 
 public interface OrderService {
 	public List<OrderVO> orderCheck(OrderVO vo)throws Exception;
+	public void Orderdata(OrderVO vo)throws Exception;
 }

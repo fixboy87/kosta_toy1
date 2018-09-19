@@ -20,7 +20,17 @@ public class OrderVO {
 	private String room_type;
 	private String h_address;
 	private String h_phonenum;
+	
+	public String getUser_phonenumber() {
+		return user_phonenumber;
+	}
+
+	public void setUser_phonenumber(String user_phonenumber) {
+		this.user_phonenumber = user_phonenumber;
+	}
+
 	private int room_price;
+	private String user_phonenumber;
 	
 	public int getRoom_price() {
 		return room_price;

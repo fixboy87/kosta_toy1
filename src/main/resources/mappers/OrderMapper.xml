@@ -8,7 +8,7 @@
  	<select id="orderCheck" resultType="OrderVO" parameterType="OrderVO">
  	 <![CDATA[
  	 
- 		select DISTINCT  hr.pic_room_url, ho.h_name, ty.room_price, ho.h_address, ho.h_phonenum
+ 		select DISTINCT  hr.pic_room_url, ho.h_name, ty.room_price, ho.h_address, ho.h_phonenum, ho.h_no
 		  from hotel ho inner join hotel_room hr
 		  on ho.h_no = hr.h_no
 		  join type ty
@@ -18,6 +18,18 @@
  	 ]]>
  	
  	</select>
+ 	<!-- id , name 날짜 포멧 변경해서 넣고 
+		    호텔넘버 유저넘버 찾는 메퍼 하나더 만들기.-->
+	<!-- <insert id="Orderdata" parameterType="OrderVO">
+		insert into hotel_order (order_num, h_no, start_day, end_day, order_price, order_name,
+		user_no, p_condition, order_date, user_phonenumber)
+			values(hotel_order_order_seq.nextval(),#{h_no}, #{start_day}, #{end_day}, 
+			#{order_price}, #{order_name}, #{user_no}, #{p_condition}, sysdate, #{user_phonenumber} )
+	</insert>		    
+	
+	<select id="userNo" parameterType="String" resultType="int" >
+  		select userNo from users where id = #{id}
+   	</select> -->
  	
 		
  </mapper>

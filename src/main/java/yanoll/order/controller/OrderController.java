@@ -1,6 +1,10 @@
 package yanoll.order.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,20 +26,43 @@ public class OrderController {
    private OrderService service;
    
    @RequestMapping(value = "/index", method = RequestMethod.GET)
-   public void payment(OrderDTO dto,Model model) {
-      System.out.println("index GET");
-      System.out.println(dto);
+   public void payment() {
+     
 
    }
    
    @RequestMapping(value = "/index", method = RequestMethod.POST)
-   public void data(OrderDTO dto){
+   public void data(OrderDTO dto,Model model, HttpSession session) throws Exception{
       System.out.println("post!!!!");
-	   System.out.println(dto);
-      
+	  System.out.println(dto);
+	  model.addAttribute("dto",dto);
+	  
+	  String checkIn = (String)session.getAttribute("start_date");
+	  String checkOut = (String)session.getAttribute("end_date");
+	  int totalday = (int)session.getAttribute("bookingDays");
+	  String uid = (String)session.getAttribute("uid");
+	  String name = (String)session.getAttribute("name");
+	  
+	  SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+	  
+	  Date start_day = format.parse(checkIn);
+	  Date end_day = format.parse(checkOut);
+	  
+	  
+	  OrderVO vo = new OrderVO();
+	  vo.setH_name(dto.getH_name());
+	  vo.setRoom_type(dto.getRoom_type());
+	  vo.setRoom_price(dto.getRoom_price() * totalday);
+	  vo.setP_conition(0);
+	  vo.setH_phonenum(dto.getH_phonenum());
+	  vo.setStart_day(start_day);
+	  vo.setEnd_day(end_day);
+	  vo.setOrder_name(name);
+	  
+	  
+	  
+	  service.Orderdata(vo);
    }
-   
-  
    
    
    //pay/bookingCheck

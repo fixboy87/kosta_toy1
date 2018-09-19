@@ -7,7 +7,20 @@ public class OrderDTO {
 	private int room_price;
 	private String h_address;
 	private String h_phonenum;
+	private int h_no;
 	
+	public int getH_no() {
+		return h_no;
+	}
+
+
+
+	public void setH_no(int h_no) {
+		this.h_no = h_no;
+	}
+
+
+
 	public OrderDTO(){}
 	
 	

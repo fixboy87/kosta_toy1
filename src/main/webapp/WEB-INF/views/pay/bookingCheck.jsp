@@ -257,6 +257,8 @@
                      <input type="hidden" name="room_price" value="${order.room_price}">
                      <input type="hidden" name="h_address" value="${order.h_address}">                     
                      <input type="hidden" name="h_phonenum" value="${order.h_phonenum}">
+                     <input type="hidden" name="h_phonenum" value="${order.h_phonenum}">
+                     <input type="hidden" name="h_no" value="${order.h_no}">
                   </form>
                   
                   <div class="action">

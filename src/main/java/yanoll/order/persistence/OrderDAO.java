@@ -7,4 +7,5 @@ import yanoll.order.domain.OrderVO;
 public interface OrderDAO {
 	
 	public List<OrderVO> orderCheck(OrderVO vo)throws Exception;
+	public void Orderdata(OrderVO vo)throws Exception;
 }
