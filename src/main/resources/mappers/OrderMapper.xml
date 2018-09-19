@@ -18,19 +18,19 @@
  	 ]]>
  	
  	</select>
- 	<!-- id , name 날짜 포멧 변경해서 넣고 
-		    호텔넘버 유저넘버 찾는 메퍼 하나더 만들기.-->
-	<!-- <insert id="Orderdata" parameterType="OrderVO">
+ 	
+ 	 <insert id="Orderdata" parameterType="OrderVO">
 		insert into hotel_order (order_num, h_no, start_day, end_day, order_price, order_name,
 		userNo, p_condition, order_date, user_phonenumber,room_type)
-			values(123,#{h_no}, #{start_day}, #{end_day}, 
+			values(hotel_order_order_seq.nextval, #{h_no}, #{start_day}, #{end_day}, 
 			#{order_price}, #{order_name}, #{userNo}, #{p_condition}, sysdate, #{user_phonenumber},
 			#{room_type} )
-	</insert> -->		    
+	</insert> 		    
+	    
 
 	<select id="userNo" parameterType="String" resultType="int" >
   		select userNo from users where id = #{id}
-   	</select> 
+   	</select>  
  	
 		
  </mapper>

@@ -297,12 +297,26 @@ $(window).scroll(function(){
                             	console.log("asdasdfslyiabhfmwrg");
                             	
                             	str +="<div class=" + "item clearfix rating_5" +"id=" + "listToChange"+">"    
-                            		
+                            		+ "<div class=" + "item_image"+">"+"<a href='/room/detailPage?h_no='" + this.h_no +
                             			
                             	
                         });
-                        
-                        
+			                        ()<div class="item clearfix rating_5" id="listToChange">
+									<div class="item_image"><a href="/room/detailPage?h_no=${listH.h_no}"><img src="../../resources/images/pages/HY_images/${listH.pic_url}" alt=""></a></div>
+									<div class="item_content">
+										<div class="item_price">${listH.h_location}</div>
+										<div class="item_title">${listH.h_name }</div>
+										<div class="scrolling" data-bno="${listH.h_no }" style="display: none;">${listH.h_no }</div>
+										<ul>
+											<li>${listH.price}만원</li>
+											<li>1 nights</li>
+											<li>3 star hotel</li>
+										</ul>
+										<div class="item_text">${listH.h_info}</div>
+										<div class="item_more_link"><a href="#">Read More</a></div>
+									</div>
+								</div>
+			                        
 					
 					
 					

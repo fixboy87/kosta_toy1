@@ -23,24 +23,7 @@ public class OrderVO {
 	private int room_price;//step
 	private String user_phonenumber;//step
 	
-	public String getUser_phonenumber() {
-		return user_phonenumber;
-	}
-
-	public void setUser_phonenumber(String user_phonenumber) {
-		this.user_phonenumber = user_phonenumber;
-	}
-
-	public int getRoom_price() {
-		return room_price;
-	}
-
-	public void setRoom_price(int room_price) {
-		this.room_price = room_price;
-	}
-
-	public OrderVO() {
-	}
+	public OrderVO(){}
 
 	public int getOrder_num() {
 		return order_num;
@@ -170,17 +153,55 @@ public class OrderVO {
 		this.id = id;
 	}
 
+	public int getRoom_price() {
+		return room_price;
+	}
+
+	public void setRoom_price(int room_price) {
+		this.room_price = room_price;
+	}
+
+	public String getUser_phonenumber() {
+		return user_phonenumber;
+	}
+
+	public void setUser_phonenumber(String user_phonenumber) {
+		this.user_phonenumber = user_phonenumber;
+	}
+
+	public OrderVO(int order_num, int h_no, Date start_day, Date end_day, int order_price, String order_name,
+			int userNo, int number_of_stay_days, int p_condition, String order_date, String pic_room_url, String h_name,
+			String room_type, String h_address, String h_phonenum, String id, int room_price, String user_phonenumber) {
+		super();
+		this.order_num = order_num;
+		this.h_no = h_no;
+		this.start_day = start_day;
+		this.end_day = end_day;
+		this.order_price = order_price;
+		this.order_name = order_name;
+		this.userNo = userNo;
+		this.number_of_stay_days = number_of_stay_days;
+		this.p_condition = p_condition;
+		this.order_date = order_date;
+		this.pic_room_url = pic_room_url;
+		this.h_name = h_name;
+		this.room_type = room_type;
+		this.h_address = h_address;
+		this.h_phonenum = h_phonenum;
+		this.id = id;
+		this.room_price = room_price;
+		this.user_phonenumber = user_phonenumber;
+	}
+
 	@Override
 	public String toString() {
-		return "OrderVO [order_num=" + order_num  + ", h_no=" + h_no + ", start_day="
-				+ start_day + ", end_day=" + end_day + ", order_price=" + order_price + ", order_name=" + order_name
-				+ ", userNo=" + userNo + ", number_of_stay_days=" + number_of_stay_days + ", p_condition=" + p_condition
-				+ ", order_date=" + order_date + ", pic_room_url=" + pic_room_url + ", h_name=" + h_name
-				+ ", room_type=" + room_type + ", h_address=" + h_address + ", h_phonenum=" + h_phonenum + ", id=" + id
-				+ "]";
+		return "OrderVO [order_num=" + order_num + ", h_no=" + h_no + ", start_day=" + start_day + ", end_day="
+				+ end_day + ", order_price=" + order_price + ", order_name=" + order_name + ", userNo=" + userNo
+				+ ", number_of_stay_days=" + number_of_stay_days + ", p_condition=" + p_condition + ", order_date="
+				+ order_date + ", pic_room_url=" + pic_room_url + ", h_name=" + h_name + ", room_type=" + room_type
+				+ ", h_address=" + h_address + ", h_phonenum=" + h_phonenum + ", id=" + id + ", room_price="
+				+ room_price + ", user_phonenumber=" + user_phonenumber + "]";
 	}
-	
-	
 	
 	
 	

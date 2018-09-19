@@ -32,10 +32,10 @@ public class OrderController {
    }
    
    @RequestMapping(value = "/index", method = RequestMethod.POST)
-   public void data(OrderVO vo, Model model, HttpSession session) throws Exception{
+   public void data(OrderVO vo, HttpSession session) throws Exception{
       System.out.println("post!!!!");
 	  System.out.println(vo);
-	  model.addAttribute("dto",vo);
+	  
 	  
 	  String checkIn = (String)session.getAttribute("start_date");
 	  String checkOut = (String)session.getAttribute("end_date");
@@ -72,8 +72,11 @@ public class OrderController {
 	  
 	  System.out.println("vo 체크");
 	  System.out.println(vo);
+	  //여기까지 vo 값 잘 넘어오는거 확인함.
+	  System.out.println(vo.getUserNo());
+	  System.out.println(vo.getOrder_name());
 	  
-	  model.addAttribute(service.orderCheck(vo));
+	  service.Orderdata(vo);
    }
    
    

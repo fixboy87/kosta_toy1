@@ -6,7 +6,7 @@
 
 <mapper namespace="yanoll.mapper.managingMapper">
 	
-	<select id="get_total_rooms" parameterType="String">
+	<!-- <select id="get_total_rooms" parameterType="String">
 		select room_count
 		from hotel
 		where h_id = #{h_id}
@@ -18,9 +18,9 @@
 		<parameter property=""/>
 	</parameterMap>
 	
-	<resultMap type="Integer" id="monthlyResultMap"></resultMap>	
+	<resultMap type="Integer" id="monthlyResultMap"></resultMap>	 -->
 	
-	<select id="get_monthly_booked" parameterType="GetCalendarDTO" resultType="Integer" statementType="CALLABLE">
+	<!-- <select id="get_monthly_booked" parameterType="GetCalendarDTO" resultType="Integer" statementType="CALLABLE">
 	
 	<![CDATA[
 		DECLARE
@@ -63,7 +63,7 @@
 		END;
 	]]>
 	 
-	</select>
+	</select> -->
 	
 	
 </mapper>
