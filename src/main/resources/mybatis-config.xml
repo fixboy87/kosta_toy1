@@ -14,7 +14,7 @@
   <package name="yanoll.search.dto"/>
   <package name="yanoll.order.domain"/>
   <package name="yanoll.order.dto"/>
-  
+  <package name="yanoll.managing.dto"/>
 	</typeAliases>
 	
 </configuration>

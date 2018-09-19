@@ -4,8 +4,8 @@
 
 
 
-<mapper namespace="yanoll.mapper.managingapper">
-
+<mapper namespace="yanoll.mapper.managingMapper">
+	
 	<select id="get_total_rooms" parameterType="String">
 		select room_count
 		from hotel
@@ -13,6 +13,51 @@
 	</select>
 	
 	
+	<select id="get_monthly_booked" parameterType="GetCalendarDTO" resultType="Integer" statementType="CALLABLE">
+	
+	<![CDATA[
+		DECLARE
+		    vs_avail_count DATE;
+		    cnt NUMBER;
+		    
+		    str_id = #{h_id};
+		    str_date = #{currentDate};
+		    
+		    CURSOR cur_count_month (selected_date DATE)
+		    IS
+		        SELECT TRUNC(selected_date, 'MM') + LEVEL - 1 AS day
+		        FROM dual
+		        CONNECT BY TRUNC(TRUNC(selected_date, 'MM') + LEVEL - 1, 'MM') = TRUNC(selected_date, 'MM');
+		        
+			BEGIN
+		
+		    	OPEN cur_count_month(TO_DATE(str_date, 'yy/mm/dd'));
+		    
+		        	LOOP
+			            FETCH cur_count_month
+			            INTO vs_avail_count;
+			            
+			            SELECT COUNT(*) INTO cnt
+			            FROM hotel_order
+			            WHERE h_no = 
+			                (SELECT h_no
+			                FROM hotel
+			                WHERE h_id = str_id)
+			            AND start_day < vs_avail_count
+			            AND end_day > vs_avail_count;
+		
+		       
+		        	EXIT WHEN cur_count_month%NOTFOUND;
+		        
+		        
+		   		 END LOOP;
+		    
+		   	 CLOSE cur_count_month;
+		
+		END;
+	]]>
+	 
+	</select>
 	
 	
 </mapper>

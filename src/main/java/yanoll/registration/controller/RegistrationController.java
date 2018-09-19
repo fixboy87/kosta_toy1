@@ -17,10 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-
 import yanoll.registration.service.RegistrationService;
-import yanoll.user.domain.Actors;
 import yanoll.user.domain.Hotel;
 import yanoll.user.domain.Users;
 import yanoll.util.WrongAccessException;
