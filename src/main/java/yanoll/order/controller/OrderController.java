@@ -32,10 +32,10 @@ public class OrderController {
    }
    
    @RequestMapping(value = "/index", method = RequestMethod.POST)
-   public void data(OrderDTO dto, Model model, HttpSession session) throws Exception{
+   public void data(OrderVO vo, Model model, HttpSession session) throws Exception{
       System.out.println("post!!!!");
-	  System.out.println(dto);
-	  model.addAttribute("dto",dto);
+	  System.out.println(vo);
+	  model.addAttribute("dto",vo);
 	  
 	  String checkIn = (String)session.getAttribute("start_date");
 	  String checkOut = (String)session.getAttribute("end_date");
@@ -43,32 +43,37 @@ public class OrderController {
 	  String id = (String)session.getAttribute("uid");
 	  String name = (String)session.getAttribute("name");
 	  
-	  int userNo = service.userNo(id);
+	  System.out.println("인덱스 컨트롤러 체크");
+	  System.out.println(checkIn);
+	  System.out.println(checkOut);
+	  System.out.println(totalday);
+	  System.out.println(id);
+	  System.out.println(name);
 	  
 	  SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 	  
 	  Date start_day = format.parse(checkIn);
 	  Date end_day = format.parse(checkOut);
 	  
+	  System.out.println("세션 날짜 체크");
+	  System.out.println(start_day);
+	  System.out.println(format.parseObject(checkIn));
 	  
-	  OrderVO vo = new OrderVO();
+	  int userNo = service.userNo(id);
 	  
-	  vo.setH_no(dto.getH_no());
-//	  vo.setH_name(dto.getH_name());
-	  vo.setRoom_type(dto.getRoom_type());
-	  vo.setOrder_price(dto.getRoom_price() * totalday);
-	  vo.setP_conition(0);
-	  vo.setH_phonenum(dto.getH_phonenum());
+	  vo.setOrder_price(vo.getRoom_price() * totalday);//
+	  vo.setP_condition(0);
 	  vo.setStart_day(start_day);
 	  vo.setEnd_day(end_day);
 	  vo.setOrder_name(name);
 	  vo.setId(id);
 	  vo.setUserNo(userNo);
+	  vo.setNumber_of_stay_days(totalday);
 	  
+	  System.out.println("vo 체크");
+	  System.out.println(vo);
 	  
-	  
-	  
-	  service.Orderdata(vo);
+	  model.addAttribute(service.orderCheck(vo));
    }
    
    

@@ -93,15 +93,18 @@ public void setE_day(String e_day) {
 
 @Override
 public String toString() {
-	return "Hotel_OrderDTO [h_name=" + h_name + ", s_day=" + s_day + ", e_day=" + e_day + ", getOrder_num()="
-			+ getOrder_num() + ", getRoom_num()=" + getRoom_num() + ", getH_no()=" + getH_no() + ", getStart_day()="
-			+ getStart_day() + ", getEnd_day()=" + getEnd_day() + ", getOrder_price()=" + getOrder_price()
-			+ ", getOrder_name()=" + getOrder_name() + ", getUserNo()=" + getUserNo() + ", getNumber_of_stay_days()="
-			+ getNumber_of_stay_days() + ", getP_conition()=" + getP_conition() + ", getOrder_date()=" + getOrder_date()
-			+ ", getPic_room_url()=" + getPic_room_url() + ", getRoom_type()=" + getRoom_type() + ", getH_address()="
-			+ getH_address() + ", getH_phonenum()=" + getH_phonenum() + ", getRoom_price()=" + getRoom_price()
-			+ ", toString()=" + super.toString() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + "]";
+	return "Hotel_OrderDTO [h_name=" + h_name + ", s_day=" + s_day + ", e_day=" + e_day + ", getUser_phonenumber()="
+			+ getUser_phonenumber() + ", getRoom_price()=" + getRoom_price() + ", getOrder_num()=" + getOrder_num()
+			+ ", getH_no()=" + getH_no() + ", getStart_day()=" + getStart_day() + ", getEnd_day()=" + getEnd_day()
+			+ ", getOrder_price()=" + getOrder_price() + ", getOrder_name()=" + getOrder_name() + ", getUserNo()="
+			+ getUserNo() + ", getNumber_of_stay_days()=" + getNumber_of_stay_days() + ", getP_condition()="
+			+ getP_condition() + ", getOrder_date()=" + getOrder_date() + ", getPic_room_url()=" + getPic_room_url()
+			+ ", getRoom_type()=" + getRoom_type() + ", getH_address()=" + getH_address() + ", getH_phonenum()="
+			+ getH_phonenum() + ", getId()=" + getId() + ", toString()=" + super.toString() + ", getClass()="
+			+ getClass() + ", hashCode()=" + hashCode() + "]";
 }
+
+
 
 	
 }

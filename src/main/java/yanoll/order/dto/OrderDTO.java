@@ -8,6 +8,9 @@ public class OrderDTO {
 	private String h_address;
 	private String h_phonenum;
 	private int h_no;
+	private String user_phonenumber;
+	
+	
 	
 	public int getH_no() {
 		return h_no;
@@ -25,6 +28,18 @@ public class OrderDTO {
 	
 	
 	
+	public String getUser_phonenumber() {
+		return user_phonenumber;
+	}
+
+
+
+	public void setUser_phonenumber(String user_phonenumber) {
+		this.user_phonenumber = user_phonenumber;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "OrderDTO [room_type=" + room_type + ", pic_room_url=" + pic_room_url + ", h_name=" + h_name
