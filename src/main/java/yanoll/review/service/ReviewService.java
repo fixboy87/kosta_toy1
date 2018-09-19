@@ -4,6 +4,7 @@ import java.util.List;
 
 import yanoll.enquire.domain.Criteria;
 import yanoll.review.domain.Hotel_OrderDTO;
+import yanoll.review.domain.ReviewCriteria;
 import yanoll.review.domain.Review_BoardVO;
 
 public interface ReviewService {
@@ -23,7 +24,7 @@ public interface ReviewService {
 
 	public List<Review_BoardVO>listReview_hotel(Integer h_no)throws Exception;
 	
-	public List<Review_BoardVO>listReview_hotelPage(Integer h_no, Criteria cri, boolean photo,String sortTerms)throws Exception;
+	public List<Review_BoardVO>listReview_hotelPage(Integer h_no, ReviewCriteria cri, boolean photo,String sortTerms)throws Exception;
 /*	public List<Review_BoardVO>listReview_hotelPage(Integer h_no, Criteria cri)throws Exception;
 */	
 	public int count(Integer h_no, boolean photo)throws Exception;

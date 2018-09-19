@@ -78,11 +78,11 @@ h1 {
 
 			<table class="check_tg">
 				  <tr>
-				    <th class="check_tg-s6z2" colspan="5" width="800px">후기 작성 가능 목록</th>
+				    <th class="check_tg-s6z2" colspan="5" width="950px">후기 작성 가능 목록</th>
 				  </tr>
 				  <c:forEach var="hotel_OrderDTO" items="${list}">
 				  <tr>
-				  	<form action="/reviews/review_insert" method="get">
+				  	<form action="/reviews/review_insert/${h_noPage}" method="get">
 					  	<input type="hidden"  value="${hotel_OrderDTO.order_num}" name="order_num">
 					  	<input type="hidden"  value="${hotel_OrderDTO.h_name}" name="h_name">
 					  	<input type="hidden"  value="${hotel_OrderDTO.userNo}" name="userNo">
@@ -90,15 +90,7 @@ h1 {
 					    <td class="check_tg-5hgy">${hotel_OrderDTO.order_num}</td>
 					   <td class="check_tg-5hgy">${hotel_OrderDTO.h_name}</td>
 					    <td class="check_tg-5hgy">
-					    	<%-- <fmt:parseDate var="start_day"
-										value="${hotel_OrderDTO.start_day}" pattern="E MMM dd HH:mm:ss z yyyy"/>
-										 <fmt:formatDate
-										value="${start_day}" pattern="yy/MM/dd" />~
-					    	<fmt:parseDate var="end_day"
-										value="${hotel_OrderDTO.end_day}" pattern="E MMM dd HH:mm:ss z yyyy" />
-										 <fmt:formatDate
-										value="${end_day}" pattern="yy/MM/dd" /> --%>
-					    ${hotel_OrderDTO.start_day}~${hotel_OrderDTO.end_day}
+					    	${hotel_OrderDTO.s_day}  ~  ${hotel_OrderDTO.e_day}
 					    </td>
 					    <td class="check_tg-5hgy">${hotel_OrderDTO.number_of_stay_days}일</td>
 					    <td class="check_tg-hmp3"><input type="submit" value="후기작성"/></td>

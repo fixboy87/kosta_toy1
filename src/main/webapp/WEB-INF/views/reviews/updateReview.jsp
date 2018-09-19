@@ -15,17 +15,17 @@
  -->
  <link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/gng_style/gng_contact.css">
 <link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/gng_style/gng_main.css">
-<script src="../../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script>
-<script src="../../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
-<script src="../../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>
-<script src="../../resources/bootstrap/plugins/common/greensock/TweenMax.min.js"></script>
-<script src="../../resources/bootstrap/plugins/common//greensock/TimelineMax.min.js"></script>
-<script src="../../resources/bootstrap/plugins/common//scrollmagic/ScrollMagic.min.js"></script>
-<script src="../../resources/bootstrap/plugins/common//greensock/animation.gsap.min.js"></script>
-<script src="../../resources/bootstrap/plugins/common//greensock/ScrollToPlugin.min.js"></script>
-<script src="../../resources/bootstrap/plugins/common//easing/easing.js"></script>
-<script src="../../resources/bootstrap/plugins/common//parallax-js-master/parallax.min.js"></script>
-<script src="../../resources/bootstrap/scripts/common/contact_custom.js"></script>
+<script src="../../../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script>
+<script src="../../../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
+<script src="../../../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>
+<script src="../../../resources/bootstrap/plugins/common/greensock/TweenMax.min.js"></script>
+<script src="../../../resources/bootstrap/plugins/common//greensock/TimelineMax.min.js"></script>
+<script src="../../../resources/bootstrap/plugins/common//scrollmagic/ScrollMagic.min.js"></script>
+<script src="../../../resources/bootstrap/plugins/common//greensock/animation.gsap.min.js"></script>
+<script src="../../../resources/bootstrap/plugins/common//greensock/ScrollToPlugin.min.js"></script>
+<script src="../../../resources/bootstrap/plugins/common//easing/easing.js"></script>
+<script src="../../../resources/bootstrap/plugins/common//parallax-js-master/parallax.min.js"></script>
+<script src="../../../resources/bootstrap/scripts/common/contact_custom.js"></script>
 <%-- summernote 라이브러리 추가 --%>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
@@ -34,8 +34,8 @@
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
 
-<script src="../../resources/bootstrap/scripts/syj_script/form_rating/jquery.rating-stars.js"></script>
-<link rel="stylesheet" type="text/css" href="../../resources/bootstrap/styles/syj_style/syj_contact.css">
+<script src="../../../resources/bootstrap/scripts/syj_script/form_rating/jquery.rating-stars.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/styles/syj_style/syj_contact.css">
 
 <script>
 	<%-- form의 textarea에 summernote 적용 --%>
@@ -107,30 +107,41 @@ $(function() {
 		
 		<!-- <div class="w3-margin-top w3-main"	> -->
 		<div class="contact_form_container">
-			<form action="/reviews/updateReview" method="post"  id="contact_form" class="clearfix" >
+			<form action="/reviews/updateReview/${h_noPage}" method="post"  id="contact_form" class="clearfix" >
 			
 		
 				<input type="hidden" name="r_no" value="${board.r_no}">
 				
 				<div class="contact_set_container">
-					작성자  <a id="contact_set" class="contact_input contact_input_subject" >${board.id}</a><br>
+					<label>작성자</label>  <a id="contact_set" class="contact_input contact_input_subject" >${board.id}</a><br>
 				</div>
 				
 				<div class="contact_set_container">
-					호텔명 <a id="contact_set" class="contact_input contact_input_subject" >${board.h_name}</a>  
-					숙박일수 <a id="contact_set" class="contact_input contact_input_subject">${board.number_of_stay_days}일</a><br>
+					<label>호텔명</label> <a id="contact_set" class="contact_input contact_input_subject" >${board.h_name}</a>  
+					<label>숙박일수</label> <a id="contact_set" class="contact_input contact_input_subject">${board.number_of_stay_days}일</a><br>
 				</div>
 				
-				제목  <input id="contact_input_title" class="contact_input contact_input_subject" type="text" name="r_title" placeholder="${board.r_title }"><br>
-				평점  <a>${board.r_grade}점</a><br>
-				MAIN IMAGE <br>
+				<label>제목 </label> <input id="contact_input_title" class="contact_input contact_input_subject" type="text" name="r_title" placeholder="${board.r_title }"><br>
+				<label>평점</label>  
+						<c:set var="grade" value="${board.r_grade}"/>
+							<label class="star">  
+							<c:choose>
+								<c:when test="${grade == '1' }">★</c:when>
+								<c:when test="${grade == '2' }">★★</c:when>
+								<c:when test="${grade == '3' }">★★★</c:when>
+								<c:when test="${grade == '4' }">★★★★</c:when>
+								<c:when test="${grade == '5' }">★★★★★</c:when>
+							</c:choose>
+							</label>
+				<br>
+				<label>MAIN IMAGE </label><br>
 				<div id="img_container">
 					 <c:choose>
 					  	<c:when test="${board.r_fname!=null }">
-						  		<img src="images/pages/review_main_img/${board.r_fname}" ></img>
+						  		<img src="/resources/images/pages/review_img${board.r_fname}" ></img>
 					  	</c:when>
 					  	<c:when test="${board.r_fname==null }">
-					  		<c:out value="NO IMAGE"></c:out>
+					  		<label><c:out value="NO IMAGE"></c:out></label>
 					  	</c:when>
 				  	</c:choose>	
 				 </div>			
@@ -141,8 +152,8 @@ $(function() {
 				
 				<div class="select_button" align="center">
 					<input type="hidden" name="section" value="${ param.section }">
-					<input type="submit" value="수정" class="w3-button w3-white w3-round-small"> &nbsp;
-					<input type="button" value="취소" class="w3-button w3-white w3-round-small" onclick="history.go(-1)">
+					<input id="myButtonB" type="submit" value="수정" class="w3-button w3-white w3-round-small"> &nbsp;
+					<input id="myButtonB" type="button" value="취소" class="w3-button w3-white w3-round-small" onclick="history.go(-1)">
 				</div>
 				
 			</form>

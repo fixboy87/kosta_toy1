@@ -13,8 +13,8 @@
  	</select>
  	
  	<insert id="create" parameterType="Review_ReplyVO">
- 		INSERT INTO REVIEW_REPLY (r_r_no, r_no, r_r_content, id, userNo, r_r_redate)
- 			values(repley_seq.nextval, #{r_no}, #{r_r_content}, #{id}, #{userNo}, sysdate)
+ 		INSERT INTO REVIEW_REPLY (r_r_no, r_no, r_r_content, id, r_r_redate)
+ 			values(repley_seq.nextval, #{r_no}, #{r_r_content}, #{id}, sysdate)
  	</insert>
  	
  	<update id="update" parameterType="Review_ReplyVO">
@@ -35,11 +35,11 @@
  	<select id="listPage" resultType="Review_ReplyVO">
 	  <![CDATA[
 		 select 
-		   r_r_no, r_no, r_r_content, id, userNo, r_r_redate, r_r_updatedate
+		   r_r_no, r_no, r_r_content, id, r_r_redate, r_r_updatedate
 		 from
 		   (
 		   select /*+INDEX_DESC(REVIEW_REPLY REVIEW_REPLEY_NO_PK))*/
-		     rownum rn, r_r_no, r_no, r_r_content, id, userNo, r_r_redate, r_r_updatedate
+		     rownum rn, r_r_no, r_no, r_r_content, id, r_r_redate, r_r_updatedate
 		   from REVIEW_REPLY
 		   where r_no = #{r_no}
 		   and r_r_no > 0

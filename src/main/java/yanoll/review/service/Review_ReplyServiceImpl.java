@@ -21,11 +21,9 @@ public class Review_ReplyServiceImpl implements Review_ReplyService {
 	@Inject
 	private ReviewDAO reviewDAO;
 	
-	@Transactional
 	@Override
 	public void addReply(Review_ReplyVO vo) throws Exception {
-		int userNo=reviewDAO.search_userNo(vo.getId());
-		vo.setUserNo(userNo);
+		
 		replyDAO.create(vo);
 	}
 

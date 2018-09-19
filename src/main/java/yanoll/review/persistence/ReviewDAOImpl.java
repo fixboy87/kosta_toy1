@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import yanoll.enquire.domain.Criteria;
 import yanoll.order.domain.OrderVO;
 import yanoll.review.domain.Hotel_OrderDTO;
+import yanoll.review.domain.ReviewCriteria;
 import yanoll.review.domain.Review_BoardVO;
 @Repository
 public class ReviewDAOImpl implements ReviewDAO {
@@ -57,7 +58,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return session.selectList(namespace + ".listReview_hotel", h_no);
 	}
 	@Override
-	public List<Review_BoardVO> listReview_hotelPage(Integer h_no, Criteria cri, boolean photo, String sortTerms) throws Exception {
+	public List<Review_BoardVO> listReview_hotelPage(Integer h_no, ReviewCriteria cri, boolean photo, String sortTerms) throws Exception {
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("h_no", h_no);
 		paramMap.put("cri", cri);

@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import yanoll.enquire.domain.Criteria;
-import yanoll.enquire.domain.PageMaker;
+import yanoll.review.domain.ReviewCriteria;
+import yanoll.review.domain.ReviewPageMaker;
 import yanoll.review.domain.Review_BoardVO;
 import yanoll.review.service.ReviewService;
 
@@ -48,10 +49,12 @@ public class HotleReviewController {
 		ResponseEntity<Map<String, Object>> entity = null;
 		
 		try {
-			Criteria cri= new Criteria();
+			/*Criteria cri= new Criteria();*/
+			ReviewCriteria cri = new ReviewCriteria();
 			cri.setPage(page);
 			
-			PageMaker pageMaker = new PageMaker();
+			/*PageMaker pageMaker = new PageMaker();*/
+			ReviewPageMaker pageMaker = new ReviewPageMaker();
 			pageMaker.setCri(cri);
 			
 			Map<String, Object> map = new HashMap<String, Object>();

@@ -65,7 +65,7 @@
   </beans:bean>
 
   <beans:bean class="java.lang.String" id="uploadPath">
-    <beans:constructor-arg value="C:\\upload">
+    <beans:constructor-arg value="C:/Users/aa/git/kosta_toy1/src/main/webapp/resources/images/pages/review_img">
     </beans:constructor-arg>
   </beans:bean>
 	

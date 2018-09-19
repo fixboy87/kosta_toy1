@@ -15,17 +15,17 @@
  -->
  <link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/gng_style/gng_contact.css">
 <link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/gng_style/gng_main.css">
-<script src="../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script>
-<script src="../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
-<script src="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>
-<script src="../resources/bootstrap/plugins/common/greensock/TweenMax.min.js"></script>
-<script src="../resources/bootstrap/plugins/common//greensock/TimelineMax.min.js"></script>
-<script src="../resources/bootstrap/plugins/common//scrollmagic/ScrollMagic.min.js"></script>
-<script src="../resources/bootstrap/plugins/common//greensock/animation.gsap.min.js"></script>
-<script src="../resources/bootstrap/plugins/common//greensock/ScrollToPlugin.min.js"></script>
-<script src="../resources/bootstrap/plugins/common//easing/easing.js"></script>
-<script src="../resources/bootstrap/plugins/common//parallax-js-master/parallax.min.js"></script>
-<script src="../resources/bootstrap/scripts/common/contact_custom.js"></script>
+<script src="../../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script>
+<script src="../../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
+<script src="../../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>
+<script src="../../resources/bootstrap/plugins/common/greensock/TweenMax.min.js"></script>
+<script src="../../resources/bootstrap/plugins/common//greensock/TimelineMax.min.js"></script>
+<script src="../../resources/bootstrap/plugins/common//scrollmagic/ScrollMagic.min.js"></script>
+<script src="../../resources/bootstrap/plugins/common//greensock/animation.gsap.min.js"></script>
+<script src="../../resources/bootstrap/plugins/common//greensock/ScrollToPlugin.min.js"></script>
+<script src="../../resources/bootstrap/plugins/common//easing/easing.js"></script>
+<script src="../../resources/bootstrap/plugins/common//parallax-js-master/parallax.min.js"></script>
+<script src="../../resources/bootstrap/scripts/common/contact_custom.js"></script>
 <%-- summernote 라이브러리 추가 --%>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
@@ -34,8 +34,8 @@
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
 
-<script src="../resources/bootstrap/scripts/syj_script/form_rating/jquery.rating-stars.js"></script>
-<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/syj_style/syj_contact.css">
+<script src="../../resources/bootstrap/scripts/syj_script/form_rating/jquery.rating-stars.js"></script>
+<link rel="stylesheet" type="text/css" href="../../resources/bootstrap/styles/syj_style/syj_contact.css">
 
 <script>
 	<%-- form의 textarea에 summernote 적용 --%>
@@ -95,7 +95,7 @@ size: 15px;
 		
 		<!-- <div class="w3-margin-top w3-main"	> -->
 		<div class="contact_form_container">
-			<form action="/reviews/review_insert" method="post"  id="contact_form" class="clearfix" enctype="multipart/form-data"> 
+			<form action="/reviews/review_insert/${h_noPage}" method="post"  id="contact_form" class="clearfix" enctype="multipart/form-data"> 
 				<input type="hidden" name="order_num" value="${board.order_num}">
 				<input type="hidden" name="userNo" value="${board.userNo}">
 				

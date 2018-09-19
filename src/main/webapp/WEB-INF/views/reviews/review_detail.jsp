@@ -13,28 +13,28 @@
 <meta name="description" content="Destino project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css"
-	href="../../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css"
+	href="../../../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.css">
+<link href="../../plugins/font-awesome-4.7.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 <script
-	src="../../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script>
+	src="../../../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script>
 <script
-	src="../../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
+	src="../../../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
 <script
-	src="../../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>
+	src="../../../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>
 <script
-	src="../../resources/bootstrap/plugins/common/greensock/TweenMax.min.js"></script>
+	src="../../../../resources/bootstrap/plugins/common/greensock/TweenMax.min.js"></script>
 <script
-	src="../../resources/bootstrap/plugins/common//greensock/TimelineMax.min.js"></script>
+	src="../../../resources/bootstrap/plugins/common//greensock/TimelineMax.min.js"></script>
 <script
-	src="../../resources/bootstrap/plugins/common//scrollmagic/ScrollMagic.min.js"></script>
+	src="../../../resources/bootstrap/plugins/common//scrollmagic/ScrollMagic.min.js"></script>
 <script
-	src="../../resources/bootstrap/plugins/common//greensock/animation.gsap.min.js"></script>
+	src="../../../resources/bootstrap/plugins/common//greensock/animation.gsap.min.js"></script>
 <script
-	src="../../resources/bootstrap/plugins/common//greensock/ScrollToPlugin.min.js"></script>
-<script src="../../resources/bootstrap/plugins/common//easing/easing.js"></script>
+	src="../../../resources/bootstrap/plugins/common//greensock/ScrollToPlugin.min.js"></script>
+<script src="../../../resources/bootstrap/plugins/common//easing/easing.js"></script>
 <script
-	src="../../resources/bootstrap/plugins/common//parallax-js-master/parallax.min.js"></script>
+	src="../../../resources/bootstrap/plugins/common//parallax-js-master/parallax.min.js"></script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link
@@ -45,9 +45,9 @@
 <!-- <--------------------------syj------------>
 <script src="/scripts/syj_script/reviewList/review_detail.js"></script>
 <script
-	src="../../resources/bootstrap/scripts/syj_script/reviewList/list.js"></script>
+	src="../../../resources/bootstrap/scripts/syj_script/reviewList/list.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="../../resources/bootstrap/styles/syj_style/syj_contact.css">
+	href="../../../resources/bootstrap/styles/syj_style/syj_contact.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
@@ -110,12 +110,12 @@ h1 {
 							<fmt:formatDate value="${dateString }" pattern="yy-MM-dd" /></td>
 					</tr>
 					<tr>
-						<td colspan='4'>MAIN IMAGE</td>
+						<td colspan='4'><label>MAIN IMAGE</label></td>
 					</tr>
-					<tr>
+					<tr id="img_container">
 						<c:choose>
 							<c:when test="${board.r_fname!=null }">
-								<td colspan='4'><img src="C:/upload/${board.r_fname}" /></td>
+								<td colspan='4'><img src="/resources/images/pages/review_img${board.r_fname}" /></td>
 							</c:when>
 							<c:when test="${board.r_fname==null }">
 								<td colspan="4"><c:out value="NO IMAGE"></c:out></td>
@@ -127,12 +127,12 @@ h1 {
 					</tr>
 				</table>
 				<div  class="only_writer">
-							<button id="modifyBtn" value="수정">수정</button>
-							<button id="removeBtn" value="삭제">삭제</button>
+							<button class="myButtonB" id="modifyBtn" value="수정">수정</button>
+							<button class="myButtonB" id="removeBtn" value="삭제">삭제</button>
 				</div>
 				<!-- <a href="review_list.do">목록</a> -->
 				<input type="button" value="목록"
-					class="w3-button w3-white w3-round-small" onclick="history.go(-1)">
+					class="w3-button w3-white w3-round-small" id="myButtonB" onclick="history.go(-1)">
 			</div>
 		</div>
 	</div>
@@ -174,7 +174,7 @@ h1 {
 
 				</c:choose>
 				<ul class="timeline">
-					<li class="time-label" id="repliesDiv"><span>Reply List</span></li>
+					<li class="time-label" id="repliesDiv" style="size: 20"><span>Reply List</span></li>
 				</ul>
 				<div class='text-center'>
 					<ul id="pagination" class="pagination pagination-sm no-margin ">
@@ -239,8 +239,12 @@ h1 {
 	<script type="text/javascript">
 		var r_no = ${board.r_no};
 		var replyPage = 1;
+		
 		var loginId = $('#session_id').val();
-
+		var name = $('#session_name').val();
+		var type = $('#session_type').val();
+	
+	
 		
 		
 		Handlebars.registerHelper("prettifyDate", function(timeValue) {
@@ -321,11 +325,20 @@ h1 {
 		
 		/* replyAdd */
 		$("#replyAddBtn").on("click", function() {
-
+			alert(type);
+			alert(name);
 			var replytextObj = $("#newReplyText");
 			var replytext = replytextObj.val();
-			var replyer = $('#session_id').val();
+			
+			var replyer ="";
+			
+			if (type=="user") {
+				replyer=loginId;
+			} else {
+				replyer=name;
+			}
 
+		
 			$.ajax({
 				type : 'post',
 				url : '/reivew_replies/',
@@ -413,13 +426,14 @@ h1 {
 		});
 		
 		
-		
+		var h_noPage=${h_noPage};
 		$('#modifyBtn').click(function(event) {
 			alert(r_no);
-			location.href = "/reviews/updateReview/" + r_no;
+			alert(h_noPage);
+			location.href = "/reviews/updateReview/" + r_no+"/"+h_noPage;
 		});
 		$('#removeBtn').click(function(event) {
-			location.href = "/reviews/deleteReview/" + r_no;
+			location.href = "/reviews/deleteReview/" + r_no+"/"+h_noPage;
 		});
 		
 		

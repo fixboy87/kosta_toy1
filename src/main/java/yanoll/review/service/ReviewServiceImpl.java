@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import yanoll.enquire.domain.Criteria;
 import yanoll.review.domain.Hotel_OrderDTO;
+import yanoll.review.domain.ReviewCriteria;
 import yanoll.review.domain.Review_BoardVO;
 import yanoll.review.persistence.ReviewDAO;
 import yanoll.review.persistence.Review_ReplyDAO;
@@ -75,7 +76,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<Review_BoardVO> listReview_hotelPage(Integer h_no, Criteria cri, boolean photo, String sortTerms) throws Exception {
+	public List<Review_BoardVO> listReview_hotelPage(Integer h_no, ReviewCriteria cri, boolean photo, String sortTerms) throws Exception {
 		return reviewDAO.listReview_hotelPage(h_no, cri, photo, sortTerms);
 	}
 
