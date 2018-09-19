@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
@@ -195,24 +195,24 @@
 
 </style>
 <script type="text/javascript">
-	$(document).ready(function(){
-		var bookingday = $("#session").html();
-		var price = $("#price1").html();
-		var total = price*bookingday;
-		
-		$("#totall").html(total);
-	});
-	
+   $(document).ready(function(){
+      var bookingday = $("#session").html();
+      var price = $("#price1").html();
+      var total = price*bookingday;
+      
+      $("#totall").html(total);
+   });
+   
 
-	
-	$(document).ready(function() {
-		var formObj = $("form[role='form']");
-		$("#button").on("click", function() {
-			formObj.attr("action", "/pay/index");
-			formObj.attr("method", "get");
-			formObj.submit();
-		});
-	});
+   
+   $(document).ready(function() {
+      var formObj = $("form[role='form']");
+      $("#button").on("click", function() {
+         formObj.attr("action", "/pay/index");
+         formObj.attr("method", "post");
+         formObj.submit();
+      });
+   });
   </script>
 
   </head>
@@ -222,51 +222,52 @@
 <input type="hidden" id="uid" name="uid" val="<%=(String)session.getAttribute("id")%>"/>
 <input type="hidden" id="type" name="type" val="<%=(String)session.getAttribute("type")%>"/>
 <input type="hidden" id="name" name="name" val="<%=(String)session.getAttribute("name")%>"/>
-	<c:forEach var="order" items="${booking}">
-	<div class="container" style="margin-bottom: 100px; margin-top: 70px; ">
-		<div class="card">
-			<div class="container-fliud">
-				<div class="wrapper row">
-					<div class="preview col-md-6">
-						
-						<div class="preview-pic tab-content">
-						  <div class="tab-pane active" id="pic-1">
-						  	<img src="../resources/images/pages/HotelRoomImg/${order.pic_room_url}" />
-						  </div>
-					
-						</div>
-						
-					</div>
-					<div class="details col-md-6" style="font-family: 'Nanum Gothic', sans-serif;">
-						<h2 class="product-title" >${order.h_name}</h2>
-						<div class="rating">
-							<div><h3>체크인ㅤㅤㅤㅤ-->ㅤㅤㅤㅤ체크아웃</h3></div>
-							<div><h3><%=(String)session.getAttribute("start_date")%>ㅤㅤ-->ㅤㅤ<%=(String)session.getAttribute("end_date")%> </h3> </div>
-						</div>
-						<div id="session" style="display: none;"><%=(int)session.getAttribute("bookingDays") %></div>
-						<p class="product-description">${order.room_type}</p>						
-						<p class="vote">${order.h_address}</p>
-						<p class="vote">${order.h_phonenum}</p>
-						<div id="price1" style="display: none;">${order.room_price}</div>
-						<h4 class="price"> 결제금액 : <span id="totall"> </span> <span>만원</span></h4>
-						<form role="form" action="" method="post" id="formdata">
-							<input type="hidden" value="${order.pic_room_url}">
-							<input type="hidden" value="${order.h_name}">
-							<input type="hidden" value="${order.room_type}">
-							<input type="hidden" value="${order.room_price}">
-							<input type="hidden" value="${order.h_address}">							
-							<input type="hidden" value="${order.h_phonenum}">
-						</form>
-						
-						<div class="action">
-							<button class="add-to-cart btn btn-default" id="button" type="button" style="font-size: 15px;">결  제</button>			
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	</c:forEach>
+   <c:forEach var="order" items="${booking}">
+   <div class="container" style="margin-bottom: 100px; margin-top: 70px; ">
+      <div class="card">
+         <div class="container-fliud">
+            <div class="wrapper row">
+               <div class="preview col-md-6">
+                  
+                  <d
+                  iv class="preview-pic tab-content">
+                    <div class="tab-pane active" id="pic-1">
+                       <img src="../resources/images/pages/HotelRoomImg/${order.pic_room_url}" />
+                    </div>
+               
+                  </div>
+                  
+               </div>
+               <div class="details col-md-6" style="font-family: 'Nanum Gothic', sans-serif;">
+                  <h2 class="product-title" >${order.h_name}</h2>
+                  <div class="rating">
+                     <div><h3>체크인ㅤㅤㅤㅤ-->ㅤㅤㅤㅤ체크아웃</h3></div>
+                     <div><h3><%=(String)session.getAttribute("start_date")%>ㅤㅤ-->ㅤㅤ<%=(String)session.getAttribute("end_date")%> </h3> </div>
+                  </div>
+                  <div id="session" style="display: none;"><%=(int)session.getAttribute("bookingDays") %></div>
+                  <p class="product-description">${order.room_type}</p>                  
+                  <p class="vote">${order.h_address}</p>
+                  <p class="vote">${order.h_phonenum}</p>
+                  <div id="price1" style="display: none;">${order.room_price}</div>
+                  <h4 class="price"> 결제금액 : <span id="totall"> </span> <span>만원</span></h4>
+                  <form role="form" action="" method="post" id="formdata">
+                     <input type="hidden" name="pic_room_url" value="${order.pic_room_url}">
+                     <input type="hidden" name="h_name" value="${order.h_name}">
+                     <input type="hidden" name="room_type" value="${order.room_type}">
+                     <input type="hidden" name="room_price" value="${order.room_price}">
+                     <input type="hidden" name="h_address" value="${order.h_address}">                     
+                     <input type="hidden" name="h_phonenum" value="${order.h_phonenum}">
+                  </form>
+                  
+                  <div class="action">
+                     <button class="add-to-cart btn btn-default" id="button" type="button" style="font-size: 15px;">결  제</button>         
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   </c:forEach>
 <script src="http:../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
 <script src="http:../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>
 <script src="http:../resources/bootstrap/plugins/common/greensock/TweenMax.min.js"></script>
@@ -284,7 +285,6 @@
   </body>
   
 </html>
-
 
 
 

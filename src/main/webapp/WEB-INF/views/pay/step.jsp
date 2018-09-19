@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,7 +36,7 @@
     </div>
   </div>
   
-  <form role="form" action="" method="post">
+  <form role="form" action="" method="post" id="formdata">
     <div class="row setup-content" id="step-1">
       <div class="col-xs-6 col-md-offset-3">
         <div class="col-md-12">
@@ -105,6 +108,16 @@
       <div class="col-xs-6 col-md-offset-3">
         <div class="col-md-12">
           <h3> [Step 3]</h3>
+          
+          
+		    <input type="hidden" name="pic_room_url" value="${order.pic_room_url}">
+		    <input type="hidden" name="h_name" value="${order.h_name}">
+		    <input type="hidden" name="room_type" value="${order.room_type}">
+		    <input type="hidden" name="room_price" value="${order.room_price}">
+		    <input type="hidden" name="h_address" value="${order.h_address}">                     
+		    <input type="hidden" name="h_phonenum" value="${order.h_phonenum}">
+
+	
           <button class="btn btn-success btn-lg pull-right" id="cash_Bt" type="submit">결제</button>
         </div>
       </div>
@@ -113,6 +126,17 @@
   
 </div>
 
+
+<script type="text/javascript">
+$(document).ready(function() {
+    var formObj = $("form[role='form']");
+    $("#cash_Bt").on("click", function() {
+       formObj.attr("action", "/pay/cashCheck");
+       formObj.attr("method", "post");
+       formObj.submit();
+    });
+ });
+</script>
 </body>
 </html>
 
