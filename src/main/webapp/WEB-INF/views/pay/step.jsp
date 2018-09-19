@@ -51,7 +51,7 @@
           </div>
           <div class="form-group">
             <label class="control-label">연락처</label>
-            <input maxlength="100" type="text" required="required" class="form-control" name=""/>
+            <input maxlength="100" type="text" required="required" class="form-control" name="user_phonenumber"/>
           </div>
           <!-- <div class="form-group">
             <label class="control-label">Address</label>

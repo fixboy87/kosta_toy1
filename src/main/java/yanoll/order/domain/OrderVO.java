@@ -4,32 +4,25 @@ import java.util.Date;
 
 public class OrderVO {
 	
-	private int order_num;
-	private int room_num;
-	private int h_no;
-	private Date start_day;
-	private Date end_day;
-	private int order_price;
-	private String order_name;
-	private int userNo;
-	private int number_of_stay_days;
-	private int p_conition;
-	private String order_date;
-	private String pic_room_url;
-	private String h_name;
-	private String room_type;
-	private String h_address;
-	private String h_phonenum;
-	private String id;
+	private int order_num;//시퀀스
+	private int h_no;//step
+	private Date start_day;//session
+	private Date end_day;//session
+	private int order_price;//없으니깐 room_price * 날짜
+	private String order_name;//session
+	private int userNo;//DB에서 찾아옴
+	private int number_of_stay_days;//session
+	private int p_condition; //무조건 처음엔 0넣고
+	private String order_date;//session
+	private String pic_room_url;//step
+	private String h_name;//step
+	private String room_type;//step
+	private String h_address;//step
+	private String h_phonenum;//step
+	private String id;//session
+	private int room_price;//step
+	private String user_phonenumber;//step
 	
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
 	public String getUser_phonenumber() {
 		return user_phonenumber;
 	}
@@ -38,9 +31,6 @@ public class OrderVO {
 		this.user_phonenumber = user_phonenumber;
 	}
 
-	private int room_price;
-	private String user_phonenumber;
-	
 	public int getRoom_price() {
 		return room_price;
 	}
@@ -49,7 +39,8 @@ public class OrderVO {
 		this.room_price = room_price;
 	}
 
-	public OrderVO(){}
+	public OrderVO() {
+	}
 
 	public int getOrder_num() {
 		return order_num;
@@ -57,14 +48,6 @@ public class OrderVO {
 
 	public void setOrder_num(int order_num) {
 		this.order_num = order_num;
-	}
-
-	public int getRoom_num() {
-		return room_num;
-	}
-
-	public void setRoom_num(int room_num) {
-		this.room_num = room_num;
 	}
 
 	public int getH_no() {
@@ -123,12 +106,12 @@ public class OrderVO {
 		this.number_of_stay_days = number_of_stay_days;
 	}
 
-	public int getP_conition() {
-		return p_conition;
+	public int getP_condition() {
+		return p_condition;
 	}
 
-	public void setP_conition(int p_conition) {
-		this.p_conition = p_conition;
+	public void setP_condition(int p_condition) {
+		this.p_condition = p_condition;
 	}
 
 	public String getOrder_date() {
@@ -179,36 +162,24 @@ public class OrderVO {
 		this.h_phonenum = h_phonenum;
 	}
 
-	public OrderVO(int order_num, int room_num, int h_no, Date start_day, Date end_day, int order_price,
-			String order_name, int userNo, int number_of_stay_days, int p_conition, String order_date,
-			String pic_room_url, String h_name, String room_type, String h_address, String h_phonenum) {
-		super();
-		this.order_num = order_num;
-		this.room_num = room_num;
-		this.h_no = h_no;
-		this.start_day = start_day;
-		this.end_day = end_day;
-		this.order_price = order_price;
-		this.order_name = order_name;
-		this.userNo = userNo;
-		this.number_of_stay_days = number_of_stay_days;
-		this.p_conition = p_conition;
-		this.order_date = order_date;
-		this.pic_room_url = pic_room_url;
-		this.h_name = h_name;
-		this.room_type = room_type;
-		this.h_address = h_address;
-		this.h_phonenum = h_phonenum;
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	@Override
 	public String toString() {
-		return "Hotel_Order [order_num=" + order_num + ", room_num=" + room_num + ", h_no=" + h_no + ", start_day="
+		return "OrderVO [order_num=" + order_num  + ", h_no=" + h_no + ", start_day="
 				+ start_day + ", end_day=" + end_day + ", order_price=" + order_price + ", order_name=" + order_name
-				+ ", userNo=" + userNo + ", number_of_stay_days=" + number_of_stay_days + ", p_conition=" + p_conition
+				+ ", userNo=" + userNo + ", number_of_stay_days=" + number_of_stay_days + ", p_condition=" + p_condition
 				+ ", order_date=" + order_date + ", pic_room_url=" + pic_room_url + ", h_name=" + h_name
-				+ ", room_type=" + room_type + ", h_address=" + h_address + ", h_phonenum=" + h_phonenum + "]";
+				+ ", room_type=" + room_type + ", h_address=" + h_address + ", h_phonenum=" + h_phonenum + ", id=" + id
+				+ "]";
 	}
+	
 	
 	
 	

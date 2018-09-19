@@ -12,6 +12,13 @@
 		where h_id = #{h_id}
 	</select>
 	
+
+	<parameterMap type="" id="">
+		<parameter property=""/>
+		<parameter property=""/>
+	</parameterMap>
+	
+	<resultMap type="Integer" id="monthlyResultMap"></resultMap>	
 	
 	<select id="get_monthly_booked" parameterType="GetCalendarDTO" resultType="Integer" statementType="CALLABLE">
 	
@@ -20,8 +27,8 @@
 		    vs_avail_count DATE;
 		    cnt NUMBER;
 		    
-		    str_id = #{h_id};
-		    str_date = #{currentDate};
+		    str_id VARCHAR2(20) := (#{h_id});
+		    str_date VARCHAR2(20) := (#{currentDate});
 		    
 		    CURSOR cur_count_month (selected_date DATE)
 		    IS
@@ -37,19 +44,18 @@
 			            FETCH cur_count_month
 			            INTO vs_avail_count;
 			            
-			            SELECT COUNT(*) INTO cnt
-			            FROM hotel_order
-			            WHERE h_no = 
-			                (SELECT h_no
-			                FROM hotel
-			                WHERE h_id = str_id)
-			            AND start_day < vs_avail_count
-			            AND end_day > vs_avail_count;
-		
-		       
-		        	EXIT WHEN cur_count_month%NOTFOUND;
-		        
-		        
+				            SELECT COUNT(*) INTO cnt
+				            FROM hotel_order
+				            WHERE h_no = 
+				                (SELECT h_no
+				                FROM hotel
+				                WHERE h_id = str_id)
+				            AND start_day < vs_avail_count
+				            AND end_day > vs_avail_count;
+					
+			            #{cur_count_month, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=monthlyResultMap} := cnt;
+		        	
+		        	 EXIT WHEN cur_count_month%NOTFOUND;
 		   		 END LOOP;
 		    
 		   	 CLOSE cur_count_month;
