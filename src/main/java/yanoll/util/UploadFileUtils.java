@@ -66,8 +66,8 @@ public class UploadFileUtils {
     String uploadedFileName = null;
     
     if(MediaUtils.getMediaType(formatName) != null){	//확장자가 존재하면
-      uploadedFileName = makeThumbnail(uploadPath, savedPath, savedName); //썸네일 생성
-      return uploadedFileName;
+       makeThumbnail(uploadPath, savedPath, savedName); //썸네일 생성
+      return uploadedFileName =savedPath+"/"+savedName;
     }else{
     	return uploadedFileName = "";
     }
