@@ -43,11 +43,11 @@
           <h3> [Step 1]</h3><br><br>
           <div class="form-group">
             <label class="control-label">아이디</label>
-            <input  maxlength="100" type="text" class="form-control"   />
+            <input  maxlength="100" type="text" class="form-control" value="<%=(String)session.getAttribute("uid")%>"  />
           </div>
           <div class="form-group">
             <label class="control-label">이름</label>
-            <input maxlength="100" type="text" class="form-control"  />
+            <input maxlength="100" type="text" class="form-control" value="<%=(String)session.getAttribute("name")%>" />
           </div>
           <div class="form-group">
             <label class="control-label">연락처</label>
@@ -111,13 +111,13 @@
           <h3> [Step 3]</h3>
           
           
-		  <input type="hidden" name="pic_room_url" value="${dto.pic_room_url}">
+		    <input type="hidden" name="pic_room_url" value="${dto.pic_room_url}">
 		    <input type="hidden" name="h_name" value="${dto.h_name}">
 		    <input type="hidden" name="room_price" value="${dto.room_price}">
 		    <input type="hidden" name="h_address" value="${dto.h_address}">                     
 		    <input type="hidden" name="h_phonenum" value="${dto.h_phonenum}">
 		    <input type="hidden" name="h_no" value="${dto.h_no}">  
-			<input type="hidden" name="room_type" value="${dto.room_type}">
+			<input type="hidden" id="room" name="room_type" value="${dto.room_type}">
 	
           <button class="btn btn-success btn-lg pull-right" id="cash_Bt" type="submit">결제</button>
         </div>
@@ -130,14 +130,22 @@
 
 
 <script type="text/javascript">
+
+$('#room').attr('value',removeComma($('#cm_commission_amount3').val()));
+
 $(document).ready(function() {
     var formObj = $("form[role='form']");
     $("#cash_Bt").on("click", function() {
-       formObj.attr("action", "/pay/cashCheck");
+    	$('#room').attr('value',removeComma($('#cm_commission_amount3').val()));
+       formObj.attr("action", "/pay/index?pic_room_url=grandhyatt_su.png&h_name=그랜드+하얏트+서울&room_price=80&h_address=서울시+용산구+소월로+322&h_phonenum=-13054&h_no=2&room_type=suite#");
        formObj.attr("method", "post");
        formObj.submit();
     });
- });
+ }); 
+ 
+
+
+
 </script>
 </body>
 </html>

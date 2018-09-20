@@ -204,12 +204,14 @@
    });
    
 
+ 
    
-   $(document).ready(function() {
+   
+    $(document).ready(function() {
       var formObj = $("form[role='form']");
       $("#button").on("click", function() {
          formObj.attr("action", "/pay/index");
-         formObj.attr("method", "post");
+         formObj.attr("method", "get");
          formObj.submit();
       });
    });
@@ -229,8 +231,7 @@
             <div class="wrapper row">
                <div class="preview col-md-6">
                   
-                  <d
-                  iv class="preview-pic tab-content">
+                  <div class="preview-pic tab-content">
                     <div class="tab-pane active" id="pic-1">
                        <img src="../resources/images/pages/HotelRoomImg/${order.pic_room_url}" />
                     </div>
@@ -258,8 +259,11 @@
                      <input type="hidden" name="h_phonenum" value="${order.h_phonenum}">
                      <input type="hidden" name="h_no" value="${order.h_no}">
                      <input type="hidden" name="room_type" value="${order.room_type}">
-                     
-                     <a id="roomt">${order.room_type}</a>
+
+
+<!--  -->
+
+<!--  -->
                   </form>
                   
                   <div class="action">
@@ -272,13 +276,6 @@
    </div>
    </c:forEach>
    
-   <script>
-   $(document).ready(function(){
-	       var roomt = $("#roomt").html();
-	     
-	       alert(roomt);
-	    
-	   });
    </script>
 <script src="http:../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
 <script src="http:../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>

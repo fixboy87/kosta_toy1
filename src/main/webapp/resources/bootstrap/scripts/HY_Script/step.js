@@ -24,11 +24,11 @@ $(document).ready(function() {
 
 
 
-$(document).ready(function() {
+/*$(document).ready(function() {
   $("#cash_Bt").on("mouseover", function() {
     $(location).attr('href', '/pay/cashCheck');
   });
-});
+});*/
 
 $(document).ready(function() {
 

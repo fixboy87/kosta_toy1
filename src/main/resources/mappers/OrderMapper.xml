@@ -30,9 +30,9 @@
 	
 	<insert id="Orderdata" parameterType="OrderVO">
 		insert into hotel_order (order_num, h_no,start_day,end_day,order_price,order_name,order_date,userNo,
-		p_condition,room_type,number_of_stay_days)
+		p_condition,room_type,number_of_stay_days,user_phonenumber)
 			values(order_num.nextval,#{h_no},#{start_day},#{end_day},#{order_price},#{order_name},sysdate,#{userNo},
-			#{p_condition},#{room_type},#{number_of_stay_days})
+			#{p_condition},#{room_type},#{number_of_stay_days},#{user_phonenumber})
 	</insert> 	
 
 	<select id="userNo" parameterType="String" resultType="int" >
