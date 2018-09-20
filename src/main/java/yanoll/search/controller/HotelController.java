@@ -56,7 +56,7 @@ public class HotelController {
 //search/listPage1?h_location=부산        &checkOut=09%2F13%2F2018&checkIn=09%2F28%2F2018            &low_price=0&max_price=28#dirPic
 	//search/search?h_location=부산&low_price=0&max_price=28
 	
-	@RequestMapping(value = "/listPage", method = RequestMethod.GET )
+	@RequestMapping(value = "/listPage1", method = RequestMethod.GET )
 	public void searchConditions(
 			@RequestParam("h_location") String h_location,
 			@RequestParam("low_price") int low_price,
@@ -79,6 +79,8 @@ public class HotelController {
 		booking = Math.abs(booking) + 1;
 		int bookingDays = (int)booking;
 		
+		System.out.println(bookingDays); 
+		
 		vo.setH_location(h_location);
 		vo.setLow_price(low_price);
 		vo.setMax_price(max_price);		
@@ -88,6 +90,7 @@ public class HotelController {
 		session.setAttribute("bookingDays", bookingDays);
 		
 		model.addAttribute("list",service.hotelListConditions(vo));
+		
 			
 	}
 	
