@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import yanoll.managing.domain.Hotel_RoomVO;
 import yanoll.managing.domain.TypeVO;
+import yanoll.managing.dto.RoomManagerDTO2;
 import yanoll.managing.persistence.ManagerDAO;
 
 @Service
@@ -49,6 +50,33 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public void insertType(TypeVO vo) throws Exception {
 		dao.insertType(vo);
+	}
+
+	@Override
+	public int getRoom_num(Integer h_no, String room_type) throws Exception {
+		return dao.getRoom_num(h_no, room_type);
+	}
+
+	@Override
+	public Hotel_RoomVO roomOne(Integer h_no, String room_type) throws Exception {
+		return dao.roomOne(h_no, room_type);
+	}
+
+	@Override
+	public void roomUpdate(RoomManagerDTO2 dto) throws Exception {
+		System.out.println("비포");
+		dao.roomUpdate(dto);
+		System.out.println("에프터");
+	}
+
+	@Override
+	public void priceUpdate(RoomManagerDTO2 dto) throws Exception {
+		dao.priceUpdate(dto);
+	}
+
+	@Override
+	public void typeDelete(RoomManagerDTO2 dto) throws Exception {
+		dao.typeDelete(dto);
 	}
 
 }

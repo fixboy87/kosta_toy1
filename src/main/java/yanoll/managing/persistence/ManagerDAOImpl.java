@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import yanoll.managing.domain.Hotel_RoomVO;
 import yanoll.managing.domain.TypeVO;
+import yanoll.managing.dto.RoomManagerDTO2;
 
 @Repository
 public class ManagerDAOImpl implements ManagerDAO {
@@ -62,6 +63,40 @@ public class ManagerDAOImpl implements ManagerDAO {
 	@Override
 	public void insertType(TypeVO vo) throws Exception {
 		session.insert(namespace+".insertType", vo);
+	}
+
+	@Override
+	public int getRoom_num(Integer h_no, String room_type) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("h_no", h_no);
+		paramMap.put("room_type", room_type);
+		return session.selectOne(namespace+".getRoom_num", paramMap);
+	}
+
+	@Override
+	public Hotel_RoomVO roomOne(Integer h_no, String room_type) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("h_no", h_no);
+		paramMap.put("room_type", room_type);
+		return session.selectOne(namespace+".roomOne", paramMap);
+	}
+
+	@Override
+	public void roomUpdate(RoomManagerDTO2 dto) throws Exception {
+		System.out.println("dto비포");
+		System.out.println(dto.toString());
+		session.update(namespace+".roomUpdate", dto);
+		System.out.println("dto애프터");
+	}
+
+	@Override
+	public void priceUpdate(RoomManagerDTO2 dto) throws Exception {
+		session.update(namespace+".priceUpdate", dto);
+	}
+
+	@Override
+	public void typeDelete(RoomManagerDTO2 dto) throws Exception {
+		session.delete(namespace+".typeDelete", dto);
 	}
 
 }

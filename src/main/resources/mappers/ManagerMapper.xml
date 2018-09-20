@@ -11,6 +11,13 @@
  			WHERE h_no = #{h_no}
  	</select>
  	
+ 	<select id="roomOne" resultType="Hotel_RoomVO">
+ 		SELECT * 
+ 			FROM hotel_room 
+ 			WHERE h_no = #{h_no} 
+ 			AND room_type = #{room_type}
+ 	</select>
+ 	
  	<select id="hotleNameSearch" resultType="String">
 		SELECT
   			H_NAME
@@ -40,28 +47,45 @@
 			AND room_type=#{room_type}
  	</select>
  	
+ 	<select id="getRoom_num" resultType="int">
+ 		SELECT room_num 
+ 			FROM hotel_room
+ 			WHERE room_type =#{room_type}
+ 			AND h_no=#{h_no}
+ 	</select>
+ 	
 	<insert id="insert" parameterType="Hotel_RoomVO">
  		INSERT INTO hotel_room (room_num, h_no, pic_room_url, room_type)
  			VALUES(room_num_seq.nextval,h_no,pic_room_url,room_type)
  	</insert>
  	
 	<insert id="insertType" parameterType="TypeVO">
- 	INSERT INTO type (room_num, h_no, room_type, room_price)
- 			VALUES(#{room_num},#{h_no},#{room_type},#{room_price})
+	 	INSERT INTO type (room_num, h_no, room_type, room_price)
+	 			VALUES(#{room_num},#{h_no},#{room_type},#{room_price})
  	</insert>
  	
- <!-- 	<update id="update" parameterType="Review_ReplyVO">
- 		update REVIEW_REPLY 
- 			SET r_r_content = #{r_r_content},
- 			r_r_updatedate = sysdate
- 			where r_r_no = #{r_r_no}
- 	</update>
+	<update id="roomUpdate">
+ 		UPDATE hotel_room 
+ 			SET pic_room_url = #{pic_room_url}
+ 			WHERE room_type = #{room_type} 
+ 			AND h_no=#{h_no}
+  	</update>
+  	
+	<update id="priceUpdate">
+ 			UPDATE type 
+	 			SET room_price = #{room_price}
+	 			WHERE room_type = #{room_type}
+	 			AND h_no=#{h_no}
+  	</update>
  	
- 	<delete id="delete">
- 		delete from REVIEW_REPLY where r_r_no = #{r_r_no}
+ 	
+	<delete id="typeDelete">
+ 		delete from type 
+ 			where h_no = #{h_no}
+ 			AND room_type =#{room_type}
  	</delete>
  	
- 	<delete id="deleteAll">
+   <!--	<delete id="deleteAll">
  		delete from REVIEW_REPLY where r_no = #{r_no}
  	</delete>
  	
