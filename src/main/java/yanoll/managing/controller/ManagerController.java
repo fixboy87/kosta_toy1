@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +33,15 @@ public class ManagerController {
 	@Resource(name = "roomUploadPath")
 	private String uploadPath;
 
+	@RequestMapping(value="/roomPageGo", method=RequestMethod.GET )
+	public String roomPageGo(HttpServletRequest request)throws Exception{
+		HttpSession session = request.getSession();
+		String h_id = (String)session.getAttribute("uid");
+		int h_no = service.getH_no(h_id);
+		
+		return"redirect:/manager/roomManager/" + h_no;
+	}
+	
 	@RequestMapping(value = "/roomManager/{h_no}", method = RequestMethod.GET)
 	public String roomManagerGET(@PathVariable("h_no") Integer h_no, Model model) throws Exception {
 
@@ -117,11 +128,12 @@ System.out.println("get에서 가격"+standard.getRoom_price());
 			MultipartFile file = dto.getPic_room_url();
 			String h_name = service.hotleNameSearch(h_no);
 			String savedName = RoomUploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes());
-
 			vo.setH_no(h_no);
 			vo.setPic_room_url(savedName);
 			vo.setRoom_num(dto.getRoom_num());
 			vo.setRoom_type(dto.getRoom_type());
+			
+			System.out.println(vo.toString());
 			service.insert(vo);
 
 			/* type insert */

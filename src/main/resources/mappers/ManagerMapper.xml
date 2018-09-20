@@ -11,6 +11,12 @@
  			WHERE h_no = #{h_no}
  	</select>
  	
+ 	<select id="getH_no" resultType="int">
+ 		SELECT h_no 
+ 			FROM hotel 
+ 			WHERE h_id = #{h_id}
+ 	</select>
+ 	
  	<select id="roomOne" resultType="Hotel_RoomVO">
  		SELECT * 
  			FROM hotel_room 
@@ -56,7 +62,7 @@
  	
 	<insert id="insert" parameterType="Hotel_RoomVO">
  		INSERT INTO hotel_room (room_num, h_no, pic_room_url, room_type)
- 			VALUES(room_num_seq.nextval,h_no,pic_room_url,room_type)
+ 			VALUES(room_num_seq.nextval,#{h_no},#{pic_room_url},#{room_type})
  	</insert>
  	
 	<insert id="insertType" parameterType="TypeVO">

@@ -309,7 +309,7 @@ $(document).ready(function()
 		} else if($buttonHtml === "기본정보") {
 			location.href = "/register/myPage"
 		} else if($buttonHtml === "세부정보") {
-			location.href = "HotelDetailAction.do";
+			location.href = "/manager/roomPageGo";
 		} else if($buttonHtml === "회원탈퇴") {
 			deregister();
 		}

@@ -99,4 +99,9 @@ public class ManagerDAOImpl implements ManagerDAO {
 		session.delete(namespace+".typeDelete", dto);
 	}
 
+	@Override
+	public int getH_no(String h_id) throws Exception {
+		return session.selectOne(namespace+".getH_no", h_id);
+	}
+
 }

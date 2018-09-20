@@ -14,6 +14,8 @@ public interface ManagerDAO {
 	
 	public int room_cnt(Integer h_no, String room_type)throws Exception;
 	
+	public int getH_no(String h_id)throws Exception;
+	
 	public void insert(Hotel_RoomVO vo)throws Exception;
 	
 	public int type_cnt(Integer h_no, String room_type)throws Exception;

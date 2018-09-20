@@ -93,10 +93,10 @@ public class Review_ReplyVO {
 }
 
 /*
+ * userNo 삭제
 create table REVIEW_REPLY(
 
     r_r_no NUMBER,
-    userNo NUMBER not null,
     id VARCHAR2(10)not null,
     r_r_redate date,
     r_r_updatedate date,

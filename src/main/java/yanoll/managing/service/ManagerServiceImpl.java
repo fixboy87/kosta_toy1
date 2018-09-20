@@ -79,4 +79,9 @@ public class ManagerServiceImpl implements ManagerService {
 		dao.typeDelete(dto);
 	}
 
+	@Override
+	public int getH_no(String h_id) throws Exception {
+		return dao.getH_no(h_id);
+	}
+
 }

@@ -32,4 +32,6 @@ public interface ManagerService {
 	
 	public void typeDelete(RoomManagerDTO2 dto)throws Exception;
 	
+	public int getH_no(String h_id)throws Exception;
+	
 }
