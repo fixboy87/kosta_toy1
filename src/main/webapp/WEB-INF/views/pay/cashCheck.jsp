@@ -11,7 +11,7 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="../resources/bootstrap/scripts/HY_Script/loading.js"></script>
-
+<script src="../resources/bootstrap/scripts/HY_Script/cashCheck.js"></script>
 
 
 <style type="text/css">
@@ -128,7 +128,7 @@
 
 <div class="container">
 	<div class="row">
-		
+	
         <div class="receipt-main col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
             <div class="row">
     			<div class="receipt-header">

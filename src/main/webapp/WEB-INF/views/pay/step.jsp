@@ -79,7 +79,7 @@
      <br>
      <h3>"환불은 호오온나!"</h3> 
 </div>
-<div id= "checkDiv">
+<div id="checkDiv">
           <span><input type="checkbox" id="checkbox" />&nbsp;&nbsp;  <font style="font-size:20px; ">취소 규정 및 약관에 모두 동의 합니다.</font></span> 
            <br>
            <br>
