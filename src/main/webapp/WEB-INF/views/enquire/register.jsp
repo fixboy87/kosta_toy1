@@ -11,21 +11,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Destino project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/gng_style/gng_contact.css">
-<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/gng_style/gng_main.css">
 <script src="../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script>
-<script src="../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
-<script src="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>
-<script src="../resources/bootstrap/plugins/common/greensock/TweenMax.min.js"></script>
-<script src="../resources/bootstrap/plugins/common//greensock/TimelineMax.min.js"></script>
-<script src="../resources/bootstrap/plugins/common//scrollmagic/ScrollMagic.min.js"></script>
-<script src="../resources/bootstrap/plugins/common//greensock/animation.gsap.min.js"></script>
-<script src="../resources/bootstrap/plugins/common//greensock/ScrollToPlugin.min.js"></script>
-<script src="../resources/bootstrap/plugins/common//easing/easing.js"></script>
-<script src="../resources/bootstrap/plugins/common//parallax-js-master/parallax.min.js"></script>
-<script src="../resources/bootstrap/scripts/common/contact_custom.js"></script>
+<link
+  href='http://fonts.googleapis.com/css?family=Englebert|Open+Sans:400,600,700'
+  rel='stylesheet' type='text/css' />
+<link href="../resources/bootstrap/styles/HY_Style/payment.css"
+  rel="stylesheet" type="text/css" />
+<script src="../resources/bootstrap/scripts/HY_Script/step.js"></script>
+<script src="../resources/bootstrap/scripts/HY_Script/payment.js"></script>
+
 
 <style type="text/css">
 .col-md-5{
@@ -37,7 +31,24 @@ margin-left: 30%;
 </head>
 <body>
 
-<%@include file="../sub_page/header_menu.jsp" %>
+<div id="header" class="container">
+    <div id="logo">
+      <h1>
+        <a href="http://localhost:8081"><img src="../resources/images/common/logo.png"
+          height="40" /> L I M E </a>
+      </h1>
+
+    </div>
+
+    <div id="menu">
+      <ul>
+        <li><a href="http://localhost:8081" accesskey="1" title="">홈</a></li>
+        <li><a href="#" accesskey="2" title="">예약내역</a></li>
+        <li><a href="#" accesskey="3" title="">로그아웃</a></li>
+
+      </ul>
+    </div>
+  </div>
 
 
 					
