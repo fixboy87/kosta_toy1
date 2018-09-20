@@ -253,12 +253,13 @@
                   <form role="form" action="" method="post" id="formdata">
                      <input type="hidden" name="pic_room_url" value="${order.pic_room_url}">
                      <input type="hidden" name="h_name" value="${order.h_name}">
-                     <input type="hidden" name="room_type" value="${order.room_type}">
                      <input type="hidden" name="room_price" value="${order.room_price}">
                      <input type="hidden" name="h_address" value="${order.h_address}">                     
                      <input type="hidden" name="h_phonenum" value="${order.h_phonenum}">
-                     <input type="hidden" name="h_phonenum" value="${order.h_phonenum}">
                      <input type="hidden" name="h_no" value="${order.h_no}">
+                     <input type="hidden" name="room_type" value="${order.room_type}">
+                     
+                     <a id="roomt">${order.room_type}</a>
                   </form>
                   
                   <div class="action">
@@ -270,6 +271,15 @@
       </div>
    </div>
    </c:forEach>
+   
+   <script>
+   $(document).ready(function(){
+	       var roomt = $("#roomt").html();
+	     
+	       alert(roomt);
+	    
+	   });
+   </script>
 <script src="http:../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
 <script src="http:../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>
 <script src="http:../resources/bootstrap/plugins/common/greensock/TweenMax.min.js"></script>

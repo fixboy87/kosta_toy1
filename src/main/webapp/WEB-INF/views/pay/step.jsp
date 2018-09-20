@@ -18,7 +18,7 @@
 <body>
 
 <div class="container">
-  
+  <form role="form" action="" method="post" id="formdata">
 <div class="stepwizard col-md-offset-3">
     <div class="stepwizard-row setup-panel">
       <div class="stepwizard-step">
@@ -36,7 +36,7 @@
     </div>
   </div>
   
-  <form role="form" action="" method="post" id="formdata">
+  
     <div class="row setup-content" id="step-1">
       <div class="col-xs-6 col-md-offset-3">
         <div class="col-md-12">
@@ -79,7 +79,7 @@
      <br>
      <h3>"환불은 호오온나!"</h3> 
 </div>
-<div id="checkDiv">
+<div id= "checkDiv">
           <span><input type="checkbox" id="checkbox" />&nbsp;&nbsp;  <font style="font-size:20px; ">취소 규정 및 약관에 모두 동의 합니다.</font></span> 
            <br>
            <br>
@@ -111,14 +111,13 @@
           <h3> [Step 3]</h3>
           
           
-		    <input type="hidden" name="pic_room_url" value="${dto.pic_room_url}">
+		  <input type="hidden" name="pic_room_url" value="${dto.pic_room_url}">
 		    <input type="hidden" name="h_name" value="${dto.h_name}">
-		    <input type="hidden" name="room_type" value="${dto.room_type}">
 		    <input type="hidden" name="room_price" value="${dto.room_price}">
 		    <input type="hidden" name="h_address" value="${dto.h_address}">                     
 		    <input type="hidden" name="h_phonenum" value="${dto.h_phonenum}">
-		    <input type="hidden" name="h_no" value="${dto.h_no}">
-			
+		    <input type="hidden" name="h_no" value="${dto.h_no}">  
+			<input type="hidden" name="room_type" value="${dto.room_type}">
 	
           <button class="btn btn-success btn-lg pull-right" id="cash_Bt" type="submit">결제</button>
         </div>
