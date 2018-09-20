@@ -133,6 +133,7 @@ h1 {
 				<!-- <a href="review_list.do">목록</a> -->
 				<input type="button" value="목록"
 					class="w3-button w3-white w3-round-small" id="myButtonB" onclick="history.go(-1)">
+					<input type="hidden" class="h_name" value="${board.h_name }">
 			</div>
 		</div>
 	</div>
@@ -166,7 +167,7 @@ h1 {
 					<c:otherwise>
 						<div class="box-body">
 							<div>
-								  <p>리뷰와 댓글 작성은 호텔 이용 시에만 가능합니다.</p>
+								  <p>리뷰와 댓글은 해당 호텔을 이용하신 고객과 호텔만  작성 가능합니다.</p>
                                   <p>허위 리뷰 및 댓글 작성을 방지하기 위함이니 이용자들의 이해 부탁드립니다.</p>
 							</div>
 						</div>
@@ -240,6 +241,7 @@ h1 {
 		var r_no = ${board.r_no};
 		var replyPage = 1;
 		
+		var b_name = $('.h_name').val();
 		var loginId = $('#session_id').val();
 		var name = $('#session_name').val();
 		var type = $('#session_type').val();
@@ -255,12 +257,14 @@ h1 {
 			return year + "/" + month + "/" + date;
 		});
 
-		
-		
 		Handlebars.registerHelper("eqReplyer", function(id, block) {
+			id =id;
 			var accum = '';
 			if (loginId == id) {
-				accum += block.fn();
+				return accum += block.fn();
+			}
+			else if (name == id) {
+				return	accum += block.fn();
 			}
 			return accum;
 		});
@@ -325,8 +329,9 @@ h1 {
 		
 		/* replyAdd */
 		$("#replyAddBtn").on("click", function() {
-			alert(type);
-			alert(name);
+			
+		
+		
 			var replytextObj = $("#newReplyText");
 			var replytext = replytextObj.val();
 			

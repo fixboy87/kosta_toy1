@@ -283,6 +283,16 @@ input:disabled {
 	width: 120px !important;
 	height: 12px !important;
 }
+
+.room_price{
+	font-size: 20px;
+	
+}
+input.room_price{
+	width: 40px;
+}
+
+
 </style>
 </head>
 
@@ -340,7 +350,7 @@ input:disabled {
 												<form action="/manager/roomManager/${h_no}" method="post" enctype="multipart/form-data">
 													<div class="qty mt-5">
 														<label class="price_label">Price</label> 
-															 <input type="number" value="${standard.room_price}" name="room_price">
+															 <input type="number" value="${standard.room_price}" name="room_price" class="room_price">
 														<label class="price_label">만 원</label>	
 													</div>
 													<input type="file" name="pic_room_url"
@@ -388,7 +398,8 @@ input:disabled {
 												<form action="/manager/roomManager/${h_no}" method="post" enctype="multipart/form-data">
 													<div class="qty mt-5">
 														<label class="price_label">Price</label>
-															<input type="number" value="${premium.room_price}" name="room_price">
+															<input type="number" value="${premium.room_price}" name="room_price" class="room_price">
+														<label class="price_label">만 원</label>	
 													</div>
 													<input type="file" name="pic_room_url"
 														placeholder="Room의 이미지를 등록해주세요." >
@@ -405,7 +416,7 @@ input:disabled {
 														</div>
 													</div>
 													<input type="hidden" name="h_no" value="${h_no}"> <input
-														type="hidden" name="room_type" value="standard"> <input
+														type="hidden" name="room_type" value="premium"> <input
 														type="submit" class="submit-button" value="수정 및 등록">
 												</form>
 
@@ -434,7 +445,8 @@ input:disabled {
 												<form action="/manager/roomManager/${h_no}" method="post" enctype="multipart/form-data">
 													<div class="qty mt-5">
 														<label class="price_label">Price</label> 
-															<input type="number" value="${suite.room_price}" name="room_price">
+															<input type="number" value="${suite.room_price}" name="room_price" class="room_price">
+															<label class="price_label">만 원</label>	
 													</div>
 													<input type="file" name="pic_room_url"
 														placeholder="Room의 이미지를 등록해주세요.">
@@ -452,7 +464,7 @@ input:disabled {
 														</div>
 													</div>
 													<input type="hidden" name="h_no" value="${h_no}"> <input
-														type="hidden" name="room_type" value="standard"> <input
+														type="hidden" name="room_type" value="suite"> <input
 														type="submit" class="submit-button" value="수정 및 등록">
 												</form>
 											</small>

@@ -68,7 +68,7 @@ public class ManagerController {
 					standard.setRoom_type(list.get(i).getRoom_type());
 
 					List<TypeVO> t_list = service.room_price(h_no, list.get(i).getRoom_type());
-					standard.setRoom_price(t_list.get(1).getRoom_price());
+					standard.setRoom_price(t_list.get(i).getRoom_price());
 
 					int cnt = service.room_cnt(h_no, list.get(i).getRoom_type());
 					standard.setRoom_cnt(cnt);
@@ -81,7 +81,7 @@ public class ManagerController {
 					premium.setRoom_type(list.get(i).getRoom_type());
 
 					List<TypeVO> t_list = service.room_price(h_no, "premium");
-					premium.setRoom_price(t_list.get(1).getRoom_price());
+					premium.setRoom_price(t_list.get(i).getRoom_price());
 
 					int cnt = service.room_cnt(h_no, list.get(i).getRoom_type());
 					premium.setRoom_cnt(cnt);
