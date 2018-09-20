@@ -49,7 +49,6 @@
 	});
 	$(".rating-stars").ratingStars();
 </script>
-<%-- summernote 라이브러리 추가 END --%>
 
 <style type="text/css">
 h1{
@@ -68,31 +67,14 @@ size: 15px;
 }
 </style>
 
-<%-- <%
-	
-	Review_Board board = new Review_Board();
-	board.setId("syj85");
-	board.setHotle_name("롯데시티호텔");
-	board.setStay_day(1);
-	board.setUserNo(1);
-	board.setBooking_num(1);
-	
-	request.setAttribute("board", board);
-%> --%>
-
 </head>
 <body>
 <%@include file="../sub_page/header_menu.jsp" %>
 
 
 <!-- Contact -->
-<%-- form의 textarea에 summernote 적용 --%>
 <h1>후기 작성</h1>
 	<div >
-		<div>
-			<%--로그인체크 <%@ include file="/home/sidebar.jsp"%> --%>
-		</div>
-		
 		<!-- <div class="w3-margin-top w3-main"	> -->
 		<div class="contact_form_container">
 			<form action="/reviews/review_insert/${h_noPage}" method="post"  id="contact_form" class="clearfix" enctype="multipart/form-data"> 
@@ -132,12 +114,10 @@ size: 15px;
 				<label>이미지 첨부</label> <input  id="contact_input_img" class="contact_input contact_input_subject" type="file" name="r_fname" placeholder="이미지를 첨부해주세요."><br>
 								
 				<div>
-					<!-- <textarea name=" r_content" ></textarea> -->
 					<textarea name="r_content" id="content"></textarea>
 				</div>
 				
 				<div class="select_button" align="center">
-					<%-- <input type="hidden" name="section" value="${ param.section }"> --%>
 					<input type="submit" value="작성" class="w3-button w3-white w3-round-small"> &nbsp;
 					<input type="button" value="취소" class="w3-button w3-white w3-round-small" onclick="history.go(-1)">
 				</div>

@@ -6,11 +6,6 @@
 <mapper namespace="yanoll.mapper.Review_BoardMapper">
 
 	<!-- listReview_hotel -->
-	<!-- <select id ="listReview_hotel" resultType="Review_BoardVO" parameterType="int"> 
-		SELECT * FROM review_board WHERE h_name = (SELECT h_name FROM hotel WHERE 
-		h_no = #{h_no}) ORDER BY r_no desc, r_redate desc </select> -->
-
-	<!-- listReview_hotel -->
 	<select id="listReview_hotel" resultType="Review_BoardVO">
 		SELECT *
 		FROM review_board
@@ -91,20 +86,6 @@
 		WHERE r_no = #{r_no}
 	</update>
 
-	<!-- 후기가능 booking 리스트 -->
-	<!-- <select id="listCheck" parameterType="String" resultType="Booking"> 
-		select*from booking where userno=(select userno from users where id = #{id}) 
-		and P_CONDITION =2 </select> -->
-
-	<!-- 호텔 이름 찾기 -->
-	<!-- <select id="searchHotle_name" parameterType="int" resultType="String"> 
-		select h_name from hotel where h_no=#{h_no} </select> -->
-
-
-	<!-- 회원 번호 -->
-	<!-- <select id="search_userNo" parameterType="String" resultType="int"> 
-		select userNo from users where id=#{id} </select> -->
-
 	<!-- booking의 p_condition 후기 작성 전(2)-> 작성 후(4) -->
 	<update id="changeCondition" parameterType="int">
 		UPDATE Hotel_Order
@@ -112,56 +93,39 @@
 		where order_num =#{order_num}
 	</update>
 
-	<!-- 게시물 수정 -->
-	<!-- <update id="updateReview" parameterType="Review_Board"> UPDATE review_board 
-		SET r_title = #{r_title}, r_content=#{r_content} WHERE r_no=#{r_no} </update> -->
-
-	<!-- ajax list -->
-	<!-- <select id="listReview_hotelPage" resultType="Review_BoardVO"> SELECT 
-		* FROM review_board WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = 
-		#{h_no}) <if test="photo"> AND r_fname is NOT null </if> ORDER BY r_no desc, 
-		r_redate desc </select> -->
 
 	<select id="listReview_hotelPage" resultType="Review_BoardVO">
-	 <![CDATA[
-		select
-		r_no, r_title, r_grade, r_content, r_redate, r_hitcount, r_fname,
-		order_num, h_name, number_of_stay_days,userNo,id
-		from
-		(
-		select
+	 	<![CDATA[
+				SELECT
+						r_no, r_title, r_grade, r_content, r_redate, r_hitcount, r_fname,
+						order_num, h_name, number_of_stay_days,userNo,id
+					FROM ( 
+					SELECT
 		 ]]>
-		
-		 <if test="sortTerms == 'latest'.toString()">
-			/*+INDEX_DESC(Review_Board REVIEW_R_NO_PK)*/
-		</if>
-		<if test="sortTerms == 'grade'.toString()">
-			/*+INDEX_DESC(Review_Board REVIEW_R_GRADE)*/
-		</if>
-		 
-		 <![CDATA[
-		rownum rn,
-		r_no, r_title, r_grade, r_content, r_redate, r_hitcount, r_fname,
-		order_num, h_name, number_of_stay_days,userNo,id
-		from Review_Board
-		where h_name = (SELECT h_name FROM hotel WHERE h_no = #{h_no})
-		 ]]>
-		<if test="photo">
-			AND r_fname is NOT null
-		</if>
-
+					<if test="sortTerms == 'latest'.toString()">
+						/*+INDEX_DESC(Review_Board REVIEW_R_NO_PK)*/
+					</if>
+					<if test="sortTerms == 'grade'.toString()">
+						/*+INDEX_DESC(Review_Board REVIEW_R_GRADE)*/
+					</if>
 		<![CDATA[
-		and r_no > 0
-		and rownum <= #{cri.page} * #{cri.perPageNum}
-		)
-		where rn > ( #{cri.page} -1) * #{cri.perPageNum}
+					rownum rn, r_no, r_title, r_grade, r_content, r_redate, r_hitcount, r_fname,
+					order_num, h_name, number_of_stay_days,userNo,id
+				FROM Review_Board
+				WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = #{h_no})
 		 ]]>
-
+				<if test="photo">
+					AND r_fname IS NOT NULL
+				</if>
+		<![CDATA[
+					AND r_no > 0
+					AND rownum <= #{cri.page} * #{cri.perPageNum}
+					)
+					WHERE rn > ( #{cri.page} -1) * #{cri.perPageNum}
+		 ]]>
 	</select>
 
-	<!-- <select id ="listReview_hotelPage" resultType="Review_BoardVO"> SELECT 
-		* FROM review_board WHERE h_name = (SELECT h_name FROM hotel WHERE h_no = 
-		#{h_no}) ORDER BY r_no desc, r_redate desc </select> -->
+
 
 	<select id="count" resultType="int">
 		select count(r_no)

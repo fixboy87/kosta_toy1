@@ -276,6 +276,7 @@
                                  <button id="button-photo" value="포토">
                                     포토<small class="photoCnt"></small>
                                  </button>
+                                 
                                  <c:if test="${not empty uid}">
                                     <a class="review_button" href="/reviews/bookingList_check/${h_no}">후기 작성</a>
                                  </c:if>
@@ -339,7 +340,7 @@
    <!-- Footer -->
    <%@include file="../sub_page/footer.html"%>
 
-   <script id="reviewTemplate" type="text/x-handlebars-template">
+  <script id="reviewTemplate" type="text/x-handlebars-template">
 {{#each .}}    
                   <table class="list_table" width="800">
                      <tr>
@@ -411,25 +412,23 @@
       Handlebars.registerHelper("if_img", function(r_fname) {
 
          if (r_fname != null) {
-
             var str = "/resources/images/pages/review_img";
             var head = r_fname.substring(0, r_fname.indexOf("."));
             var pattern = r_fname.substring(r_fname.indexOf(".") + 1);
             var src = str + head + "_small." + pattern;
-            /* alert(src);
-            alert(r_fname); */
             return "<img src="+src+">";
          }
          return "<label>NO IMAGE</label> ";
       });
 
-      /* List_Review  Print */
+      /* List_Review */
       var printData = function(reviewArr, target, templateObject) {
          var template = Handlebars.compile(templateObject.html());
          var html = template(reviewArr);
          $(".list_table").remove();
          target.after(html); /* 추가 */
       }
+      
 
       /* List_Review Paging  */
       var printPaging = function(pageMaker, target) {
@@ -449,13 +448,13 @@
          target.html(str);
       };
 
-      /* List_Review JSON  */
+      /* List_Review  */
       function getPage(pageInfo) {
          $.getJSON(pageInfo, function(data) {
-            printData(data.reviewList, $("#review_container"),
+            printData(data.reviewList, $("#review_container"),		/* List_Review */
                   $("#reviewTemplate"));
-            printPaging(data.pageMaker, $(".pagination"));
-            $(".photoCnt").html(" [ " + data.photoCnt + " ] ");
+            printPaging(data.pageMaker, $(".pagination")); 			 /* List_Review Paging  */
+            $(".photoCnt").html(" [ " + data.photoCnt + " ] ");	/* Photo Count */
 
          });
       };
@@ -470,12 +469,11 @@
 
       /* List Event */
       $("#review_button").click(function() {
-         /* alert("리뷰버튼"); */
          $("#rooms").css("display", "none");
          $("#reviews").css("display", "block");
-         /* alert(h_no); */
          getPage("/hotelReviews/" + h_no + "/1/" + photo + "/" + sortTerms);
       });
+      
       $("#rooms_button").click(function() {/* 방 목록 버튼 */
          $("#rooms").css("display", "block");
          $("#reviews").css("display", "none");
@@ -484,8 +482,6 @@
       /* Option1 - Only Photo */
       $("#button-div").on("click", "#button-photo", function(event) {
          photo = true;
-         /* alert(photo);
-         alert(h_no); */
          getPage("/hotelReviews/" + h_no + "/1/" + photo + "/" + sortTerms);
       })
       $("#button-all").click(function() {

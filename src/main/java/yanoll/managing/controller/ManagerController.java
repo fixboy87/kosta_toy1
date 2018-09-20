@@ -94,7 +94,7 @@ public class ManagerController {
 					suite.setRoom_type(list.get(i).getRoom_type());
 
 					List<TypeVO> t_list = service.room_price(h_no, "suite");
-					suite.setRoom_price(t_list.get(1).getRoom_price());
+					suite.setRoom_price(t_list.get(i).getRoom_price());
 
 					int cnt = service.room_cnt(h_no, list.get(i).getRoom_type());
 					suite.setRoom_cnt(cnt);
@@ -118,8 +118,6 @@ System.out.println("get에서 가격"+standard.getRoom_price());
 
 	@RequestMapping(value = "/roomManager/{h_no}", method = RequestMethod.POST)
 	public String roomManagerPOST(@PathVariable("h_no") Integer h_no, RoomManagerDTO dto) throws Exception {
-		System.out.println("1111111111111:"+dto.toString());
-		System.out.println("1가격" + dto.getRoom_price());
 
 		int type_cnt = service.type_cnt(h_no, dto.getRoom_type());
 		if (type_cnt == 0) {

@@ -24,8 +24,6 @@
 <script src="../../resources/bootstrap/plugins/common//greensock/ScrollToPlugin.min.js"></script>
 <script src="../../resources/bootstrap/plugins/common//easing/easing.js"></script>
 <script src="../../resources/bootstrap/plugins/common//parallax-js-master/parallax.min.js"></script>
-<!-- <script src="../resources/bootstrap/scripts/common/contact_custom.js"></script> -->
-<%-- summernote 라이브러리 추가 --%>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <!-- <script src="http://code.jquery.com/jquery-latest.js"></script> -->
@@ -33,7 +31,6 @@
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
 <!-- <--------------------------syj------------>
-<!-- <script src="/scripts/syj_script/reviewList/list.js"></script> -->
 <script src="../../resources/bootstrap/scripts/syj_script/reviewList/list.js"></script>
 <link rel="stylesheet" type="text/css" href="../../resources/bootstrap/styles/syj_style/syj_contact.css">
 
@@ -53,23 +50,11 @@ h1 {
 	margin-bottom: 2%;
 }
 </style>
-
-<%-- <%
-	ReviewDao dao = ReviewDao.getInstance();
-	List<Review_Board>list = dao.review_list();
-	request.setAttribute("list", list);
-	
-	
-%> --%>
 </head>
 <body>
 	<%@include file="../sub_page/header_menu.jsp"%>
 
 
-	<!-- Contact -->
-	<%-- form의 textarea에 summernote 적용 --%>
-<!-- 	<secion id="wrap"> -->
-<!-- 		<section id="first"> -->
 	<h1>후기 작성 가능 목록</h1>
 	
 		
@@ -103,12 +88,6 @@ h1 {
 					<input type="button" value="취소" class="w3-button w3-white w3-round-small" onclick="history.go(-1)">
 		</div>
 		
-	</section>
-				
-
-
-
-	</secion>
 
 	<%@include file="../sub_page/footer.html"%>
 </body>
