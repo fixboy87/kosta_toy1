@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSessionException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -15,6 +16,7 @@ import yanoll.registration.persistence.RegistrationDAO;
 import yanoll.user.domain.Actors;
 import yanoll.user.domain.Hotel;
 import yanoll.user.domain.Users;
+import yanoll.util.LoginFailException;
 import yanoll.util.WrongAccessException;
 
 @Service
@@ -51,6 +53,17 @@ public class RegistrationServiceImpl implements RegistrationService {
 			dto.setId(id);
 			dto.setPassword(password);
 			user = dao.login(dto);
+			System.out.println("user.getId() = "+user.getId());
+			if(user.getId() == null) {
+				int trials = (Integer)session.getAttribute("trials")+1;
+				session.setAttribute("trials", trials);
+				
+				if(trials < 3) {
+					throw new SqlSessionException();
+				}
+				session.setAttribute("trials", 0);
+				throw new Exception();
+			}
 			
 			session.setAttribute("type", type);
 			session.setAttribute("uid", user.getId());
@@ -63,6 +76,17 @@ public class RegistrationServiceImpl implements RegistrationService {
 			dto.setH_password(password);
 			hotel = dao.login_hotel(dto);
 
+			if(hotel.getH_id() == null) {
+				int trials = (Integer)session.getAttribute("trials")+1;
+				session.setAttribute("trials", trials);
+				
+				if(trials < 3) {
+					throw new SqlSessionException();
+				}
+				session.setAttribute("trials", 0);
+				throw new Exception();
+			}
+			
 			session.setAttribute("type", type);
 			session.setAttribute("uid", hotel.getH_id());
 			session.setAttribute("name", hotel.getH_name());
