@@ -1,13 +1,16 @@
 package yanoll.managing.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import yanoll.managing.dto.GetCalendarDTO;
+import yanoll.plsql.mappers.PlsqlMapper;
+
 
 @Repository
 public class ManagingDAOImpl implements ManagingDAO {
@@ -16,6 +19,7 @@ public class ManagingDAOImpl implements ManagingDAO {
 	private SqlSession sqlSession;
 	
 	private String namespace = "yanoll.mapper.managingMapper";
+	private String plsql = "yanoll.mapper.plsqlMapper";
 	
 	@Override
 	public int getTotalRooms(String hotelName) {
@@ -24,9 +28,13 @@ public class ManagingDAOImpl implements ManagingDAO {
 
 	
 	@Override
-	public List<Integer> getMonthlyBooking(GetCalendarDTO dto) throws Exception {
+	public List<Integer> getMonthlyBooking(Map<String, Object> paramMap) throws Exception {
+		PlsqlMapper mapper = sqlSession.getMapper(PlsqlMapper.class);
 		
-		return sqlSession.selectOne(namespace+".get_monthly_booked", dto);
+		mapper.get_monthly_booked(paramMap);
+		System.out.println(paramMap.get("result"));
+		
+		return null;
 	}
 
 

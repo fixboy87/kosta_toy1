@@ -4,11 +4,11 @@
 
 
 
-<mapper namespace="yanoll.mapper.plsqlMapper">
+<mapper namespace="yanoll.plsql.mappers.PlsqlMapper">
 	
 
 	
-	<select id="get_monthly_booked" parameterType="map" statementType="CALLABLE">
+	<select id="get_monthly_booked" parameterType="hashmap" statementType="CALLABLE">
 	
 	<![CDATA[
 		DECLARE
@@ -28,8 +28,6 @@
 		        FETCH cur_month
 		        INTO vs_avail_count;
 		        
-		         
-		         
 		            SELECT COUNT(*) INTO cnt
 		            FROM hotel_order
 		            WHERE h_no = (
@@ -40,8 +38,8 @@
 		            AND start_day   < vs_avail_count
 		            AND end_day     > vs_avail_count;
 		            
-		        	INSERT INTO H_TEMP VALUES
-		        	(vs_avail_count, cnt);
+	        	INSERT INTO h_temp VALUES
+	        	(vs_avail_count, cnt);
 
 		        EXIT WHEN cur_month%NOTFOUND;
 		    END LOOP;

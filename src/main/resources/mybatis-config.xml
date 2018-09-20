@@ -16,6 +16,7 @@
   <package name="yanoll.order.dto"/>
   <package name="yanoll.managing.dto"/>
   <package name="yanoll.managing.domain"/>
+  <package name="yanoll.plsql.mappers"/>
 	</typeAliases>
 	
 	
