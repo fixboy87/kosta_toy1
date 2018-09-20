@@ -43,16 +43,13 @@ function doImgPop(img){
 	    function init(){
 	      container = jQuery(".slide ul");
 	      max = container.children().length;
-      
-	      events();
+          events();
 	      interval = setInterval(next, 3000);
 	  }
-
 	
 	  function setting(){
 	    container.css("margin-left","-600px");
 	    container.prepend(container.children()[max-1]);
-
 	  }
 
 	  function events(){
@@ -66,14 +63,12 @@ function doImgPop(img){
 	    current--;
 	    if( current < 0 )  current = max-1;
 	    animate("prev");    
-
 	  }
 
 	  function next( e ){
 	    current++;
 	    if( current > max-1 ) current = 0;
 	    animate("next");    
-
 	  }
 
 	  function animate( $direction ){
@@ -102,13 +97,10 @@ function doImgPop(img){
 	  function keydown( e ){
 	    if( e.which == 39 /*right*/ ){
 	        next();
-
 	    }else if( e.which == 37 /*left*/ ){
 	        prev();
 	    }
-
 	  }
-
 	  jQuery( document ).ready( init );
 	})();
 

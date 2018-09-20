@@ -5,7 +5,7 @@ _( function() {
     _( "#slider-range" ).slider({
       range: true,
       min: 0,
-      max: 28,
+      max: 100,
       values: [ 0, 0 ],
       slide: function( event, ui ) {
         _( "#amount" ).val( "" + ui.values[ 0 ] + "만원" + " - " + ui.values[ 1 ] + "만원" );

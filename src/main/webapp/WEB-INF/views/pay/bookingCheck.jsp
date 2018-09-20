@@ -246,11 +246,11 @@
                      <div><h3><%=(String)session.getAttribute("start_date")%>ㅤㅤ-->ㅤㅤ<%=(String)session.getAttribute("end_date")%> </h3> </div>
                   </div>
                   <div id="session" style="display: none;"><%=(int)session.getAttribute("bookingDays") %></div>
-                  <p class="product-description">${order.room_type}</p>                  
-                  <p class="vote">${order.h_address}</p>
-                  <p class="vote">${order.h_phonenum}</p>
+                  <p class="product-description"style="font-size: 20px!important;">${order.room_type}</p>                  
+                  <p class="vote" style="font-size: 20px!important;">${order.h_address}</p>
+                  <p class="vote">02-333${order.h_phonenum}</p>
                   <div id="price1" style="display: none;">${order.room_price}</div>
-                  <h4 class="price"> 결제금액 : <span id="totall"> </span> <span>만원</span></h4>
+                  <h4 class="price" > 결제금액 : <span id="totall"  style="color:#fe435c !important;"> </span> <span>만원</span></h4>
                   <form role="form" action="" method="post" id="formdata">
                      <input type="hidden" name="pic_room_url" value="${order.pic_room_url}">
                      <input type="hidden" name="h_name" value="${order.h_name}">
@@ -267,7 +267,8 @@
                   </form>
                   
                   <div class="action">
-                     <button class="add-to-cart btn btn-default" id="button" type="button" style="font-size: 15px;">결  제</button>         
+                     <button class="add-to-cart btn btn-default" id="button" type="button" 
+                     style="font-size: 15px; margin-left: 300px; background-color:#fe435c; width: 150px !important; font-size: 20px !; ">결  제</button>         
                   </div>
                </div>
             </div>
