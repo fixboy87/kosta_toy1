@@ -38,9 +38,8 @@
 margin-left: 30%;
 }
 
-.btn btn-primary pull-right{
-margin-left: 20%;
-background: red;	
+#submitButton{
+margin-left: 62%;
 }
 </style>
 </head>
@@ -87,7 +86,7 @@ background: red;
         <form role="form" method="post">
         <br style="clear:both">
                     <h3 style="margin-bottom: 25px; text-align: center;">문의</h3>
-					<a class="btn btn-primary pull-right" href="/enquire/list" >나의문의내역</a>
+					
 				<select class="h_name" name="h_name" id="h_name" >
 						
 							<option>문의호텔</option>
@@ -106,17 +105,18 @@ background: red;
 							<br>
 					
 					<div class="form-group">
-						<input type="text" class="form-control" id="subject" name="e_title" value="${board.e_title}" placeholder="제목">
+						<input type="text" class="form-control" id="subject" name="e_title" value="${board.e_title}" placeholder="제목" required="required">
 					</div>
                     <div class="form-group">
-                    <textarea class="form-control" type="textarea" id="message" name="e_contents" placeholder="내용" maxlength="140" rows="7">${board.e_contents}</textarea>
+                    <textarea class="form-control" type="textarea" id="message" name="e_contents" placeholder="내용" maxlength="140" rows="7" required="required">${board.e_contents}</textarea>
                         <span class="help-block"><p id="characterLeft" class="help-block "></p></span>
                          <input id="contact_input_subject" class="contact_input contact_input_subject" type="hidden" name="e_seq" value="${board.e_seq}">                    
                     </div>
             <input id="id" type="hidden" name="id" value="<%=(String)session.getAttribute("uid")%>">
          
             
-        <input type="submit" id="submit" name="submit" class="btn btn-primary pull-right"></input>
+        <input type="submit" id="submitButton" name="submit" class="btn btn-primary pull-right"></input>
+        <a href="/enquire/list" class="btn btn-primary pull-right">GOLIST</a>
         </form>
     </div>
 </div>
