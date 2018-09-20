@@ -49,7 +49,8 @@
  		<![CDATA[
  			
   			Select * from hotel
-  					where h_no BETWEEN #{h_no} and #{h_no}+10 order by h_no
+  					where h_no BETWEEN #{h_no} and #{h_no}+10
+  					and h_no < 50 order by h_no
   		]]>	
  	</select> 
  	

@@ -256,7 +256,7 @@
 									<li>3 star hotel</li>
 								</ul>
 								<div class="item_text">${listH.h_info}</div>
-								<div class="item_more_link"><a href="#">Read More</a></div>
+								<div class="item_more_link">Read More</div>
 							</div>
 						</div>
 					</c:forEach> 
@@ -266,6 +266,7 @@
 
 var lastScrollTop = 0;
 var easeEffect = 'easeInQuint';
+var urlHP = this.pic_url;
  
 $(window).scroll(function(){
      	
@@ -275,7 +276,7 @@ $(window).scroll(function(){
         console.log("down-scroll");         
         console.log("W: " + $(window).scrollTop())//이값 컴퓨터 마다 다르니 고쳐 줘야함
         console.log("D: " + ($(document).height() - $(window).height()))
-        if ($(window).scrollTop()+350 >= ($(document).height() - $(window).height()) ){ 
+        if ($(window).scrollTop()+250 >= ($(document).height() - $(window).height()) ){ 
             var lasth_no = $(".scrolling:last").attr("data-bno");
             $.ajax({
                 type : 'post', 
@@ -297,35 +298,30 @@ $(window).scroll(function(){
                             	console.log("asdasdfslyiabhfmwrg");
                             	
                             	str +="<div class=" + "item clearfix rating_5" +"id=" + "listToChange"+">"    
-                            		+ "<div class=" + "item_image"+">"+"<a href='/room/detailPage?h_no='" + this.h_no +
-                            			
+                            		+"<div class=" + "item_image"+">"+"<img src='../../resources/images/pages/HY_images/lotte.png'" + ">" + "</div>"
+                            		+"<div class=" + "item_content"+">"
+                            		+"<div class=" + "item_price" + ">" + this.h_location + "</div>"
+                            		+"<div class=" + "item_title" + ">" + this.h_name + "</div>"
+                            		+"<div class=" + "scrolling" + "style="+ "display:none;" +  "data-bno=" + this.h_no  + ">" + "</div>"
+                            		+"<ul>"
+                            		+"<li>" + this.price + "만원 </li>"
+                            		+"<li>1 nights</li>"
+                            		+"<li>3 star hotel</li>"
+                            		+"</ul>"
+                            		+"<div class=" +"item_text" +">" + this.h_info + "</div>"                            		
+                            		+"</div>"
+                            		+"</div>"
+                            		+"<div class=" + "item_more_link" + ">" + "Read More" +"</div>"
+                            		
                             	
-                        });
-			                        ()<div class="item clearfix rating_5" id="listToChange">
-									<div class="item_image"><a href="/room/detailPage?h_no=${listH.h_no}"><img src="../../resources/images/pages/HY_images/${listH.pic_url}" alt=""></a></div>
-									<div class="item_content">
-										<div class="item_price">${listH.h_location}</div>
-										<div class="item_title">${listH.h_name }</div>
-										<div class="scrolling" data-bno="${listH.h_no }" style="display: none;">${listH.h_no }</div>
-										<ul>
-											<li>${listH.price}만원</li>
-											<li>1 nights</li>
-											<li>3 star hotel</li>
-										</ul>
-										<div class="item_text">${listH.h_info}</div>
-										<div class="item_more_link"><a href="#">Read More</a></div>
-									</div>
-								</div>
-			                        
-					
-					
-					
-                        $("#scrollLocation").after(str);               
+                        });            
+                        
+                        $("#scrollLocation").after(str).trigger("create");
                     }
+                   
                     else{ 
                         alert("더 불러올 데이터가 없습니다.");
                     }
-                    
      
                 }
             });
@@ -333,8 +329,8 @@ $(window).scroll(function(){
            
             $('html,body').stop().animate({scrollTop : position }, 600, easeEffect);
  
-        }
-        lastScrollTop = currentScrollTop;
+        } 
+        
     }    
 });
 
