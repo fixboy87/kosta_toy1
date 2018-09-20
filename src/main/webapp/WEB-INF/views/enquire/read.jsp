@@ -439,6 +439,6 @@ text-align: right;
 
 
 
-	<%@include file="../sub_page/footer.html"%>
+	
 </body>
 </html>
