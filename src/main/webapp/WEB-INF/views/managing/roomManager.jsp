@@ -1,7 +1,7 @@
 <%@page import="yanoll.user.domain.Hotel"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	Hotel hotel = (Hotel) request.getAttribute("hotel");
 %>
@@ -52,8 +52,11 @@
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Input Spinner with min and max values -->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <style type="text/css">
 .myPageMenuCylinder {
@@ -239,45 +242,46 @@ input:disabled {
 
 /* Input Spinner with min and max values */
 .spinner input {
-  text-align: right;
+	text-align: right;
 }
 
 .input-group-btn-vertical {
-  position: relative;
-  white-space: nowrap;
-  width: 2%;
-  vertical-align: middle;
-  display: table-cell;
+	position: relative;
+	white-space: nowrap;
+	width: 2%;
+	vertical-align: middle;
+	display: table-cell;
 }
 
-.input-group-btn-vertical > .btn {
-  display: block;
-  float: none;
-  width: 100%;
-  max-width: 100%;
-  padding: 8px;
-  margin-left: -1px;
-  position: relative;
-  border-radius: 0;
+.input-group-btn-vertical>.btn {
+	display: block;
+	float: none;
+	width: 100%;
+	max-width: 100%;
+	padding: 8px;
+	margin-left: -1px;
+	position: relative;
+	border-radius: 0;
 }
 
-.input-group-btn-vertical > .btn:first-child {
-  border-top-right-radius: 4px;
+.input-group-btn-vertical>.btn:first-child {
+	border-top-right-radius: 4px;
 }
 
-.input-group-btn-vertical > .btn:last-child {
-  margin-top: -2px;
-  border-bottom-right-radius: 4px;
+.input-group-btn-vertical>.btn:last-child {
+	margin-top: -2px;
+	border-bottom-right-radius: 4px;
 }
 
 .input-group-btn-vertical i {
-  position: absolute;
-  top: 0;
-  left: 4px;
+	position: absolute;
+	top: 0;
+	left: 4px;
 }
-.input-group{
-width: 120px !important;
-height: 12px !important;
+
+.input-group {
+	width: 120px !important;
+	height: 12px !important;
 }
 </style>
 </head>
@@ -309,6 +313,7 @@ height: 12px !important;
 				</div>
 			</div>
 			<div class="myPageContentCylinder">
+
 				<div class="card col-md-6 mt-5 mb-5">
 					<div id="carouselExampleControls" class="carousel slide"
 						data-ride="carousel" data-interval="100000">
@@ -317,8 +322,16 @@ height: 12px !important;
 								<div class="carousel-caption">
 									<div class="row">
 										<div class="col-sm-3">
-											<img src="http://via.placeholder.com/200x200" alt=""
-												class="rounded-circle img-fluid" />
+											<c:choose>
+												<c:when test="${standard.pic_room_url !=null}">
+													<img
+														src="/resources/images/pages/HotelRoomImg/${standard.pic_room_url }"
+														alt="" class="rounded-circle img-fluid" />
+												</c:when>
+												<c:when test="${standard.pic_room_url ==null }">
+													<img src="http://via.placeholder.com/200x200" alt=""class="rounded-circle img-fluid" />
+												</c:when>
+											</c:choose>
 										</div>
 										<div class="col-sm-9">
 											<h3>Standard</h3>
@@ -328,14 +341,17 @@ height: 12px !important;
 													<div class="qty mt-5">
 														<label class="price_label">Price</label> <span
 															class="minus bg-dark">-</span> <input type="number"
-															class="count" name="room_price" value="100000"> <span
+															class="count" name="room_price"
+															value="${standard.room_price}"> <span
 															class="plus bg-dark">+</span>
+														<label class="price_label">만 원</label>	
 													</div>
 													<input type="file" name="pic_room_url"
 														placeholder="Room의 이미지를 등록해주세요.">
-													
+
 													<div class="input-group spinner">
-														<input  type="number" name="roomCnt" class="form-control" value="1" min="0" size="100px">
+														<input type="number" name="room_cnt" class="form-control"
+															value="${standard.room_cnt}" min="0" size="100px">
 														<div class="input-group-btn-vertical">
 															<button class="btn btn-default" type="button">
 																<i class="fa fa-caret-up"></i>
@@ -345,9 +361,9 @@ height: 12px !important;
 															</button>
 														</div>
 													</div>
-													<input type="hidden" name="h_no" value="${h_no}"> 
-													<input type="hidden" name="room_type" value="standard">
-													 <input type="submit" class="submit-button" value="수정 및 등록">
+													<input type="hidden" name="h_no" value="${h_no}"> <input
+														type="hidden" name="room_type" value="standard"> <input
+														type="submit" class="submit-button" value="수정 및 등록">
 												</form>
 											</small>
 										</div>
@@ -358,8 +374,16 @@ height: 12px !important;
 								<div class="carousel-caption">
 									<div class="row">
 										<div class="col-sm-3">
-											<img src="/resources/images/pages/review_img" alt=""
-												class="rounded-circle img-fluid">
+											<c:choose>
+												<c:when test="${premium.pic_room_url !=null}">
+													<img
+														src="/resources/images/pages/HotelRoomImg/${premium.pic_room_url }"
+														alt="" class="rounded-circle img-fluid" />
+												</c:when>
+												<c:when test="${premium.pic_room_url ==null }">
+													<img src="http://via.placeholder.com/200x200" alt="" class="rounded-circle img-fluid" />
+												</c:when>
+											</c:choose>
 										</div>
 										<div class="col-sm-9">
 											<h3>Premium</h3>
@@ -368,14 +392,16 @@ height: 12px !important;
 													<div class="qty mt-5">
 														<label class="price_label">Price</label> <span
 															class="minus bg-dark">-</span> <input type="number"
-															class="count" name="room_price" value="100000"> <span
+															class="count" name="room_price"
+															value="${premium.room_price}"> <span
 															class="plus bg-dark">+</span>
 													</div>
 													<input type="file" name="pic_room_url"
 														placeholder="Room의 이미지를 등록해주세요.">
-													
+
 													<div class="input-group spinner">
-														<input type="number" name="roomCnt" class="form-control" value="1" min="0" size="100px">
+														<input type="number" name="room_cnt" class="form-control"
+															value="${premium.room_cnt}" min="0" size="100px">
 														<div class="input-group-btn-vertical">
 															<button class="btn btn-default" type="button">
 																<i class="fa fa-caret-up"></i>
@@ -399,9 +425,16 @@ height: 12px !important;
 								<div class="carousel-caption">
 									<div class="row">
 										<div class="col-sm-3">
-											<img src="http://via.placeholder.com/200x200" alt=""
-												class="rounded-circle img-fluid">
-										</div>
+												<c:choose>
+												<c:when test="${suite.pic_room_url !=null}">
+													<img
+														src="/resources/images/pages/HotelRoomImg/${suite.pic_room_url }"
+														alt="" class="rounded-circle img-fluid" />
+												</c:when>
+												<c:when test="${suite.pic_room_url ==null }">
+													<img src="http://via.placeholder.com/200x200" alt="" class="rounded-circle img-fluid" />
+												</c:when>
+											</c:choose>										</div>
 										<div class="col-sm-9">
 											<h3>Suite</h3>
 											<small>
@@ -409,14 +442,16 @@ height: 12px !important;
 													<div class="qty mt-5">
 														<label class="price_label">Price</label> <span
 															class="minus bg-dark">-</span> <input type="number"
-															class="count" name="room_price" value="100000"> <span
+															class="count" name="room_price"
+															value="${suite.room_price}"> <span
 															class="plus bg-dark">+</span>
 													</div>
 													<input type="file" name="pic_room_url"
 														placeholder="Room의 이미지를 등록해주세요.">
-													
+
 													<div class="input-group spinner">
-														<input  type="number" name="roomCnt" class="form-control" value="1" min="0" size="100px">
+														<input type="number" name="room_cnt" class="form-control"
+															value="${suite.room_cnt}" min="0" size="100px">
 														<div class="input-group-btn-vertical">
 															<button class="btn btn-default" type="button">
 																<i class="fa fa-caret-up"></i>
@@ -449,6 +484,7 @@ height: 12px !important;
 						</div>
 					</div>
 				</div>
+
 			</div>
 
 
@@ -462,36 +498,44 @@ height: 12px !important;
 		$(document).ready(function() {
 			$('.count').prop('disabled', true);
 			$(document).on('click', '.plus', function() {
-				$('.count').val(parseInt($('.count').val()) + 1000);
+				$('.count').val(parseInt($('.count').val()) + 1);
 			});
 			$(document).on('click', '.minus', function() {
-				$('.count').val(parseInt($('.count').val()) - 1000);
+				$('.count').val(parseInt($('.count').val()) - 1);
 				if ($('.count').val() == 0) {
 					$('.count').val(1);
 				}
 			});
 		});
-		
-		$(function(){
 
-		    $('.spinner .btn:first-of-type').on('click', function() {
-		      var btn = $(this);
-		      var input = btn.closest('.spinner').find('input');
-		      if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {    
-		        input.val(parseInt(input.val(), 10) + 1);
-		      } else {
-		        btn.next("disabled", true);
-		      }
-		    });
-		    $('.spinner .btn:last-of-type').on('click', function() {
-		      var btn = $(this);
-		      var input = btn.closest('.spinner').find('input');
-		      if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {    
-		        input.val(parseInt(input.val(), 10) - 1);
-		      } else {
-		        btn.prev("disabled", true);
-		      }
-		    });
+		$(function() {
+
+			$('.spinner .btn:first-of-type').on(
+					'click',
+					function() {
+						var btn = $(this);
+						var input = btn.closest('.spinner').find('input');
+						if (input.attr('max') == undefined
+								|| parseInt(input.val()) < parseInt(input
+										.attr('max'))) {
+							input.val(parseInt(input.val(), 10) + 1);
+						} else {
+							btn.next("disabled", true);
+						}
+					});
+			$('.spinner .btn:last-of-type').on(
+					'click',
+					function() {
+						var btn = $(this);
+						var input = btn.closest('.spinner').find('input');
+						if (input.attr('min') == undefined
+								|| parseInt(input.val()) > parseInt(input
+										.attr('min'))) {
+							input.val(parseInt(input.val(), 10) - 1);
+						} else {
+							btn.prev("disabled", true);
+						}
+					});
 
 		})
 	</script>

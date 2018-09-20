@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="yanoll.mapper.ManagerMapper">
+
+ 	<select id="roomList" resultType="Hotel_RoomVO">
+ 		SELECT * 
+ 			FROM hotel_room 
+ 			WHERE h_no = #{h_no}
+ 	</select>
+ 	
+ 	<select id="hotleNameSearch" resultType="String">
+		SELECT
+  			H_NAME
+			FROM HOTEL 
+			WHERE h_no = #{h_no}
+ 	</select>
+ 	
+ 	<select id="room_price" resultType="TypeVO">
+ 		SELECT room_price 
+ 			FROM type 
+ 			WHERE h_no = #{h_no} 
+ 			AND room_type = #{room_type}
+ 	</select>
+ 	
+ 	<select id="room_cnt" resultType="int">
+ 		SELECT COUNT(*) 
+ 			FROM type 
+ 			WHERE h_no = #{h_no} 
+ 			AND room_type = #{room_type}
+ 	</select>
+ 	
+ 	<select id="type_cnt" resultType="int">
+ 		SELECT
+   			COUNT(*)
+			FROM hotel_room 
+			WHERE h_no = #{h_no} 
+			AND room_type=#{room_type}
+ 	</select>
+ 	
+	<insert id="insert" parameterType="Hotel_RoomVO">
+ 		INSERT INTO hotel_room (room_num, h_no, pic_room_url, room_type)
+ 			VALUES(room_num_seq.nextval,h_no,pic_room_url,room_type)
+ 	</insert>
+ 	
+	<insert id="insertType" parameterType="TypeVO">
+ 	INSERT INTO type (room_num, h_no, room_type, room_price)
+ 			VALUES(#{room_num},#{h_no},#{room_type},#{room_price})
+ 	</insert>
+ 	
+ <!-- 	<update id="update" parameterType="Review_ReplyVO">
+ 		update REVIEW_REPLY 
+ 			SET r_r_content = #{r_r_content},
+ 			r_r_updatedate = sysdate
+ 			where r_r_no = #{r_r_no}
+ 	</update>
+ 	
+ 	<delete id="delete">
+ 		delete from REVIEW_REPLY where r_r_no = #{r_r_no}
+ 	</delete>
+ 	
+ 	<delete id="deleteAll">
+ 		delete from REVIEW_REPLY where r_no = #{r_no}
+ 	</delete>
+ 	
+ 	<select id="listPage" resultType="Review_ReplyVO">
+	  <![CDATA[
+		 select 
+		   r_r_no, r_no, r_r_content, id, r_r_redate, r_r_updatedate
+		 from
+		   (
+		   select /*+INDEX_DESC(REVIEW_REPLY REVIEW_REPLEY_NO_PK))*/
+		     rownum rn, r_r_no, r_no, r_r_content, id, r_r_redate, r_r_updatedate
+		   from REVIEW_REPLY
+		   where r_no = #{r_no}
+		   and r_r_no > 0
+		   and rownum <= #{cri.page} * #{cri.perPageNum}
+		   )
+		where rn > ( #{cri.page} -1) * #{cri.perPageNum}
+	  ]]>
+	</select>
+	
+	<select id="count" resultType="int">
+		select count(r_no) from REVIEW_REPLY
+		where r_no =#{r_no}
+	</select>
+	
+  	<select id="getR_no" resultType="int">
+		SELECT r_no FROM REVIEW_REPLY WHERE r_r_no = #{r_r_no}
+	</select> 
+   -->
+
+</mapper>
