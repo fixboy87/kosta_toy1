@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="yanoll.mapper.plsqlMapper">
+	
+
+	
+	<select id="get_monthly_booked" parameterType="map" statementType="CALLABLE">
+	
+	<![CDATA[
+		DECLARE
+	    cnt NUMBER;
+	    vs_avail_count DATE;
+	    
+	    CURSOR cur_month(selected_date DATE)
+	    IS
+	        SELECT TRUNC(selected_date, 'MM') + LEVEL - 1 AS day
+	        FROM dual
+	        CONNECT BY TRUNC(TRUNC(selected_date, 'MM') + LEVEL - 1, 'MM') = TRUNC(selected_date, 'MM');
+	        
+		BEGIN
+		    OPEN cur_month(TO_DATE((#{h_day}), 'yy/mm/dd'));
+		    
+		    LOOP
+		        FETCH cur_month
+		        INTO vs_avail_count;
+		        
+		         
+		         
+		            SELECT COUNT(*) INTO cnt
+		            FROM hotel_order
+		            WHERE h_no = (
+		                SELECT h_no
+		                FROM hotel
+		                WHERE h_id = (#{h_id})
+		                )
+		            AND start_day   < vs_avail_count
+		            AND end_day     > vs_avail_count;
+		            
+		        	INSERT INTO H_TEMP VALUES
+		        	(vs_avail_count, cnt);
+
+		        EXIT WHEN cur_month%NOTFOUND;
+		    END LOOP;
+		    CLOSE cur_month;
+		END;
+	]]>
+	 
+	</select>
+	
+	
+</mapper>

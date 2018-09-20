@@ -18,6 +18,10 @@
   <package name="yanoll.managing.domain"/>
 	</typeAliases>
 	
+	
+	<mappers>
+		<mapper class="yanoll.plsql.mappers.PlsqlMapper"/>
+	</mappers>
 </configuration>
 
 
