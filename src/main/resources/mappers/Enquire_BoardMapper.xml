@@ -25,7 +25,38 @@
  		]]>
 	</select>
 
-	<sql id="search">
+	<select id="read" resultType="Enquire_Board">
+		select
+		e_seq,e_title,e_contents,id
+		from
+		enquire_board
+		where e_seq =
+		#{e_seq}
+	</select>
+
+	<delete id="delete">
+		delete from enquire_board where e_seq=#{e_seq}
+	</delete>
+
+	<update id="update" parameterType="Enquire_Board">
+		update enquire_board set
+		e_title = #{e_title}, e_contents = #{e_contents} , h_name = #{h_name}
+		where e_seq = #{e_seq}
+	</update>
+	
+		<select id="userNo" parameterType="String" resultType="int" >
+	select userNo from users where id = #{id}
+	</select>
+
+
+	<select id="count" resultType="int">
+
+		select count(e_seq) from
+		enquire_board where e_seq > 0
+
+	</select>
+
+<sql id="search">
 		<if test="searchType != null">
 			<if test="searchType == 't'.toString()">
 				and e_title like '%'|| #{keyword}||'%'
@@ -58,37 +89,5 @@
 			</if>
 		</if>
 	</sql>
-	
-	<select id="userNo" parameterType="String" resultType="int" >
-	select userNo from users where id = #{id}
-	</select>
-
-
-	<select id="count" resultType="int">
-
-		select count(e_seq) from
-		enquire_board where e_seq > 0
-
-	</select>
-
-	<select id="read" resultType="Enquire_Board">
-		select
-		e_seq,e_title,e_contents,id
-		from
-		enquire_board
-		where e_seq =
-		#{e_seq}
-	</select>
-
-	<delete id="delete">
-		delete from enquire_board where e_seq=#{e_seq}
-	</delete>
-
-	<update id="update" parameterType="Enquire_Board">
-		update enquire_board set
-		e_title = #{e_title}, e_contents = #{e_contents} , h_name = #{h_name}
-		where e_seq = #{e_seq}
-	</update>
-
 
 </mapper>

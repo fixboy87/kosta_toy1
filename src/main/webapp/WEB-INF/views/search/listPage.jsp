@@ -311,26 +311,18 @@ $(window).scroll(function(){
                             		+"<div class=" +"item_text" +">" + this.h_info + "</div>"                            		
                             		+"</div>"
                             		+"</div>"
-                            		+"<div class=" + "item_more_link" + ">" + "Read More" +"</div>"
-                            		
-                            	
-                        });            
-                        
+                            		+"<div class=" + "item_more_link" + ">" + "Read More" +"</div>"                            		
+                        });                                    
                         $("#scrollLocation").after(str).trigger("create");
-                    }
-                   
+                    }                   
                     else{ 
                         alert("더 불러올 데이터가 없습니다.");
                     }
-     
-                }
+                     }
             });
-            var position = $(".listToChange:first").offset();             
-           
+            var position = $(".listToChange:first").offset();          
             $('html,body').stop().animate({scrollTop : position }, 600, easeEffect);
- 
-        } 
-        
+         }         
     }    
 });
 

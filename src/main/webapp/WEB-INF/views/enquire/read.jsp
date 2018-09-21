@@ -62,6 +62,14 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
+<link
+  href='http://fonts.googleapis.com/css?family=Englebert|Open+Sans:400,600,700'
+  rel='stylesheet' type='text/css' />
+<link href="../resources/bootstrap/styles/HY_Style/payment.css"
+  rel="stylesheet" type="text/css" />
+<script src="../resources/bootstrap/scripts/HY_Script/step.js"></script>
+<script src="../resources/bootstrap/scripts/HY_Script/payment.js"></script>
+
 <style type="text/css">
 .replyBody{
 width: 70%;
@@ -81,10 +89,11 @@ height 10%;
 width: 70%;
 margin-left: 15%;
 margin-top: 1%;
+background-color: #ececec;
 }
 
 #replyAddBtn{
-margin-left: 1410%;
+margin-left: 1720%;
 
 }
 
@@ -97,8 +106,24 @@ text-align: right;
 
 </head>
 <body>
+<div id="header" class="container">
+    <div id="logo">
+      <h1>
+        <a href="http://localhost:8081"><img src="../resources/images/common/logo.png"
+          height="40" /> L I M E </a>
+      </h1>
 
-	<%@include file="../sub_page/header_menu.jsp"%>
+    </div>
+
+    <div id="menu">
+      <ul>
+        <li><a href="http://localhost:8081" accesskey="1" title="">홈</a></li>
+        <li><a href="#" accesskey="2" title="">예약내역</a></li>
+        <li><a href="#" accesskey="3" title="">로그아웃</a></li>
+
+      </ul>
+    </div>
+  </div>
 
  <div class="replyBody">
                     <div class="card-header">
@@ -115,7 +140,7 @@ text-align: right;
                            </div>
                            </div>
                     <div class="card-body">
-                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
+                        <div class="text-muted h7 mb-2"> <i class="eseq"></i>${board.e_seq}</div>
                         <a class="card-link" href="#">
                             <h5 class="card-title">${board.e_title}</h5>
                         </a>
@@ -136,9 +161,9 @@ text-align: right;
     </form>
     
 		<div class="card-footer">
-			<button type="submit" class="btn btn-warning" id="modifyBtn">Modify</button>
-			<button type="submit" class="btn btn-danger" id="removeBtn">REMOVE</button>
-				<button type="submit" class="btn btn-primary" id="goListBtn">GOLIST</button>
+			<button type="submit" class="btn btn-info" id="modifyBtn">수정</button>
+			<button type="submit" class="btn btn-info" id="removeBtn">삭제</button>
+		    <button type="submit" class="btn btn-info" id="goListBtn">GOLIST</button>
 			
 		</div>
 </div>
@@ -171,29 +196,7 @@ text-align: right;
 			});
 		})
 	</script>
-                 <!-- 댓글 등록 페이지 -->
 
-	<div class="replyAddBody">
-		<div class="tab-content" id="myTabContent">
-			<div class="tab-pane fade show active" id="posts" role="tabpanel"
-				aria-labelledby="posts-tab">
-				<div class="form-group">
-					<label class="sr-only" for="message">post</label> <input
-						type="hidden" class="form-control" id="newReplyer" value="<%=(String)session.getAttribute("uid")%>" placeholder="아이디"></input>
-					<textarea class="form-control" id="newReplyerText" rows="5"
-						placeholder="내용"></textarea>
-				</div>
-
-			</div>
-
-			<div class="btn-toolbar justify-content-between">
-				<div class="btn-group">
-					<button type="submit" class="btn btn-primary" id="replyAddBtn">ADD</button>
-				</div>
-
-			</div>
-		</div>
-	</div>
    
              <!-- 댓글목록 붙이는 곳  -->
       <section class="content">
@@ -219,15 +222,37 @@ text-align: right;
         <textarea  class="form-control" id="replytext" rows="5"></textarea>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-info" id="replyModBtn">Modify</button>
-        <button type="button" class="btn btn-danger" id="replyDelBtn">DELETE</button>
+        <button type="button" class="btn btn-info" id="replyModBtn">수정</button>
+        <!-- <button type="button" class="btn btn-danger" id="replyDelBtn">삭제</button> -->
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>   
 	
-	
+	                 <!-- 댓글 등록 페이지 -->
+
+	<div class="replyAddBody">
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade show active" id="posts" role="tabpanel"
+				aria-labelledby="posts-tab">
+				<div class="form-group">
+					<label class="sr-only" for="message">post</label> <input
+						type="hidden" class="form-control" id="newReplyer" value="<%=(String)session.getAttribute("uid")%>" placeholder="아이디"></input>
+					<textarea class="form-control" id="newReplyerText" rows="5"
+						placeholder="내용" required="required"></textarea>
+				</div>
+
+			</div>
+
+			<div class="btn-toolbar justify-content-between">
+				<div class="btn-group">
+					<button type="submit" class="btn btn-primary" id="replyAddBtn">등록</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
 
 	<!-- Post /////-->
 
@@ -253,7 +278,7 @@ text-align: right;
                     </div>
                     <div class="card-body">
                         <div class="text-muted h7 mb-2"> 
-                        <i class="fa fa-clock-o"></i>{{r_seq}}</div>
+                        <i class="seq"></i>{{r_seq}}</div>
                        
 
                         <div id="replyContent" class="card-text">
@@ -261,9 +286,9 @@ text-align: right;
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modifyModal">modify</button>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modifyModal">수정</button>
                         <button type="button" id="delreply" class="btn btn-info"
-                         data-toggle="modal" > delete</button>
+                         data-toggle="modal" > 삭제</button>
                         </div>
 <br>
                     </li>
@@ -299,10 +324,8 @@ text-align: right;
 		  $.getJSON("/replyEnquire/all/"+e_seq, function(data) {
 			  
 			printData(data, $("#repliesDiv"), $('#template'));
-			
-			
-		});  
-		 
+					
+		});  		 
 		function getPage() {
 			$.getJSON("/replyEnquire/all/"+e_seq, function(data) {
 				
@@ -311,17 +334,13 @@ text-align: right;
 				
 			});
 		}
-		
-		
-		 /* 댓글 등록 */
-		
+				 /* 댓글 등록 */		
 		$("#replyAddBtn").on("click", function() {
 			var replyerObj = $("#newReplyer");
 			var replytextObj = $("#newReplyerText");
 			var r_write = replyerObj.val();
 			var r_contents = replytextObj.val();
 			
-
 			$.ajax({
 				type : 'post',
 				url : '/replyEnquire',
@@ -346,8 +365,7 @@ text-align: right;
 				}
 
 			})
-
-		});
+});
 
 	   /* 댓글 삭제 버튼 이벤트 ajax */
 	    $(".timeline").on("click","#delreply",function(){
@@ -422,6 +440,6 @@ text-align: right;
 
 
 
-	<%@include file="../sub_page/footer.html"%>
+	
 </body>
 </html>

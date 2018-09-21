@@ -1,8 +1,8 @@
 package yanoll.managing.persistence;
 
 import java.util.List;
+import java.util.Map;
 
-import yanoll.managing.dto.GetCalendarDTO;
 
 public interface ManagingDAO{
 
@@ -11,5 +11,5 @@ public interface ManagingDAO{
 	
 	
 	//특정호텔 에서의 방 갯수를 날짜별로 한달간 파악
-	public List<Integer> getMonthlyBooking(GetCalendarDTO dto) throws Exception;
+	public List<Integer> getMonthlyBooking(Map<String, Object> map) throws Exception;
 }

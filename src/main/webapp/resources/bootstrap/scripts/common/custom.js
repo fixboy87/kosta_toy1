@@ -335,6 +335,8 @@ $(document).ready(function()
 		alert("로그인 후에 마이페이지에서 비밀번호를 변경해 주세요");
 	} else if($titleMessage == "deregister_successful") {
 		alert("회원정보가 삭제되었습니다. 감사합니다.");
+	} else if($titleMessage == "login_fail") {
+		alert("일치하는 회원 정보가 없습니다.");
 	}
 	
 	

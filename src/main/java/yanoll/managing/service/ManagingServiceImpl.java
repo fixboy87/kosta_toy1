@@ -1,6 +1,8 @@
 package yanoll.managing.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -17,10 +19,10 @@ public class ManagingServiceImpl implements ManagingService {
 	
 	@Override
 	public List<Integer> getMonthlyCalendar(String currentDay, String hotelId) throws Exception {
-		GetCalendarDTO dto = new GetCalendarDTO();
-		dto.setCurrentDate(currentDay);
-		dto.setH_id(hotelId);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("h_id", hotelId);
+		map.put("h_day", currentDay);
 		
-		return dao.getMonthlyBooking(dto);
+		return dao.getMonthlyBooking(map);
 	}
 }
