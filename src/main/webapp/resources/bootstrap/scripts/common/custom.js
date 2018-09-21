@@ -318,6 +318,9 @@ $(document).ready(function()
 	
 	// 메시지 호출 관련
 	var $titleMessage = $("#title_message").attr("value");
+	var $loginTries = $("#login_trials").attr("value");
+	
+	var loginFailMessage = "일치하는 회원 정보가 없습니다. [";
 	
 	if($titleMessage == "register_wrong_access") {
 		alert("허가되지 않은 접근방식입니다!!!\n정상적인 방식으로 접근해주세요.");
@@ -336,8 +339,10 @@ $(document).ready(function()
 	} else if($titleMessage == "deregister_successful") {
 		alert("회원정보가 삭제되었습니다. 감사합니다.");
 	} else if($titleMessage == "login_fail") {
-		alert("일치하는 회원 정보가 없습니다.");
+		loginFailMessage = loginFailMessage + $loginTries + "/3]";
+		alert(loginFailMessage);
 	}
+	
 	
 	
 	

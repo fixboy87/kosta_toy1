@@ -53,17 +53,6 @@ public class RegistrationServiceImpl implements RegistrationService {
 			dto.setId(id);
 			dto.setPassword(password);
 			user = dao.login(dto);
-			System.out.println("user.getId() = "+user.getId());
-			if(user.getId() == null) {
-				int trials = (Integer)session.getAttribute("trials")+1;
-				session.setAttribute("trials", trials);
-				
-				if(trials < 3) {
-					throw new SqlSessionException();
-				}
-				session.setAttribute("trials", 0);
-				throw new Exception();
-			}
 			
 			session.setAttribute("type", type);
 			session.setAttribute("uid", user.getId());
@@ -76,17 +65,6 @@ public class RegistrationServiceImpl implements RegistrationService {
 			dto.setH_password(password);
 			hotel = dao.login_hotel(dto);
 
-			if(hotel.getH_id() == null) {
-				int trials = (Integer)session.getAttribute("trials")+1;
-				session.setAttribute("trials", trials);
-				
-				if(trials < 3) {
-					throw new SqlSessionException();
-				}
-				session.setAttribute("trials", 0);
-				throw new Exception();
-			}
-			
 			session.setAttribute("type", type);
 			session.setAttribute("uid", hotel.getH_id());
 			session.setAttribute("name", hotel.getH_name());
@@ -96,6 +74,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 			throw new WrongAccessException();
 		}
 		
+		session.setAttribute("trials", 0);
 		Cookie idCookie = new Cookie("uid", id);
 		idCookie.setMaxAge(60*60*24);
 		response.addCookie(idCookie);

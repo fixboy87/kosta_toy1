@@ -149,12 +149,19 @@ public class RegistrationController {
 	
 	@RequestMapping(value = "/loggingin", method = RequestMethod.POST)
 	public String loggingin(HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) {
+		HttpSession session = request.getSession();
+		int trials = 0;
+		if((Integer)session.getAttribute("trials") != null) {
+			trials = (Integer)session.getAttribute("trials");
+		}
+		
 		try {
 			service.login(request, response);
-		
-		} catch (SqlSessionException e) {
+			
+		} catch (LoginFailException e) {
 			e.printStackTrace();
-			return loginFail(rttr);
+			session.setAttribute("trials", ++trials);
+			return loginFail(rttr, trials);
 		} catch (WrongAccessException e) {
 			e.printStackTrace();
 			return wrongAccess(rttr);
@@ -328,8 +335,13 @@ public class RegistrationController {
 		return "redirect:/";
 	}
 	
-	private String loginFail(RedirectAttributes rttr) {
-		rttr.addFlashAttribute("message", "login_fail");
-		return "redirect:/register/login";
+	private String loginFail(RedirectAttributes rttr, int trials) {
+		System.out.println("trials = "+trials);
+		if(trials < 3) {
+			rttr.addFlashAttribute("message", "login_fail");
+			return "redirect:/register/login";
+		} else {
+			return generalExceptionHandler(rttr);
+		}
 	}
 }
