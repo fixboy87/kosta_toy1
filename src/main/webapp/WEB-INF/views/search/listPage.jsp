@@ -295,10 +295,10 @@ $(window).scroll(function(){
                         $(data).each(                     
                             function(){
                             	console.log(this);
-                            	console.log("asdasdfslyiabhfmwrg");
-                            	
-                            	str +="<div class=" + "item clearfix rating_5" +"id=" + "listToChange"+">"    
-                            		+"<div class=" + "item_image"+">"+"<img src='../../resources/images/pages/HY_images/lotte.png'" + ">" + "</div>"
+                            	console.log("asdasdfslyiabhfmwrg");//this.pic_url            
+                            	str +="<div class=" + "items item_grid clearfix" + "id=" + "scrollLocation"+">"
+                            		+"<div class=" + "item clearfix rating_5" +"id=" + "listToChange"+">"    
+                            		+"<div class=" + "item_image"+">"+"<img src="+ '../../resources/images/pages/HY_images/'+ this.pic_url + ">" + "</div>"
                             		+"<div class=" + "item_content"+">"
                             		+"<div class=" + "item_price" + ">" + this.h_location + "</div>"
                             		+"<div class=" + "item_title" + ">" + this.h_name + "</div>"
@@ -311,9 +311,10 @@ $(window).scroll(function(){
                             		+"<div class=" +"item_text" +">" + this.h_info + "</div>"                            		
                             		+"</div>"
                             		+"</div>"
-                            		+"<div class=" + "item_more_link" + ">" + "Read More" +"</div>"                            		
+                            		+"<div class=" + "item_more_link" + ">" + "Read More" +"</div>"
+                            		+"</div>"
                         });                                    
-                        $("#scrollLocation").after(str).trigger("create");
+                        $("#scrollLocation").after(str);
                     }                   
                     else{ 
                         alert("더 불러올 데이터가 없습니다.");
@@ -329,18 +330,6 @@ $(window).scroll(function(){
 </script>
 
 					
-				</div>
-			</div>
-			<div class="row">
-				<div class="col">
-					<div class="pages">
-						<ul class="pages_list">
-							<li class="page active"><a href="#">01.</a></li>
-							<li class="page"><a href="#">02.</a></li>
-							<li class="page"><a href="#">03.</a></li>
-							<li class="page"><a href="#">04.</a></li>
-						</ul>
-					</div>
 				</div>
 			</div>
 		</div>

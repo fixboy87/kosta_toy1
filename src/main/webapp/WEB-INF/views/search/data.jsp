@@ -15,7 +15,6 @@
 	호텔이름 : <input type="text" name="h_name" /><br>			
 	호텔전화번호 : <input type="text" name="h_phonenum"/><br>
 	호텔메일 : <input type="text" name="h_mail" /><br>
-	호텔전화번호 : <input type="text" name="h_phonenum" /><br>
 	호텔 상세주소 : <input type="text" name="h_address" /><br>
 	호텔방갯수 : <input type="text" name="room_count" /><br>
 	호텔아이디 : <input type="text" name="h_id" /><br>		

@@ -53,7 +53,7 @@ public class OrderController {
       System.out.println("post!!!!");
 	  System.out.println(vo);
 	  
-	  model.addAttribute("dto",vo);
+	  model.addAttribute("vo",vo);
 	  
 	  
 	  String checkIn = (String)session.getAttribute("start_date");

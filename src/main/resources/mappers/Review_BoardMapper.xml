@@ -105,7 +105,7 @@
 	<!-- <select id="search_userNo" parameterType="String" resultType="int"> 
 		select userNo from users where id=#{id} </select> -->
 
-	<!-- booking의 p_condition 후기 작성 전(2)-> 작성 후(4) -->
+	<!-- booking의 p_condition 후기 작성 전(2)-> 작성 후(3) -->
 	<update id="changeCondition" parameterType="int">
 		UPDATE Hotel_Order
 		SET p_condition = 3
