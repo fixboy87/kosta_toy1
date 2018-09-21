@@ -8,6 +8,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Destino project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/gng_style/gng_contact.css">
+<link rel="stylesheet" type="text/css" href="../resources/bootstrap/styles/gng_style/gng_main.css">
+<script src="../resources/bootstrap/styles/common/bootstrap4/popper.js"></script>
+<script src="../resources/bootstrap/styles/common/bootstrap4/bootstrap.min.js"></script>
+<script src="../resources/bootstrap/plugins/common/greensock/TweenMax.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//greensock/TimelineMax.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//scrollmagic/ScrollMagic.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//greensock/animation.gsap.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//greensock/ScrollToPlugin.min.js"></script>
+<script src="../resources/bootstrap/plugins/common//easing/easing.js"></script>
+<script src="../resources/bootstrap/plugins/common//parallax-js-master/parallax.min.js"></script>
+<script src="../resources/bootstrap/scripts/common/contact_custom.js"></script>
 <script src="../resources/bootstrap/scripts/common/jquery-3.2.1.min.js"></script>
 <link
   href='http://fonts.googleapis.com/css?family=Englebert|Open+Sans:400,600,700'
@@ -21,6 +36,10 @@
 .col-md-5{
 
 margin-left: 30%;
+}
+
+#submitButton{
+margin-left: 62%;
 }
 </style>
 </head>
@@ -67,7 +86,7 @@ margin-left: 30%;
         <form role="form" method="post">
         <br style="clear:both">
                     <h3 style="margin-bottom: 25px; text-align: center;">문의</h3>
-					<a class="btn btn-primary pull-right" href="/enquire/list" >나의문의내역</a>
+					
 				<select class="h_name" name="h_name" id="h_name" >
 						
 							<option>문의호텔</option>
@@ -86,23 +105,24 @@ margin-left: 30%;
 							<br>
 					
 					<div class="form-group">
-						<input type="text" class="form-control" id="subject" name="e_title" value="${board.e_title}" placeholder="제목">
+						<input type="text" class="form-control" id="subject" name="e_title" value="${board.e_title}" placeholder="제목" required="required">
 					</div>
                     <div class="form-group">
-                    <textarea class="form-control" type="textarea" id="message" name="e_contents" placeholder="내용" maxlength="140" rows="7">${board.e_contents}</textarea>
+                    <textarea class="form-control" type="textarea" id="message" name="e_contents" placeholder="내용" maxlength="140" rows="7" required="required">${board.e_contents}</textarea>
                         <span class="help-block"><p id="characterLeft" class="help-block "></p></span>
                          <input id="contact_input_subject" class="contact_input contact_input_subject" type="hidden" name="e_seq" value="${board.e_seq}">                    
                     </div>
             <input id="id" type="hidden" name="id" value="<%=(String)session.getAttribute("uid")%>">
          
             
-        <input type="submit" id="submit" name="submit" class="btn btn-primary pull-right"></input>
+        <input type="submit" id="submitButton" name="submit" class="btn btn-primary pull-right"></input>
+        <a href="/enquire/list" class="btn btn-primary pull-right">GOLIST</a>
         </form>
     </div>
 </div>
 </div>
 			
 			
-<%@include file="../sub_page/footer.html" %>
+
 </body>
 </html>

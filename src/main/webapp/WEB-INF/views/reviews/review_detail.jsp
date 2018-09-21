@@ -73,7 +73,6 @@ h1 {
 	<%@include file="../sub_page/header_menu.jsp"%>
 
 
-<section>
 	<div>
 
 		<h1>후기 디테일</h1>
@@ -130,7 +129,6 @@ h1 {
 							<button class="myButtonB" id="modifyBtn" value="수정">수정</button>
 							<button class="myButtonB" id="removeBtn" value="삭제">삭제</button>
 				</div>
-				<!-- <a href="review_list.do">목록</a> -->
 				<input type="button" value="목록"
 					class="w3-button w3-white w3-round-small" id="myButtonB" onclick="history.go(-1)">
 					<input type="hidden" class="h_name" value="${board.h_name }">
@@ -146,6 +144,7 @@ h1 {
 				<div class="box-header">
 					<h3 class="box-title">ADD NEW REPLY</h3>
 				</div>
+				
 				<c:set var="board_id" value="${board.id}" />
 				<c:set var="board_h_name" value="${board.h_name}" />
 				<c:set var="uid" value="${uid}" />
@@ -153,14 +152,13 @@ h1 {
 				<c:choose>
 					<c:when test="${board_id eq uid || board_h_name eq name}">
 						<div class="box-body">
-							<label for="exampleInputEmail1">ReplyText</label> <input
-								class="form-control" type="text" placeholder="REPLY TEXT"
-								style="width: 70%" id="newReplyText">
+							<label for="exampleInputEmail1">ReplyText</label> 
+								<input class="form-control" type="text" placeholder="REPLY TEXT" style="width: 70%" id="newReplyText">
 						</div>
-						<!-- /.box-body -->
 						<div class="box-footer">
-							<button type="button" class="btn btn-primary" id="replyAddBtn">ADD
-								REPLY</button>
+							<button type="button" class="btn btn-primary" id="replyAddBtn">
+								ADD	REPLY
+							</button>
 						</div>
 					</c:when>
 
@@ -172,8 +170,8 @@ h1 {
 							</div>
 						</div>
 					</c:otherwise>
-
 				</c:choose>
+				
 				<ul class="timeline">
 					<li class="time-label" id="repliesDiv" style="size: 20"><span>Reply List</span></li>
 				</ul>
@@ -210,11 +208,10 @@ h1 {
 			</div>
 		</div>
 	</div>
-</section>
 	<%@include file="../sub_page/footer.html"%>
 
 
-	<script id="template" type="text/x-handlebars-template">
+<script id="template" type="text/x-handlebars-template">
 {{#each .}}  
 <li class="replyLi" data-rno={{r_r_no}}>
           <i class="fa fa-comments bg-blue"></i>
@@ -256,6 +253,7 @@ h1 {
 			var date = dateObj.getDate();
 			return year + "/" + month + "/" + date;
 		});
+		
 
 		Handlebars.registerHelper("eqReplyer", function(id, block) {
 			id =id;
@@ -312,11 +310,7 @@ h1 {
 		
  	 	$(document).ready(function() {
 			getPage("/reivew_replies/" + r_no + "/1");
-		} 	 
-/* 	  $("#repliesDiv").on("click", function(event) {
-			getPage("/reivew_replies/" + r_no + "/1");
-		} */) 
-
+		});
 		
 		
 		$(".pagination").on("click", "li a", function(event) {
@@ -329,12 +323,8 @@ h1 {
 		
 		/* replyAdd */
 		$("#replyAddBtn").on("click", function() {
-			
-		
-		
 			var replytextObj = $("#newReplyText");
 			var replytext = replytextObj.val();
-			
 			var replyer ="";
 			
 			if (type=="user") {
@@ -342,7 +332,6 @@ h1 {
 			} else {
 				replyer=name;
 			}
-
 		
 			$.ajax({
 				type : 'post',
@@ -362,7 +351,7 @@ h1 {
 					if (result == 'SUCCESS') {
 						alert("등록 되었습니다.");
 						replyPage = 1;
-						getPage("/reivew_replies/" + r_no + "/" + replyPage); /* 등록 후 페이징1로 지정 */
+						getPage("/reivew_replies/" + r_no + "/" + replyPage);
 						replytextObj.val("");
 					}
 				}
@@ -380,6 +369,7 @@ h1 {
 		
 		
 		/* 수정 버튼 눌렀을때 컨트롤러에 url요청 */
+		
 		$("#replyModBtn").on("click", function() {
 			var r_r_no = $(".modal-title").html();
 			var replytext = $("#replytext").val();
@@ -388,7 +378,7 @@ h1 {
 				url : '/reivew_replies/' + r_r_no,
 				headers : {
 					"Content-Type" : "application/json",
-					"X-HTTP-Method-Override" : "PUT" /* 구 브라우저에는 post,get밖에 없으므로 그것을 처리해주는 역할 */
+					"X-HTTP-Method-Override" : "PUT" 
 				},
 				data : JSON.stringify({
 					r_r_content : replytext

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSessionException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -15,6 +16,7 @@ import yanoll.registration.persistence.RegistrationDAO;
 import yanoll.user.domain.Actors;
 import yanoll.user.domain.Hotel;
 import yanoll.user.domain.Users;
+import yanoll.util.LoginFailException;
 import yanoll.util.WrongAccessException;
 
 @Service
@@ -72,6 +74,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 			throw new WrongAccessException();
 		}
 		
+		session.setAttribute("trials", 0);
 		Cookie idCookie = new Cookie("uid", id);
 		idCookie.setMaxAge(60*60*24);
 		response.addCookie(idCookie);

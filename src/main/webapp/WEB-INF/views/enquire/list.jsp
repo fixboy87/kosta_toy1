@@ -35,7 +35,13 @@
 
 <style type="text/css">
 #searchBar{
- margin-left: 70%;
+ margin-left: 75%;
+}
+#keywordInput{
+margin-left: 4%;
+}
+#searchBtn{
+margin-left: 10%;
 }
 </style>
 
@@ -139,8 +145,10 @@
 						<option value="tcw"
 							<c:out value="${cri.searchType eq 'tcw'?'selected':''}"/>>
 							Title OR Content OR Writer</option>
-					</select> <input type="text" name='keyword' id="keywordInput"
+					</select> 
+					<br><input type="text" name='keyword' id="keywordInput"
 						value='${cri.keyword }'>
+						<br>
 					<button id='searchBtn'>Search</button>
 					<button id='newBtn'>New Board</button>
 
@@ -203,6 +211,6 @@
 </script>
 			
 			
-<%@include file="../sub_page/footer.html" %>
+
 </body>
 </html>

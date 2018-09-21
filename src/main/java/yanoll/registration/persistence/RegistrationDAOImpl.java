@@ -2,6 +2,7 @@ package yanoll.registration.persistence;
 
 
 import javax.inject.Inject;
+import javax.security.auth.login.LoginException;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -10,6 +11,7 @@ import yanoll.registration.dto.LoginDTO;
 import yanoll.registration.dto.LoginHotelDTO;
 import yanoll.user.domain.Hotel;
 import yanoll.user.domain.Users;
+import yanoll.util.LoginFailException;
 
 @Repository
 public class RegistrationDAOImpl implements RegistrationDAO {
@@ -37,14 +39,20 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 
 	@Override
 	public Users login(LoginDTO dto) throws Exception {
-		
-		return sqlSession.selectOne(namespace+".login", dto);
-		
+		Users user = sqlSession.selectOne(namespace+".login", dto);
+		if(user == null) {
+			throw new LoginFailException();
+		}
+		return user;
 	}
 	
 	@Override
 	public Hotel login_hotel(LoginHotelDTO dto) throws Exception {
-		return sqlSession.selectOne(namespace+".login_hotel", dto);
+		Hotel hotel = sqlSession.selectOne(namespace+".login_hotel", dto);
+		if(hotel == null) {
+			throw new LoginFailException();
+		}
+		return hotel;
 	}
 
 	@Override

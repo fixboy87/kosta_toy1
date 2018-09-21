@@ -22,7 +22,7 @@ public class UploadFileUtils {
   
   
   
-  private static String calcPath(String uploadPath){		/* 3. 날짜 정보생성(+4.폴더생성 메소드호출) */
+  private static String calcPath(String uploadPath){		
 	    
 	    Calendar cal = Calendar.getInstance();
 	    
@@ -37,7 +37,6 @@ public class UploadFileUtils {
 	        new DecimalFormat("00").format(cal.get(Calendar.DATE));
 	    
 	    makeDir(uploadPath, yearPath,monthPath,datePath);	
-	    /* 4. 기본 경로+날짜 폴더 생성 메소드(3. 날짜 정보생성)*/
 	    
 	    logger.info(datePath);
 	    
@@ -46,30 +45,30 @@ public class UploadFileUtils {
   
 
   
-  public static String uploadFile(String uploadPath,			 /*경로*/
-                              String originalName, 						/*이름*/
-                              byte[] fileData)throws Exception{	/*파일 데이터*/
-	  																			/*-클라이언트에서 요청한(Drop한 파일)*/
+  public static String uploadFile(String uploadPath,			
+                              String originalName, 						
+                              byte[] fileData)throws Exception{	
+	  																		
+    UUID uid = UUID.randomUUID();
     
-    UUID uid = UUID.randomUUID(); /*1.고유한 이름 생성*/
+    String savedName = uid.toString() +"_"+originalName; 
     
-    String savedName = uid.toString() +"_"+originalName; /*2.업로드 파일이름 생성=>고유한 이름+원래이름*/
+    String savedPath = calcPath(uploadPath); 
     
-    String savedPath = calcPath(uploadPath);  /*4.업로드 경로 + 날짜 폴더(<-3.날짜 정보 생성) 생성*/
+    File target = new File(uploadPath +savedPath,savedName);
+    												
+    FileCopyUtils.copy(fileData, target);
     
-    File target = new File(uploadPath +savedPath,savedName);//파일 객체 생성
-    												//savedPath : 새로 생성된 폴더
-    FileCopyUtils.copy(fileData, target);	//파일 업로드  /*5.기본경로+폴더경로+파일이름 저장*/
+    String formatName = originalName.substring(originalName.lastIndexOf(".")+1);
     
-    String formatName = originalName.substring(originalName.lastIndexOf(".")+1);//substring : 확장자 뽑아내기
+    String uploadFileName = null;
     
-    String uploadedFileName = null;
-    
-    if(MediaUtils.getMediaType(formatName) != null){	//확장자가 존재하면
-       makeThumbnail(uploadPath, savedPath, savedName); //썸네일 생성
-      return uploadedFileName =savedPath+"/"+savedName;
+    if(MediaUtils.getMediaType(formatName) != null){	
+       makeThumbnail(uploadPath, savedPath, savedName); 
+      return uploadFileName =savedPath+"/"+savedName;
+      
     }else{
-    	return uploadedFileName = "";
+    	return uploadFileName = "";
     }
   }
   
@@ -103,9 +102,9 @@ public class UploadFileUtils {
   
   
 
+  /* 4.업로드 기본 경로+날짜 폴더 생성*/
   
-  
-  private static void makeDir(String uploadPath, String... paths){	/* 4.업로드 기본 경로+날짜 폴더 생성*/
+  private static void makeDir(String uploadPath, String... paths){	
     
     if(new File(uploadPath+paths[paths.length-1]).exists()){
       return;

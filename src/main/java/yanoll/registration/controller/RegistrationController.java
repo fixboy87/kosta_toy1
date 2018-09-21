@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSessionException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import yanoll.registration.service.RegistrationService;
 import yanoll.user.domain.Hotel;
 import yanoll.user.domain.Users;
+import yanoll.util.LoginFailException;
 import yanoll.util.WrongAccessException;
 
 @Controller
@@ -45,35 +47,26 @@ public class RegistrationController {
 		return "register";
 	}
 	
-/*	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String registerGET (Model model, @RequestParam("type") String type) {
-		System.out.println("11111111111111111");
-		System.out.println("type = "+type);
-		String uri = "register/register?type="+type;
-		return uri;
-	}*/
-	
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String registerGET(RedirectAttributes rttr) {
+		return wrongAccess(rttr);
+	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public void registerPOST (Model model, @RequestParam("type") String type) {
 		model.addAttribute("type", type);
 	}
 	
-	
-/*	@RequestMapping(value = "/details", method = RequestMethod.GET)
-	public void DetailsGET (Model model,
-			@RequestParam("type") String type, @RequestParam("newid") String newid, @RequestParam("newpass") String newpass) {
-		
-		model.addAttribute("type", type);
-		model.addAttribute("newid", newid);
-		model.addAttribute("newpass", newpass);
-		
-	}*/
-	
+	@RequestMapping(value = "/user_detail", method = RequestMethod.GET)
+	public String detailsPOST (RedirectAttributes rttr){
+		return wrongAccess(rttr);
+	}
+
+			
 	@RequestMapping(value = "/user_detail", method = RequestMethod.POST)
 	public void detailsPOST (Model model,
-			@RequestParam("email") String email, @RequestParam("id") String id, @RequestParam("tel") String tel, 
-			@RequestParam("name") String name, @RequestParam("password") String password) {
+		@RequestParam("email") String email, @RequestParam("id") String id, @RequestParam("tel") String tel, 
+		@RequestParam("name") String name, @RequestParam("password") String password) {
 
 		model.addAttribute("email", email);
 		model.addAttribute("id", id);
@@ -83,6 +76,11 @@ public class RegistrationController {
 		
 	}
 	
+	@RequestMapping(value = "/hotel_detail", method = RequestMethod.GET)
+	public String hotelDetails (RedirectAttributes rttr){
+		return wrongAccess(rttr);
+	}
+
 	@RequestMapping(value = "/hotel_detail", method = RequestMethod.POST)
 	public void hotelDetails (Model model,
 			@RequestParam("email") String email, @RequestParam("id") String id, @RequestParam("tel") String tel, 
@@ -97,6 +95,11 @@ public class RegistrationController {
 	}
 	
 	
+	@RequestMapping(value = "/registration", method = RequestMethod.GET)
+	public String registration(RedirectAttributes rttr) {
+		return wrongAccess(rttr);
+	}
+
 	
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
 	public String registration(Users user, RedirectAttributes rttr, HttpServletRequest request) {
@@ -113,6 +116,12 @@ public class RegistrationController {
 		
 	}
 	
+	@RequestMapping(value = "/registration_hotel", method = RequestMethod.GET)
+	public String registration_hotel(RedirectAttributes rttr) {
+		return wrongAccess(rttr);
+	}
+
+		
 	@RequestMapping(value = "/registration_hotel", method = RequestMethod.POST)
 	public String registration_hotel(Hotel hotel, RedirectAttributes rttr, HttpServletRequest request) {
 		try{
@@ -140,9 +149,19 @@ public class RegistrationController {
 	
 	@RequestMapping(value = "/loggingin", method = RequestMethod.POST)
 	public String loggingin(HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) {
+		HttpSession session = request.getSession();
+		int trials = 0;
+		if((Integer)session.getAttribute("trials") != null) {
+			trials = (Integer)session.getAttribute("trials");
+		}
+		
 		try {
 			service.login(request, response);
-		
+			
+		} catch (LoginFailException e) {
+			e.printStackTrace();
+			session.setAttribute("trials", ++trials);
+			return loginFail(rttr, trials);
 		} catch (WrongAccessException e) {
 			e.printStackTrace();
 			return wrongAccess(rttr);
@@ -155,6 +174,9 @@ public class RegistrationController {
 		return "redirect:/";
 	}
 	
+
+
+
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) {
 		try {
@@ -311,5 +333,15 @@ public class RegistrationController {
 	private String generalExceptionHandler(RedirectAttributes rttr) {
 		rttr.addFlashAttribute("message", "not_working");
 		return "redirect:/";
+	}
+	
+	private String loginFail(RedirectAttributes rttr, int trials) {
+		System.out.println("trials = "+trials);
+		if(trials < 3) {
+			rttr.addFlashAttribute("message", "login_fail");
+			return "redirect:/register/login";
+		} else {
+			return generalExceptionHandler(rttr);
+		}
 	}
 }

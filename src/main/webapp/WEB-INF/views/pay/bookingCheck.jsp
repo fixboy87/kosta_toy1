@@ -31,6 +31,17 @@
 <link rel="stylesheet" type="text/css" href="http:../resources/bootstrap/styles/HY_Style/ListPage.css">
 <link rel="stylesheet" type="text/css" href="../../resources/bootstrap/styles/HY_Style/detailPage.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+
+<link
+  href='http://fonts.googleapis.com/css?family=Englebert|Open+Sans:400,600,700'
+  rel='stylesheet' type='text/css' />
+<link href="../resources/bootstrap/styles/HY_Style/payment.css"
+  rel="stylesheet" type="text/css" />
+<script src="../resources/bootstrap/scripts/HY_Script/step.js"></script>
+<script src="../resources/bootstrap/scripts/HY_Script/payment.js"></script>
+
+
+
 <style type="text/css">
 
 /*****************globals*************/
@@ -80,7 +91,7 @@
             animation-duration: .3s; }
 
 .card {
-  margin-top: 200px;
+  margin-top:50px;
   background: #eee;
   padding: 3em;
   line-height: 1.5em;
@@ -191,6 +202,10 @@
     -webkit-transform: scale(1);
             transform: scale(1); } }
 
+.container{
+
+
+}
 /*# sourceMappingURL=style.css.map */
 
 </style>
@@ -221,11 +236,31 @@
 
   <body>
 
+<div id="header" class="container" style="padding-bottom: 20px;">
+    <div id="logo">
+      <h1>
+        <a href="http://localhost:8081"><img src="../resources/images/common/logo.png"
+          height="40" /> L I M E </a>
+      </h1>
+
+    </div>
+
+    <div id="menu">
+      <ul>
+        <li><a href="http://localhost:8081" accesskey="1" title="">홈</a></li>
+        <li><a href="#" accesskey="2" title="">예약내역</a></li>
+        <li><a href="#" accesskey="3" title="">로그아웃</a></li>
+
+      </ul>
+    </div>
+  </div>
+
+
 <input type="hidden" id="uid" name="uid" val="<%=(String)session.getAttribute("id")%>"/>
 <input type="hidden" id="type" name="type" val="<%=(String)session.getAttribute("type")%>"/>
 <input type="hidden" id="name" name="name" val="<%=(String)session.getAttribute("name")%>"/>
    <c:forEach var="order" items="${booking}">
-   <div class="container" style="margin-bottom: 100px; margin-top: 70px; ">
+   <div class="container">
       <div class="card">
          <div class="container-fliud">
             <div class="wrapper row">

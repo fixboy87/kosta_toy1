@@ -486,8 +486,10 @@ input.room_price{
 						</div>
 					</div>
 				</div>
+				
 
-			</div>
+			</div><br>
+				<button><a href="/room/detailPage?h_no=${h_no}" style="font-size: 22px;">My Hotle Page Go!!!!!!!!!!!!!!</a></button>
 
 
 

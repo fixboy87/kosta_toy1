@@ -89,6 +89,7 @@ height 10%;
 width: 70%;
 margin-left: 15%;
 margin-top: 1%;
+background-color: #ececec;
 }
 
 #replyAddBtn{
@@ -160,9 +161,9 @@ text-align: right;
     </form>
     
 		<div class="card-footer">
-			<button type="submit" class="btn btn-warning" id="modifyBtn">수정</button>
-			<button type="submit" class="btn btn-danger" id="removeBtn">삭제</button>
-		    <button type="submit" class="btn btn-primary" id="goListBtn">GOLIST</button>
+			<button type="submit" class="btn btn-info" id="modifyBtn">수정</button>
+			<button type="submit" class="btn btn-info" id="removeBtn">삭제</button>
+		    <button type="submit" class="btn btn-info" id="goListBtn">GOLIST</button>
 			
 		</div>
 </div>
@@ -239,7 +240,7 @@ text-align: right;
 					<label class="sr-only" for="message">post</label> <input
 						type="hidden" class="form-control" id="newReplyer" value="<%=(String)session.getAttribute("uid")%>" placeholder="아이디"></input>
 					<textarea class="form-control" id="newReplyerText" rows="5"
-						placeholder="내용"></textarea>
+						placeholder="내용" required="required"></textarea>
 				</div>
 
 			</div>
@@ -439,6 +440,6 @@ text-align: right;
 
 
 
-	<%@include file="../sub_page/footer.html"%>
+	
 </body>
 </html>
